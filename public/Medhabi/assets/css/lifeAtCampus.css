@@ -1,0 +1,1085 @@
+:root {
+    --white-overlay: linear-gradient(180deg, rgba(55, 55, 55, 0) 3%, transparent 30%, rgb(255, 255, 255) 80%);
+}
+
+@media screen and (max-width:1920px) {
+
+    section.a_perfect_blend {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 55%, rgb(255 255 255 / 85%) 81%, rgb(255 255 255) 100%), url(../images/banner/life-msu-1.JPG);
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: 53%;
+        padding: 120px 0;
+    }
+
+    section.affection-edu {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 55%, rgb(255 255 255 / 85%) 81%, rgb(255 255 255) 100%), url(../images/banner/life-msu-2.JPG);
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: 53%;
+        padding: 154px 0;
+    }
+
+    section.affection-edu2 {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 55%, rgb(255 255 255 / 85%) 81%, rgb(255 255 255) 100%), url(../images/banner/life-msu-3.JPG);
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: 53%;
+        padding: 183px 0;
+    }
+
+    section.affection-edu4 {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 55%, rgb(255 255 255 / 85%) 81%, rgb(255 255 255) 100%), url(../images/banner/life-msu-4.JPG);
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: 53%;
+        padding: 183px 0;
+    }
+
+    section.affection-blend {
+        background-image: linear-gradient(90deg, rgb(215 145 24) 3%, rgb(215 145 24) 41%, rgb(255 255 255 / 0%) 59%, rgb(220 148 24) 161%), url(../images/banner/life-msu-5.JPG);
+        background-position: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding: 250px 0;
+    }
+
+    section.our-inspiration {
+        background-image: linear-gradient(90deg, rgb(0 48 75) 3%, rgb(0 48 75) 43%, rgb(255 255 255 / 0%) 81%, rgb(40 40 40) 161%), url(../images/banner/life-msu-6.JPG);
+        background-position: 104%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding: 250px 0;
+    }
+
+    section.affection-edu3 {
+
+        background-image: linear-gradient(90deg, rgb(0 48 75) 3%, rgb(0 48 75) 43%, rgb(255 255 255 / 0%) 81%, rgb(40 40 40) 161%), url(../images/banner/life-msu-7.JPG);
+        background-position: 104%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding: 250px 0;
+    }
+
+    section.our-inspiration1 {
+        background-image: linear-gradient(90deg, rgb(215 145 24) 3%, rgb(215 145 24) 38%, rgb(255 255 255 / 0%) 81%, rgb(220 148 24) 161%), url(../images/banner/life-msu-8.JPG);
+        background-position: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding: 250px 0;
+    }
+
+}
+
+
+
+@media screen and (min-width: 1661px) and (max-width: 1800px) {
+
+    section.a_perfect_blend {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 78%, rgb(255 255 255 / 41%) 81%, rgb(255 255 255) 100%), url(../images/banner/life-msu-1.JPG);
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: 53%;
+        padding: 150px 0;
+    }
+
+
+
+}
+
+@media screen and (max-width: 1440px) {
+    h2.title {
+        font-size: 30px;
+    }
+
+    section.affection-blend,
+    section.our-inspiration,
+    section.affection-edu3,
+    section.our-inspiration1 {
+        padding: 150px 20px;
+    }
+
+    section.a_perfect_blend,
+    section.affection-edu,
+    section.affection-edu2,
+    section.affection-edu4 {
+        padding: 100px 20px;
+    }
+
+}
+
+
+@media only screen and (max-width: 1280px) {
+
+    section.a_perfect_blend,
+    section.affection-edu,
+    section.affection-edu2,
+    section.affection-edu4 {
+        padding: 128px 20px;
+    }
+
+    section.a_perfect_blend {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 48%, rgb(255 255 255) 100%), url(../images/banner/life-msu-1.JPG) ;
+    }
+
+
+
+    section.affection-edu {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 48%, rgb(255 255 255) 100%), url(../images/banner/life-msu-2.JPG);
+
+    }
+
+    section.affection-edu2 {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 48%, rgb(255 255 255) 100%), url(../images/banner/life-msu-3.JPG);
+
+    }
+
+    section.affection-edu4 {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 48%, rgb(255 255 255) 100%), url(../images/banner/life-msu-4.JPG);
+
+    }
+
+    section.a_perfect_blend {
+        background-size: 59%;
+    }
+
+    section.affection-edu {
+        background-size: 59%;
+    }
+
+    section.affection-edu2 {
+        background-size: 59%;
+    }
+
+    section.affection-edu4 {
+        background-size: 59%;
+    }
+
+    section.a_perfect_blend p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-blend p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.our-inspiration p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu2 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu3 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu4 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.our-inspiration1 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+}
+
+@media only screen and (max-width:1366px) {
+
+    section.a_perfect_blend,
+    section.affection-edu,
+    section.affection-edu2,
+    section.affection-edu4 {
+        padding: 124px 20px;
+    }
+
+    section.a_perfect_blend {
+        background-size: 58%;
+    }
+
+    section.affection-edu {
+        background-size: 58%;
+    }
+
+    section.affection-edu2 {
+        background-size: 58%;
+    }
+
+    section.affection-edu4 {
+        background-size: 58%;
+    }
+
+    section.a_perfect_blend {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 48%, rgb(255 255 255) 100%), url(../images/banner/life-msu-1.JPG);
+    }
+
+
+
+    section.affection-edu {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 48%, rgb(255 255 255) 100%), url(../images/banner/life-msu-2.JPG);
+
+    }
+
+    section.affection-edu2 {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 48%, rgb(255 255 255) 100%), url(../images/banner/life-msu-3.JPG);
+
+    }
+
+    section.affection-edu4 {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 48%, rgb(255 255 255) 100%), url(../images/banner/life-msu-4.JPG);
+
+    }
+
+    section.a_perfect_blend p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-blend p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.our-inspiration p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu2 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu3 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu4 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.our-inspiration1 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1440px) {
+
+    section.a_perfect_blend,
+    section.affection-edu,
+    section.affection-edu2,
+    section.affection-edu4 {
+        padding: 141px 20px;
+    }
+
+    section.a_perfect_blend {
+        background-size: 55%;
+    }
+
+    section.affection-edu {
+        background-size: 55%;
+    }
+
+    section.affection-edu2 {
+        background-size: 55%;
+    }
+
+    section.affection-edu4 {
+        background-size: 55%;
+    }
+
+    section.a_perfect_blend {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 48%, rgb(255 255 255) 100%), url(../images/banner/life-msu-1.JPG);
+    }
+
+
+
+    section.affection-edu {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 48%, rgb(255 255 255) 100%), url(../images/banner/life-msu-2.JPG);
+
+    }
+
+    section.affection-edu2 {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 48%, rgb(255 255 255) 100%), url(../images/banner/life-msu-3.JPG);
+
+    }
+
+    section.affection-edu4 {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 48%, rgb(255 255 255) 100%), url(../images/banner/life-msu-4.JPG);
+
+    }
+
+    section.a_perfect_blend p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-blend p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.our-inspiration p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu2 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu3 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu4 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.our-inspiration1 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+
+
+    .edu-footer .footer-top {
+        padding: 80px 22px 0 22px;
+    }
+
+    .edu-footer .logo-bg {
+        right: 0;
+    }
+
+    .edu-footer .edu-footer-widget.university-link-widget {
+        margin-left: 35px;
+    }
+
+    .edu-footer .middle_footer {
+        padding: 15px 22px;
+        margin-top: 50px;
+    }
+
+    .edu-footer .middle_footer .contact__Bx .contact__details p {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 6px;
+    }
+
+    .social-share.icon-transparent li {
+        margin: 0 8px 0 0px;
+    }
+
+
+    .edu-footer .middle_footer .contact__Bx .contact__details a {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .contact__Bx.d-flex.align-items-center {
+        padding: 5px 0;
+    }
+
+    .edu-footer .edu-footer-widget.study-link-widget {
+        margin-left: 15px;
+    }
+
+    .edu-footer .edu-footer-widget.policies-link-widget {
+        margin-left: 38px;
+    }
+
+    .edu-footer.footer-lighten .widget-title {
+        font-size: 20px;
+    }
+
+    .edu-footer .edu-footer-widget.about-link-widget {
+        margin-left: 45px;
+    }
+
+    .edu-footer .edu-footer-widget .footer-link li a {
+        display: block;
+        line-height: 22px;
+        font-size: 14px;
+    }
+
+    .edu-footer .edu-footer-widget.explore-widget {
+        margin-left: 45px;
+    }
+
+    .edu-footer.footer-lighten p.description {
+        color: #fff;
+        font-size: 14px;
+        line-height: 33px;
+        padding-right: 0;
+        margin-bottom: 0;
+    }
+
+    section.a_perfect_blend p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-blend p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.our-inspiration p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu2 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu3 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu4 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.our-inspiration1 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+}
+
+@media only screen and (max-width: 820px) {
+
+    section.affection-blend,
+    section.our-inspiration,
+    section.affection-edu3,
+    section.our-inspiration1 {
+        padding: 60px 8px;
+    }
+
+    section.a_perfect_blend,
+    section.affection-edu,
+    section.affection-edu2,
+    section.affection-edu4 {
+        padding: 95px 20px;
+    }
+
+    section.a_perfect_blend,
+    section.affection-edu,
+    section.affection-edu4,
+    section.affection-edu2 {
+        padding: 25px 20px 25px;
+        background-size: 100%;
+    }
+
+    .edu-footer .footer-top {
+        padding: 80px 22px 0 22px;
+    }
+
+    .edu-footer .logo-bg {
+        right: 0;
+    }
+
+    .edu-footer .edu-footer-widget.university-link-widget {
+        margin-left: 35px;
+    }
+
+    .edu-footer .middle_footer {
+        padding: 15px 22px;
+        margin-top: 50px;
+    }
+
+    .edu-footer .middle_footer .contact__Bx .contact__details p {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 6px;
+    }
+
+    .social-share.icon-transparent li {
+        margin: 0 8px 0 0px;
+    }
+
+
+    .edu-footer .middle_footer .contact__Bx .contact__details a {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .contact__Bx.d-flex.align-items-center {
+        padding: 5px 0;
+    }
+
+    .edu-footer .edu-footer-widget.study-link-widget {
+        margin-left: 15px;
+    }
+
+    .edu-footer .edu-footer-widget.policies-link-widget {
+        margin-left: 38px;
+    }
+
+    .edu-footer.footer-lighten .widget-title {
+        font-size: 20px;
+    }
+
+    .edu-footer .edu-footer-widget.about-link-widget {
+        margin-left: 45px;
+    }
+
+    .edu-footer .edu-footer-widget .footer-link li a {
+        display: block;
+        line-height: 22px;
+        font-size: 14px;
+    }
+
+    .edu-footer .edu-footer-widget.explore-widget {
+        margin-left: 45px;
+    }
+
+    .edu-footer.footer-lighten p.description {
+        color: #fff;
+        font-size: 14px;
+        line-height: 33px;
+        padding-right: 0;
+        margin-bottom: 0;
+    }
+
+    section.a_perfect_blend,
+    section.affection-edu,
+    section.affection-edu4,
+    section.affection-edu2 {
+        padding: 80px 15px 50px;
+        background-size: 100%;
+    }
+
+    /* section.affection-blend,
+        section.our-inspiration,
+        section.affection-edu3,
+        section.our-inspiration1{
+            padding: 150px 15px;
+        } */
+
+    section.a_perfect_blend {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 26%, rgb(255 255 255 / 100%) 75%, rgb(255 255 255) 100%), url(../images/banner/life-msu-1.JPG);
+        background-position: left;
+        background-repeat: no-repeat;
+
+        padding: 60px 0;
+    }
+
+    section.affection-edu {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 26%, rgb(255 255 255 / 100%) 75%, rgb(255 255 255) 100%), url(../images/banner/life-msu-2.JPG);
+        background-position: left;
+        background-repeat: no-repeat;
+
+        padding: 60px 0;
+    }
+
+    section.affection-edu2 {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 26%, rgb(255 255 255 / 100%) 75%, rgb(255 255 255) 100%), url(../images/banner/life-msu-3.JPG);
+        background-position: left;
+        background-repeat: no-repeat;
+
+        padding: 60px 0;
+    }
+
+    section.affection-edu4 {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 26%, rgb(255 255 255 / 100%) 75%, rgb(255 255 255) 100%), url(../images/banner/life-msu-4.JPG);
+        background-position: left;
+        background-repeat: no-repeat;
+
+        padding: 60px 0;
+    }
+
+    h2.title {
+        font-size: 26px;
+    }
+
+    .edu-header .header-mainmenu {
+        margin-top: 0;
+    }
+
+    .edu-header .header-brand {
+        padding: 0px 0px 0px 0px;
+        border-radius: 0 0 0px 40px;
+        height: auto;
+    }
+
+    .announcements-label {
+        width: 19.3%;
+    }
+
+    .announcements-content {
+        width: 80.7%;
+    }
+
+    .header-style-1 {
+        position: relative;
+        padding-bottom: 0px !important;
+    }
+
+    .edu-header.header-fullwidth .header-mainmenu,
+    .edu-header.header-fullwidth .header-top-bar {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 10px;
+        padding-bottom: 14px;
+        background-color: #fff;
+    }
+
+    .header-action li {
+        margin: 0px 0px 0 0px;
+        line-height: 1;
+    }
+
+    .popup-mobile-menu {
+        top: 122px;
+    }
+
+    .header-action {
+        margin: 0 0px;
+    }
+
+    section.a_perfect_blend p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-blend p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.our-inspiration p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu2 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu3 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.affection-edu4 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+    section.our-inspiration1 p {
+        margin-bottom: 0;
+        line-height: 29px;
+    }
+
+}
+
+
+
+
+@media screen and (max-width: 992px) {
+
+
+    /* section.affection-blend .col-lg-6, 
+        section.our-inspiration .col-lg-6, 
+        section.our-inspiration1 .col-lg-6, 
+        section.affection-edu3 .col-lg-6{
+            width: 60%;
+        } */
+
+
+    /* section.a_perfect_blend, 
+        section.affection-edu, 
+        section.affection-edu4,
+        section.affection-edu2{
+            padding: 300px 20px 50px;
+            background-size: 100%;
+        } */
+
+
+    /* .container-fluid{
+            padding-left: 0;
+            padding-right: 0;
+        } */
+    /* section.a_perfect_blend{
+            background-image: var(--white-overlay), url(./assets/images/banner/blend-img1.jpg);
+        }
+        section.affection-edu{
+            background-image: var(--white-overlay), url(./assets/images/banner/affection-edu.jpg);
+        }
+        section.affection-edu2{
+            background-image: var(--white-overlay), url(./assets/images/banner/affection-edu2.jpg);
+        }
+        section.affection-edu4{
+            background-image: var(--white-overlay), url(./assets/images/banner/affection-edu4.jpg);
+        } */
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+
+    section.a_perfect_blend,
+    section.affection-edu,
+    section.affection-edu4,
+    section.affection-edu2 {
+        padding: 80px 15px 50px;
+        background-size: 100%;
+    }
+
+    /* section.affection-blend,
+    section.our-inspiration,
+    section.affection-edu3,
+    section.our-inspiration1{
+        padding: 150px 15px;
+    } */
+
+    section.a_perfect_blend {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 43%, rgb(255 255 255) 100%), url(../images/banner/life-msu-1.JPG);
+    }
+
+
+
+    section.affection-edu {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 43%, rgb(255 255 255) 100%), url(../images/banner/life-msu-2.JPG);
+
+    }
+
+    section.affection-edu2 {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 43%, rgb(255 255 255) 100%), url(../images/banner/life-msu-3.JPG);
+
+    }
+
+    section.affection-edu4 {
+        background-image: linear-gradient(90deg, rgba(55, 55, 55, 0) 3%, rgb(212 212 212 / 29%) 39%, rgb(255 255 255 / 41%) 43%, rgb(255 255 255) 100%), url(../images/banner/life-msu-4.JPG);
+
+    }
+
+
+    h2.title {
+        font-size: 25px;
+    }
+
+
+
+    .edu-header .header-mainmenu {
+        margin-top: 0;
+    }
+
+    .edu-header .header-brand {
+        padding: 0px 0px 0px 0px;
+        border-radius: 0 0 0px 40px;
+        height: auto;
+    }
+
+    .announcements-label {
+        width: 19.3%;
+    }
+
+    .announcements-content {
+        width: 80.7%;
+    }
+
+    .header-style-1 {
+        position: relative;
+        padding-bottom: 0px !important;
+    }
+
+    .edu-header.header-fullwidth .header-mainmenu,
+    .edu-header.header-fullwidth .header-top-bar {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 10px;
+        padding-bottom: 14px;
+        background-color: #fff;
+    }
+
+    .header-action li {
+        margin: 0px 0px 0 0px;
+        line-height: 1;
+    }
+
+    .popup-mobile-menu {
+        top: 122px;
+    }
+
+    .header-action {
+        margin: 0 0px;
+    }
+
+    section.a_perfect_blend p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.affection-blend p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.affection-edu p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.our-inspiration p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.affection-edu2 p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.affection-edu3 p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.affection-edu4 p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.our-inspiration1 p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+
+    section.a_perfect_blend {
+        background-image: none;
+    }
+
+
+
+    section.affection-edu {
+        background-image: none;
+
+    }
+
+    section.affection-edu2 {
+        background-image: none;
+
+    }
+
+    section.affection-edu4 {
+        background-image: none;
+    }
+
+    .edu-footer .logo-bg {
+        right: 133px;
+    }
+
+    .edu-footer .edu-footer-widget.university-link-widget {
+        margin-left: 10px;
+        margin-top: 30px;
+    }
+
+    .contact__Bx.d-flex.align-items-center {
+        border-right: 0px solid #1d475f;
+    }
+
+    .edu-footer .edu-footer-widget.policies-link-widget {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .edu-footer .middle_footer {
+        padding: 15px 0px;
+        margin-top: 50px;
+    }
+
+    .edu-footer .edu-footer-widget .footer-link li+li {
+        margin-top: 13px;
+    }
+
+    .edu-footer .edu-footer-widget.study-link-widget {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+
+    .edu-footer .edu-footer-widget.about-link-widget {
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+
+    .edu-footer .edu-footer-widget.explore-widget {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .edu-footer .middle_footer .contact__Bx .img-icon {
+        width: 40px;
+        height: 40px;
+        line-height: 37px;
+        margin-right: 10px;
+    }
+
+    .edu-footer .middle_footer .contact__Bx .contact__details a {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    .edu-footer .middle_footer .contact__Bx .contact__details p {
+        font-size: 13px;
+        line-height: 17px;
+        margin-bottom: 0px;
+    }
+
+    .edu-footer .middle_footer .contact__Bx .img-icon img {
+        width: 16px;
+        height: 23px;
+    }
+
+    .contact__details {
+        margin-top: 14px;
+    }
+
+    .social-share.icon-transparent {
+        margin: 10px 0px 0 0px;
+    }
+
+    .edu-footer.footer-lighten p.description {
+        margin-top: 40px;
+    }
+
+    .edu-footer .footer-top {
+        padding: 80px 0px 0 0px;
+    }
+
+    section.a_perfect_blend p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.affection-blend p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.affection-edu p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.our-inspiration p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.affection-edu2 p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.affection-edu3 p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.affection-edu4 p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+    section.our-inspiration1 p {
+        margin-bottom: 0;
+        line-height: 27px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    :root {
+        --white-overlay: linear-gradient(180deg, rgba(55, 55, 55, 0) 3%, rgb(255, 255, 255) 60%);
+    }
+
+    section.a_perfect_blend,
+    section.affection-edu,
+    section.affection-edu4,
+    section.affection-edu2 {
+        padding: 35px 3px;
+        background-position: top;
+    }
+
+    section.affection-blend,
+    section.our-inspiration,
+    section.affection-edu3,
+    section.our-inspiration1 {
+        padding: 35px 3px;
+
+        background-position: left;
+    }
+
+    section.affection-blend .col-lg-6,
+    section.our-inspiration .col-lg-6,
+    section.our-inspiration1 .col-lg-6,
+    section.affection-edu3 .col-lg-6 {
+        width: 100%;
+    }
+}
+
+
+/* @media screen and (max-width: 400px) {
+    :root{
+        --white-overlay: linear-gradient(180deg, rgba(55, 55, 55, 0) 3%, rgb(255, 255, 255) 40%);
+    }
+    h2.title{
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+} */

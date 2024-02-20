@@ -1,8 +1,8 @@
 <div class="main-sidebar sidebar-style-2" tabindex="1">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ route('admin.dashboard') }}"><span class="logo-name"><img src="{{asset('admin_assets/img/logo.png')}}" /></span> </a>
-            <a href="{{ route('admin.dashboard') }}"><span class="logo-fm"><img src="{{asset('admin_assets/img/logo_fm.png')}}" /></span> </a>
+            <a href="{{ route('admin.dashboard') }}"><span class="logo-name"><img src="{{asset('frontend_assets/images/logo/medhavi-logo.png')}}" /></span> </a>
+            <a href="{{ route('admin.dashboard') }}"><span class="logo-fm"><img src="{{asset('frontend_assets/images/logo/medhavi-logo.png')}}" /></span> </a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header"></li>
@@ -22,7 +22,7 @@
                     <li class="{{ Request::is('admin/password*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin.password') }}">Change Password</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/customers*') ? 'active' : ' ' }}">
                     <i class="ph ph-user-list"></i>
                     <span> User Management</span>
@@ -31,7 +31,7 @@
                     <li class="{{ Request::is('admin/customers/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('customers.create') }}">Create  User</a></li>
                     <li class="{{ Request::is('admin/customers') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('customers.index') }}"> User List</a></li>
                 </ul>
-            </li>
+            </li> --}}
 
             {{-- <li class="dropdown">
                 <a href="" class="menu-toggle nav-link has-dropdown">

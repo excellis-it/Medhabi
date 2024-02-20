@@ -35,7 +35,7 @@ Route::get('forget-password/show', [ForgetPasswordController::class, 'forgetPass
 Route::get('reset-password/{id}/{token}', [ForgetPasswordController::class, 'resetPassword'])->name('admin.reset.password');
 Route::post('change-password', [ForgetPasswordController::class, 'changePassword'])->name('admin.change.password');
 
-Route::group(['middleware' => ['admin'], 'prefix'=>'admin'], function () {
+Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('profile', [ProfileController::class, 'index'])->name('admin.profile');
     Route::post('profile/update', [ProfileController::class, 'profileUpdate'])->name('admin.profile.update');
@@ -45,15 +45,4 @@ Route::group(['middleware' => ['admin'], 'prefix'=>'admin'], function () {
         Route::get('/', [ProfileController::class, 'password'])->name('admin.password'); // password change
         Route::post('/update', [ProfileController::class, 'passwordUpdate'])->name('admin.password.update'); // password update
     });
-
-    Route::resources([
-        'customers' => CustomerController::class,
-    ]);
-    //  Customer Routes
-    Route::prefix('customers')->group(function () {
-        Route::get('/customer-delete/{id}', [CustomerController::class, 'delete'])->name('customers.delete');
-    });
-    Route::get('/changeCustomerStatus', [CustomerController::class, 'changeCustomersStatus'])->name('customers.change-status');
-    Route::get('/customer-fetch-data', [CustomerController::class, 'fetchData'])->name('customers.fetch-data');
-
 });

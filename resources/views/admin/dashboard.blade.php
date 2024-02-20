@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <!-- <h2 class="flight_titel">Flight</h2> -->
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-lg-3 col-md-6 col-12">
                                     <div class="mini_box small_bg_1">
                                         <h3>0</h3>
@@ -68,8 +68,8 @@
                                         <p>All Agent Balance</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="booking_by_sorce">
+                            </div> --}}
+                            {{-- <div class="booking_by_sorce">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="card p-3 min_height355 box_shadow">
@@ -176,7 +176,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 

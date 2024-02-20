@@ -163,7 +163,7 @@
             <form action="{{ route('admin.change.password') }}" method="post" name="signupForm" id="signupForm">
                 @csrf
 
-                <img src="{{ asset('admin_assets/img/logo.png') }}" id="signupLogo" />
+                <img src="{{ asset('frontend_assets/images/logo/medhavi-logo.png') }}" id="signupLogo" />
 
                 <h2 class="formTitle">
                     Reset Password

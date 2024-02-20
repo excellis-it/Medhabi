@@ -1,0 +1,47 @@
+@media only screen and (max-width: 960px) {
+  .facilities-box img {
+    margin-bottom: 30px;
+  }
+  .facilities-box {
+    padding-bottom: 21px;
+  }
+  .logo-section {
+    text-align: center;
+  }
+  .logo-nomarg img {
+    margin-bottom: 50px;
+  }
+
+  section.awards__section {
+    padding: 60px 0 46px;
+}
+
+  .awarddiv-icon {
+    position: relative;
+    width: 72%;
+    margin: 0 auto;
+    padding: 0 5% 30px 5%;
+}
+section.awards__section .accredation__slider .owl-stage-outer{ padding-top:15px; }
+section.awards__section .accredation__slider{ margin-top:0; }
+
+  section.awards__section p {
+    height: 35px;
+    padding: 0 0 122px 0;
+    background-position: bottom;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .awarddiv-icon {
+    position: relative;
+    width: 85%;
+    margin: 0 auto;
+    padding: 0 14% 30px 13%;
+}
+
+
+}
+
+

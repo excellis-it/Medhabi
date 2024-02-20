@@ -6393,7 +6393,7 @@ body.sidebar-gone .main-sidebar {
 }
 
 .sidebar-mini .main-sidebar .sidebar-menu>li.active>a {
-    color: #b78e12;
+    color: #0b7eae;
 }
 
 .sidebar-mini .main-sidebar .sidebar-menu>li ul.dropdown-menu {
@@ -6918,12 +6918,12 @@ body.layout-3 .breadcrumb-style {
 }
 
 .main-sidebar .sidebar-menu li a:hover {
-    color: #b78e12;
+    color: #0b7eae;
 }
 
 .main-sidebar .sidebar-menu li.active a {
     font-weight: 600;
-    color: #b78e12;
+    color: #0b7eae;
 }
 
 .main-sidebar .sidebar-menu li.active ul.dropdown-menu {
@@ -8989,7 +8989,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 
 .light-sidebar.sidebar-mini .main-sidebar .sidebar-menu li.active a {
     box-shadow: none;
-    color: #b78e12;
+    color: #0b7eae;
     margin: 0px;
     border-radius: 3px;
 }
@@ -9037,24 +9037,24 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 }
 
 .light-sidebar .main-sidebar .sidebar-menu li.active a {
-    color: #b78e12;
+    color: #0b7eae;
 }
 
 .light-sidebar .main-sidebar .sidebar-menu li ul.dropdown-menu li.active>a {
-    color: #b78e12;
+    color: #0b7eae;
     font-weight: 600;
 }
 
 .light-sidebar .main-sidebar .sidebar-menu li ul.dropdown-menu li.active>a::before {
-    color: #b78e12;
+    color: #0b7eae;
 }
 
 .light-sidebar .main-sidebar .sidebar-menu li ul.dropdown-menu li a:hover {
-    color: #b78e12;
+    color: #0b7eae;
 }
 
 .light-sidebar .main-sidebar .sidebar-menu li ul.dropdown-menu li a:hover::before {
-    color: #b78e12;
+    color: #0b7eae;
 }
 
 .theme-purple .btn-outline-primary:not([disabled]):not(.disabled):active,
@@ -10838,7 +10838,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 }
 
 .theme-white .navbar {
-    background: linear-gradient(269deg, #4e91fd 6.88%, #4e91fd 101.88%);
+    background: linear-gradient(269deg, #e09512 6.88%, #0b7eae 23.88%);
     border-radius: 0;
     padding-right: 43px;
 }
@@ -11278,7 +11278,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 }
 
 .round_color_p {
-    background: linear-gradient(269deg, #4e91fd 6.88%, #4e91fd 101.88%);
+    background: linear-gradient(269deg, #e09512 6.88%, #0b7eae 23.88%);
     /* background-color: #923eee; */
     width: 20px;
     height: 20px;
@@ -11497,7 +11497,7 @@ a.dt-button {
 .dashboard_tab ul li a.active,
 .dashboard_tab ul li a:hover,
 .dashboard_tab ul li a:focus {
-    background: linear-gradient(269deg, #4e91fd 6.88%, #4e91fd 101.88%);
+    background: linear-gradient(269deg, #e09512 6.88%, #0b7eae 23.88%);
     color: #fff !important;
     transition: ease-in all 0.3s
 }
@@ -11661,13 +11661,13 @@ a.dt-button {
 }
 
 /* .progress-bar-1{
-    background: linear-gradient(269deg, #4e91fd 6.88%, #4e91fd 101.88%);
+    background: linear-gradient(269deg, #e09512 6.88%, #0b7eae 23.88%);
 } */
 /* sales report */
 .btn-1 button {
     padding: 10px 30px;
     border-radius: 60px;
-    background-color: #b78e12 !important;
+    background-color: #0b7eae !important;
     color: #fff;
     border: none;
     font-size: 16px;
