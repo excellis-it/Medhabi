@@ -4,10 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ForgetPasswordController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\CmsController as AdminCmsController;
 use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\CustomerController;
-use App\Http\Controllers\Admin\SellerController;
+use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -27,7 +27,8 @@ Route::get('clear', function () {
     return "Optimize clear has been successfully";
 });
 
-Route::get('/', [AuthController::class, 'login'])->name('admin.login');
+Route::get('/admin', [AuthController::class, 'redirectAdminLogin']);
+Route::get('/admin/login', [AuthController::class, 'login'])->name('admin.login');
 Route::post('/login-check', [AuthController::class, 'loginCheck'])->name('admin.login.check');  //login check
 Route::post('forget-password', [ForgetPasswordController::class, 'forgetPassword'])->name('admin.forget.password');
 Route::post('change-password', [ForgetPasswordController::class, 'changePassword'])->name('admin.change.password');
@@ -45,4 +46,21 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('/', [ProfileController::class, 'password'])->name('admin.password'); // password change
         Route::post('/update', [ProfileController::class, 'passwordUpdate'])->name('admin.password.update'); // password update
     });
+
+    Route::resources([
+        'blogs' => BlogController::class,
+    ]);
+
+    Route::prefix('blogs')->group(function () {
+        Route::get('/blog-delete/{id}', [BlogController::class, 'delete'])->name('blogs.delete');
+    });
+    Route::get('/changeBlogStatus', [BlogController::class, 'changeBlogStatus'])->name('blogs.change-status');
+    Route::get('/blogs-fetch-data', [BlogController::class, 'fetchData'])->name('blogs.fetch-data');
 });
+
+
+Route::get('/ss', [AdminCmsController::class, 'index'])->name('home');
+
+Route::get('/', [FrontendBlogController::class, 'index'])->name('blogs');
+Route::get('/blog/{slug}', [FrontendBlogController::class, 'blogDetails'])->name('blog.details');
+Route::get('/load-more-blogs', [FrontendBlogController::class, 'loadMore'])->name('load-more-blogs');

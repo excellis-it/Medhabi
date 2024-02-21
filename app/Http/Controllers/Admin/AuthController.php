@@ -17,7 +17,12 @@ class AuthController extends Controller
             return view('admin.auth.login');
         }
     }
-    
+
+    public function redirectAdminLogin()
+    {
+        return redirect()->route('admin.login');
+    }
+
     public function loginCheck(Request $request)
     {
         $request->validate([
@@ -26,7 +31,7 @@ class AuthController extends Controller
         ]);
         $remember_me = $request->has('remember_me') ? true : false;
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember_me  )) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember_me)) {
             $user = User::where('email', $request->email)->select('id', 'email', 'status')->first();
             if ($user->hasRole('ADMIN') && $user->status == 1) {
                 return redirect()->route('admin.dashboard');

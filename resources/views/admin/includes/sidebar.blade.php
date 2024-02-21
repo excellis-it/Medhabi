@@ -22,6 +22,16 @@
                     <li class="{{ Request::is('admin/password*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin.password') }}">Change Password</a></li>
                 </ul>
             </li>
+            <li class="dropdown">
+                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/blogs*') ? 'active' : ' ' }}">
+                    <i class="ph ph-instagram-logo"></i>
+                    <span> Blogs</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/blogs/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('blogs.create') }}">Blog Create</a></li>
+                    <li class="{{ Request::is('admin/blogs') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('blogs.index') }}"> Blog List</a></li>
+                </ul>
+            </li>
             {{-- <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/customers*') ? 'active' : ' ' }}">
                     <i class="ph ph-user-list"></i>
