@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-    All Customer Details - {{ env('APP_NAME') }}
+    All Job Details - {{ env('APP_NAME') }}
 @endsection
 @push('styles')
     <style>
@@ -10,7 +10,7 @@
     </style>
 @endpush
 @section('head')
-    All Customer Details
+    All Job Details
 @endsection
 @section('content')
     <section id="loading">
@@ -38,27 +38,34 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="myTable" class="display">
+                <div class="table-responsive" id="jobs-data">
+                    <table class="table table-bordered" class="display">
                         <thead>
                             <tr>
-                                <th class="sorting" data-tippy-content="Sort by Name" data-sorting_type="desc"
-                                data-column_name="name" style="cursor: pointer"> Name<span id="name_icon"><i class="ph ph-caret-down"></i></span></th>
-                                <th class="sorting" data-tippy-content="Sort by Email" data-sorting_type="desc"
-                                    data-column_name="email" style="cursor: pointer"> Email <span id="email_icon"></span></th>
-                                <th class="sorting" data-tippy-content="Sort by Phone" data-sorting_type="desc"
-                                    data-column_name="phone" style="cursor: pointer"> Phone <span id="phone_icon"></span></th>
-                                <th class="sorting" data-tippy-content="Sort by City" data-sorting_type="desc"
-                                    data-column_name="city" style="cursor: pointer"> City <span id="city_icon"></span></th>
-                                <th class="sorting" data-tippy-content="Sort by Country" data-sorting_type="desc"
-                                    data-column_name="country" style="cursor: pointer"> Country <span id="country_icon"></span></th>
-                                <th class="sorting" data-tippy-content="Sort by Address" data-sorting_type="desc"
-                                    data-column_name="address" style="cursor: pointer"> Address <span id="address_icon"></span></th>
+                                <th class="sorting" data-tippy-content="Sort by Id" data-sorting_type="asc"
+                                    data-column_name="id" style="cursor: pointer">Id<span id="id_icon"></span>
+                                </th>
+                                <th class="sorting" data-sorting_type="asc" data-column_name="title" style="cursor: pointer"
+                                    data-tippy-content="Sort by Job title">
+                                    Job Title<span id="title_icon"></span></th>
+                                <th class="sorting" data-sorting_type="asc" data-column_name="eligibility"
+                                    style="cursor: pointer" data-tippy-content="Sort by eligibility">
+                                    Job Eligibity<span id="eligibility_icon"></span></th>
+                                <th class="sorting" data-sorting_type="asc" data-column_name="opening_for"
+                                    style="cursor: pointer" data-tippy-content="Sort by opening for">
+                                    Job Opening For<span id="opening_for_icon"></span></th>
+                                <th class="sorting" data-sorting_type="asc" data-column_name="location"
+                                    style="cursor: pointer" data-tippy-content="Sort by location">
+                                    Job Location<span id="location_icon"></span></th>
+                                <th class="sorting" data-sorting_type="asc" data-column_name="description"
+                                    style="cursor: pointer" data-tippy-content="Sort by Description">Job Description<span
+                                        id="description_icon"></span></th>
                                 <th>Status</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            @include('admin.customer.table')
+                            @include('admin.jobs.table')
 
                         </tbody>
                     </table>
@@ -77,7 +84,7 @@
         $(document).on('click', '#delete', function(e) {
             swal({
                     title: "Are you sure?",
-                    text: "To delete this customer.",
+                    text: "To delete this job.",
                     type: "warning",
                     confirmButtonText: "Yes",
                     showCancelButton: true
@@ -95,40 +102,22 @@
                 })
         });
     </script>
-    <script>
-        $('.toggle-class').change(function() {
-            var status = $(this).prop('checked') == true ? 1 : 0;
-            var user_id = $(this).data('id');
 
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                url: '{{ route('customers.change-status') }}',
-                data: {
-                    'status': status,
-                    'user_id': user_id
-                },
-                success: function(resp) {
-                    console.log(resp.success)
-                }
-            });
-        });
-    </script>
-     <script>
+    <script>
         $(document).ready(function() {
 
             function clear_icon() {
-                $('#name_icon').html('');
-                $('#email_icon').html('');
-                $('#phone_icon').html('');
-                $('#city_icon').html('');
-                $('#country_icon').html('');
-                $('#address_icon').html('');
+                $('#id_icon').html('');
+                $('#title_icon').html('');
+                $('#eligibility_icon').html('');
+                $('#description_icon').html('');
+                $('#location_icon').html('');
+                $('#opening_for_icon').html('');
             }
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "{{ route('customers.fetch-data') }}",
+                    url: "{{ route('jobs.fetch-data') }}",
                     data: {
                         page: page,
                         sortby: sort_by,
@@ -158,14 +147,14 @@
                     reverse_order = 'desc';
                     clear_icon();
                     $('#' + column_name + '_icon').html(
-                        '<i class="ph ph-caret-down"></i>');
+                        '<span class="ph ph-caret-down"></span>');
                 }
                 if (order_type == 'desc') {
                     $(this).data('sorting_type', 'asc');
                     reverse_order = 'asc';
                     clear_icon();
                     $('#' + column_name + '_icon').html(
-                        '<i class="ph ph-caret-up"></i>');
+                        '<span class="ph ph-caret-up"></span>');
                 }
                 $('#hidden_column_name').val(column_name);
                 $('#hidden_sort_type').val(reverse_order);
@@ -188,6 +177,36 @@
                 fetch_data(page, sort_type, column_name, query);
             });
 
+        });
+    </script>
+    <script>
+        $('.toggle-class').change(function() {
+            var status = $(this).prop('checked') == true ? 1 : 0;
+            var job_id = $(this).data('id');
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '{{ route('jobs.change-status') }}',
+                data: {
+                    'status': status,
+                    'job_id': job_id
+                },
+                success: function(resp) {
+                    console.log(resp.success)
+                }
+            });
+        });
+    </script>
+    {{-- trippy cdn link --}}
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@5"></script>
+    {{-- trippy --}}
+    <script>
+        tippy('[data-tippy-content]', {
+            allowHTML: true,
+            placement: 'bottom',
+            theme: 'light-theme',
         });
     </script>
 @endpush

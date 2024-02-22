@@ -62,20 +62,20 @@
         </li> -->
         <li class="dropdown">
             <a href="" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="{{asset('admin_assets/img/profile.png')}}" class="user-img-radious-style" /> {{Auth::user()->name}}
+                <img alt="image" src="{{ asset('admin_assets/img/profile.png') }}" class="user-img-radious-style" />
+                {{ Auth::user()->name }}
                 <!---<span class="d-sm-none d-lg-inline-block"><i class="ph-caret-down"></i></span>---->
             </a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
-                <div class="dropdown-title">Hello {{Auth::user()->name}}</div>
+                <div class="dropdown-title">Hello {{ Auth::user()->name }}</div>
                 <div class="dropdown-divider"></div>
-                <button type="submit" class="dropdown-item has-icon text-danger">
-                    <i class="ph ph-sign-out"></i>
-                    <a href="{{route('admin.logout')}}" class="has-icon text-danger">
+                <a href="{{ route('admin.logout') }}" class="has-icon text-danger">
+                    <button type="submit" class="dropdown-item has-icon text-danger">
+                        <i class="ph ph-sign-out"></i>
                         Logout
-                    </a>
-                </button>
+                    </button>
+                </a>
             </div>
         </li>
     </ul>
 </nav>
-

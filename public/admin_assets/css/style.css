@@ -5381,7 +5381,7 @@ h6 .badge {
 }
 
 .dropdown-item.has-icon i {
-    margin-top: -1px;
+    margin-top: 8px;
     font-size: 13px;
 }
 
@@ -12128,4 +12128,15 @@ a.dt-button {
   position: absolute;
   top: 10px;
   right: 20px;
+}
+
+.stuff-list-table .table thead th span span {
+    color: #fff;
+    font-size: 12px;
+    line-height: 0;
+    font-weight: 900;
+    background: #4e91fd;
+    border-radius: 50%;
+    margin-left: 10px;
+    padding: 2px 3px;
 }

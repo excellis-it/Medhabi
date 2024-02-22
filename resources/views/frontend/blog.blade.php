@@ -63,7 +63,7 @@
 @push('scripts')
     <script>
         var offset = {{ $blogs->count() }};
-        var limit = 1; // Change this to the number of blogs to load per request
+        var limit = 6; // Change this to the number of blogs to load per request
         var loading = false;
 
         $(document).ready(function() {

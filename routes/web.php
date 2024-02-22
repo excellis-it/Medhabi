@@ -6,7 +6,11 @@ use App\Http\Controllers\Admin\ForgetPasswordController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CmsController as AdminCmsController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use Illuminate\Support\Facades\Artisan;
 
@@ -49,6 +53,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 
     Route::resources([
         'blogs' => BlogController::class,
+        'faq' => FaqController::class,
+        'testimonials' => TestimonialController::class,
+        'jobs' => JobController::class,
     ]);
 
     Route::prefix('blogs')->group(function () {
@@ -56,6 +63,29 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     });
     Route::get('/changeBlogStatus', [BlogController::class, 'changeBlogStatus'])->name('blogs.change-status');
     Route::get('/blogs-fetch-data', [BlogController::class, 'fetchData'])->name('blogs.fetch-data');
+
+    Route::prefix('faq')->group(function () {
+        Route::get('/faq-delete/{id}', [FaqController::class, 'delete'])->name('faq.delete');
+    });
+    Route::get('/faq-fetch-data', [FaqController::class, 'fetchData'])->name('faq.fetch-data');
+
+    Route::prefix('testimonials')->group(function () {
+        Route::get('/testimonials-delete/{id}', [TestimonialController::class, 'delete'])->name('testimonials.delete');
+    });
+    Route::get('/testimonials-fetch-data', [TestimonialController::class, 'fetchData'])->name('testimonials.fetch-data');
+
+    Route::prefix('jobs')->group(function () {
+        Route::get('/jobs-delete/{id}', [JobController::class, 'delete'])->name('jobs.delete');
+    });
+    Route::get('/jobs-fetch-data', [JobController::class, 'fetchData'])->name('jobs.fetch-data');
+    Route::get('/change-jobs-status', [JobController::class, 'changeStatus'])->name('jobs.change-status');
+
+    Route::prefix('pages')->group(function () {
+        Route::prefix('career')->name('career.')->group(function () {
+            Route::get('/', [PageController::class, 'career'])->name('index');
+            Route::post('/update', [PageController::class, 'careerUpdadte'])->name('update');
+        });
+    });
 });
 
 

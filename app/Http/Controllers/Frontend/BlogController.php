@@ -11,7 +11,7 @@ class BlogController extends Controller
 
     public function index()
     {
-        $blogs = Blog::where('status', 1)->orderByDesc('id')->paginate(1); // Limit to 6 blogs per page
+        $blogs = Blog::where('status', 1)->orderByDesc('id')->paginate(6); // Limit to 6 blogs per page
         return view('frontend.blog')->with(compact('blogs'));
     }
 
