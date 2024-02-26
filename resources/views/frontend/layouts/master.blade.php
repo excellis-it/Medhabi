@@ -56,9 +56,7 @@
             justify-content: center;
         }
 
-        .col-lg-4 {
-            display: flex;
-        }
+        
     </style>
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">

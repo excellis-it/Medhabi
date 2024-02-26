@@ -65,6 +65,26 @@
             </li>
 
             <li class="dropdown">
+                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/our-core-values*') ? 'active' : ' ' }}">
+                    <i class="ph ph-books"></i>
+                    <span> Our Core Values</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/our-core-values') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('our-core-values.index') }}"> Our Core Values List</a></li>
+                    <li class="{{ Request::is('admin/our-core-values/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('our-core-values.create') }}">Our Core Values Create</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/our-core-values*') ? 'active' : ' ' }}">
+                    <i class="ph ph-users-three"></i>
+                    <span> Our Partnership</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/our-partnerships') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('our-partnerships.index') }}"> Our Partnership List</a></li>
+                    <li class="{{ Request::is('admin/our-partnerships/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('our-partnerships.create') }}">Our Partnership Create</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/testimonials*') ? 'active' : ' ' }}">
                     <i class="ph ph-newspaper"></i>
                     <span>Pages</span>

@@ -59,7 +59,7 @@ class PageController extends Controller
         } else {
             $career = CareerPageCms::orderByDesc('id')->first();
         }
-
+ 
         // Assign values from the request data to career properties
         if ($request->hasFile('banner_image')) {
             $career->banner_image = $this->imageUpload($request->file('banner_image'), 'career');

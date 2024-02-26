@@ -293,7 +293,7 @@
                                         <a href="happenings/student-work.html">Student Work
                                         </a>
                                     </li>
-                                    <li><a href="blog.html">Blog </a></li>
+                                    <li><a href="{{route('blogs')}}">Blog </a></li>
                                     <li><a href="contact-us.html">Contact Us </a></li>
                                 </ul>
                             </li>

@@ -1,32 +1,32 @@
 @extends('admin.layouts.master')
 @section('title')
-    {{ env('APP_NAME') }} | Edit Testimonial Details
+    {{ env('APP_NAME') }} | Create Our Core Value
 @endsection
 @push('styles')
 @endpush
 @section('head')
-    Edit Testimonial Details
+    Create Our Core Value
 @endsection
+
 @section('content')
     <div class="main-content">
         <div class="inner_page">
             <div class="card search_bar sales-report-card">
-                <div class="sales-report-card-wrap">
-                    <div class="form-head">
-                        <h4>Testimonial Details</h4>
-                    </div>
-                    <form action="{{ route('testimonials.update', $testimonial->id) }}" method="post" enctype="multipart/form-data">
-                        @method('PUT')
-                        @csrf
-                        <div class="row justify-content-between">
+                <form action="{{ route('our-core-values.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="sales-report-card-wrap">
+                        <div class="form-head">
+                            <h4>Our Core Value Details</h4>
+                        </div>
 
+                        <div class="row justify-content-between">
                             <div class="col-md-6">
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- name --}}
                                         <label for="floatingInputValue">Name*</label>
                                         <input type="text" class="form-control" id="floatingInputValue" name="name"
-                                            value="{{ $testimonial->name }}" placeholder="Name*">
+                                            value="{{ old('name') }}" placeholder="Name*">
                                         @if ($errors->has('name'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('name') }}</div>
@@ -37,28 +37,8 @@
                             <div class="col-md-6">
                                 <div class="form-group-div">
                                     <div class="form-group">
-                                        {{-- type --}}
-                                        <label for="floatingInputValue">Type*</label>
-                                        <select name="type" id="type" class="form-control">
-                                            <option value="">Select Type</option>
-                                            <option value="Student" {{ $testimonial['type'] == 'Student' ? 'selected' : '' }}>Student
-                                            </option>
-                                            <option value="Parent" {{ $testimonial['type'] == 'Parent' ? 'selected' : '' }}>Parent
-                                            </option>
-                                        </select>
-                                        @if ($errors->has('type'))
-                                            <div class="error" style="color:red;">
-                                                {{ $errors->first('type') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group-div">
-                                    <div class="form-group">
                                         {{-- image --}}
-                                        <label for="floatingInputValue">Image</label>
+                                        <label for="floatingInputValue">Image*</label>
                                         <input type="file" class="form-control" id="floatingInputValue" name="image"
                                             value="{{ old('image') }}" placeholder="Image*">
                                         @if ($errors->has('image'))
@@ -73,8 +53,7 @@
                                     <div class="form-group">
                                         {{-- description --}}
                                         <label for="floatingInputValue">Description*</label>
-                                        <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"
-                                            class="form-control">{{ $testimonial['description'] }}</textarea>
+                                        <textarea name="description" id="description" placeholder="Description" class="form-control">{{ old('description') }}</textarea>
                                         @if ($errors->has('description'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('description') }}</div>
@@ -85,10 +64,10 @@
                         </div>
                         <div class="col-xl-12">
                             <div class="btn-1">
-                                <button type="submit">Update Testimonial Details</button>
+                                <button type="submit">Create Our Core Value</button>
                             </div>
                         </div>
-                </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -97,4 +76,5 @@
 @endsection
 
 @push('scripts')
+
 @endpush

@@ -62,7 +62,7 @@
                                         @if ($errors->has('banner_description'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('banner_description') }}</div>
-                                        @endif
+                                        @endif 
                                     </div>
                                 </div>
                             </div>

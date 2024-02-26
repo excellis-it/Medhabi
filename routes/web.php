@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CmsController as AdminCmsController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Admin\OurCoreValuesController;
+use App\Http\Controllers\Admin\OurPartnershipController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TestimonialController;
@@ -57,6 +59,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         'faq' => FaqController::class,
         'testimonials' => TestimonialController::class,
         'jobs' => JobController::class,
+        'our-core-values' => OurCoreValuesController::class,
+        'our-partnerships' => OurPartnershipController::class,
     ]);
 
     Route::prefix('blogs')->group(function () {
@@ -74,6 +78,16 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('/testimonials-delete/{id}', [TestimonialController::class, 'delete'])->name('testimonials.delete');
     });
     Route::get('/testimonials-fetch-data', [TestimonialController::class, 'fetchData'])->name('testimonials.fetch-data');
+
+    Route::prefix('our-core-values')->group(function () {
+        Route::get('/our-core-values-delete/{id}', [OurCoreValuesController::class, 'delete'])->name('our-core-values.delete');
+    });
+    Route::get('/our-core-values-fetch-data', [OurCoreValuesController::class, 'fetchData'])->name('our-core-values.fetch-data');
+
+    Route::prefix('our-partnerships')->group(function () {
+        Route::get('/our-partnerships-delete/{id}', [OurPartnershipController::class, 'delete'])->name('our-partnerships.delete');
+    });
+    Route::get('/our-partnerships-fetch-data', [OurPartnershipController::class, 'fetchData'])->name('our-partnerships.fetch-data');
 
     Route::prefix('jobs')->group(function () {
         Route::get('/jobs-delete/{id}', [JobController::class, 'delete'])->name('jobs.delete');
@@ -97,3 +111,4 @@ Route::get('/blog/{slug}', [FrontendBlogController::class, 'blogDetails'])->name
 Route::get('/load-more-blogs', [FrontendBlogController::class, 'loadMore'])->name('load-more-blogs');
 
 Route::get('/careers', [CmsController::class, 'career'])->name('careers');
+Route::get('/careers-job-search', [CmsController::class, 'jobSearch'])->name('frontend.career.job.search');
