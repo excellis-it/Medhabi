@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\Admissions\ProgramTypesController;
+use App\Http\Controllers\Admin\Admissions\CourseTypesController;
+use App\Http\Controllers\Admin\Admissions\CoursesController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use App\Http\Controllers\Frontend\CmsController;
 use Illuminate\Support\Facades\Artisan;
@@ -85,6 +88,18 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::prefix('career')->name('career.')->group(function () {
             Route::get('/', [PageController::class, 'career'])->name('index');
             Route::post('/update', [PageController::class, 'careerUpdadte'])->name('update');
+        });
+    });
+
+    Route::prefix('admissions')->group(function () {
+        Route::prefix('program-types')->name('programTypes.')->group(function () {
+            Route::get('/', [ProgramTypesController::class, 'index'])->name('index');
+        });
+        Route::prefix('course-types')->name('courseTypes.')->group(function () {
+            Route::get('/', [CourseTypesController::class, 'index'])->name('index');
+        });
+        Route::prefix('courses')->name('courses.')->group(function () {
+            Route::get('/', [CoursesController::class, 'index'])->name('index');
         });
     });
 });
