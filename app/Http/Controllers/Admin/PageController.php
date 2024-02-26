@@ -5,14 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CareerCmsModule;
 use App\Models\CareerPageCms;
+use App\Traits\ImageTrait;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    use ImageTrait;
     public function career()
     {
         $career = CareerPageCms::orderByDesc('id')->first();
-        return view('admin.pages.career')->with(compact('career'));
+        $careerModules = CareerCmsModule::all();
+        return view('admin.pages.career')->with(compact('career', 'careerModules'));
     }
 
     public function careerUpdadte(Request $request)
@@ -49,11 +52,19 @@ class PageController extends Controller
             'section_8_title' => 'required|max:255',
             'section_8_description' => 'required',
         ]);
-
-        $career = new CareerPageCms();
+        $data = $request->all();
+        $count = CareerPageCms::count();
+        if ($count == 0) {
+            $career = new CareerPageCms();
+        } else {
+            $career = CareerPageCms::orderByDesc('id')->first();
+        }
 
         // Assign values from the request data to career properties
-        $career->banner_image = $data['banner_image'] ?? null;
+        if ($request->hasFile('banner_image')) {
+            $career->banner_image = $this->imageUpload($request->file('banner_image'), 'career');
+        }
+
         $career->banner_title = $data['banner_title'] ?? null;
         $career->banner_description = $data['banner_description'] ?? null;
         $career->section_1_title = $data['section_1_title'] ?? null;
@@ -104,12 +115,19 @@ class PageController extends Controller
 
         if ($request->module_description) {
             foreach ($request->module_description as $key => $value) {
-                $careerCmsModule = new CareerCmsModule();
-                $careerCmsModule->description = $value;
-                if ($request->hasFile('module_image') && $request->file('module_image')[$key]) {
-                    $careerCmsModule->image = $this->imageUpload($request->file('module_image')[$key], 'career');
+                if (isset($request->module_image_id[$key])) {
+                    $module = CareerCmsModule::find($request->module_image_id[$key]);
+                } else {
+                    $module = new CareerCmsModule();
                 }
-                $careerCmsModule->save();
+
+                $module->description = $value;
+
+                if ($request->hasFile('module_image') && $request->file('module_image')[$key]) {
+                    $module->image = $this->imageUpload($request->file('module_image')[$key], 'career');
+                }
+
+                $module->save();
             }
         }
 

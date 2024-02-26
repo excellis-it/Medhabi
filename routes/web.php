@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
+use App\Http\Controllers\Frontend\CmsController;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -94,3 +95,5 @@ Route::get('/ss', [AdminCmsController::class, 'index'])->name('home');
 Route::get('/', [FrontendBlogController::class, 'index'])->name('blogs');
 Route::get('/blog/{slug}', [FrontendBlogController::class, 'blogDetails'])->name('blog.details');
 Route::get('/load-more-blogs', [FrontendBlogController::class, 'loadMore'])->name('load-more-blogs');
+
+Route::get('/careers', [CmsController::class, 'career'])->name('careers');

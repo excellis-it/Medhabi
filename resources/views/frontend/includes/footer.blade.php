@@ -50,7 +50,7 @@
                                 <li><a href="#">About</a></li>
                                 <li><a href="#">Academic </a></li>
                                 <li><a href="#">Calendar</a></li>
-                                <li><a href="#">Careers</a></li>
+                                <li><a href="{{route('careers')}}">Careers</a></li>
                                 <li><a href="#">Media Resources</a></li>
                             </ul>
                         </div>
