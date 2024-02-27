@@ -62,7 +62,7 @@
                                         @if ($errors->has('banner_description'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('banner_description') }}</div>
-                                        @endif 
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -381,7 +381,7 @@
                         <div class="row" id="add-more">
                             @if (count($careerModules) > 0)
                                 @foreach ($careerModules as $key => $item)
-                                    <div class="col-xl-4 col-md-4 mt-4">
+                                    <div class="col-xl-5 col-md-5 mt-4">
                                         <div class="form-group-div">
                                             <div class="form-group">
                                                 {{-- meta title --}}
@@ -393,7 +393,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 mt-4">
+                                    <div class="col-md-5 mt-4">
                                         <div class="form-group-div">
                                             <div class="form-group">
                                                 {{-- banner_title --}}
@@ -405,14 +405,14 @@
                                         </div>
                                     </div>
                                     @if ($key > 0)
-                                        <div class="col-xl-4">
+                                        <div class="col-xl-2 mt-4">
                                             <div class="btn-1">
                                                 <button type="button" class="remove"><i class="ph ph-minus"></i>
                                                     Remove</button>
                                             </div>
                                         </div>
                                     @else
-                                        <div class="col-xl-4">
+                                        <div class="col-xl-2 mt-4">
                                             <div class="btn-1">
                                                 <button type="button" class="add-more"><i class="ph ph-plus"></i> Add
                                                     More</button>
@@ -421,7 +421,7 @@
                                     @endif
                                 @endforeach
                             @else
-                                <div class="col-xl-4 col-md-4 mt-4">
+                                <div class="col-xl-5 col-md-5 mt-4">
                                     <div class="form-group-div">
                                         <div class="form-group">
                                             {{-- meta title --}}
@@ -431,7 +431,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 mt-4">
+                                <div class="col-md-5 mt-4">
                                     <div class="form-group-div">
                                         <div class="form-group">
                                             {{-- banner_title --}}
@@ -441,7 +441,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4">
+                                <div class="col-xl-2">
                                     <div class="btn-1">
                                         <button type="button" class="add-more"><i class="ph ph-plus"></i> Add
                                             More</button>
@@ -454,7 +454,6 @@
                         <div class="form-head">
                             <h4>Section 5</h4>
                         </div>
-
                         <div class="row">
                             <div class="col-xl-12 col-md-12">
                                 <div class="form-group-div">
@@ -623,7 +622,7 @@
                             </div>
                             <div class="col-xl-12">
                                 <div class="btn-1">
-                                    <button type="submit">Update Career Page Page</button>
+                                    <button type="submit">Update Career Page</button>
                                 </div>
                             </div>
                         </div>
@@ -639,18 +638,39 @@
     <script>
         $(document).ready(function() {
             // Add More functionality
-            $(".add-more").click(function() {
-                var clone = $(this).closest("#add-more").clone();
-                clone.find('input[type="text"]').val('');
-                clone.find('.error').remove();
-                clone.find('.add-more').removeClass('add-more').addClass('remove').html(
-                    '<i class="ph ph-minus"></i> Remove');
-                $(this).closest("#add-more").after(clone);
+            $(document).on("click", ".add-more", function() {
+                var html = `
+            <div class="col-xl-5 col-md-5 mt-4">
+                <div class="form-group-div">
+                    <div class="form-group">
+                        <label for="floatingInputValue">Section 4 Module Image</label>
+                        <input type="file" class="form-control" name="module_image[]" value="" placeholder="Section 4 Module Image">
+                        <input type="hidden" name="module_image_id[]" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 mt-4">
+                <div class="form-group-div">
+                    <div class="form-group">
+                        <label for="floatingInputValue">Section 4 Module Short Description*</label>
+                        <input type="text" class="form-control" name="module_description[]" required value="" placeholder="Section 4 Module Short Description">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 mt-4">
+                <div class="btn-1">
+                    <button type="button" class="remove"><i class="ph ph-minus"></i> Remove</button>
+                </div>
+            </div>`;
+                $("#add-more").append(html);
             });
 
             // Remove functionality
             $(document).on("click", ".remove", function() {
-                $(this).closest("#add-more").remove();
+               $(this).parent().parent().prev().remove();
+                $(this).parent().parent().prev().remove();
+                $(this).parent().parent().remove();
+                
             });
         });
     </script>

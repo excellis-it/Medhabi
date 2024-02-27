@@ -46,8 +46,8 @@
                                     data-column_name="id" style="cursor: pointer">Id<span id="id_icon"></span>
                                 </th>
                                 <th class="sorting" data-sorting_type="asc" data-column_name="name" style="cursor: pointer"
-                                    data-tippy-content="Sort by Name">
-                                    Name<span id="name_icon"></span></th>
+                                    data-tippy-content="Sort by Company Name">
+                                   Company Name<span id="name_icon"></span></th>
                                 <th >Image</th>
 
                             </tr>

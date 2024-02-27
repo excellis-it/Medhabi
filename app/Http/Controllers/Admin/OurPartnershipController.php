@@ -35,7 +35,7 @@ class OurPartnershipController extends Controller
                 ->orderBy($sort_by, $sort_type)
                 ->paginate(10);
 
-            return response()->json(['data' => view('admin.our-partnership.table', compact('partners$partnerships'))->render()]);
+            return response()->json(['data' => view('admin.our-partnership.table', compact('partnerships'))->render()]);
         }
     }
 
@@ -90,7 +90,8 @@ class OurPartnershipController extends Controller
      */
     public function edit($id)
     {
-        //
+        $partnership = OurPartnership::findOrFail($id);
+        return view('admin.our-partnership.edit', compact('partnership'));
     }
 
     /**
@@ -102,7 +103,22 @@ class OurPartnershipController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // return $request;
+        $request->validate([
+            'name' => "required|string|max:255"
+        ]);
+
+        $our_partnership = OurPartnership::findOrFail($id);
+        $our_partnership->name = $request->name;
+        if ($request->hasFile('logo')) {
+            $request->validate([
+                'logo' => "required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            ]);
+            $our_partnership->logo = $this->imageUpload($request->file('logo'), 'our_partnership');
+        }
+        $our_partnership->save();
+
+        return redirect()->route('our-partnerships.index')->with('message', 'Partner updated successfully.');
     }
 
     /**
@@ -114,5 +130,12 @@ class OurPartnershipController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function delete($id)
+    {
+        $our_partnership = OurPartnership::findOrFail($id);
+        $our_partnership->delete();
+        return redirect()->route('our-partnerships.index')->with('error', 'Our Core Value has been deleted successfully.');
     }
 }

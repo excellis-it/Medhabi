@@ -84,6 +84,12 @@
                     <li class="{{ Request::is('admin/our-partnerships/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('our-partnerships.create') }}">Our Partnership Create</a></li>
                 </ul>
             </li>
+            <li class="dropdown {{ Request::is('admin/achievement-and-key-milestones*') ? 'active' : ' ' }}">
+                <a href="{{ route('achievement-and-key-milestones.index') }}">
+                    <i class="ph ph-trophy"></i>
+                    <span>Achievement and Key Milestone</span>
+                </a>
+            </li>
             <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/testimonials*') ? 'active' : ' ' }}">
                     <i class="ph ph-newspaper"></i>

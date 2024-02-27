@@ -59,7 +59,7 @@ class PageController extends Controller
         } else {
             $career = CareerPageCms::orderByDesc('id')->first();
         }
- 
+
         // Assign values from the request data to career properties
         if ($request->hasFile('banner_image')) {
             $career->banner_image = $this->imageUpload($request->file('banner_image'), 'career');
@@ -114,6 +114,10 @@ class PageController extends Controller
         $career->save();
 
         if ($request->module_description) {
+            if ($request->module_image_id) {
+                // delete where id not in $request->module_image_id
+                CareerCmsModule::whereNotIn('id', $request->module_image_id)->delete();
+            }
             foreach ($request->module_description as $key => $value) {
                 if (isset($request->module_image_id[$key])) {
                     $module = CareerCmsModule::find($request->module_image_id[$key]);
@@ -123,7 +127,7 @@ class PageController extends Controller
 
                 $module->description = $value;
 
-                if ($request->hasFile('module_image') && $request->file('module_image')[$key]) {
+                if (isset($request->file('module_image')[$key]) && $request->hasFile('module_image') && $request->file('module_image')[$key]) {
                     $module->image = $this->imageUpload($request->file('module_image')[$key], 'career');
                 }
 

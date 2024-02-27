@@ -142,6 +142,6 @@ class OurCoreValuesController extends Controller
     {
         $our_core_values = OurCoreValue::findOrFail($id);
         $our_core_values->delete();
-        return redirect()->route('our-core-values.index')->with('error', 'OurCoreValue has been deleted successfully.');
+        return redirect()->route('our-core-values.index')->with('error', 'Our Core Value has been deleted successfully.');
     }
 }

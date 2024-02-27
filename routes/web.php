@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AchievementAndKeyMilestoneController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ForgetPasswordController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Admin\OurCoreValuesController;
 use App\Http\Controllers\Admin\OurPartnershipController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SchoolController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use App\Http\Controllers\Frontend\CmsController;
@@ -61,6 +63,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         'jobs' => JobController::class,
         'our-core-values' => OurCoreValuesController::class,
         'our-partnerships' => OurPartnershipController::class,
+        'achievement-and-key-milestones' => AchievementAndKeyMilestoneController::class,
     ]);
 
     Route::prefix('blogs')->group(function () {
@@ -100,6 +103,10 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
             Route::get('/', [PageController::class, 'career'])->name('index');
             Route::post('/update', [PageController::class, 'careerUpdadte'])->name('update');
         });
+
+        Route::resources([
+            'schools' => SchoolController::class,
+        ]);
     });
 });
 
