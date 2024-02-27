@@ -96,6 +96,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::prefix('program-types')->name('programTypes.')->group(function () {
             Route::get('/', [ProgramTypesController::class, 'index'])->name('index');
             Route::get('/fetch-data', [ProgramTypesController::class, 'fetchData'])->name('fetch-data');
+            Route::get('program-types-delete/{id}', [ProgramTypesController::class, 'delete'])->name('delete');
         });
         Route::prefix('course-types')->name('courseTypes.')->group(function () {
             Route::get('/', [CourseTypesController::class, 'index'])->name('index');

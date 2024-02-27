@@ -43,7 +43,7 @@ class ProgramTypesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.admissions.program_types.create');
     }
 
     /**
@@ -54,7 +54,15 @@ class ProgramTypesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $programtype = new ProgramType();
+        $programtype->name = $request->name;
+        $programtype->save();
+
+        return redirect()->route('programTypes.index')->with('message', 'Program Type created successfully.');
     }
 
     /**
@@ -102,5 +110,12 @@ class ProgramTypesController extends Controller
     {
         ProgramType::find($id)->delete();
         return redirect()->route('programTypes.index')->with('message', 'Program Type deleted successfully.');
+    }
+
+    public function delete($id)
+    {
+        $jobs = ProgramType::findOrFail($id);
+        $jobs->delete();
+        return redirect()->route('programTypes.index')->with('error', 'Program type has been deleted successfully.');
     }
 }
