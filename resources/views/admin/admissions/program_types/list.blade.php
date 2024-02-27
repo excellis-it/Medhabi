@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive" id="jobs-data">
+                <div class="table-responsive" id="programtypes-data">
                     <table class="table table-bordered" class="display">
                         <thead>
                             <tr>
@@ -46,26 +46,15 @@
                                     data-column_name="id" style="cursor: pointer">Id<span id="id_icon"></span>
                                 </th>
                                 <th class="sorting" data-sorting_type="asc" data-column_name="title" style="cursor: pointer"
-                                    data-tippy-content="Sort by Job title">
-                                    Job Title<span id="title_icon"></span></th>
-                                <th class="sorting" data-sorting_type="asc" data-column_name="eligibility"
-                                    style="cursor: pointer" data-tippy-content="Sort by eligibility">
-                                    Job Eligibity<span id="eligibility_icon"></span></th>
-                                <th class="sorting" data-sorting_type="asc" data-column_name="opening_for"
-                                    style="cursor: pointer" data-tippy-content="Sort by opening for">
-                                    Job Opening For<span id="opening_for_icon"></span></th>
-                                <th class="sorting" data-sorting_type="asc" data-column_name="location"
-                                    style="cursor: pointer" data-tippy-content="Sort by location">
-                                    Job Location<span id="location_icon"></span></th>
-                                <th class="sorting" data-sorting_type="asc" data-column_name="description"
-                                    style="cursor: pointer" data-tippy-content="Sort by Description">Job Description<span
-                                        id="description_icon"></span></th>
+                                    data-tippy-content="Sort by Programtype title">
+                                    Program Type<span id="title_icon"></span></th>
+                                
                                 <th>Status</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            @include('admin.jobs.table')
+                            @include('admin.admissions.program_types.table')
 
                         </tbody>
                     </table>
@@ -109,15 +98,12 @@
             function clear_icon() {
                 $('#id_icon').html('');
                 $('#title_icon').html('');
-                $('#eligibility_icon').html('');
-                $('#description_icon').html('');
-                $('#location_icon').html('');
-                $('#opening_for_icon').html('');
+                
             }
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "{{ route('jobs.fetch-data') }}",
+                    url: "{{ route('programTypes.fetch-data') }}",
                     data: {
                         page: page,
                         sortby: sort_by,
