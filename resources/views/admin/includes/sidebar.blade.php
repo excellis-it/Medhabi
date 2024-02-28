@@ -76,17 +76,17 @@
 
             <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/admissions*') ? 'active' : ' ' }}">
-                    <i class="ph ph-newspaper"></i>
+                    <i class="ph ph-graduation-cap"></i>
                     <span>Admission</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class="menu-toggle nav-link has-dropdown {{ Request::is('admin/bachelors-courses') ? 'active' : ' ' }}">
-                        <a class="nav-link" href="{{ route('career.index') }}">Program Types </a>
+                    <li class="{{ Request::is('admin/bachelors-courses') ? 'active' : ' ' }}">
+                        <a class="nav-link" href="{{ route('programTypes.index') }}">Program Types </a>
                     </li>
                     <li class="{{ Request::is('admin/career') ? 'active' : ' ' }}">
-                         <a class="nav-link" href="{{ route('career.index') }}">Course Types </a>
+                         <a class="nav-link" href="{{ route('courseTypes.index') }}">Course Types </a>
                     </li>
-                    <li class="{{ Request::is('admin/career') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('career.index') }}">Courses </a></li>
+                    <li class="{{ Request::is('admin/career') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('courses.index') }}">Courses </a></li>
                         
                             
                 </ul>
