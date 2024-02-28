@@ -1,7 +1,7 @@
 @if (count($testimonials) > 0)
 @foreach ($testimonials as $key => $testimonial)
     <tr>
-        <td>{{ $key + 1 }}</td>
+        <td> {{ ($testimonials->currentPage()-1) * $testimonials->perPage() + $loop->index + 1 }}</td>
         <td>{{ $testimonial->name }}</td>
         <td>{{ Str::words($testimonial->description, $words = 20, $end = '...') }}
         </td>

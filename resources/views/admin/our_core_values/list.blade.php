@@ -12,6 +12,9 @@
 @section('head')
     All Our core value Details
 @endsection
+@section('create_button')
+  <a href="{{ route('our-core-values.create') }}" class="btn btn-primary">+ Create New Core Values</a>
+@endsection
 @section('content')
     <section id="loading">
         <div id="loading-content"></div>

@@ -1,7 +1,7 @@
 @if (count($faqs) > 0)
 @foreach ($faqs as $key => $faq)
     <tr>
-        <td>{{ $key + 1 }}</td>
+        <td> {{ ($faqs->currentPage()-1) * $faqs->perPage() + $loop->index + 1 }}</td>
         <td>{{ $faq->question }}</td>
         <td>{{ $faq->answer }}</td>
         <td>

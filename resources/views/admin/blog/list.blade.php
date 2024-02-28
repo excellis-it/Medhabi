@@ -12,6 +12,9 @@
 @section('head')
     All Blog Details
 @endsection
+@section('create_button')
+  <a href="{{ route('blogs.create') }}" class="btn btn-primary">+ Create New Blog</a>
+@endsection
 @section('content')
     <section id="loading">
         <div id="loading-content"></div>

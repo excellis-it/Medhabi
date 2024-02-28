@@ -36,10 +36,14 @@
             <div class="navbar-bg"></div>
             <!--header-->
             @include('admin.includes.header')
-            <section class="section_breadcrumb d-block d-sm-flex justify-content-between">
-                <div class="">
-                    <h4 class="page-title m-b-0">@yield('head')</h4>
-                    <!-- <h5 class="page">Hello Evano 👋🏼,</h5> -->
+            <section class="section_breadcrumb bred-des by-me">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="page-title m-b-0">@yield('head')</h4>
+                    </div>
+                    <div class="col-md-6 create-button">
+                        @yield('create_button')
+                    </div>
                 </div>
 
             </section>

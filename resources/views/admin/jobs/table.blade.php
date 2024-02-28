@@ -1,7 +1,7 @@
 @if (count($jobs) > 0)
 @foreach ($jobs as $key => $job)
     <tr>
-        <td>{{ $key + 1 }}</td>
+        <td> {{ ($jobs->currentPage()-1) * $jobs->perPage() + $loop->index + 1 }}</td>
         <td>{{ $job->title }}</td>
         <td>{{ $job->eligibility }}</td>
         <td>{{ $job->opening_for }}</td>

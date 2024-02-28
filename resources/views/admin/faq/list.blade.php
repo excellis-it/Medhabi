@@ -12,6 +12,9 @@
 @section('head')
     All Faq Details
 @endsection
+@section('create_button')
+  <a href="{{ route('faq.create') }}" class="btn btn-primary">+ Create New FAQ</a>
+@endsection
 @section('content')
     <section id="loading">
         <div id="loading-content"></div>

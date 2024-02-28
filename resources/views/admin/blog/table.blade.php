@@ -1,7 +1,7 @@
 @if (count($blogs) > 0)
 @foreach ($blogs as $key => $blog)
     <tr>
-        <td>{{ $key + 1 }}</td>
+        <td> {{ ($blogs->currentPage()-1) * $blogs->perPage() + $loop->index + 1 }}</td>
         <td>{{ $blog->name }}</td>
         <td>{{ $blog->slug }}</td>
         <td>{{ Str::words($blog->short_description, $words = 20, $end = '...') }}

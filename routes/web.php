@@ -107,6 +107,11 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::resources([
             'schools' => SchoolController::class,
         ]);
+
+        Route::prefix('schools')->group(function () {
+            Route::get('/school-delete/{id}', [SchoolController::class, 'delete'])->name('schools.delete');
+        });
+        Route::get('/schools-fetch-data', [SchoolController::class, 'fetchData'])->name('schools.fetch-data');
     });
 });
 
@@ -119,3 +124,5 @@ Route::get('/load-more-blogs', [FrontendBlogController::class, 'loadMore'])->nam
 
 Route::get('/careers', [CmsController::class, 'career'])->name('careers');
 Route::get('/careers-job-search', [CmsController::class, 'jobSearch'])->name('frontend.career.job.search');
+
+Route::get('/school/{slug}', [CmsController::class, 'school'])->name('school');

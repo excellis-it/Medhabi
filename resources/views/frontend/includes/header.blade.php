@@ -1,3 +1,6 @@
+@php
+    use App\Helpers\Helper;
+@endphp
 <div class="announcement__wrapper">
     <div class="announcements-label">
         <span class="show-large"> Announcements:</span>
@@ -213,63 +216,11 @@
                             <li class="has-droupdown">
                                 <a href="#">Schools</a>
                                 <ul class="submenu">
-
+                                    @foreach (Helper::getAllSchoolPage() as $item)
                                     <li>
-                                        <a href="school/school-of-healthcare-and-allied-sciences-sikkim.html">School
-                                            of Health Science
-                                            and Technology
-                                        </a>
+                                        <a href="{{route('school', $item['slug'])}}">{{$item['name']}}</a>
                                     </li>
-                                    <li>
-                                        <a
-                                            href="school/school-of-information-and-communication-technology.html">School
-                                            of Computer
-                                            Science Engineering
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="school/school-of-management-and-commerce-in-sikkim.html">School
-                                            of Management and
-                                            Commerce
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="school/school-of-media-communication.html">School of Modern
-                                            Media and Entertainment
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="school/school-of-hospitality-and-culinary-arts-in-sikkim.html">School
-                                            of Hospitality
-                                            and Tourism
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="school/school-of-design.html">School of Design
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="school/school-of-education-humanities-and-applied-arts.html">School
-                                            of Applied Science
-                                            and Technology
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="school/school-of-Beauty-and-Wellness.html">School of Beauty
-                                            and Wellness</a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="school/school-of-indigenous-knowledge-research-and-applications.html">School
-                                            of
-                                            Indigenous Knowledge, Research, and
-                                            Applications</a>
-                                    </li>
-
-
-
+                                    @endforeach
                                 </ul>
                             </li>
                             <li class="has-droupdown">

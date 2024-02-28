@@ -12,6 +12,9 @@
 @section('head')
     All Job Details
 @endsection
+@section('create_button')
+  <a href="{{ route('jobs.create') }}" class="btn btn-primary">+ Create New Job</a>
+@endsection
 @section('content')
     <section id="loading">
         <div id="loading-content"></div>

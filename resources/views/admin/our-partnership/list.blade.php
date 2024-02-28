@@ -12,6 +12,9 @@
 @section('head')
     All Our Partnership Details
 @endsection
+@section('create_button')
+  <a href="{{ route('our-partnerships.create') }}" class="btn btn-primary">+ Create New Partner</a>
+@endsection
 @section('content')
     <section id="loading">
         <div id="loading-content"></div>

@@ -1,7 +1,7 @@
 @if (count($our_core_values) > 0)
 @foreach ($our_core_values as $key => $our_core_value)
     <tr>
-        <td>{{ $key + 1 }}</td>
+        <td>{{ ($our_core_values->currentPage()-1) * $our_core_values->perPage() + $loop->index + 1 }}</td>
         <td>{{ $our_core_value->name }}</td>
         <td>{{ Str::words($our_core_value->description, $words = 20, $end = '...') }}
         </td>

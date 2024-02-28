@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Achievement;
 use App\Models\CareerCmsModule;
 use App\Models\CareerPageCms;
 use App\Models\Faq;
 use App\Models\Job;
+use App\Models\KeyMilestone;
 use App\Models\OurCoreValue;
+use App\Models\OurPartnership;
+use App\Models\School;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -35,5 +39,15 @@ class CmsController extends Controller
         }
         $jobs = $jobs->get();
         return response()->json(['data' => view('frontend.pages.filter.career-job-list-filter', compact('jobs'))->render()]);
+    }
+
+    public function school($slug)
+    {
+        $school = School::where('slug', $slug)->first();
+        $partnerships = OurPartnership::orderBy('id', 'desc')->get();
+        $testimonials = Testimonial::where('type', 'Student')->orderBy('id', 'desc')->get();
+        $achievements = Achievement::orderBy('id', 'desc')->get();
+        $key_milestones = KeyMilestone::orderBy('id', 'desc')->get();
+        return view('frontend.pages.school')->with(compact('school','partnerships', 'testimonials', 'achievements', 'key_milestones'));
     }
 }

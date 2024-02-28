@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-    All Testimonial Details - {{ env('APP_NAME') }}
+    All Schools Details - {{ env('APP_NAME') }}
 @endsection
 @push('styles')
     <style>
@@ -10,10 +10,10 @@
     </style>
 @endpush
 @section('head')
-    All Testimonial Details
+    All Schools Details
 @endsection
 @section('create_button')
-  <a href="{{ route('testimonials.create') }}" class="btn btn-primary">+ Create New Testmonial</a>
+  <a href="{{ route('schools.create') }}" class="btn btn-primary">+ Create New School</a>
 @endsection
 @section('content')
     <section id="loading">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive" id="testimonials-data">
+                <div class="table-responsive" id="schools-data">
                     <table class="table table-bordered" class="display">
                         <thead>
                             <tr>
@@ -49,19 +49,16 @@
                                     data-column_name="id" style="cursor: pointer">Id<span id="id_icon"></span>
                                 </th>
                                 <th class="sorting" data-sorting_type="asc" data-column_name="name" style="cursor: pointer"
-                                    data-tippy-content="Sort by Name">
-                                    Name<span id="name_icon"></span></th>
-                                <th class="sorting" data-sorting_type="asc" data-column_name="description"
-                                    style="cursor: pointer" data-tippy-content="Sort by Description"><span
-                                        id="description_icon"></span>Description</th>
-                                <th class="sorting" data-sorting_type="asc" data-column_name="type" style="cursor: pointer"
-                                    data-tippy-content="Sort by type">
-                                    Type<span id="type_icon"></span></th>
+                                    data-tippy-content="Sort by Menu Name">
+                                    Menu Name<span id="name_icon"></span></th>
+                                <th class="sorting" data-sorting_type="asc" data-column_name="slug"
+                                    style="cursor: pointer" data-tippy-content="Sort by Slug">Slug<span
+                                    id="slug_icon"></span></th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            @include('admin.testimonials.table')
+                            @include('admin.pages.schools.table')
 
                         </tbody>
                     </table>
@@ -80,7 +77,7 @@
         $(document).on('click', '#delete', function(e) {
             swal({
                     title: "Are you sure?",
-                    text: "To delete this testimonial.",
+                    text: "To delete this school.",
                     type: "warning",
                     confirmButtonText: "Yes",
                     showCancelButton: true
@@ -105,13 +102,12 @@
             function clear_icon() {
                 $('#id_icon').html('');
                 $('#name_icon').html('');
-                $('#type_icon').html('');
-                $('#description_icon').html('');
+                $('#slug_icon').html('');
             }
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "{{ route('testimonials.fetch-data') }}",
+                    url: "{{ route('schools.fetch-data') }}",
                     data: {
                         page: page,
                         sortby: sort_by,

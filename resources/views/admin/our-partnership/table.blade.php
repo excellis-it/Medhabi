@@ -1,7 +1,7 @@
 @if (count($partnerships) > 0)
 @foreach ($partnerships as $key => $partnership)
     <tr>
-        <td>{{ $key + 1 }}</td>
+        <td> {{ ($partnerships->currentPage()-1) * $partnerships->perPage() + $loop->index + 1 }}</td>
         <td>{{ $partnership->name }}</td>
         <td><img src="{{ Storage::url($partnership->logo) }}" alt="{{ $partnership->name }}"
                 style="width: 30%; height: 100px;"></td>

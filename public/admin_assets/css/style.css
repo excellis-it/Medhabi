@@ -12075,6 +12075,8 @@ a.dt-button {
     border-radius: 4px;
 }
 
+
+
 @media (max-width: 575px) {
     .account-page
         .main-wrapper
@@ -12140,3 +12142,39 @@ a.dt-button {
     margin-left: 10px;
     padding: 2px 3px;
 }
+
+.eye-btn-1{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transform: translate(0px, 0px);
+    font-size: 20px;
+}
+
+.create-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+/* screen 771 */
+@media (max-width: 771px) {
+    .bred-des .row .create-button a{
+        width: 100%;
+    }
+
+    .bred-des .row .create-button{
+        margin-top: 10px;
+    }
+
+    .bred-des .page-title{
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+    }
+     .by-me {
+        height: 87px;
+    }
+}
+
+

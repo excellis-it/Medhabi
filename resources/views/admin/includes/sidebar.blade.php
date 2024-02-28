@@ -96,7 +96,10 @@
                     <span>Pages</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/career') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('career.index') }}">Career </a></li>
+                    <li class="{{ Request::is('admin/pages/career') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('career.index') }}">Career </a></li>
+                </ul>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/pages/schools') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('schools.index') }}">Schools </a></li>
                 </ul>
             </li>
 
