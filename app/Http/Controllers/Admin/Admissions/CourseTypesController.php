@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Admissions;
 
 use App\Http\Controllers\Controller;
 use App\Models\CourseType;
+use App\Models\ProgramType;
 use Illuminate\Http\Request;
 
 class CourseTypesController extends Controller
@@ -15,8 +16,8 @@ class CourseTypesController extends Controller
      */
     public function index()
     {
-        $coursetype = CourseType::paginate(5);
-        return view('admin.admissions.coursetypes.index', compact('coursetype'));
+        $courseTypes = CourseType::paginate(5);
+        return view('admin.admissions.course_types.list', compact('courseTypes'));
     }
 
     /**
@@ -26,7 +27,8 @@ class CourseTypesController extends Controller
      */
     public function create()
     {
-        //
+        $programTypes = ProgramType::all();
+        return view('admin.admissions.course_types.create', compact('programTypes'));
     }
 
     /**
@@ -37,7 +39,17 @@ class CourseTypesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'program_type_id' => 'required'
+        ]);
+
+        $courseType = new CourseType();
+        $courseType->program_type_id = $request->program_type_id;
+        $courseType->name = $request->name;
+        $courseType->save();
+
+        return redirect()->route('courseTypes.index')->with('message', 'Course Type created successfully.');
     }
 
     /**

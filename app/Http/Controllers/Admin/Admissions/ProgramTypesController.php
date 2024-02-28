@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Admissions;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProgramType;
-use App\Models\ProgramType;
 
 class ProgramTypesController extends Controller
 {

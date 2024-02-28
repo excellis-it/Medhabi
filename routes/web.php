@@ -61,7 +61,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         'testimonials' => TestimonialController::class,
         'jobs' => JobController::class,
         'programTypes' => ProgramTypesController::class,
-        'programTypes' => ProgramTypesController::class,
+        'courseTypes' => CourseTypesController::class,
     ]);
 
     Route::prefix('blogs')->group(function () {
@@ -96,9 +96,13 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     Route::prefix('admissions')->group(function () {
         Route::prefix('program-types')->name('programTypes.')->group(function () {
             Route::get('/', [ProgramTypesController::class, 'index'])->name('index');
+            Route::get(('/programtypes-fetch-data'), [ProgramTypesController::class, 'fetchData'])->name('fetch-data');
+            Route::get('/programtypes-delete/{id}', [ProgramTypesController::class, 'delete'])->name('delete');
         });
         Route::prefix('course-types')->name('courseTypes.')->group(function () {
             Route::get('/', [CourseTypesController::class, 'index'])->name('index');
+            Route::get(('/coursetypes-fetch-data'), [CourseTypesController::class, 'fetchData'])->name('fetch-data');
+            Route::get('/coursetypes-delete/{id}', [CourseTypesController::class, 'delete'])->name('delete');
         });
         Route::prefix('courses')->name('courses.')->group(function () {
             Route::get('/', [CoursesController::class, 'index'])->name('index');
