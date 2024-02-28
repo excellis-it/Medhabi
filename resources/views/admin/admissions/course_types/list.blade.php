@@ -12,6 +12,9 @@ All Course Types - {{ env('APP_NAME') }}
 @section('head')
 All Course Types
 @endsection
+@section('create_button')
+  <a href="{{ route('course-types.create') }}" class="btn btn-primary">+ Create New Course Types</a>
+@endsection
 @section('content')
 <section id="loading">
     <div id="loading-content"></div>
@@ -20,9 +23,9 @@ All Course Types
     <div class="inner_page">
         <div class="row justify-content-end mb-3">
             <div class="col-xl-2 col-md-6">
-                <div class="btn-1">
-                    <a href="{{ route('courseTypes.create') }}"><button>Add Course Types</button></a>
-                </div>
+                {{-- <div class="btn-1">
+                    <a href="{{ route('course-types.create') }}"><button>Add Course Types</button></a>
+                </div> --}}
             </div>
         </div>
         <div class="card table_sec stuff-list-table">
@@ -48,10 +51,10 @@ All Course Types
                         <tr>
                             <th class="sorting" data-tippy-content="Sort by Id" data-sorting_type="asc" data-column_name="id" style="cursor: pointer">Id<span id="id_icon"></span>
                             </th>
-                            <th class="sorting" data-sorting_type="asc" data-column_name="title" style="cursor: pointer" data-tippy-content="Sort by Programtype title">
-                                Program Type<span id="title_icon"></span></th>
-                            <th class="sorting" data-sorting_type="asc" data-column_name="title" style="cursor: pointer" data-tippy-content="Sort by Programtype title">
-                                Course Type<span id="title_icon"></span></th>
+                            <th class="sorting" data-sorting_type="asc" data-column_name="program_type_id" style="cursor: pointer" data-tippy-content="Sort by Program Type">
+                                Program Type<span id="program_type_id_icon"></span></th>
+                            <th class="sorting" data-sorting_type="asc" data-column_name="name" style="cursor: pointer" data-tippy-content="Sort by Course Type">
+                                Course Type<span id="name_icon"></span></th>
 
 
                         </tr>
@@ -100,13 +103,13 @@ All Course Types
 
         function clear_icon() {
             $('#id_icon').html('');
-            $('#title_icon').html('');
-
+            $('#name_icon').html('');
+            $('#program_type_id_icon').html('');
         }
 
         function fetch_data(page, sort_type, sort_by, query) {
             $.ajax({
-                url: "{{ route('programTypes.fetch-data') }}",
+                url: "{{ route('course-types.fetch-data') }}",
                 data: {
                     page: page,
                     sortby: sort_by,

@@ -91,6 +91,24 @@
                 </a>
             </li>
             <li class="dropdown">
+                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/admissions*') ? 'active' : ' ' }}">
+                    <i class="ph ph-graduation-cap"></i>
+                    <span>Admission</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/admissions/program-types') ? 'active' : ' ' }}">
+                        <a class="nav-link" href="{{ route('program-types.index') }}">Program Types </a>
+                    </li>
+                    <li class="{{ Request::is('admin/admissions/course-types') ? 'active' : ' ' }}">
+                         <a class="nav-link" href="{{ route('course-types.index') }}">Course Types </a>
+                    </li>
+                    <li class="{{ Request::is('admin/admissions/courses') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('courses.index') }}">Courses </a></li>
+
+
+                </ul>
+
+            </li>
+            <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/testimonials*') ? 'active' : ' ' }}">
                     <i class="ph ph-newspaper"></i>
                     <span>Pages</span>
@@ -103,24 +121,7 @@
                 </ul>
             </li>
 
-            <li class="dropdown">
-                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/admissions*') ? 'active' : ' ' }}">
-                    <i class="ph ph-graduation-cap"></i>
-                    <span>Admission</span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/bachelors-courses') ? 'active' : ' ' }}">
-                        <a class="nav-link" href="{{ route('programTypes.index') }}">Program Types </a>
-                    </li>
-                    <li class="{{ Request::is('admin/career') ? 'active' : ' ' }}">
-                         <a class="nav-link" href="{{ route('courseTypes.index') }}">Course Types </a>
-                    </li>
-                    <li class="{{ Request::is('admin/career') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('courses.index') }}">Courses </a></li>
-                        
-                            
-                </ul>
-                
-            </li>
+
 
             {{-- <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/customers*') ? 'active' : ' ' }}">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AchievementAndKeyMilestoneController;
+use App\Http\Controllers\Admin\Admissions\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ForgetPasswordController;
@@ -17,7 +18,6 @@ use App\Http\Controllers\Admin\SchoolController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\Admissions\ProgramTypesController;
 use App\Http\Controllers\Admin\Admissions\CourseTypesController;
-use App\Http\Controllers\Admin\Admissions\CoursesController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use App\Http\Controllers\Frontend\CmsController;
 use Illuminate\Support\Facades\Artisan;
@@ -67,8 +67,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         'our-core-values' => OurCoreValuesController::class,
         'our-partnerships' => OurPartnershipController::class,
         'achievement-and-key-milestones' => AchievementAndKeyMilestoneController::class,
-        'programTypes' => ProgramTypesController::class,
-        'courseTypes' => CourseTypesController::class,
     ]);
 
     Route::prefix('blogs')->group(function () {
@@ -120,19 +118,20 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     });
 
     Route::prefix('admissions')->group(function () {
-        Route::prefix('program-types')->name('programTypes.')->group(function () {
-            Route::get('/', [ProgramTypesController::class, 'index'])->name('index');
-            Route::get(('/programtypes-fetch-data'), [ProgramTypesController::class, 'fetchData'])->name('fetch-data');
+        Route::resources([
+            'program-types' => ProgramTypesController::class,
+            'course-types' => CourseTypesController::class,
+            'courses' => CourseController::class,
+        ]);
+        Route::get('/programtypes-fetch-data', [ProgramTypesController::class, 'fetchData'])->name('program-types.fetch-data');
+        Route::prefix('program-types')->name('program-types.')->group(function () {
             Route::get('/programtypes-delete/{id}', [ProgramTypesController::class, 'delete'])->name('delete');
         });
-        Route::prefix('course-types')->name('courseTypes.')->group(function () {
-            Route::get('/', [CourseTypesController::class, 'index'])->name('index');
-            Route::get(('/coursetypes-fetch-data'), [CourseTypesController::class, 'fetchData'])->name('fetch-data');
+        Route::get('/coursetypes-fetch-data', [CourseTypesController::class, 'fetchData'])->name('course-types.fetch-data');
+        Route::prefix('course-types')->name('course-types.')->group(function () {
             Route::get('/coursetypes-delete/{id}', [CourseTypesController::class, 'delete'])->name('delete');
         });
-        Route::prefix('courses')->name('courses.')->group(function () {
-            Route::get('/', [CoursesController::class, 'index'])->name('index');
-        });
+
     });
 });
 
@@ -146,4 +145,4 @@ Route::get('/load-more-blogs', [FrontendBlogController::class, 'loadMore'])->nam
 Route::get('/careers', [CmsController::class, 'career'])->name('careers');
 Route::get('/careers-job-search', [CmsController::class, 'jobSearch'])->name('frontend.career.job.search');
 
-Route::get('/school/{slug}', [CmsController::class, 'school'])->name('school');
+Route::get('school/{slug}', [CmsController::class, 'school'])->name('school');

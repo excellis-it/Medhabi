@@ -12,6 +12,9 @@ All Program Types - {{ env('APP_NAME') }}
 @section('head')
 All Program Types
 @endsection
+@section('create_button')
+  <a href="{{ route('program-types.create') }}" class="btn btn-primary">+ Create New Program Types</a>
+@endsection
 @section('content')
 <section id="loading">
     <div id="loading-content"></div>
@@ -20,9 +23,9 @@ All Program Types
     <div class="inner_page">
         <div class="row justify-content-end mb-3">
             <div class="col-xl-2 col-md-6">
-                <div class="btn-1">
-                    <a href="{{ route('programTypes.create') }}"><button>Add Program Types</button></a>
-                </div>
+                {{-- <div class="btn-1">
+                    <a href="{{ route('program-types.create') }}"><button>Add Program Types</button></a>
+                </div> --}}
             </div>
         </div>
         <div class="card table_sec stuff-list-table">
@@ -104,7 +107,7 @@ All Program Types
 
         function fetch_data(page, sort_type, sort_by, query) {
             $.ajax({
-                url: "{{ route('programTypes.fetch-data') }}",
+                url: "{{ route('program-types.fetch-data') }}",
                 data: {
                     page: page,
                     sortby: sort_by,

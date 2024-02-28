@@ -1,21 +1,21 @@
 @extends('admin.layouts.master')
 @section('title')
-    {{ env('APP_NAME') }} | Create course type
+    {{ env('APP_NAME') }} | Update course type
 @endsection
 @push('styles')
 @endpush
 @section('head')
-    Create course type
+    Update course type
 @endsection
 
 @section('content')
     <div class="main-content">
         <div class="inner_page">
             <div class="card search_bar sales-report-card">
-                <form action="{{ route('course-types.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('course-types.update', $courseType->id) }}" method="post" enctype="multipart/form-data">
+                    @method('PUT')
                     @csrf
                     <div class="sales-report-card-wrap">
-
                         <div class="row justify-content-between">
                             <div class="col-md-6">
                                 <div class="form-group-div">
@@ -25,7 +25,7 @@
                                         <select name="program_type_id" id="program_type_id" class="form-control">
                                             <option value="">Select Program type</option>
                                             @foreach ($programTypes as $programtype)
-                                                <option value="{{ $programtype->id }}">{{ $programtype->name }}</option>
+                                                <option value="{{ $programtype->id }}" {{ $courseType->program_type_id == $programtype->id ? 'selected' : '' }}>{{ $programtype->name }}</option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('program_type_id'))
@@ -41,7 +41,7 @@
                                         {{-- name --}}
                                         <label for="floatingInputValue">Name*</label>
                                         <input type="text" class="form-control" id="floatingInputValue" name="name"
-                                            value="{{ old('name') }}" placeholder="Name*">
+                                            value="{{ $courseType['name'] }}" placeholder="Name*">
                                         @if ($errors->has('name'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('name') }}</div>
@@ -52,7 +52,7 @@
 
                         <div class="col-xl-12">
                             <div class="btn-1">
-                                <button type="submit">Create Course Type</button>
+                                <button type="submit">Update Course Type</button>
                             </div>
                         </div>
                     </div>

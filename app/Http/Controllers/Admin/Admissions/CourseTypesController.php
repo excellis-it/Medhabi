@@ -20,6 +20,26 @@ class CourseTypesController extends Controller
         return view('admin.admissions.course_types.list', compact('courseTypes'));
     }
 
+    public function fetchData(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $sort_by = $request->get('sortby');
+            $sort_type = $request->get('sorttype');
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+            $courseTypes = CourseType::where('id', 'like', '%' . $query . '%')
+                ->orWhere('name', 'like', '%' . $query . '%')
+                ->orWhereHas('programType', function ($q) use ($query) {
+                    $q->where('name', 'like', '%' . $query . '%');
+                })
+                ->orderBy($sort_by, $sort_type)
+                ->paginate(5);
+
+            return response()->json(['data' => view('admin.admissions.course_types.table', compact('courseTypes'))->render()]);
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -40,7 +60,7 @@ class CourseTypesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:course_types',
             'program_type_id' => 'required'
         ]);
 
@@ -49,7 +69,7 @@ class CourseTypesController extends Controller
         $courseType->name = $request->name;
         $courseType->save();
 
-        return redirect()->route('courseTypes.index')->with('message', 'Course Type created successfully.');
+        return redirect()->route('course-types.index')->with('message', 'Course Type created successfully.');
     }
 
     /**
@@ -71,7 +91,9 @@ class CourseTypesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $courseType = CourseType::find($id);
+        $programTypes = ProgramType::all();
+        return view('admin.admissions.course_types.edit', compact('courseType', 'programTypes'));
     }
 
     /**
@@ -83,7 +105,17 @@ class CourseTypesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $courseType = CourseType::find($id);
+        $request->validate([
+            'name' => 'required|unique:course_types,name,' . $id,
+            'program_type_id' => 'required'
+        ]);
+
+        $courseType->program_type_id = $request->program_type_id;
+        $courseType->name = $request->name;
+        $courseType->save();
+
+        return redirect()->route('course-types.index')->with('message', 'Course Type updated successfully.');
     }
 
     /**

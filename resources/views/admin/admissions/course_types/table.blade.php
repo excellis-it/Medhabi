@@ -1,16 +1,16 @@
 @if (count($courseTypes) > 0)
 @foreach ($courseTypes as $key => $courseType)
     <tr>
-        <td>{{ $key + 1 }}</td>
+        <td> {{ ($courseTypes->currentPage()-1) * $courseTypes->perPage() + $loop->index + 1 }}</td>
         <td>{{ $courseType->programtype->name }}</td>
         <td>{{ $courseType->name }}</td>
-        
+
         <td>
             <div class="edit-1 d-flex align-items-center justify-content-center">
-                <a title="Edit" href="{{ route('courseTypes.edit', $courseType->id) }}">
+                <a title="Edit" href="{{ route('course-types.edit', $courseType->id) }}">
                     <span class="edit-icon"><i class="ph ph-pencil-simple"></i></span>
                 </a>
-                <a title="Delete" data-route="{{ route('courseTypes.delete', $courseType->id) }}"
+                <a title="Delete" data-route="{{ route('course-types.delete', $courseType->id) }}"
                     href="javascript:void(0);" id="delete">
                     <span class="trash-icon"><i class="ph ph-trash"></i></span>
                 </a>

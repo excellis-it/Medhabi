@@ -55,14 +55,14 @@ class ProgramTypesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|unique:program_types'
         ]);
 
         $programtype = new ProgramType();
         $programtype->name = $request->name;
         $programtype->save();
 
-        return redirect()->route('programTypes.index')->with('message', 'Program Type created successfully.');
+        return redirect()->route('program-types.index')->with('message', 'Program Type created successfully.');
     }
 
     /**
@@ -97,7 +97,16 @@ class ProgramTypesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required|unique:program_types,name,' . $id
+        ]);
+
+        $programtype = ProgramType::find($id);
+        $programtype->name = $request->name;
+        $programtype->save();
+
+        return redirect()->route('program-types.index')->with('message', 'Program Type updated successfully.');
     }
 
     /**
@@ -109,13 +118,13 @@ class ProgramTypesController extends Controller
     public function destroy($id)
     {
         ProgramType::find($id)->delete();
-        return redirect()->route('programTypes.index')->with('message', 'Program Type deleted successfully.');
+        return redirect()->route('program-types.index')->with('message', 'Program Type deleted successfully.');
     }
 
     public function delete($id)
     {
         $jobs = ProgramType::findOrFail($id);
         $jobs->delete();
-        return redirect()->route('programTypes.index')->with('error', 'Program type has been deleted successfully.');
+        return redirect()->route('program-types.index')->with('error', 'Program type has been deleted successfully.');
     }
 }

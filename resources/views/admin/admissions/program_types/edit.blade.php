@@ -1,18 +1,19 @@
 @extends('admin.layouts.master')
 @section('title')
-    {{ env('APP_NAME') }} | Create program type
+    {{ env('APP_NAME') }} | Update program type
 @endsection
 @push('styles')
 @endpush
 @section('head')
-    Create program type
+    Update program type
 @endsection
 
 @section('content')
     <div class="main-content">
         <div class="inner_page">
             <div class="card search_bar sales-report-card">
-                <form action="{{ route('program-types.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('program-types.update', $programtype->id) }}" method="post" enctype="multipart/form-data">
+                    @method('PUT')
                     @csrf
                     <div class="sales-report-card-wrap">
                         <div class="form-head">
@@ -26,7 +27,7 @@
                                         {{-- name --}}
                                         <label for="floatingInputValue">Name*</label>
                                         <input type="text" class="form-control" id="floatingInputValue" name="name"
-                                            value="{{ old('name') }}" placeholder="Name*">
+                                            value="{{ $programtype['name'] }}" placeholder="Name*">
                                         @if ($errors->has('name'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('name') }}</div>
@@ -37,7 +38,7 @@
 
                         <div class="col-xl-6">
                             <div class="btn-1">
-                                <button type="submit">Create Program Type</button>
+                                <button type="submit">Update Program Type</button>
                             </div>
                         </div>
                     </div>
