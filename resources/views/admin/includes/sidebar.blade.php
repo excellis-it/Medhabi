@@ -102,22 +102,22 @@
                     <li class="{{ Request::is('admin/admissions/course-types') ? 'active' : ' ' }}">
                          <a class="nav-link" href="{{ route('course-types.index') }}">Course Types </a>
                     </li>
-                    <li class="{{ Request::is('admin/admissions/courses') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('courses.index') }}">Courses </a></li>
-
-
                 </ul>
 
             </li>
             <li class="dropdown">
-                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/testimonials*') ? 'active' : ' ' }}">
+                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/pages/*') ? 'active' : ' ' }}">
                     <i class="ph ph-newspaper"></i>
                     <span>Pages</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/pages/career') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('career.index') }}">Career </a></li>
+                    <li class="{{ Request::is('admin/pages/career/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('career.index') }}">Career </a></li>
                 </ul>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/pages/schools') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('schools.index') }}">Schools </a></li>
+                    <li class="{{ Request::is('admin/pages/schools/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('schools.index') }}">Schools </a></li>
+                </ul>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/pages/courses/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('courses.index') }}">Courses </a></li>
                 </ul>
             </li>
 

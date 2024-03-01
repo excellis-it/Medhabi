@@ -441,7 +441,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-2">
+                                <div class="col-xl-2 mt-4">
                                     <div class="btn-1">
                                         <button type="button" class="add-more"><i class="ph ph-plus"></i> Add
                                             More</button>
@@ -670,7 +670,7 @@
                $(this).parent().parent().prev().remove();
                 $(this).parent().parent().prev().remove();
                 $(this).parent().parent().remove();
-                
+
             });
         });
     </script>

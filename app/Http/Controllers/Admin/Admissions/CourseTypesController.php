@@ -16,7 +16,7 @@ class CourseTypesController extends Controller
      */
     public function index()
     {
-        $courseTypes = CourseType::paginate(5);
+        $courseTypes = CourseType::orderBy('id', 'desc')->paginate(10);
         return view('admin.admissions.course_types.list', compact('courseTypes'));
     }
 
@@ -34,7 +34,7 @@ class CourseTypesController extends Controller
                     $q->where('name', 'like', '%' . $query . '%');
                 })
                 ->orderBy($sort_by, $sort_type)
-                ->paginate(5);
+                ->paginate(10);
 
             return response()->json(['data' => view('admin.admissions.course_types.table', compact('courseTypes'))->render()]);
         }

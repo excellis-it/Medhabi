@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AchievementAndKeyMilestoneController;
-use App\Http\Controllers\Admin\Admissions\CourseController;
+use App\Http\Controllers\Admin\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ForgetPasswordController;
@@ -109,19 +109,25 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 
         Route::resources([
             'schools' => SchoolController::class,
+            'courses' => CourseController::class,
         ]);
 
         Route::prefix('schools')->group(function () {
             Route::get('/school-delete/{id}', [SchoolController::class, 'delete'])->name('schools.delete');
         });
         Route::get('/schools-fetch-data', [SchoolController::class, 'fetchData'])->name('schools.fetch-data');
+
+        Route::prefix('courses')->group(function () {
+            Route::get('/course-delete/{id}', [CourseController::class, 'delete'])->name('courses.delete');
+        });
+        Route::get('/courses-fetch-data', [CourseController::class, 'fetchData'])->name('courses.fetch-data');
+        Route::post('/get-course-types', [CourseController::class, 'getCourseTypes'])->name('get.course.types');
     });
 
     Route::prefix('admissions')->group(function () {
         Route::resources([
             'program-types' => ProgramTypesController::class,
             'course-types' => CourseTypesController::class,
-            'courses' => CourseController::class,
         ]);
         Route::get('/programtypes-fetch-data', [ProgramTypesController::class, 'fetchData'])->name('program-types.fetch-data');
         Route::prefix('program-types')->name('program-types.')->group(function () {
@@ -131,7 +137,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::prefix('course-types')->name('course-types.')->group(function () {
             Route::get('/coursetypes-delete/{id}', [CourseTypesController::class, 'delete'])->name('delete');
         });
-
     });
 });
 
@@ -146,3 +151,6 @@ Route::get('/careers', [CmsController::class, 'career'])->name('careers');
 Route::get('/careers-job-search', [CmsController::class, 'jobSearch'])->name('frontend.career.job.search');
 
 Route::get('school/{slug}', [CmsController::class, 'school'])->name('school');
+Route::get('course/{slug}', [CmsController::class, 'schoolCourses'])->name('course');
+// download brochure
+Route::get('download-brochure/{slug}', [CmsController::class, 'downloadBrochure'])->name('download.brochure');

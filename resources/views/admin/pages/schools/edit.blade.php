@@ -21,16 +21,33 @@
                         </div>
 
                         <div class="row justify-content-between">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- name --}}
-                                        <label for="floatingInputValue">Menu Name*</label>
+                                        <label for="floatingInputValue">Page Name*</label>
                                         <input type="text" class="form-control" id="floatingInputValue" name="name"
-                                            value="{{ ($school->name) ?  $school->name : old('name') }}" placeholder="Menu Name*">
+                                            value="{{ ($school->name) ?  $school->name : old('name') }}" placeholder="Page Name*">
                                         @if ($errors->has('name'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('name') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        <label for="floatingInputValue">Courses*</label>
+                                        <select class="form-select select2" name="course_id[]" id="course_id" multiple>
+                                            <option value="">Select Course</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}" @if (in_array($course->id, $school->schoolCourses->pluck('id')->toArray())) selected @endif>{{ $course->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('course_id'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('course_id') }}</div>
                                         @endif
                                     </div>
                                 </div>

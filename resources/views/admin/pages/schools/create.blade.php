@@ -20,7 +20,7 @@
                         </div>
 
                         <div class="row justify-content-between">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- name --}}
@@ -30,6 +30,25 @@
                                         @if ($errors->has('name'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('name') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- courses --}}
+                            <div class="col-md-6">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        <label for="floatingInputValue">Courses*</label>
+                                        <select class="form-select select2" name="course_id[]" id="course_id" multiple>
+                                            <option value="">Select Course</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}" @if (in_array($course->id, old('course_id', []))) selected @endif>
+                                                    {{ $course->name }} </option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('course_id'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('course_id') }}</div>
                                         @endif
                                     </div>
                                 </div>
@@ -324,4 +343,10 @@
 @endsection
 
 @push('scripts')
+    <script>
+         $(".select2").select2({
+            placeholder: "Select a Course",
+            allowClear: true,
+        });
+    </script>
 @endpush
