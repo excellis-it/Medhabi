@@ -155,12 +155,7 @@
                                 alt="" />
                             <div class="bsc-text">
                                 <h3>
-                                    CHOOSE TO TAKE
-                                    THE RIGHT
-                                    STEP TOWARDS
-                                    A CAREER
-                                    THAT GIVS YOU
-                                    MORE!
+                                    {{ $course['section_2_title'] != null ? $course['section_2_title'] : 'Choose To Take The Right Step Towards A Career That Gives You More!' }}
                                 </h3>
                                 {{-- <ul>
                                     <li><a href="">Choose To Take</a></li>
