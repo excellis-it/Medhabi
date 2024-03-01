@@ -28375,9 +28375,10 @@ a.cta_btn:hover {
 
 .bsc-text {
     position: absolute;
-    top: 34%;
+    top: 50%;
     left: 10%;
-    transform: translate(-10%, -45%);
+    transform: translate(-10%, -50%);
+    width: 35%;
 }
 
 .apply-btn a {
@@ -28658,6 +28659,7 @@ a.cta_btn:hover {
     text-decoration: underline;
     color: #e9b664;
     margin-top: 7px;
+    cursor: pointer;
 }
 
 .bg-blue {
@@ -32520,4 +32522,14 @@ section.awards__section p {
     background: url(../images/award-para-bg.png) no-repeat 50% 50px;
     background-size: 332px;
     height: 90px;
+}
+
+.bsc-text h3{
+    font-size: 40px;
+    line-height: 70px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-transform: uppercase;
+    color: var(--color-white);
+    text-shadow: 2px 2px #000;
 }

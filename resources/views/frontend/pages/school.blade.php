@@ -39,7 +39,7 @@
                             <p>{{ $school['section_1_description']
                                 ? $school['section_1_description']
                                 : 'Our working community creates the ideal atmosphere for
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                career growth and personal expression.' }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                career growth and personal expression.' }}
 
                             </p>
                         </div>
@@ -49,17 +49,20 @@
                             <div class="prg-tab-wrap">
                                 <nav>
                                     <div class="nav nav-tabs justify-content-lg-end" id="nav-tab" role="tablist">
-                                        <button class="nav-link " id="nav-2nd-tab" data-bs-toggle="tab"
-                                            data-bs-target="#nav-2nd" type="button" role="tab" aria-controls="nav-2nd"
-                                            aria-selected="false">
-                                            UG Programs
-                                        </button>
-                                        <button class="nav-link active " id="nav-1st-tab" data-bs-toggle="tab"
-                                            data-bs-target="#nav-1st" type="button" role="tab" aria-controls="nav-1st"
-                                            aria-selected="true">
-                                            PG Programs
-                                        </button>
-
+                                        @php
+                                            $count = 0;
+                                        @endphp
+                                        @foreach ($school_courses as $key => $item)
+                                            @php
+                                                $id = str_replace(' ', '-', strtolower($key));
+                                                $count ++;
+                                            @endphp
+                                            <button class="nav-link {{ ($count == 1) ? 'active' : '' }}" id="{{ $id }}-tab" data-bs-toggle="tab"
+                                                data-bs-target="#nav-{{ $id }}" type="button" role="tab"
+                                                aria-controls="nav-{{ $id }}" aria-selected="false">
+                                                {{ $key }}
+                                            </button>
+                                        @endforeach
                                     </div>
                                 </nav>
                             </div>
@@ -69,126 +72,38 @@
                 <div class="prg-tab">
                     <div class="prg-tab-wrap">
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-1st" role="tabpanel"
-                                aria-labelledby="nav-1st-tab">
-                                <div class="lab-sec-img-div">
-                                    <div class="row g-5">
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="lab-sec-img-wrap">
-                                                <div class="lab-sec-img">
-                                                    <img src="{{ asset('frontend_assets/images/m-u/master-program-details/lab-1.jpg') }}"
-                                                        alt="" />
-                                                    <div class="lab-sec-text">
-                                                        <a href="../ma-in-applied-media-and-entertainment.html">
-                                                            <h4> M. A In Applied Media & Entertainment </h4>
-                                                        </a>
+                            @php
+                                $count_i = 0;
+                            @endphp
+                            @foreach ($school_courses as $key => $value)
+                                @php
+                                    $id = str_replace(' ', '-', strtolower($key));
+                                    $count_i++;
+                                @endphp
+                                <div class="tab-pane fade show {{ $count_i == 1 ? 'active' : '' }}" id="nav-{{ $id }}"
+                                    aria-labelledby="{{ $id }}-tab">
+                                    <div class="lab-sec-img-div">
+                                        <div class="row g-5">
+                                            @foreach ($value as $course)
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="lab-sec-img-wrap">
+                                                    <div class="lab-sec-img">
+                                                        <img src="{{ $course['course']['banner_image'] ? Storage::url($course['course']['banner_image']) : asset('frontend_assets/images/banner/ABOUT MEDIA.jpg') }}"
+                                                            alt="" />
+                                                        <div class="lab-sec-text">
+                                                            <a href="{{ route('course', $course['course']['slug']) }}">
+                                                                <h4> {{ $course['course']['name'] }} </h4>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            @endforeach
 
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="nav-2nd" role="tabpanel" aria-labelledby="nav-2nd-tab">
-                                <div class="lab-sec-img-div">
-                                    <div class="row g-5">
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="lab-sec-img-wrap">
-                                                <div class="lab-sec-img">
-                                                    <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/lab-1.jpg') }}"
-                                                        alt="" />
-                                                    <div class="lab-sec-text">
-                                                        <a href="../bsc-in-music-technology-and-audiography.html">
-                                                            <h4> B. Sc In Music Technology & Audiography</h4>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="lab-sec-img-wrap">
-                                                <div class="lab-sec-img">
-                                                    <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/lab-1.jpg') }}"
-                                                        alt="" />
-                                                    <div class="lab-sec-text">
-                                                        <a href="../bsc-in-digital-media-and-communication.html">
-                                                            <h4> B. Sc In Digital Media & Communication</h4>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="lab-sec-img-wrap">
-                                                <div class="lab-sec-img">
-                                                    <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/lab-1.jpg') }}"
-                                                        alt="" />
-                                                    <div class="lab-sec-text">
-                                                        <a href="../diploma-in-graphic-design.html">
-                                                            <h4> Diploma In Graphic Design</h4>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="lab-sec-img-wrap">
-                                                <div class="lab-sec-img">
-                                                    <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/lab-1.jpg') }}"
-                                                        alt="" />
-                                                    <div class="lab-sec-text">
-                                                        <a href="../bsc-in-media-and-entertainment.html">
-                                                            <h4> B. Sc. In Media & Entertainment</h4>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="lab-sec-img-wrap">
-                                                <div class="lab-sec-img">
-                                                    <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/lab-1.jpg') }}"
-                                                        alt="" />
-                                                    <div class="lab-sec-text">
-                                                        <a href="../diploma-in-photography-and-video-editing.html">
-                                                            <h4> Diploma In Photography & Video Editing</h4>
-                                                        </a>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="lab-sec-img-wrap">
-                                                <div class="lab-sec-img">
-                                                    <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/lab-1.jpg') }}"
-                                                        alt="" />
-                                                    <div class="lab-sec-text">
-                                                        <a href="../bsc-in-animation-and-vfx.html">
-                                                            <h4> B. Sc. In Animation & VFX</h4>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="lab-sec-img-wrap">
-                                                <div class="lab-sec-img">
-                                                    <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/lab-1.jpg') }}"
-                                                        alt="" />
-                                                    <div class="lab-sec-text">
-                                                        <a href="../diploma-in-multimedia-and-animation.html">
-                                                            <h4> Diploma In Multimedia & Animation</h4>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -212,25 +127,25 @@
                                 <p>{{ $school['section_2_description']
                                     ? nl2br($school['section_2_description'])
                                     : 'The School of Modern Media and Entertainment welcomes the students to come together to
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ignite their passion and dreams. It is a discipline that is aimed to transform the
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    career and the future of the students. Our students are taught to critically analyze
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    information,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    question
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    sources and uphold the principles of objectivity and fairness of journalism. As this era
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    is
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    dominated by the digital media, Medhavi Skills University ensures that digital
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    storytelling,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    social media management, multimedia production and other new-age learning modules are
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    incorporated into the practical curriculum in order to make the students at par with the
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    current
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    rapidly evolving industry. Guidance from industry experienced faculties,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    hands-on-experience
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    and practical new-age learning gives the students a rounded learning experience. The
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    programs
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    are carefully designed to align the outcomes with the extensive practicum. In this
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ever-evolving
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    landscape of information, the School of Modern Media and Entertainment is the maker of
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    future media personalities.' }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ignite their passion and dreams. It is a discipline that is aimed to transform the
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    career and the future of the students. Our students are taught to critically analyze
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    information,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    question
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    sources and uphold the principles of objectivity and fairness of journalism. As this era
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    is
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    dominated by the digital media, Medhavi Skills University ensures that digital
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    storytelling,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    social media management, multimedia production and other new-age learning modules are
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    incorporated into the practical curriculum in order to make the students at par with the
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    current
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    rapidly evolving industry. Guidance from industry experienced faculties,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    hands-on-experience
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    and practical new-age learning gives the students a rounded learning experience. The
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    programs
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    are carefully designed to align the outcomes with the extensive practicum. In this
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ever-evolving
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    landscape of information, the School of Modern Media and Entertainment is the maker of
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    future media personalities.' }}
 
                                 </p>
                             </div>
@@ -256,7 +171,7 @@
                             {{ $school['section_3_description']
                                 ? $school['section_3_description']
                                 : 'Our vibrant campus provides an enriching society, in a diversified
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                community of endless creativity and vibrant festivities.' }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                community of endless creativity and vibrant festivities.' }}
                         </p>
                     </div>
                 </div>
@@ -369,11 +284,11 @@
                             {{ $school['section_5_description']
                                 ? nl2br($school['section_5_description'])
                                 : "The partnership between Medhavi Skills university and its partners is instrumental in addressing the
-                                                                                            evolving needs of the industry by providing access to a pool of well-trained and adept
-                                                                                            professionals. The
-                                                                                            symbiotic relationship between MSU and industry partners becomes a catalyst for economic
-                                                                                            development,
-                                                                                            driving innovation, productivity, and overall progress in the nation's workforce." }}
+                                                                                                                                                                                                            evolving needs of the industry by providing access to a pool of well-trained and adept
+                                                                                                                                                                                                            professionals. The
+                                                                                                                                                                                                            symbiotic relationship between MSU and industry partners becomes a catalyst for economic
+                                                                                                                                                                                                            development,
+                                                                                                                                                                                                            driving innovation, productivity, and overall progress in the nation's workforce." }}
 
                         </p>
                     </div>

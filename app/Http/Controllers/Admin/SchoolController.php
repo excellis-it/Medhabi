@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\School;
+use App\Models\SchoolCourse;
 use App\Traits\CreateSlug;
 use App\Traits\ImageTrait;
 use Illuminate\Http\Request;
@@ -47,7 +49,8 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.schools.create');
+        $courses = Course::orderBy('name', 'asc')->get();
+        return view('admin.pages.schools.create')->with(compact('courses'));
     }
 
     /**
@@ -60,6 +63,7 @@ class SchoolController extends Controller
     {
         // dd($request->all());
         $request->validate([
+            'course_id.*' => 'required',
             'name' => 'required',
             'banner_title' => 'required',
             'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
@@ -77,6 +81,7 @@ class SchoolController extends Controller
             'seo_description' => 'nullable',
             'seo_keywords' => 'nullable',
         ], [
+            'course_id.*.required' => 'The course field is required.',
             'banner_image.required' => 'The banner image field is required.',
             'banner_image.image' => 'The banner image must be an image.',
             'banner_image.mimes' => 'The banner image must be a file of type: jpeg, png, jpg, gif, svg.',
@@ -123,6 +128,15 @@ class SchoolController extends Controller
         $school->seo_keywords = $request->seo_keywords;
         $school->save();
 
+        if ($request->course_id) {
+            foreach ($request->course_id as $course_id) {
+                $schoolCourse = new SchoolCourse();
+                $schoolCourse->school_id = $school->id;
+                $schoolCourse->course_id = $course_id;
+                $schoolCourse->save();
+            }
+        }
+
         return redirect()->route('schools.index')->with('message', 'School created successfully.');
     }
 
@@ -146,7 +160,8 @@ class SchoolController extends Controller
     public function edit($id)
     {
         $school = School::find($id);
-        return view('admin.pages.schools.edit')->with(compact('school'));
+        $courses = Course::orderBy('name', 'asc')->get();
+        return view('admin.pages.schools.edit')->with(compact('school', 'courses'));
     }
 
     /**
@@ -160,6 +175,7 @@ class SchoolController extends Controller
     {
         // dd($request->all());
         $request->validate([
+            'course_id.*' => 'required',
             'name' => 'required',
             'banner_title' => 'required',
             'section_1_title' => 'required',
@@ -206,6 +222,16 @@ class SchoolController extends Controller
             $school->section_2_image = $this->imageUpload($request->file('section_2_image'), 'schools');
         }
         $school->save();
+
+        if ($request->course_id) {
+            SchoolCourse::where('school_id', $id)->delete();
+            foreach ($request->course_id as $course_id) {
+                $schoolCourse = new SchoolCourse();
+                $schoolCourse->school_id = $school->id;
+                $schoolCourse->course_id = $course_id;
+                $schoolCourse->save();
+            }
+        }
 
         return redirect()->route('schools.index')->with('message', 'School updated successfully.');
     }

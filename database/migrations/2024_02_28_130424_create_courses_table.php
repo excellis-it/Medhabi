@@ -34,7 +34,12 @@ class CreateCoursesTable extends Migration
             $table->longText('section_4_step_2_description')->nullable();
             $table->string('section_4_step_3_title')->nullable();
             $table->longText('section_4_step_3_description')->nullable();
+            $table->string('section_5_title')->nullable();
+            $table->text('section_5_description')->nullable();
             $table->string('brochure')->nullable();
+            $table->string('seo_title')->nullable();
+            $table->longText('seo_description')->nullable();
+            $table->string('seo_keywords')->nullable();
             $table->timestamps();
         });
     }

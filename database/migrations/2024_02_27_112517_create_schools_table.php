@@ -30,7 +30,7 @@ class CreateSchoolsTable extends Migration
             $table->string('section_5_title')->nullable();
             $table->longText('section_5_description')->nullable();
             $table->string('seo_title')->nullable();
-            $table->string('seo_description')->nullable();
+            $table->longText('seo_description')->nullable();
             $table->string('seo_keywords')->nullable();
             $table->timestamps();
         });

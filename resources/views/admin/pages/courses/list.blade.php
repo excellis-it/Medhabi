@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-    All Schools Details - {{ env('APP_NAME') }}
+    All Courses Details - {{ env('APP_NAME') }}
 @endsection
 @push('styles')
     <style>
@@ -10,10 +10,10 @@
     </style>
 @endpush
 @section('head')
-    All Schools Details
+    All Courses Details
 @endsection
 @section('create_button')
-  <a href="{{ route('schools.create') }}" class="btn btn-primary">+ Create New School</a>
+  <a href="{{ route('courses.create') }}" class="btn btn-primary">+ Create New Course</a>
 @endsection
 @section('content')
     <section id="loading">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive" id="schools-data">
+                <div class="table-responsive" id="courses-data">
                     <table class="table table-bordered" class="display">
                         <thead>
                             <tr>
@@ -58,7 +58,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @include('admin.pages.schools.table')
+                            @include('admin.pages.courses.table')
 
                         </tbody>
                     </table>
@@ -77,7 +77,7 @@
         $(document).on('click', '#delete', function(e) {
             swal({
                     title: "Are you sure?",
-                    text: "To delete this school.",
+                    text: "To delete this course.",
                     type: "warning",
                     confirmButtonText: "Yes",
                     showCancelButton: true
@@ -107,7 +107,7 @@
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "{{ route('schools.fetch-data') }}",
+                    url: "{{ route('courses.fetch-data') }}",
                     data: {
                         page: page,
                         sortby: sort_by,

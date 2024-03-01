@@ -4,16 +4,20 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Achievement;
+use App\Models\Blog;
 use App\Models\CareerCmsModule;
 use App\Models\CareerPageCms;
+use App\Models\Course;
 use App\Models\Faq;
 use App\Models\Job;
+use App\Models\JobOpportunity;
 use App\Models\KeyMilestone;
 use App\Models\OurCoreValue;
 use App\Models\OurPartnership;
 use App\Models\School;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CmsController extends Controller
 {
@@ -48,6 +52,37 @@ class CmsController extends Controller
         $testimonials = Testimonial::where('type', 'Student')->orderBy('id', 'desc')->get();
         $achievements = Achievement::orderBy('id', 'desc')->get();
         $key_milestones = KeyMilestone::orderBy('id', 'desc')->get();
-        return view('frontend.pages.school')->with(compact('school','partnerships', 'testimonials', 'achievements', 'key_milestones'));
+        // group by program name school courses
+        $school_courses = $school->schoolCourses()
+        ->with(['course' => function($query) {
+            $query->with(['programType' => function($query) {
+                $query->select('id', 'name');
+            }]);
+        }])
+        ->get()
+        ->map(function ($item, $key) {
+            $item['program_type_name'] = $item['course']['programType']['name'];
+            return $item;
+        })
+        ->groupBy('program_type_name')
+        ->toArray();
+        // dd($school_courses);
+        return view('frontend.pages.school')->with(compact('school','partnerships', 'testimonials', 'achievements', 'key_milestones','school_courses'));
+    }
+
+    public function schoolCourses($slug)
+    {
+        $course = Course::where('slug', $slug)->first();
+        $blogs = Blog::orderBy('id', 'desc')->limit(4)->get();
+        $job_oppotunities = JobOpportunity::get();
+        $schools = School::orderBy('id', 'desc')->get();
+        return view('frontend.pages.course')->with(compact('course', 'blogs','job_oppotunities','schools'));
+    }
+
+    public function downloadBrochure($slug)
+    {
+        $course = Course::where('slug', $slug)->first();
+        $file = Storage::disk('public')->path($course->brochure);
+        return response()->download($file);
     }
 }
