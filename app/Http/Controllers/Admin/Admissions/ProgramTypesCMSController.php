@@ -100,13 +100,13 @@ class ProgramTypesCMSController extends Controller
         $programtypescms->section_3_title = $request->section_3_title;
         $programtypescms->section_3_description = $request->section_3_description;
         foreach($request->section_3_slider_title as $key => $title){
-            $programtypescms->section_3_slider_title = $key . $title . ',';
+            $programtypescms->section_3_slider_title = $key . ' '. $title . ',';
         }
         foreach($request->section_3_slider_description as $key1 => $description){
-            $programtypescms->section_3_slider_description = $key1 . $description . ',';
+            $programtypescms->section_3_slider_description = $key1 . ' '. $description . ',';
         }
         foreach($request->section_3_slider_image as $imagekey => $image){
-            $programtypescms->section_3_slider_image = $imagekey . $image . ',';
+            $programtypescms->section_3_slider_image = $imagekey . ' '. $image . ',';
         }
         $programtypescms->section_4_title = $request->section_4_title;
         $programtypescms->section_4_description = $request->section_4_description;
