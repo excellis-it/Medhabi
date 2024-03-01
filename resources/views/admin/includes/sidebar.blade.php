@@ -90,6 +90,12 @@
                     <span>Achievement and Key Milestone</span>
                 </a>
             </li>
+            <li class="dropdown {{ Request::is('admin/applicationProcess*') ? 'active' : ' ' }}">
+                <a href="{{ route('application-process.index') }}">
+                    <i class="ph ph-student"></i>
+                    <span>Application Process</span>
+                </a>
+            </li>
             <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/admissions*') ? 'active' : ' ' }}">
                     <i class="ph ph-graduation-cap"></i>
@@ -118,6 +124,9 @@
                 </ul>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/pages/schools') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('schools.index') }}">Schools </a></li>
+                </ul>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/pages/program-types-cms') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('program-types-cms.index') }}">ProgramTypes </a></li>
                 </ul>
             </li>
 

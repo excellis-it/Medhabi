@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AchievementAndKeyMilestoneController;
+use App\Http\Controllers\Admin\ApplicationProcessController;
+use App\Http\Controllers\Admin\Admissions\BachelorCMSController;
 use App\Http\Controllers\Admin\Admissions\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
@@ -18,6 +20,7 @@ use App\Http\Controllers\Admin\SchoolController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\Admissions\ProgramTypesController;
 use App\Http\Controllers\Admin\Admissions\CourseTypesController;
+use App\Http\Controllers\Admin\Admissions\ProgramTypesCMSController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use App\Http\Controllers\Frontend\CmsController;
 use Illuminate\Support\Facades\Artisan;
@@ -67,6 +70,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         'our-core-values' => OurCoreValuesController::class,
         'our-partnerships' => OurPartnershipController::class,
         'achievement-and-key-milestones' => AchievementAndKeyMilestoneController::class,
+        'application-process' => ApplicationProcessController::class,
     ]);
 
     Route::prefix('blogs')->group(function () {
@@ -95,6 +99,11 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     });
     Route::get('/our-partnerships-fetch-data', [OurPartnershipController::class, 'fetchData'])->name('our-partnerships.fetch-data');
 
+    Route::prefix('application-process')->group(function () {
+        Route::get('/application-process-delete/{id}', [ApplicationProcessController::class, 'delete'])->name('application-process.delete');
+    });
+    Route::get('/application-process-fetch-data', [ApplicationProcessController::class, 'fetchData'])->name('application-process.fetch-data');
+
     Route::prefix('jobs')->group(function () {
         Route::get('/jobs-delete/{id}', [JobController::class, 'delete'])->name('jobs.delete');
     });
@@ -109,12 +118,18 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 
         Route::resources([
             'schools' => SchoolController::class,
+            'program-types-cms' => ProgramTypesCMSController::class,
         ]);
 
         Route::prefix('schools')->group(function () {
             Route::get('/school-delete/{id}', [SchoolController::class, 'delete'])->name('schools.delete');
         });
         Route::get('/schools-fetch-data', [SchoolController::class, 'fetchData'])->name('schools.fetch-data');
+
+        Route::prefix('program-types-cms')->group(function () {
+            Route::get('/program-types-cms-delete/{id}', [ProgramTypesCMSController::class, 'delete'])->name('program-types-cms.delete');
+        });
+        Route::get('/program-types-cms-fetch-data', [ProgramTypesCMSController::class, 'fetchData'])->name('program-types-cms.fetch-data');
     });
 
     Route::prefix('admissions')->group(function () {
