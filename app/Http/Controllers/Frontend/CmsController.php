@@ -8,14 +8,17 @@ use App\Models\Blog;
 use App\Models\CareerCmsModule;
 use App\Models\CareerPageCms;
 use App\Models\Course;
+use App\Models\Event;
 use App\Models\Faq;
 use App\Models\Job;
 use App\Models\JobOpportunity;
 use App\Models\KeyMilestone;
+use App\Models\Media;
 use App\Models\OurCoreValue;
 use App\Models\OurPartnership;
 use App\Models\School;
 use App\Models\Testimonial;
+use App\Models\TVC;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -84,5 +87,23 @@ class CmsController extends Controller
         $course = Course::where('slug', $slug)->first();
         $file = Storage::disk('public')->path($course->brochure);
         return response()->download($file);
+    }
+
+    public function tvc()
+    {
+        $tvcs = TVC::orderBy('id', 'desc')->get();
+        return view('frontend.pages.tvc')->with(compact('tvcs'));
+    }
+
+    public function media()
+    {
+        $medias = Media::orderBy('id', 'desc')->get();
+        return view('frontend.pages.media')->with(compact('medias'));
+    }
+
+    public function event()
+    {
+        $events = Event::orderBy('id', 'desc')->get();
+        return view('frontend.pages.event')->with(compact('events'));
     }
 }

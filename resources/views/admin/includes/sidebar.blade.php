@@ -119,6 +119,15 @@
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/pages/courses/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('courses.index') }}">Courses </a></li>
                 </ul>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/pages/tvc/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('tvc.index') }}">TVC </a></li>
+                </ul>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/pages/media/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('media.index') }}">News & Media </a></li>
+                </ul>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/pages/events/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('events.index') }}">Events </a></li>
+                </ul>
             </li>
 
 

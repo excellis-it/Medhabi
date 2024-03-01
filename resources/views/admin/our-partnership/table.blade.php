@@ -3,8 +3,8 @@
     <tr>
         <td> {{ ($partnerships->currentPage()-1) * $partnerships->perPage() + $loop->index + 1 }}</td>
         <td>{{ $partnership->name }}</td>
-        <td><img src="{{ Storage::url($partnership->logo) }}" alt="{{ $partnership->name }}"
-                style="width: 30%; height: 100px;"></td>
+        <td><a href="{{ Storage::url($partnership->logo) }}" target="_blank"><img src="{{ Storage::url($partnership->logo) }}" alt="{{ $partnership->name }}"
+            style="width: 30%; height: 100px;"></a></td>
         </td>
         <td>
             <div class="edit-1 d-flex align-items-center justify-content-center">

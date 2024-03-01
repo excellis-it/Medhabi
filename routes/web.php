@@ -18,6 +18,9 @@ use App\Http\Controllers\Admin\SchoolController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\Admissions\ProgramTypesController;
 use App\Http\Controllers\Admin\Admissions\CourseTypesController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\TVCController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use App\Http\Controllers\Frontend\CmsController;
 use Illuminate\Support\Facades\Artisan;
@@ -110,6 +113,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::resources([
             'schools' => SchoolController::class,
             'courses' => CourseController::class,
+            'tvc' => TVCController::class,
+            'media' => MediaController::class,
+            'events' => EventController::class,
         ]);
 
         Route::prefix('schools')->group(function () {
@@ -122,6 +128,21 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         });
         Route::get('/courses-fetch-data', [CourseController::class, 'fetchData'])->name('courses.fetch-data');
         Route::post('/get-course-types', [CourseController::class, 'getCourseTypes'])->name('get.course.types');
+
+        Route::prefix('tvc')->group(function () {
+            Route::get('/tvc-delete/{id}', [TVCController::class, 'delete'])->name('tvc.delete');
+        });
+        Route::get('/tvc-fetch-data', [TVCController::class, 'fetchData'])->name('tvc.fetch-data');
+
+        Route::prefix('media')->group(function () {
+            Route::get('/media-delete/{id}', [MediaController::class, 'delete'])->name('media.delete');
+        });
+        Route::get('/media-fetch-data', [MediaController::class, 'fetchData'])->name('media.fetch-data');
+
+        Route::prefix('events')->group(function () {
+            Route::get('/events-delete/{id}', [EventController::class, 'delete'])->name('events.delete');
+        });
+        Route::get('/events-fetch-data', [EventController::class, 'fetchData'])->name('events.fetch-data');
     });
 
     Route::prefix('admissions')->group(function () {
@@ -154,3 +175,9 @@ Route::get('school/{slug}', [CmsController::class, 'school'])->name('school');
 Route::get('course/{slug}', [CmsController::class, 'schoolCourses'])->name('course');
 // download brochure
 Route::get('download-brochure/{slug}', [CmsController::class, 'downloadBrochure'])->name('download.brochure');
+
+Route::prefix('happenings')->group(function () {
+    Route::get('/tvc', [CmsController::class, 'tvc'])->name('tvc');
+    Route::get('/media', [CmsController::class, 'media'])->name('media');
+    Route::get('/event', [CmsController::class, 'event'])->name('event');
+});
