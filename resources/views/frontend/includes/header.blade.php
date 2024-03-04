@@ -194,13 +194,13 @@
                             <li class="has-droupdown">
                                 <a href="#">Admissions</a>
                                 <ul class="submenu">
-                                    <li>
-                                        <a href="bachelors-programs.html">Bachelors Programs
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="master-programs.html">Masters Programs </a>
-                                    </li>
+                                    @if (count(Helper::getPrograms()) > 0)
+                                        @foreach (Helper::getPrograms() as $item)
+                                            <li>
+                                                <a href="{{ route('programs', $item['slug']) }}">{{ $item['name'] }}</a>
+                                            </li>
+                                        @endforeach
+                                    @endif
                                     <li>
                                         <a href="admission-procedure.html">Admission Process
                                         </a>

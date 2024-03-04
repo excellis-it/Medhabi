@@ -193,8 +193,11 @@ Route::get('/careers-job-search', [CmsController::class, 'jobSearch'])->name('fr
 
 Route::get('school/{slug}', [CmsController::class, 'school'])->name('school');
 Route::get('course/{slug}', [CmsController::class, 'schoolCourses'])->name('course');
+Route::get('admission/{slug}', [CmsController::class, 'admission'])->name('programs');
 // download brochure
 Route::get('download-brochure/{slug}', [CmsController::class, 'downloadBrochure'])->name('download.brochure');
+// course.list-filter
+Route::get('course-list-filter', [CmsController::class, 'courseListFilter'])->name('course.list-filter');
 
 Route::prefix('happenings')->group(function () {
     Route::get('/tvc', [CmsController::class, 'tvc'])->name('tvc');

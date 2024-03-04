@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Achievement;
+use App\Models\ApplicationProcess;
 use App\Models\Blog;
 use App\Models\CareerCmsModule;
 use App\Models\CareerPageCms;
@@ -16,6 +17,7 @@ use App\Models\KeyMilestone;
 use App\Models\Media;
 use App\Models\OurCoreValue;
 use App\Models\OurPartnership;
+use App\Models\ProgramTypesCMS;
 use App\Models\School;
 use App\Models\SocialMedia;
 use App\Models\Testimonial;
@@ -39,7 +41,7 @@ class CmsController extends Controller
         $tvcs = TVC::orderBy('id', 'desc')->limit(4)->get();
         $schools = School::orderBy('id', 'desc')->get();
         $social_media = SocialMedia::orderBy('id', 'desc')->get();
-        return view('frontend.home')->with(compact('blogs', 'testimonials', 'achievements', 'key_milestones', 'partnerships', 'events', 'medias', 'tvcs','schools','social_media'));
+        return view('frontend.home')->with(compact('blogs', 'testimonials', 'achievements', 'key_milestones', 'partnerships', 'events', 'medias', 'tvcs', 'schools', 'social_media'));
     }
     public function career()
     {
@@ -74,20 +76,20 @@ class CmsController extends Controller
         $key_milestones = KeyMilestone::orderBy('id', 'desc')->get();
         // group by program name school courses
         $school_courses = $school->schoolCourses()
-        ->with(['course' => function($query) {
-            $query->with(['programType' => function($query) {
-                $query->select('id', 'name');
-            }]);
-        }])
-        ->get()
-        ->map(function ($item, $key) {
-            $item['program_type_name'] = $item['course']['programType']['name'];
-            return $item;
-        })
-        ->groupBy('program_type_name')
-        ->toArray();
+            ->with(['course' => function ($query) {
+                $query->with(['programType' => function ($query) {
+                    $query->select('id', 'name');
+                }]);
+            }])
+            ->get()
+            ->map(function ($item, $key) {
+                $item['program_type_name'] = $item['course']['programType']['name'];
+                return $item;
+            })
+            ->groupBy('program_type_name')
+            ->toArray();
         // dd($school_courses);
-        return view('frontend.pages.school')->with(compact('school','partnerships', 'testimonials', 'achievements', 'key_milestones','school_courses'));
+        return view('frontend.pages.school')->with(compact('school', 'partnerships', 'testimonials', 'achievements', 'key_milestones', 'school_courses'));
     }
 
     public function schoolCourses($slug)
@@ -96,7 +98,7 @@ class CmsController extends Controller
         $blogs = Blog::orderBy('id', 'desc')->limit(4)->get();
         $job_oppotunities = JobOpportunity::get();
         $schools = School::orderBy('id', 'desc')->get();
-        return view('frontend.pages.course')->with(compact('course', 'blogs','job_oppotunities','schools'));
+        return view('frontend.pages.course')->with(compact('course', 'blogs', 'job_oppotunities', 'schools'));
     }
 
     public function downloadBrochure($slug)
@@ -122,5 +124,43 @@ class CmsController extends Controller
     {
         $events = Event::orderBy('id', 'desc')->get();
         return view('frontend.pages.event')->with(compact('events'));
+    }
+
+    public function admission($slug)
+    {
+        $program = ProgramTypesCMS::where('slug', $slug)->first();
+        $achievements = Achievement::orderBy('id', 'desc')->get();
+        $key_milestones = KeyMilestone::orderBy('id', 'desc')->get();
+        $application_process = ApplicationProcess::orderBy('id', 'desc')->get();
+        $courses = Course::where('program_type_id', $program->program_type_id)->orderBy('name', 'asc')->get();
+        // dd($courses);
+        return view('frontend.pages.admission')->with(compact('program', 'achievements', 'key_milestones', 'application_process', 'courses'));
+    }
+
+    public function courseListFilter(Request $request)
+    {
+        if ($request->ajax()) {
+            $search = $request->get('search');
+            $program_type_id = $request->get('program_type');
+            $course_id = $request->get('course_type');
+
+            $courses = Course::orderBy('id', 'desc');
+
+            if ($search) {
+                $courses->where('name', 'like', '%' . $search . '%');
+            }
+
+            if ($program_type_id) {
+                $courses->where('program_type_id', $program_type_id);
+            }
+
+            if ($course_id) {
+                $courses->where('course_type_id', $course_id);
+            }
+
+            $courses = $courses->get();
+
+            return response()->json(['status'=> true,'data' => view('frontend.pages.filter.course-list', compact('courses'))->render()]);
+        }
     }
 }

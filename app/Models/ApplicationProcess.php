@@ -12,8 +12,6 @@ class ApplicationProcess extends Model
     protected $table = 'application_processes';
 
     protected $fillable = [
-        'title',
-        'description',
         'process_image', 
         'process_desc',
         'button_text'
