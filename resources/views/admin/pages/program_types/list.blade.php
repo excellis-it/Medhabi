@@ -10,7 +10,7 @@
     </style>
 @endpush
 @section('head')
-    All Schools Details
+    All Program-Types Details
 @endsection
 @section('create_button')
   <a href="{{ route('program-types-cms.create') }}" class="btn btn-primary">+ Create New ProgramType Page</a>

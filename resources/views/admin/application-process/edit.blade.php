@@ -15,6 +15,7 @@
                 <form action="{{ route('application-process.update', $applicationProcess->id) }}" method="post" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
+                    @method('PUT')
                     {{-- <input type="hidden" name="id" value="{{ $career->id ?? '' }}"> --}}
                     <div class="sales-report-card-wrap">
                         <div class="row justify-content-between" >
@@ -45,13 +46,33 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-12">
-                                <div class="btn-1">
-                                    <button type="submit">Update Application Process</button>
+                            
+                        </div>
+
+                        <div class="row justify-content-between" >
+                            <div class="col-md-6">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- banner_title --}}
+                                        <label for="floatingInputValue">Button Text*</label>
+                                        <input type="text" class="form-control" id="floatingInputValue"
+                                            name="button_text" required value="{{ $applicationProcess->button_text }}">
+                                            
+                                        @if ($errors->has('button_text'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('button_text') }}</div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    <div>
+                    </div>
+                    
+                    <div class="col-xl-12">
+                        <div class="btn-1">
+                            <button type="submit">Update Application Process</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
