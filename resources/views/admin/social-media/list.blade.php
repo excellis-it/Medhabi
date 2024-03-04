@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-    All Our Partnership Details - {{ env('APP_NAME') }}
+    All Social Media Details - {{ env('APP_NAME') }}
 @endsection
 @push('styles')
     <style>
@@ -10,10 +10,10 @@
     </style>
 @endpush
 @section('head')
-    All Our Partnership Details
+    All Social Media Details
 @endsection
 @section('create_button')
-  <a href="{{ route('our-partnerships.create') }}" class="btn btn-primary">+ Create New Partner</a>
+  <a href="{{ route('social-media.create') }}" class="btn btn-primary">+ Create New Social Media</a>
 @endsection
 @section('content')
     <section id="loading">
@@ -41,25 +41,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive" id="our-partnership-data">
+                <div class="table-responsive" id="Social Medias-data">
                     <table class="table table-bordered" class="display">
                         <thead>
                             <tr>
                                 <th class="sorting" data-tippy-content="Sort by Id" data-sorting_type="asc"
                                     data-column_name="id" style="cursor: pointer">Id<span id="id_icon"></span>
                                 </th>
-                                <th class="sorting" data-sorting_type="asc" data-column_name="name" style="cursor: pointer"
-                                    data-tippy-content="Sort by Company Name">
-                                   Company Name<span id="name_icon"></span></th>
-                                   <th class="sorting" data-sorting_type="asc" data-column_name="type" style="cursor: pointer"
-                                   data-tippy-content="Sort by Type">
-                                  Type<span id="type_icon"></span></th>
-                                <th >Image</th>
-
+                                <th class="sorting" data-sorting_type="asc" data-column_name="university_name" style="cursor: pointer"
+                                    data-tippy-content="Sort by University Name">
+                                  University Name<span id="name_icon"></span></th>
+                                <th class="sorting" data-sorting_type="asc" data-column_name="user_name"
+                                    style="cursor: pointer" data-tippy-content="Sort by User Name"><span
+                                        id="user_name_icon"></span>User Name</th>
+                                {{-- link --}}
+                                <th class="sorting" data-sorting_type="asc" data-column_name="link" style="cursor: pointer"
+                                    data-tippy-content="Sort by Link">
+                                    Link<span id="link_icon"></span></th>
+                                <th>Icon</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @include('admin.our-partnership.table')
+                            @include('admin.social-media.table')
 
                         </tbody>
                     </table>
@@ -78,7 +81,7 @@
         $(document).on('click', '#delete', function(e) {
             swal({
                     title: "Are you sure?",
-                    text: "To delete this Our Partnership.",
+                    text: "To delete this Social Media.",
                     type: "warning",
                     confirmButtonText: "Yes",
                     showCancelButton: true
@@ -104,11 +107,13 @@
                 $('#id_icon').html('');
                 $('#name_icon').html('');
                 $('#type_icon').html('');
+                $('#user_name_icon').html('');
+                $('#link_icon').html('');
             }
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "{{ route('our-partnerships.fetch-data') }}",
+                    url: "{{ route('social-media.fetch-data') }}",
                     data: {
                         page: page,
                         sortby: sort_by,

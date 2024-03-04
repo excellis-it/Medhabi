@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-    All Our Partnership Details - {{ env('APP_NAME') }}
+    All News & Media Details - {{ env('APP_NAME') }}
 @endsection
 @push('styles')
     <style>
@@ -10,10 +10,10 @@
     </style>
 @endpush
 @section('head')
-    All Our Partnership Details
+    All News & Media Details
 @endsection
 @section('create_button')
-  <a href="{{ route('our-partnerships.create') }}" class="btn btn-primary">+ Create New Partner</a>
+    <a href="{{ route('media.create') }}" class="btn btn-primary">+ Create New News & Media</a>
 @endsection
 @section('content')
     <section id="loading">
@@ -48,18 +48,22 @@
                                 <th class="sorting" data-tippy-content="Sort by Id" data-sorting_type="asc"
                                     data-column_name="id" style="cursor: pointer">Id<span id="id_icon"></span>
                                 </th>
-                                <th class="sorting" data-sorting_type="asc" data-column_name="name" style="cursor: pointer"
-                                    data-tippy-content="Sort by Company Name">
-                                   Company Name<span id="name_icon"></span></th>
-                                   <th class="sorting" data-sorting_type="asc" data-column_name="type" style="cursor: pointer"
-                                   data-tippy-content="Sort by Type">
-                                  Type<span id="type_icon"></span></th>
-                                <th >Image</th>
+                                <th class="sorting" data-sorting_type="asc" data-column_name="media_channel_name" style="cursor: pointer"
+                                    data-tippy-content="Sort by Media Channel Name">  Media Channel Name <span id="media_channel_name_icon"></span></th>
+                                    <th class="sorting" data-sorting_type="asc" data-column_name="news_title" style="cursor: pointer"
+                                    data-tippy-content="Sort by News Title">
+                                   News Title<span id="news_title_icon"></span></th>
+                                    {{-- url --}}
+                                <th class="sorting" data-sorting_type="asc" data-column_name="media_channel_url" style="cursor: pointer"
+                                    data-tippy-content="Sort by News URL">
+                                   News URL<span id="media_channel_url_icon"></span></th>
+
+                                <th>News Thmbnail</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            @include('admin.our-partnership.table')
+                            @include('admin.pages.medias.table')
 
                         </tbody>
                     </table>
@@ -78,7 +82,7 @@
         $(document).on('click', '#delete', function(e) {
             swal({
                     title: "Are you sure?",
-                    text: "To delete this Our Partnership.",
+                    text: "To delete this Media.",
                     type: "warning",
                     confirmButtonText: "Yes",
                     showCancelButton: true
@@ -102,13 +106,14 @@
 
             function clear_icon() {
                 $('#id_icon').html('');
-                $('#name_icon').html('');
-                $('#type_icon').html('');
+                $('#media_channel_name_icon').html('');
+                $('#media_channel_url_icon').html('');
+                $('#news_title_icon').html('');
             }
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "{{ route('our-partnerships.fetch-data') }}",
+                    url: "{{ route('media.fetch-data') }}",
                     data: {
                         page: page,
                         sortby: sort_by,

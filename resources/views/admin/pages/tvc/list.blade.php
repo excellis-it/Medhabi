@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-    All Our Partnership Details - {{ env('APP_NAME') }}
+    All TVC Details - {{ env('APP_NAME') }}
 @endsection
 @push('styles')
     <style>
@@ -10,10 +10,10 @@
     </style>
 @endpush
 @section('head')
-    All Our Partnership Details
+    All TVC Details
 @endsection
 @section('create_button')
-  <a href="{{ route('our-partnerships.create') }}" class="btn btn-primary">+ Create New Partner</a>
+    <a href="{{ route('tvc.create') }}" class="btn btn-primary">+ Create New TVC</a>
 @endsection
 @section('content')
     <section id="loading">
@@ -48,18 +48,19 @@
                                 <th class="sorting" data-tippy-content="Sort by Id" data-sorting_type="asc"
                                     data-column_name="id" style="cursor: pointer">Id<span id="id_icon"></span>
                                 </th>
-                                <th class="sorting" data-sorting_type="asc" data-column_name="name" style="cursor: pointer"
-                                    data-tippy-content="Sort by Company Name">
-                                   Company Name<span id="name_icon"></span></th>
-                                   <th class="sorting" data-sorting_type="asc" data-column_name="type" style="cursor: pointer"
-                                   data-tippy-content="Sort by Type">
-                                  Type<span id="type_icon"></span></th>
-                                <th >Image</th>
+                                <th class="sorting" data-sorting_type="asc" data-column_name="title" style="cursor: pointer"
+                                    data-tippy-content="Sort by Title"> Title<span id="title_icon"></span></th>
+                                    {{-- url --}}
+                                <th class="sorting" data-sorting_type="asc" data-column_name="url" style="cursor: pointer"
+                                    data-tippy-content="Sort by URL">
+                                    URL<span id="url_icon"></span></th>
+
+                                <th>Image</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            @include('admin.our-partnership.table')
+                            @include('admin.pages.tvc.table')
 
                         </tbody>
                     </table>
@@ -78,7 +79,7 @@
         $(document).on('click', '#delete', function(e) {
             swal({
                     title: "Are you sure?",
-                    text: "To delete this Our Partnership.",
+                    text: "To delete this TVC.",
                     type: "warning",
                     confirmButtonText: "Yes",
                     showCancelButton: true
@@ -102,13 +103,13 @@
 
             function clear_icon() {
                 $('#id_icon').html('');
-                $('#name_icon').html('');
-                $('#type_icon').html('');
+                $('#title_icon').html('');
+                $('#url_icon').html('');
             }
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "{{ route('our-partnerships.fetch-data') }}",
+                    url: "{{ route('tvc.fetch-data') }}",
                     data: {
                         page: page,
                         sortby: sort_by,

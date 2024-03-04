@@ -32,6 +32,7 @@ class OurPartnershipController extends Controller
             $query = str_replace(" ", "%", $query);
             $partnerships = OurPartnership::where('id', 'like', '%' . $query . '%')
                 ->orWhere('name', 'like', '%' . $query . '%')
+                ->orWhere('type', 'like', '%' . $query . '%')
                 ->orderBy($sort_by, $sort_type)
                 ->paginate(10);
 
@@ -60,11 +61,13 @@ class OurPartnershipController extends Controller
         // return $request;
         $request->validate([
             'name' => "required|string|max:255",
+            'type' => "required|string|max:255",
             'logo' => "required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
         ]);
 
         $our_partnership = new OurPartnership();
         $our_partnership->name = $request->name;
+        $our_partnership->type = $request->type;
         $our_partnership->logo = $this->imageUpload($request->file('logo'), 'our_partnership');
         $our_partnership->save();
 
@@ -105,11 +108,13 @@ class OurPartnershipController extends Controller
     {
         // return $request;
         $request->validate([
-            'name' => "required|string|max:255"
+            'name' => "required|string|max:255",
+            'type' => "required|string|max:255",
         ]);
 
         $our_partnership = OurPartnership::findOrFail($id);
         $our_partnership->name = $request->name;
+        $our_partnership->type = $request->type;
         if ($request->hasFile('logo')) {
             $request->validate([
                 'logo' => "required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",

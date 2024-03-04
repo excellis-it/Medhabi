@@ -1,19 +1,14 @@
 @extends('admin.layouts.master')
 @section('title')
-    All Our Partnership Details - {{ env('APP_NAME') }}
+    All Event Details - {{ env('APP_NAME') }}
 @endsection
 @push('styles')
-    <style>
-        .dataTables_filter {
-            margin-bottom: 10px !important;
-        }
-    </style>
 @endpush
 @section('head')
-    All Our Partnership Details
+    All Event Details
 @endsection
 @section('create_button')
-  <a href="{{ route('our-partnerships.create') }}" class="btn btn-primary">+ Create New Partner</a>
+    <a href="{{ route('events.create') }}" class="btn btn-primary">+ Create New Event</a>
 @endsection
 @section('content')
     <section id="loading">
@@ -48,19 +43,28 @@
                                 <th class="sorting" data-tippy-content="Sort by Id" data-sorting_type="asc"
                                     data-column_name="id" style="cursor: pointer">Id<span id="id_icon"></span>
                                 </th>
-                                <th class="sorting" data-sorting_type="asc" data-column_name="name" style="cursor: pointer"
-                                    data-tippy-content="Sort by Company Name">
-                                   Company Name<span id="name_icon"></span></th>
-                                   <th class="sorting" data-sorting_type="asc" data-column_name="type" style="cursor: pointer"
-                                   data-tippy-content="Sort by Type">
-                                  Type<span id="type_icon"></span></th>
-                                <th >Image</th>
+                                <th class="sorting" data-sorting_type="asc" data-column_name="title" style="cursor: pointer"
+                                    data-tippy-content="Sort by Title">  Title <span id="title_icon"></span></th>
+                                    <th class="sorting" data-sorting_type="asc" data-column_name="address" style="cursor: pointer"
+                                    data-tippy-content="Sort by Address">
+                                   Address<span id="address_icon"></span></th>
+                                    {{-- url --}}
+                                <th class="sorting" data-sorting_type="asc" data-column_name="url" style="cursor: pointer"
+                                    data-tippy-content="Sort by URL">
+                                   URL<span id="url_icon"></span></th>
+                                {{-- start date --}}
+                                <th class="sorting" data-sorting_type="asc" data-column_name="start_date" style="cursor: pointer"
+                                    data-tippy-content="Sort by Start Date">
+                                   Start Date<span id="start_date_icon"></span></th>
+                                {{-- end date --}}
+                                <th class="sorting" data-sorting_type="asc" data-column_name="end_date" style="cursor: pointer"
+                                    data-tippy-content="Sort by End Date">
+                                   End Date<span id="end_date_icon"></span></th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            @include('admin.our-partnership.table')
-
+                            @include('admin.pages.events.table')
                         </tbody>
                     </table>
                     <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
@@ -78,7 +82,7 @@
         $(document).on('click', '#delete', function(e) {
             swal({
                     title: "Are you sure?",
-                    text: "To delete this Our Partnership.",
+                    text: "To delete this Event.",
                     type: "warning",
                     confirmButtonText: "Yes",
                     showCancelButton: true
@@ -102,13 +106,16 @@
 
             function clear_icon() {
                 $('#id_icon').html('');
-                $('#name_icon').html('');
-                $('#type_icon').html('');
+                $('#title_icon').html('');
+                $('#url_icon').html('');
+                $('#address_icon').html('');
+                $('#start_date_icon').html('');
+                $('#end_date_icon').html('');
             }
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "{{ route('our-partnerships.fetch-data') }}",
+                    url: "{{ route('events.fetch-data') }}",
                     data: {
                         page: page,
                         sortby: sort_by,

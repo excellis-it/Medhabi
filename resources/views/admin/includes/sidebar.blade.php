@@ -63,7 +63,16 @@
                     <li class="{{ Request::is('admin/testimonials/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('testimonials.create') }}">Testimonials Create</a></li>
                 </ul>
             </li>
-
+            <li class="dropdown">
+                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/testimonials*') ? 'active' : ' ' }}">
+                    <i class="ph ph-facebook-logo"></i>
+                    <span> Social Media</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/social-media') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('social-media.index') }}"> Social Media List</a></li>
+                    <li class="{{ Request::is('admin/social-media/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('social-media.create') }}">Social Media Create</a></li>
+                </ul>
+            </li>
             <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/our-core-values*') ? 'active' : ' ' }}">
                     <i class="ph ph-books"></i>
@@ -126,6 +135,13 @@
                     <li class="{{ Request::is('admin/pages/courses/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('courses.index') }}">Courses </a></li>
                 </ul>
                 <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/pages/tvc/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('tvc.index') }}">TVC </a></li>
+                </ul>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/pages/media/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('media.index') }}">News & Media </a></li>
+                </ul>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/pages/events/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('events.index') }}">Events </a></li>
                     <li class="{{ Request::is('admin/pages/program-types-cms') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('program-types-cms.index') }}">ProgramTypes </a></li>
                 </ul>
             </li>

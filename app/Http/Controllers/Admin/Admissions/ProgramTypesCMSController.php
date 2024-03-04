@@ -33,7 +33,7 @@ class ProgramTypesCMSController extends Controller
      */
     public function create()
     {
-        $programtypes = ProgramType::all();
+        $programtypes = ProgramType::orderBy('name', 'desc')->get();
         return view('admin.pages.program_types.create', compact('programtypes'));
     }
 
@@ -47,6 +47,7 @@ class ProgramTypesCMSController extends Controller
     {
         // dd($request->all());
         $request->validate([
+            'program_type_id' => 'required',
             'name' => 'required',
             'banner_title' => 'required',
             'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
@@ -89,6 +90,7 @@ class ProgramTypesCMSController extends Controller
         }
 
         $programtypescms = new ProgramTypesCMS();
+        $programtypescms->program_type_id = $request->program_type_id;
         $programtypescms->name = $request->name;
         $programtypescms->slug = $slug;
         $programtypescms->banner_image = $this->imageUpload($request->banner_image, 'program_types_cms');
@@ -145,7 +147,7 @@ class ProgramTypesCMSController extends Controller
      */
     public function edit($id)
     {
-        $programtypescms = ProgramTypesCMS::find($id);
+        $programtypes = ProgramType::orderBy('name', 'desc')->get();
         $programtypes = ProgramType::all();
         return view('admin.pages.program_types.edit', compact('programtypescms', 'programtypes'));
     }
@@ -161,6 +163,7 @@ class ProgramTypesCMSController extends Controller
     {
         // dd($request->all());
         $request->validate([
+            'program_type_id' => 'required',
             'name' => 'required',
             'banner_title' => 'required',
             'section_1_title' => 'required',
@@ -183,6 +186,7 @@ class ProgramTypesCMSController extends Controller
             }
             $programtypescms->slug = $slug;
         }
+        $programtypescms->program_type_id = $request->program_type_id;
         $programtypescms->name = $request->name;
         $programtypescms->banner_title = $request->banner_title;
         $programtypescms->banner_description = $request->banner_description;

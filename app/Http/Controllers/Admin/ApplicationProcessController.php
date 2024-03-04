@@ -58,9 +58,8 @@ class ApplicationProcessController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'process_desc' => 'required',
-        ], [
-            'process_desc.required' => 'Process Text field is required.',
+            'process_description' => 'required',
+            'process_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $applicationProcess = new ApplicationProcess();
@@ -68,10 +67,10 @@ class ApplicationProcessController extends Controller
         //     $applicationProcess->process_image = $this->imageUpload($request->file('process_image'), 'application-process');
         // }
         $applicationProcess->process_image = $this->imageUpload($request->process_image, 'application_process');
-        $applicationProcess->process_desc = $request->process_desc;
+        $applicationProcess->process_desc = $request->process_description;
         $applicationProcess->save();
 
-        return redirect()->route('application-process.index')->with('success', 'Application Process added successfully.');
+        return redirect()->route('application-process.index')->with('message', 'Application Process added successfully.');
     }
 
     /**
@@ -106,23 +105,22 @@ class ApplicationProcessController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $applicationProcess = ApplicationProcess::find($id);
+        // return $request;
+         $applicationProcess = ApplicationProcess::find($id);
         $request->validate([
-            'process_desc' => 'required',
+            'process_description' => 'required',
         ], [
-            'process_desc.required' => 'Process Description field is required.',
+            'process_description.required' => 'Process Description field is required.',
         ]);
 
-        $applicationProcess->title = $request->title;
-        $applicationProcess->description = $request->description;
         if($request->hasFile('process_image')){
             $applicationProcess->process_image = $this->imageUpload($request->file('process_image'), 'application-process');
         }
         // $applicationProcess->process_image = $request->process_image;
-        $applicationProcess->process_desc = $request->process_desc;
+        $applicationProcess->process_desc = $request->process_description;
         $applicationProcess->save();
 
-        return redirect()->route('admin.application-process.index')->with('success', 'Application Process updated successfully.');
+        return redirect()->route('application-process.index')->with('message', 'Application Process updated successfully.');
     }
 
     /**
@@ -140,6 +138,6 @@ class ApplicationProcessController extends Controller
     {
         $applicationProcess = ApplicationProcess::findOrFail($id);
         $applicationProcess->delete();
-        return redirect()->route('program-types.index')->with('error', 'Application Process has been deleted successfully.');
+        return redirect()->route('application-process.index')->with('error', 'Application Process has been deleted successfully.');
     }
 }
