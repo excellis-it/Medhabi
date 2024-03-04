@@ -41,7 +41,7 @@
                                         <label for="floatingInputValue">Program Type*</label>
                                         <select class="form-select" name="program_type_id" id="floatingSelectGrid"
                                             aria-label="Floating label select example">
-                                            <option selected>Select Program Type</option>
+                                            <option value="">Select Program Type</option>
                                             @foreach ($programtypes as $program_type)
                                                 <option value="{{ $program_type->id }}">{{ $program_type->name }}</option>
                                             @endforeach
@@ -224,7 +224,7 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta title --}}
-                                        <label for="floatingInputValue">Section 3 Title*</label>
+                                        <label for="floatingInputValue">Section 3 Title</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
                                             name="section_3_title" value="{{ old('section_3_title') }}"
                                             placeholder="Section 3 Title">
@@ -239,7 +239,7 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta description --}}
-                                        <label for="floatingInputValue">Section 3 Description*</label>
+                                        <label for="floatingInputValue">Section 3 Description</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
                                             name="section_3_description" value="{{ old('section_3_description') }}"
                                             placeholder="Section 3 Description">
@@ -256,9 +256,9 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta title --}}
-                                        <label for="floatingInputValue">Section 3 Slider Title*</label>
+                                        <label for="floatingInputValue">Section 3 Slider Title</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_3_slider_title[]" value="{{ old('section_3_slider_title') }}"
+                                            name="section_3_slider_title[]" value=""
                                             placeholder="Section 3 Slider Title">
                                         @if ($errors->has('section_3_slider_title'))
                                             <div class="error" style="color:red;">
@@ -271,7 +271,7 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- banner_title --}}
-                                        <label for="floatingInputValue">Section 3 Slider Image*</label>
+                                        <label for="floatingInputValue">Section 3 Slider Image</label>
                                         <input type="file" class="form-control" id="floatingInputValue"
                                             name="section_3_slider_image[]">
                                         @if ($errors->has('section_3_slider_image'))
@@ -285,9 +285,9 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta description --}}
-                                        <label for="floatingInputValue">Section 3 Slider Description*</label>
+                                        <label for="floatingInputValue">Section 3 Slider Description</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_3_slider_description[]" value="{{ old('section_3_slider_description') }}"
+                                            name="section_3_slider_description[]" value=""
                                             placeholder="Section 3 Slider Description">
                                         @if ($errors->has('section_3_slider_description'))
                                             <div class="error" style="color:red;">
@@ -413,7 +413,7 @@
             <div class="col-xl-3 col-md-3">
                 <div class="form-group-div">
                     <div class="form-group">
-                        <label for="floatingInputValue">Section 3 Slider Title*</label>
+                        <label for="floatingInputValue">Section 3 Slider Title</label>
                         <input type="text" class="form-control" id="floatingInputValue"
                             name="section_3_slider_title[]"
                             placeholder="Section 3 Slider Title">
@@ -425,7 +425,7 @@
                 <div class="form-group-div">
                     <div class="form-group">
 
-                        <label for="floatingInputValue">Section 3 Slider Image*</label>
+                        <label for="floatingInputValue">Section 3 Slider Image</label>
                         <input type="file" class="form-control" id="floatingInputValue"
                             name="section_3_slider_image[]">
 
@@ -435,7 +435,7 @@
             <div class="col-xl-4 col-md-4">
                 <div class="form-group-div">
                     <div class="form-group">
-                        <label for="floatingInputValue">Section 3 Slider Description*</label>
+                        <label for="floatingInputValue">Section 3 Slider Description</label>
                         <input type="text" class="form-control" id="floatingInputValue"
                             name="section_3_slider_description[]"
                             placeholder="Section 3 Slider Description">

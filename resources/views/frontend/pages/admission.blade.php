@@ -122,7 +122,7 @@ background-position: center;">
             </div>
         </div>
         <div class="circle-img-4">
-            <img src="{{asset('frontend_assets/images/m-u/bachelors-programs/circle.png')}}" alt="">
+            <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs/circle.png') }}" alt="">
         </div>
     </section>
 
@@ -144,7 +144,8 @@ background-position: center;">
                     <div class="col-lg-6 pr--15">
                         <div class="right-foundation-text ps-lg-5">
                             <div class="heading-1">
-                                <h2>{{ isset($program['section_2_title']) ? $program['section_2_title'] : 'Why should you choose skills university after 12th' }}</h2>
+                                <h2>{{ isset($program['section_2_title']) ? $program['section_2_title'] : 'Why should you choose skills university after 12th' }}
+                                </h2>
                                 <p>
                                     {{ isset($program['section_2_description']) ? $program['section_2_description'] : 'Why should you choose skills university after 12th Description' }}
                                 </p>
@@ -155,7 +156,7 @@ background-position: center;">
             </div>
         </div>
         <div class="circle-img">
-            <img src="{{asset('frontend_assets/images/m-u/bachelors-programs/circle.png')}}" alt="">
+            <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs/circle.png') }}" alt="">
         </div>
     </section>
 
@@ -163,175 +164,108 @@ background-position: center;">
     <!--=====================================-->
     <!--=  Diploma Sec Start =-->
     <!--=====================================-->
-    <section class="diploma-sec">
-        <div class="container-fluid  custom-width__2">
-            <div class="diploma-sec-wrap">
-                <div class="diploma-sec-head">
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <div class="heading-1">
-                                <h2>Bachelors- Durations</h2>
-                                <p>By choosing dual degree programs, it means you can graduate with two degrees at
-                                    the end of your studies.
+    @if (isset($program->bachelorDurations) && count($program->bachelorDurations) > 0)
+        <section class="diploma-sec">
+            <div class="container-fluid  custom-width__2">
+                <div class="diploma-sec-wrap">
+                    <div class="diploma-sec-head">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <div class="heading-1">
+                                    <h2>Bachelors- Durations</h2>
+                                    <p>By choosing dual degree programs, it means you can graduate with two degrees at
+                                        the end of your studies.
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="diploma-slider-div">
-                    <div class="diploma__slider owl-carousel">
-                        <div class="item">
-                            <div class="item diploma-slider-wrap rbt-hover">
-                                <div class="diploma-slider-img-wrap">
-                                    <div class="diploma-slider-img">
-                                        <img src="assets/images/banner/Bachelors- Durations 1 YEAR.jpg" alt="">
-                                    </div>
-                                    <div class="diploma-slider-text">
-                                        <h3>1 year Diploma programs</h3>
-                                        <p>Designed with a focus on efficiency and practicality, these programs provide a
-                                            streamlined path
-                                            for individuals seeking specialized expertise in a specific field. Participants
-                                            can delve deep
-                                            into industry-relevant subjects, gaining a competitive edge in a relatively
-                                            short span.</p>
+                    <div class="diploma-slider-div">
+                        <div class="diploma__slider owl-carousel">
+                            @foreach ($program->bachelorDurations as $duration)
+                            <div class="item">
+                                <div class="item diploma-slider-wrap rbt-hover">
+                                    <div class="diploma-slider-img-wrap">
+                                        <div class="diploma-slider-img">
+                                            <img src="{{ Storage::url($duration['duration_image']) }}" alt="">
+                                        </div>
+                                        <div class="diploma-slider-text">
+                                            <h3> {{ $duration['duration_title'] ?? 'Bachelors- Durations' }}</h3>
+                                            <p>{{ $duration['duration_desc'] ?? 'Bachelors- Durations Description' }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="item diploma-slider-wrap rbt-hover">
-                                <div class="diploma-slider-img-wrap">
-                                    <div class="diploma-slider-img">
-                                        <img src="assets/images/banner/Bachelors- Durations 2 YEAR.jpg" alt="">
-                                    </div>
-                                    <div class="diploma-slider-text">
-                                        <h3>2 year programs</h3>
-                                        <p>These immersive courses epitomize a transformative journey toward professional
-                                            excellence. They
-                                            are designed to empower individuals with the skills, knowledge, and hands-on
-                                            experience required
-                                            to thrive in today's dynamic job market.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item diploma-slider-wrap rbt-hover">
-                                <div class="diploma-slider-img-wrap">
-                                    <div class="diploma-slider-img">
-                                        <img src="assets/images/banner/Bachelors- Durations 3 year.jpg" alt="">
-                                    </div>
-                                    <div class="diploma-slider-text">
-                                        <h3>3 year programs</h3>
-                                        <p>Remains relevant and aligned with the latest trends and demands. Students are
-                                            immersed in a
-                                            transformative journey that blends theoretical knowledge with hands-on practical
-                                            applications.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item diploma-slider-wrap rbt-hover">
-                                <div class="diploma-slider-img-wrap">
-                                    <div class="diploma-slider-img">
-                                        <img src="assets/images/banner/Bachelors- Durations  3.5.jpg" alt="">
-                                    </div>
-                                    <div class="diploma-slider-text">
-                                        <h3>3.5 year programs</h3>
-                                        <p>Specially curated for students from diverse academic disciplines so that they can
-                                            pursue
-                                            courses without prior expertise. Crafted with precision, these programs offer a
-                                            bridge to
-                                            knowledge, allowing students to explore and excel in fields beyond the
-                                            constraints of their
-                                            primary disciplines.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item diploma-slider-wrap rbt-hover">
-                                <div class="diploma-slider-img-wrap">
-                                    <div class="diploma-slider-img">
-                                        <img src="assets/images/banner/Bachelors- Durations 4.jpg" alt="">
-                                    </div>
-                                    <div class="diploma-slider-text">
-                                        <h3>4 year programs</h3>
-                                        <p>Dynamic programs where each academic year is strategically structured to build a
-                                            strong
-                                            foundation. The first two years, delve into core concepts and fundamental
-                                            principles. The
-                                            subsequent years focus on specialized coursework, allowing students to deepen
-                                            their expertise in
-                                            specific areas of interest.</p>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
+
     <!--=====================================-->
     <!--=  Enriching  Sec Start =-->
     <!--=====================================-->
     @if (count($courses) > 0)
-    <section class="enriching-sec pt-0">
-        <div class="container-fluid  custom-width__2">
-            <div class="enriching-sec-wrap">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-lg-12">
-                        <div class="heading-1 text-center">
-                            <h2>{{ isset($program['section_4_title']) ? $program['section_4_title'] : 'Enriching Programs' }}</h2>
-                            <p>
-                                {{ isset($program['section_4_description']) ? $program['section_4_description'] : 'Enriching Programs Description' }} </p>
-                        </div>
-                    </div>
-                </div>
-                <form>
+        <section class="enriching-sec pt-0">
+            <div class="container-fluid  custom-width__2">
+                <div class="enriching-sec-wrap">
                     <div class="row justify-content-center align-items-center">
-                        <div class="col-xl-9 col-lg-6 col-md-6">
-                            <div class="search-div">
-                                <div class="search-form">
-                                    <input type="text" class="form-control" id="searchInput"
-                                        placeholder="Search Programs">
-                                    <span><i class="ri-search-line"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6">
-                            <div class="search-div select-department-div">
-                                <div class="select-department-1">
-                                    <select class="form-select form-select-lg maincls" aria-label="Large select example"
-                                        id="program_type">
-                                        <option value="{{isset($program['programType']) ? $program['programType']['id'] : ''}}">{{isset($program['programType']) ? $program['programType']['name'] : ''}}</option>
-                                    </select>
-                                </div>
-                                <div class="select-department-1 select-department-2">
-                                    <select id="course_type" class="form-select form-select-lg maincls"
-                                        aria-label="Large select example" id="pgrm">
-                                        <option value="" selected disabled>Programs</option>
-                                        @if (isset($program['programType']['courseTypes']) && count($program['programType']['courseTypes']) > 0)
-                                            @foreach ($program['programType']['courseTypes'] as $course)
-                                                <option value="{{ $course['id'] }}">{{ $course['name'] }}</option>
-                                            @endforeach
-
-                                        @endif
-                                    </select>
-                                </div>
+                        <div class="col-lg-12">
+                            <div class="heading-1 text-center">
+                                <h2>{{ isset($program['section_4_title']) ? $program['section_4_title'] : 'Enriching Programs' }}
+                                </h2>
+                                <p>
+                                    {{ isset($program['section_4_description']) ? $program['section_4_description'] : 'Enriching Programs Description' }}
+                                </p>
                             </div>
                         </div>
                     </div>
-                </form>
-                <div class="enriching-list-div" id="filter-data">
-                    @include('frontend.pages.filter.course-list')
+                    <form>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-xl-9 col-lg-6 col-md-6">
+                                <div class="search-div">
+                                    <div class="search-form">
+                                        <input type="text" class="form-control" id="searchInput"
+                                            placeholder="Search Programs">
+                                        <span><i class="ri-search-line"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6">
+                                <div class="search-div select-department-div">
+                                    <div class="select-department-1">
+                                        <select class="form-select form-select-lg maincls"
+                                            aria-label="Large select example" id="program_type">
+                                            <option
+                                                value="{{ isset($program['programType']) ? $program['programType']['id'] : '' }}">
+                                                {{ isset($program['programType']) ? $program['programType']['name'] : '' }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="select-department-1 select-department-2">
+                                        <select id="course_type" class="form-select form-select-lg maincls"
+                                            aria-label="Large select example" id="pgrm">
+                                            <option value="" selected disabled>Programs</option>
+                                            @if (isset($program['programType']['courseTypes']) && count($program['programType']['courseTypes']) > 0)
+                                                @foreach ($program['programType']['courseTypes'] as $course)
+                                                    <option value="{{ $course['id'] }}">{{ $course['name'] }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="enriching-list-div" id="filter-data">
+                        @include('frontend.pages.filter.course-list')
 
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endif
 
 
@@ -342,116 +276,115 @@ background-position: center;">
     <!--=====================================-->
     <br><br>
     @if (count($achievements) > 0 && count($key_milestones) > 0)
-    <section class="trusted__section position-relative">
-        <div class="container-fluid custom-width__2">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="title text-center">
-                        We Are New Age & Trusted
-</h2>
+        <section class="trusted__section position-relative">
+            <div class="container-fluid custom-width__2">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="title text-center">
+                            We Are New Age & Trusted
+                        </h2>
+                    </div>
+                </div>
+                <div class="row g-md-5 g-4">
+                    @if (count($achievements) > 0)
+                        @foreach ($achievements as $achievement)
+                            @php
+                                $text = $achievement['title'];
+                                $parts = explode(' ', $text);
+
+                                $number = substr($parts[0], 0, -2) ?? '';
+                                $ordinal = substr($parts[0], -2) == 'th' ? 'th' : 'st';
+                                $preposition = $parts[1] ?? '';
+                                // after the first two words show the rest of the words
+                                unset($parts[0], $parts[1]);
+                                $country = implode(' ', $parts);
+                            @endphp
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="trusted__bx">
+                                    <h3>
+                                        <span class="large_text">{{ $number ?? '' }}<sup>{{ $ordinal ?? '' }}</sup>
+                                        </span>{{ $preposition ?? '' }}
+                                        <span class="blue-color">{{ $country ?? '' }}</span>
+                                    </h3>
+                                    <p>{{ $achievement['description'] }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+
+                <div class="row top__spacing g-5">
+                    @if (count($key_milestones) > 0)
+                        @foreach ($key_milestones as $milestone)
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <div class="static____counterbx">
+                                    <div class="icon">
+                                        <div class="icon_counter">
+                                            <img src="{{ Storage::url($milestone['logo']) }}" alt="" />
+                                        </div>
+                                        <h3 class="heading-counter">{{ $milestone['title'] }}</h3>
+                                    </div>
+
+                                    <p class="counter__para">{{ $milestone['description'] }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
-            <div class="row g-md-5 g-4">
-                @if (count($achievements) > 0)
-                    @foreach ($achievements as $achievement)
-                        @php
-                            $text = $achievement['title'];
-                            $parts = explode(' ', $text);
-
-                            $number = substr($parts[0], 0, -2) ?? '';
-                            $ordinal = substr($parts[0], -2) == 'th' ? 'th' : 'st';
-                            $preposition = $parts[1] ?? '';
-                            // after the first two words show the rest of the words
-                            unset($parts[0], $parts[1]);
-                            $country = implode(' ', $parts);
-                        @endphp
-                        <div class="col-lg-3 col-md-6 col-6">
-                            <div class="trusted__bx">
-                                <h3>
-                                    <span class="large_text">{{ $number ?? '' }}<sup>{{ $ordinal ?? '' }}</sup>
-                                    </span>{{ $preposition ?? '' }}
-                                    <span class="blue-color">{{ $country ?? '' }}</span>
-                                </h3>
-                                <p>{{ $achievement['description'] }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-
-            <div class="row top__spacing g-5">
-                @if (count($key_milestones) > 0)
-                    @foreach ($key_milestones as $milestone)
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <div class="static____counterbx">
-                                <div class="icon">
-                                    <div class="icon_counter">
-                                        <img src="{{ Storage::url($milestone['logo']) }}" alt="" />
-                                    </div>
-                                    <h3 class="heading-counter">{{ $milestone['title'] }}</h3>
-                                </div>
-
-                                <p class="counter__para">{{ $milestone['description'] }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-        </div>
-    </section>
-@endif
+        </section>
+    @endif
 
 
     <!--=====================================-->
     <!--=  Enriching-Program  Sec Start =-->
     <!--=====================================-->
     @if (count($application_process) > 0)
-    <section class="enchanting-program pt-0">
-        <div class="container">
-            <div class="enchanting-program-wrap">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-lg-10">
-                        <div class="heading-1 text-center">
-                            <h2>How to apply</h2>
-                            <p>By choosing dual degree programs, it means you can graduate with two degrees at the
-                                end of your studies.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="enchanting-pr-div-wrap">
-                <div class="row row-cols-xl-5 row-cols-lg-3 row-cols-md-2 row-cols-1">
-                    @foreach ($application_process as $process)
-                    <div class="col">
-                        <div class="enchanting-pr-img-div rbt-hover">
-                            <div class="enchanting-pr-img">
-                                <img src="{{ Storage::url($process['process_image']) }}" alt="">
-                            </div>
-                            <div class="enchanting-pr-text">
-                                <h4>{{ $process['process_desc'] }}</h4>
-                                </h4>
-                            </div>
-                            <div class="arw-icon">
-                                <img src="{{ asset('frontend_assets/images/arrow-icon.png') }}" alt="">
+        <section class="enchanting-program pt-0">
+            <div class="container">
+                <div class="enchanting-program-wrap">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-lg-10">
+                            <div class="heading-1 text-center">
+                                <h2>How to apply</h2>
+                                <p>By choosing dual degree programs, it means you can graduate with two degrees at the
+                                    end of your studies.</p>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="enchanting-pr-div-wrap">
+                    <div class="row row-cols-xl-5 row-cols-lg-3 row-cols-md-2 row-cols-1">
+                        @foreach ($application_process as $process)
+                            <div class="col">
+                                <div class="enchanting-pr-img-div rbt-hover">
+                                    <div class="enchanting-pr-img">
+                                        <img src="{{ Storage::url($process['process_image']) }}" alt="">
+                                    </div>
+                                    <div class="enchanting-pr-text">
+                                        <h4>{{ $process['process_desc'] }}</h4>
+                                        </h4>
+                                    </div>
+                                    <div class="arw-icon">
+                                        <img src="{{ asset('frontend_assets/images/arrow-icon.png') }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
 
-                    @endforeach
-
+                    </div>
+                </div>
+                <div class="text-center mt-lg-5">
+                    <a target="_blank" class="cta_btn"
+                        href="https://application.msu.edu.in/">{{ $process['button_text'] }}</a>
                 </div>
             </div>
-            <div class="text-center mt-lg-5">
-                <a target="_blank" class="cta_btn" href="https://application.msu.edu.in/">{{ $process['button_text'] }}</a>
-            </div>
-        </div>
-    </section>
+        </section>
     @endif
 
 @endsection
 
 @push('scripts')
-
     <script>
         $(document).ready(function() {
             function loadMoreBlogs(program_type, course_type, search) {
@@ -482,7 +415,7 @@ background-position: center;">
                 course_type = $(this).val();
                 var program_type = $('#program_type').val();
                 var search = $('#searchInput').val();
-                loadMoreBlogs( program_type, course_type, search);
+                loadMoreBlogs(program_type, course_type, search);
             });
 
             $('#searchInput').on('keyup', function() {
@@ -492,6 +425,5 @@ background-position: center;">
                 loadMoreBlogs(program_type, course_type, search);
             });
         });
-
     </script>
 @endpush

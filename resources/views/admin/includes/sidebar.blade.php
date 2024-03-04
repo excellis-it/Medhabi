@@ -142,7 +142,7 @@
                 </ul>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/pages/events/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('events.index') }}">Events </a></li>
-                    <li class="{{ Request::is('admin/pages/program-types-cms') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('program-types-cms.index') }}">ProgramTypes </a></li>
+                    <li class="{{ Request::is('admin/pages/program-types-cms') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('program-types-cms.index') }}">Admission Program</a></li>
                 </ul>
             </li>
 

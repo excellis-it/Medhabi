@@ -62,27 +62,8 @@ class ProgramTypesCMSController extends Controller
             'seo_title' => 'nullable',
             'seo_description' => 'nullable',
             'seo_keywords' => 'nullable',
-
-        ], [
-            'banner_image.required' => 'The banner image field is required.',
-            'banner_image.image' => 'The banner image must be an image.',
-            'banner_image.mimes' => 'The banner image must be a file of type: jpeg, png, jpg, gif, svg.',
-            'section_1_image.required' => 'The section 1 image field is required.',
-            'section_1_image.image' => 'The section 1 image must be an image.',
-            'section_1_image.mimes' => 'The section 1 image must be a file of type: jpeg, png, jpg, gif, svg.',
-            'section_2_image.required' => 'The section 2 image field is required.',
-            'section_2_image.image' => 'The section 2 image must be an image.',
-            'section_2_image.mimes' => 'The section 2 image must be a file of type: jpeg, png, jpg, gif, svg.',
-            'name.required' => 'The name field is required.',
-            'banner_title.required' => 'The banner title field is required.',
-            'section_1_title.required' => 'The section 1 title field is required.',
-            'section_1_description.required' => 'The section 1 description field is required.',
-            'section_2_title.required' => 'The section 2 title field is required.',
-            'section_2_description.required' => 'The section 2 description field is required.',
-            'section_4_title.required' => 'The section 4 title field is required.',
-            'section_4_description.required' => 'The section 4 description field is required.',
         ]);
-
+        dd($request->all());
         $slug = $this->createSlug($request->name);
         $is_slug_exists = ProgramTypesCMS::where('slug', $slug)->first();
         if ($is_slug_exists) {
@@ -104,9 +85,6 @@ class ProgramTypesCMSController extends Controller
         $programtypescms->section_2_image = $this->imageUpload($request->section_2_image, 'program_types_cms');
         $programtypescms->section_3_title = $request->section_3_title;
         $programtypescms->section_3_description = $request->section_3_description;
-        // $programtypescms->section_3_slider_title = json_encode($request->section_3_slider_title);
-        // $programtypescms->section_3_slider_description = json_encode($request->section_3_slider_description);
-        // $programtypescms->section_3_slider_image = json_encode($this->storeMultipleFiles($request->section_2_image, 'program_types_cms'));
         $programtypescms->section_4_title = $request->section_4_title;
         $programtypescms->section_4_description = $request->section_4_description;
         $programtypescms->seo_title = $request->seo_title;
@@ -114,18 +92,22 @@ class ProgramTypesCMSController extends Controller
         $programtypescms->seo_keywords = $request->seo_keywords;
         $programtypescms->save();
 
-        if($request->section_3_slider_title) {
-            $bachelorDurations = new BachelorDurationsCMS();
-
-            $bachelorDurations->duration_title = $request->section_3_slider_title;
-            $bachelorDurations->duration_desc = $request->section_3_slider_description;
-            $bachelorDurations->duration_image = $this->storeMultipleFiles($request->section_3_slider_image, 'program_types_cms');
-
-            $bachelorDurations->save();
+        if ($request->section_3_slider_title) {
+            foreach ($request->section_3_slider_title as $key => $value) {
+               if ($value != null) {
+                $bachelorDurations = new BachelorDurationsCMS();
+                $bachelorDurations->program_type_cms_id = $programtypescms->id;
+                $bachelorDurations->duration_title = $value;
+                $bachelorDurations->duration_desc = $request->section_3_slider_description[$key];
+                if (isset($request->file('section_3_slider_image')[$key]) && $request->hasFile('section_3_slider_image') && $request->file('section_3_slider_image')[$key]) {
+                    $bachelorDurations->duration_image = $this->imageUpload($request->file('section_3_slider_image')[$key], 'program_types_cms');
+                }
+                $bachelorDurations->save();
+               }
+            }
         }
 
         return redirect()->route('program-types-cms.index')->with('success', 'Program Type CMS created successfully.');
-
     }
 
     /**
@@ -148,7 +130,7 @@ class ProgramTypesCMSController extends Controller
     public function edit($id)
     {
         $programtypes = ProgramType::orderBy('name', 'desc')->get();
-        $programtypes = ProgramType::all();
+        $programtypescms = ProgramTypesCMS::find($id);
         return view('admin.pages.program_types.edit', compact('programtypescms', 'programtypes'));
     }
 
@@ -178,7 +160,7 @@ class ProgramTypesCMSController extends Controller
         ]);
 
         $programtypescms = ProgramTypesCMS::find($id);
-        if($programtypescms->name != $request->name){
+        if ($programtypescms->name != $request->name) {
             $slug = $this->createSlug($request->name);
             $is_slug_exists = ProgramTypesCMS::where('slug', $slug)->first();
             if ($is_slug_exists) {
@@ -199,22 +181,42 @@ class ProgramTypesCMSController extends Controller
         $programtypescms->section_4_title = $request->section_4_title;
         $programtypescms->section_4_description = $request->section_4_description;
         $programtypescms->seo_title = $request->seo_title;
-        $programtypescms->seo->description = $request->seo_description;
+        $programtypescms->seo_description = $request->seo_description;
         $programtypescms->seo_keywords = $request->seo_keywords;
 
-        if($request->hasFile('banner_image')){
+        if ($request->hasFile('banner_image')) {
             $programtypescms->banner_image = $this->imageUpload($request->banner_image, 'program_types_cms');
         }
-        if($request->hasFile('section_1_image')){
+        if ($request->hasFile('section_1_image')) {
             $programtypescms->section_1_image = $this->imageUpload($request->section_1_image, 'program_types_cms');
         }
-        if($request->hasFile('section_2_image')){
+        if ($request->hasFile('section_2_image')) {
             $programtypescms->section_2_image = $this->imageUpload($request->section_2_image, 'program_types_cms');
         }
 
         $programtypescms->save();
 
-        return redirect()->route('program-types-cms.index')->with('success', 'Program Type CMS updated successfully.');
+        if ($request->section_3_slider_title) {
+            foreach ($request->section_3_slider_title as $key => $value) {
+                if ($value != null) {
+                    if (isset($request->section_3_slider_image_id[$key])) {
+                        $bachelorDurations = BachelorDurationsCMS::find($request->section_3_slider_image_id[$key]);
+                    } else {
+                        $bachelorDurations = new BachelorDurationsCMS();
+                    }
+                    $bachelorDurations->program_type_cms_id = $programtypescms->id ?? null;
+                    $bachelorDurations->duration_title = $value ?? null;
+                    $bachelorDurations->duration_desc = $request->section_3_slider_description[$key] ?? null;
+                    if (isset($request->file('section_3_slider_image')[$key]) && $request->hasFile('section_3_slider_image') && $request->file('section_3_slider_image')[$key]) {
+                        $bachelorDurations->duration_image = $this->imageUpload($request->file('section_3_slider_image')[$key], 'program_types_cms');
+                    }
+                    $bachelorDurations->save();
+                }
+
+            }
+        }
+
+        return redirect()->route('program-types-cms.index')->with('message', 'Program Type CMS updated successfully.');
     }
 
     /**

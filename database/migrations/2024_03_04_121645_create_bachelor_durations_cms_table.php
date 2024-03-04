@@ -15,6 +15,7 @@ class CreateBachelorDurationsCmsTable extends Migration
     {
         Schema::create('bachelor_durations_cms', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('program_type_cms_id')->nullable();
             $table->string('duration_image')->nullable();
             $table->string('duration_title')->nullable();
             $table->longText('duration_desc')->nullable();

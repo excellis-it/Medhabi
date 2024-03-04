@@ -16,4 +16,9 @@ class ProgramTypesCMS extends Model
     {
         return $this->belongsTo(ProgramType::class, 'program_type_id');
     }
+
+    public function bachelorDurations()
+    {
+        return $this->hasMany(BachelorDurationsCMS::class, 'program_type_cms_id');
+    }
 }

@@ -1,18 +1,20 @@
 @extends('admin.layouts.master')
 @section('title')
-    {{ env('APP_NAME') }} | Create Program Types Page
+    {{ env('APP_NAME') }} | Update Program Types Page
 @endsection
 @push('styles')
 @endpush
 @section('head')
-    Create Program-Types Page
+    Update Program-Types Page
 @endsection
 
 @section('content')
     <div class="main-content">
         <div class="inner_page">
             <div class="card search_bar sales-report-card">
-                <form action="{{ route('program-types-cms.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('program-types-cms.update', $programtypescms->id) }}" method="post"
+                    enctype="multipart/form-data">
+                    @method('PUT')
                     @csrf
                     <div class="sales-report-card-wrap">
                         <div class="form-head">
@@ -26,7 +28,8 @@
                                         {{-- name --}}
                                         <label for="floatingInputValue">Menu Name*</label>
                                         <input type="text" class="form-control" id="floatingInputValue" name="name"
-                                            value="{{ ($programtypescms->name) ?  $programtypescms->name : old('name') }}" placeholder="Menu Name*">
+                                            value="{{ $programtypescms->name ? $programtypescms->name : old('name') }}"
+                                            placeholder="Menu Name*">
                                         @if ($errors->has('name'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('name') }}</div>
@@ -42,7 +45,8 @@
                                             aria-label="Floating label select example">
                                             <option selected>Select Program Type</option>
                                             @foreach ($programtypes as $program_type)
-                                                <option value="{{ $program_type->id }}" {{ $programtypescms->program_type_id == $program_type->id ? 'selected' : '' }}>
+                                                <option value="{{ $program_type->id }}"
+                                                    {{ $programtypescms->program_type_id == $program_type->id ? 'selected' : '' }}>
                                                     {{ $program_type->name }}</option>
                                             @endforeach
                                         </select>
@@ -66,8 +70,10 @@
                                     <div class="form-group">
                                         {{-- banner_title --}}
                                         <label for="floatingInputValue">Banner Title*</label>
-                                        <input type="text" class="form-control" id="floatingInputValue" name="banner_title"
-                                            value="{{ isset($programtypescms['banner_title']) ? $programtypescms['banner_title'] : old('banner_title') }}" placeholder="Banner Title*">
+                                        <input type="text" class="form-control" id="floatingInputValue"
+                                            name="banner_title"
+                                            value="{{ isset($programtypescms['banner_title']) ? $programtypescms['banner_title'] : old('banner_title') }}"
+                                            placeholder="Banner Title*">
                                         @if ($errors->has('banner_title'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('banner_title') }}</div>
@@ -79,7 +85,7 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- banner_title --}}
-                                        <label for="floatingInputValue">Banner Image*</label>
+                                        <label for="floatingInputValue">Banner Image</label>
                                         <input type="file" class="form-control" id="floatingInputValue"
                                             name="banner_image"
                                             value="{{ isset($programtypescms['banner_image']) ? $programtypescms['banner_image'] : old('banner_image') }}"
@@ -92,23 +98,25 @@
                                 </div>
                             </div>
                         </div>
-                            <div class="row justify-content-between">
-                                <div class="col-md-12">
-                                    <div class="form-group-div">
-                                        <div class="form-group">
-                                            {{-- banner_title --}}
-                                            <label for="floatingInputValue">Banner Description*</label>
-                                            <input type="text" class="form-control" id="floatingInputValue" name="banner_description"
-                                                value="{{ isset($programtypescms['banner_description']) ? $programtypescms['banner_description'] : old('banner_description') }}" placeholder="Banner Description*">
-                                            @if ($errors->has('banner_description'))
-                                                <div class="error" style="color:red;">
-                                                    {{ $errors->first('banner_description') }}</div>
-                                            @endif
-                                        </div>
+                        <div class="row justify-content-between">
+                            <div class="col-md-12">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- banner_title --}}
+                                        <label for="floatingInputValue">Banner Description*</label>
+                                        <input type="text" class="form-control" id="floatingInputValue"
+                                            name="banner_description"
+                                            value="{{ isset($programtypescms['banner_description']) ? $programtypescms['banner_description'] : old('banner_description') }}"
+                                            placeholder="Banner Description*">
+                                        @if ($errors->has('banner_description'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('banner_description') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                     <div class="sales-report-card-wrap mt-5">
                         <div class="form-head">
@@ -122,7 +130,8 @@
                                         {{-- meta title --}}
                                         <label for="floatingInputValue">Section 1 Title*</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_1_title" value="{{ ($programtypescms->section_1_title) ?  $programtypescms->section_1_title : old('section_1_title') }}"
+                                            name="section_1_title"
+                                            value="{{ $programtypescms->section_1_title ? $programtypescms->section_1_title : old('section_1_title') }}"
                                             placeholder="Section 1 Title">
                                         @if ($errors->has('section_1_title'))
                                             <div class="error" style="color:red;">
@@ -135,9 +144,10 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta title --}}
-                                        <label for="floatingInputValue">Section 1 Image*</label>
+                                        <label for="floatingInputValue">Section 1 Image</label>
                                         <input type="file" class="form-control" id="floatingInputValue"
-                                            name="section_1_image" value="{{ isset($programtypescms['section_1_image']) ? $programtypescms['section_1_image'] : old('section_1_image') }}"
+                                            name="section_1_image"
+                                            value="{{ isset($programtypescms['section_1_image']) ? $programtypescms['section_1_image'] : old('section_1_image') }}"
                                             placeholder="Section 1 Image">
                                         @if ($errors->has('section_1_image'))
                                             <div class="error" style="color:red;">
@@ -152,7 +162,7 @@
                                         {{-- meta description --}}
                                         <label for="floatingInputValue">Section 1 Description*</label>
                                         <textarea name="section_1_description" id="section_1_description" cols="30" rows="10"
-                                            placeholder="Section 1 Description" class="form-control">{{ ($programtypescms->section_1_description) ?  $programtypescms->section_1_description : old('section_1_description') }}</textarea>
+                                            placeholder="Section 1 Description" class="form-control">{{ $programtypescms->section_1_description ? $programtypescms->section_1_description : old('section_1_description') }}</textarea>
                                         @if ($errors->has('section_1_description'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('section_1_description') }}</div>
@@ -174,7 +184,8 @@
                                         {{-- meta title --}}
                                         <label for="floatingInputValue">Section 2 Title*</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_2_title" value="{{ ($programtypescms->section_2_title) ?  $programtypescms->section_2_title : old('section_2_title') }}"
+                                            name="section_2_title"
+                                            value="{{ $programtypescms->section_2_title ? $programtypescms->section_2_title : old('section_2_title') }}"
                                             placeholder="Section 2 Title">
                                         @if ($errors->has('section_2_title'))
                                             <div class="error" style="color:red;">
@@ -187,7 +198,7 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- banner_title --}}
-                                        <label for="floatingInputValue">Section 2 Image*</label>
+                                        <label for="floatingInputValue">Section 2 Image</label>
                                         <input type="file" class="form-control" id="floatingInputValue"
                                             name="section_2_image">
                                         @if ($errors->has('section_2_image'))
@@ -203,7 +214,7 @@
                                         {{-- meta description --}}
                                         <label for="floatingInputValue">Section 2 Description*</label>
                                         <textarea name="section_2_description" id="section_2_description" cols="30" rows="10"
-                                            placeholder="Section 2 Description" class="form-control">{{ ($programtypescms->section_2_description) ?  $programtypescms->section_2_description : old('section_2_description') }}</textarea>
+                                            placeholder="Section 2 Description" class="form-control">{{ $programtypescms->section_2_description ? $programtypescms->section_2_description : old('section_2_description') }}</textarea>
                                         @if ($errors->has('section_2_description'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('section_2_description') }}</div>
@@ -224,9 +235,10 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta title --}}
-                                        <label for="floatingInputValue">Section 3 Title*</label>
+                                        <label for="floatingInputValue">Section 3 Title</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_3_title" value="{{ ($programtypescms->section_3_title) ?  $programtypescms->section_3_title : old('section_3_title.0') }}"
+                                            name="section_3_title"
+                                            value="{{ $programtypescms->section_3_title ? $programtypescms->section_3_title : old('section_3_title.0') }}"
                                             placeholder="Section 3 Title">
                                         @if ($errors->has('section_3_title'))
                                             <div class="error" style="color:red;">
@@ -239,9 +251,10 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta description --}}
-                                        <label for="floatingInputValue">Section 3 Description*</label>
+                                        <label for="floatingInputValue">Section 3 Description</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_3_description" value="{{ ($programtypescms->section_3_description) ?  $programtypescms->section_3_description : old('section_3_description') }}"
+                                            name="section_3_description"
+                                            value="{{ $programtypescms->section_3_description ? $programtypescms->section_3_description : old('section_3_description') }}"
                                             placeholder="Section 3 Description">
                                         @if ($errors->has('section_3_description'))
                                             <div class="error" style="color:red;">
@@ -252,19 +265,78 @@
                             </div>
                         </div>
                         <div class="row" id="add_more">
-                            @if($programtypescms->section_3_slider_title)
-                                @php
-                                    // $section_3_slider_title = Str::of($programtypescms->section_3_slider_title)->explode(', ');
-                                @endphp
-                            @endif
-                            @foreach($programtypescms->section_3_slider_title as $key => $slider_title)
+                            @if (isset($programtypescms->bachelorDurations) && count($programtypescms->bachelorDurations) > 0)
+                                @foreach ($programtypescms->bachelorDurations as $key => $bachelorDuration)
+                                    <div class="col-xl-3 col-md-3">
+                                        <div class="form-group-div">
+                                            <div class="form-group">
+                                                {{-- meta title --}}
+                                                <label for="floatingInputValue">Section 3 Slider Title</label>
+                                                <input type="text" class="form-control" id="floatingInputValue"
+                                                    name="section_3_slider_title[]"
+                                                    value="{{ $bachelorDuration->duration_title }}"
+                                                    placeholder="Section 3 Slider Title">
+                                                @if ($errors->has('section_3_slider_title'))
+                                                    <div class="error" style="color:red;">
+                                                        {{ $errors->first('section_3_slider_title') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group-div">
+                                            <div class="form-group">
+                                                {{-- banner_title --}}
+                                                <label for="floatingInputValue">Section 3 Slider Image</label>
+                                                <input type="file" class="form-control" id="floatingInputValue"
+                                                    name="section_3_slider_image[]">
+                                                    <input type="hidden" name="section_3_slider_image_id[]" value="{{ $bachelorDuration->id }}">
+                                                @if ($errors->has('section_3_slider_image'))
+                                                    <div class="error" style="color:red;">
+                                                        {{ $errors->first('section_3_slider_image') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4">
+                                        <div class="form-group-div">
+                                            <div class="form-group">
+                                                {{-- meta description --}}
+                                                <label for="floatingInputValue">Section 3 Slider Description</label>
+                                                <input type="text" class="form-control" id="floatingInputValue"
+                                                    name="section_3_slider_description[]"
+                                                    value="{{ $bachelorDuration->duration_desc }}"
+                                                    placeholder="Section 3 Slider Description">
+                                                @if ($errors->has('section_3_slider_description'))
+                                                    <div class="error" style="color:red;">
+                                                        {{ $errors->first('section_3_slider_description') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if ($key > 0)
+                                        <div class="col-xl-2">
+                                            <div class="btn-1">
+                                                <button type="button" class="remove"><i class="ph ph-minus"></i>
+                                                    </button>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="col-xl-2">
+                                            <div class="btn-1">
+                                                <button type="button" class="add-more"><i class="ph ph-plus"></i> </button>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @else
                                 <div class="col-xl-3 col-md-3">
                                     <div class="form-group-div">
                                         <div class="form-group">
                                             {{-- meta title --}}
-                                            <label for="floatingInputValue">Section 3 Slider Title*</label>
+                                            <label for="floatingInputValue">Section 3 Slider Title</label>
                                             <input type="text" class="form-control" id="floatingInputValue"
-                                                name="section_3_slider_title[]" value="{{ !empty($slider_title) ? explode('. ', $slider_title)[1] : '' }}"
+                                                name="section_3_slider_title[]" value=""
                                                 placeholder="Section 3 Slider Title">
                                             @if ($errors->has('section_3_slider_title'))
                                                 <div class="error" style="color:red;">
@@ -273,20 +345,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                            @if($programtypescms->section_3_slider_image)
-                                @php
-                                    $section_3_slider_image = Str::of($programtypescms->section_3_slider_image)->explode(', ');
-                                @endphp
-                            @endif
-                            @foreach($section_3_slider_image as $key => $slider_image)
                                 <div class="col-md-3">
                                     <div class="form-group-div">
                                         <div class="form-group">
                                             {{-- banner_title --}}
-                                            <label for="floatingInputValue">Section 3 Slider Image*</label>
+                                            <label for="floatingInputValue">Section 3 Slider Image</label>
                                             <input type="file" class="form-control" id="floatingInputValue"
-                                                name="section_3_slider_image[]" value="{{ isset($slider_image) ? explode('. ', $slider_image) : '' }}">
+                                                name="section_3_slider_image[]">
                                             @if ($errors->has('section_3_slider_image'))
                                                 <div class="error" style="color:red;">
                                                     {{ $errors->first('section_3_slider_image') }}</div>
@@ -294,20 +359,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                            @if($programtypescms->section_3_slider_description)
-                                @php
-                                    $section_3_slider_description = Str::of($programtypescms->section_3_slider_description)->explode(', ');
-                                @endphp
-                            @endif
-                            @foreach($section_3_slider_description as $key => $slider_description)
                                 <div class="col-xl-4 col-md-4">
                                     <div class="form-group-div">
                                         <div class="form-group">
                                             {{-- meta description --}}
-                                            <label for="floatingInputValue">Section 3 Slider Description*</label>
+                                            <label for="floatingInputValue">Section 3 Slider Description</label>
                                             <input type="text" class="form-control" id="floatingInputValue"
-                                                name="section_3_slider_description[]" value="{{ isset($slider_description) ? explode('. ', $slider_description)[1] : '' }}"
+                                                name="section_3_slider_description[]" value=""
                                                 placeholder="Section 3 Slider Description">
                                             @if ($errors->has('section_3_slider_description'))
                                                 <div class="error" style="color:red;">
@@ -316,13 +374,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                            <div class="col-xl-2">
-                                <div class="btn-1">
-                                    <button type="button" class="add-more"><i class="ph ph-plus "></i>
-                                    </button>
+                                <div class="col-xl-2">
+                                    <div class="btn-1">
+                                        <button type="button" class="add-more"><i class="ph ph-plus "></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                     <div class="sales-report-card-wrap mt-5">
@@ -336,7 +394,8 @@
                                         {{-- meta title --}}
                                         <label for="floatingInputValue">Section 4 Title*</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_4_title" value="{{ ($programtypescms->section_4_title) ?  $programtypescms->section_4_title : old('section_4_title') }}"
+                                            name="section_4_title"
+                                            value="{{ $programtypescms->section_4_title ? $programtypescms->section_4_title : old('section_4_title') }}"
                                             placeholder="Section 4 Title">
                                         @if ($errors->has('section_4_title'))
                                             <div class="error" style="color:red;">
@@ -350,8 +409,10 @@
                                     <div class="form-group">
                                         {{-- banner_title --}}
                                         <label for="floatingInputValue">Section 4 Description*</label>
-                                        <input type="text" class="form-control" id="floatingInputValue" name="section_4_description"
-                                            value="{{ ($programtypescms->section_4_description) ?  $programtypescms->section_4_description : old('section_4_description') }}" placeholder="Section 4 Description*">
+                                        <input type="text" class="form-control" id="floatingInputValue"
+                                            name="section_4_description"
+                                            value="{{ $programtypescms->section_4_description ? $programtypescms->section_4_description : old('section_4_description') }}"
+                                            placeholder="Section 4 Description*">
                                         @if ($errors->has('section_4_description'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('section_4_description') }}</div>
@@ -374,7 +435,9 @@
                                         {{-- meta title --}}
                                         <label for="floatingInputValue">Meta Title</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="seo_title" value="{{ ($programtypescms->seo_title) ?  $programtypescms->seo_title : old('seo_title') }}" placeholder="Meta Title">
+                                            name="seo_title"
+                                            value="{{ $programtypescms->seo_title ? $programtypescms->seo_title : old('seo_title') }}"
+                                            placeholder="Meta Title">
                                         @if ($errors->has('seo_title'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('seo_title') }}</div>
@@ -388,7 +451,8 @@
                                         {{-- meta title --}}
                                         <label for="floatingInputValue">Meta Keywords</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="seo_keywords" value="{{ ($programtypescms->seo_keywords) ?  $programtypescms->seo_keywords : old('seo_keywords') }}"
+                                            name="seo_keywords"
+                                            value="{{ $programtypescms->seo_keywords ? $programtypescms->seo_keywords : old('seo_keywords') }}"
                                             placeholder="Meta Keywords">
                                         @if ($errors->has('seo_keywords'))
                                             <div class="error" style="color:red;">
@@ -403,7 +467,7 @@
                                         {{-- meta description --}}
                                         <label for="floatingInputValue">Meta Description</label>
                                         <textarea name="seo_description" id="seo_description" cols="30" rows="10" placeholder="Meta Description"
-                                            class="form-control">{{ ($programtypescms->seo_description) ?  $programtypescms->seo_description : old('seo_description') }}</textarea>
+                                            class="form-control">{{ $programtypescms->seo_description ? $programtypescms->seo_description : old('seo_description') }}</textarea>
                                         @if ($errors->has('seo_description'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('seo_description') }}</div>
@@ -411,10 +475,10 @@
                                     </div>
                                 </div>
                             </div>
-                             {{-- button --}}
-                             <div class="col-xl-12">
+                            {{-- button --}}
+                            <div class="col-xl-12">
                                 <div class="btn-1">
-                                    <button type="submit">Create</button>
+                                    <button type="submit">Update</button>
                                 </div>
                             </div>
                         </div>
@@ -427,14 +491,14 @@
 @endsection
 
 @push('scripts')
-<script>
-    $document.ready(function()) {
+    <script>
+        $(document).ready(function() {
         $('.add-more').click(function() {
             var html = `
             <div class="col-xl-3 col-md-3">
                 <div class="form-group-div">
                     <div class="form-group">
-                        <label for="floatingInputValue">Section 3 Slider Title*</label>
+                        <label for="floatingInputValue">Section 3 Slider Title</label>
                         <input type="text" class="form-control" id="floatingInputValue"
                             name="section_3_slider_title[]"
                             placeholder="Section 3 Slider Title">
@@ -446,7 +510,7 @@
                 <div class="form-group-div">
                     <div class="form-group">
 
-                        <label for="floatingInputValue">Section 3 Slider Image*</label>
+                        <label for="floatingInputValue">Section 3 Slider Image</label>
                         <input type="file" class="form-control" id="floatingInputValue"
                             name="section_3_slider_image[]">
 
@@ -456,7 +520,7 @@
             <div class="col-xl-4 col-md-4">
                 <div class="form-group-div">
                     <div class="form-group">
-                        <label for="floatingInputValue">Section 3 Slider Description*</label>
+                        <label for="floatingInputValue">Section 3 Slider Description</label>
                         <input type="text" class="form-control" id="floatingInputValue"
                             name="section_3_slider_description[]"
                             placeholder="Section 3 Slider Description">
@@ -469,5 +533,16 @@
                 </div>
             </div>`;
             $("#add_more").append(html);
+            });
+
+            // Remove functionality
+            $(document).on("click", ".remove", function() {
+               $(this).parent().parent().prev().remove();
+                $(this).parent().parent().prev().remove();
+                $(this).parent().parent().prev().remove();
+                $(this).parent().parent().remove();
+
+            });
+    });
     </script>
 @endpush
