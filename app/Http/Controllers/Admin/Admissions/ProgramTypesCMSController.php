@@ -43,6 +43,7 @@ class ProgramTypesCMSController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => 'required',
             'banner_title' => 'required',
@@ -99,15 +100,21 @@ class ProgramTypesCMSController extends Controller
         $programtypescms->section_2_image = $this->imageUpload($request->section_2_image, 'program_types_cms');
         $programtypescms->section_3_title = $request->section_3_title;
         $programtypescms->section_3_description = $request->section_3_description;
-        foreach($request->section_3_slider_title as $key => $title){
-            $programtypescms->section_3_slider_title = $key . ' '. $title . ',';
-        }
-        foreach($request->section_3_slider_description as $key1 => $description){
-            $programtypescms->section_3_slider_description = $key1 . ' '. $description . ',';
-        }
-        foreach($request->section_3_slider_image as $imagekey => $image){
-            $programtypescms->section_3_slider_image = $imagekey . ' '. $image . ',';
-        }
+        $programtypescms->section_3_slider_title = json_encode($request->section_3_slider_title);
+        $programtypescms->section_3_slider_description = json_encode($request->section_3_slider_description);
+        $programtypescms->section_3_slider_image = json_encode($this->storeMultipleFiles($request->section_2_image, 'program_types_cms'));
+        // foreach($request->section_3_slider_title as $key => $title){
+        //     $programtypescms->section_3_slider_title = ($key + 1) . ' '. $title . ',';
+        // }
+        // foreach($request->section_3_slider_description as $key1 => $description){
+        //     $programtypescms->section_3_slider_description = ($key1 + 1) . ' '. $description . ',';
+        // }
+        // foreach($request->section_3_slider_image as $imagekey => $image){
+        //     $name = date('YmdHi') . $image->getClientOriginalName();
+        //     $image_path = $image->store('program_types_cms', 'public');
+
+        //     $programtypescms->section_3_slider_image = ($imagekey + 1) . ' '. $image_path . ',';
+        // }
         $programtypescms->section_4_title = $request->section_4_title;
         $programtypescms->section_4_description = $request->section_4_description;
         $programtypescms->seo_title = $request->seo_title;

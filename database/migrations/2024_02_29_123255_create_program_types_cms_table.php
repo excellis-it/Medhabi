@@ -28,9 +28,9 @@ class CreateProgramTypesCmsTable extends Migration
             $table->string('section_2_image')->nullable();
             $table->string('section_3_title')->nullable();
             $table->string('section_3_description')->nullable();
-            $table->string('section_3_slider_title')->nullable();
-            $table->longText('section_3_slider_description')->nullable();
-            $table->string('section_3_slider_image')->nullable();
+            $table->json('section_3_slider_title')->nullable();
+            $table->json('section_3_slider_description')->nullable();
+            $table->json('section_3_slider_image')->nullable();
             $table->string('section_4_title')->nullable();
             $table->string('section_4_description')->nullable();
             $table->string('seo_title')->nullable();

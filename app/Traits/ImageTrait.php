@@ -20,4 +20,17 @@ trait ImageTrait
             return $image_path;
         }
     }
+
+    public function storeMultipleFiles($files, $path)
+    {
+        $imagePaths = [];
+
+        foreach ($files as $file) {
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $imagePath = $file->store($path, 'public');
+            $imagePaths[] = $imagePath; // Store the path for each file
+        }
+
+        return $imagePaths; // Return an array of stored file paths
+    }
 }

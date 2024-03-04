@@ -388,7 +388,7 @@
 
 @push('scripts')
 <script>
-    $document.ready(function()) {
+    $(document).ready(function() { 
         $('.add-more').click(function() {
             var html = `
             <div class="col-xl-3 col-md-3">
@@ -429,5 +429,18 @@
                 </div>
             </div>`;
             $("#add_more").append(html);
+            });
+
+            // Remove functionality
+            $(document).on("click", ".remove", function() {
+               $(this).parent().parent().prev().remove();
+                $(this).parent().parent().prev().remove();
+                $(this).parent().parent().prev().remove();
+                $(this).parent().parent().remove();
+                
+            });
+    });
+        
+            
     </script>
 @endpush

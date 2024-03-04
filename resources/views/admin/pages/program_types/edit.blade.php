@@ -207,7 +207,7 @@
                                         {{-- meta title --}}
                                         <label for="floatingInputValue">Section 3 Title*</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_3_title" value="{{ ($programtypescms->section_3_title) ?  $programtypescms->section_3_title : old('section_3_title') }}"
+                                            name="section_3_title" value="{{ ($programtypescms->section_3_title) ?  $programtypescms->section_3_title : old('section_3_title.0') }}"
                                             placeholder="Section 3 Title">
                                         @if ($errors->has('section_3_title'))
                                             <div class="error" style="color:red;">
@@ -238,7 +238,7 @@
                                     $section_3_slider_title = Str::of($programtypescms->section_3_slider_title)->explode(', '); 
                                 @endphp
                             @endif
-                            @foreach($section_3_slider_title as $key => $slider_title)
+                            @foreach($programtypescms->section_3_slider_title as $key => $slider_title)
                                 <div class="col-xl-3 col-md-3">
                                     <div class="form-group-div">
                                         <div class="form-group">
