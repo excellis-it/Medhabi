@@ -48,23 +48,7 @@
                         </div>
                         
                     </div>
-                    <div class="row justify-content-between" >
-                        <div class="col-md-6">
-                            <div class="form-group-div">
-                                <div class="form-group">
-                                    {{-- banner_title --}}
-                                    <label for="floatingInputValue">Button Text*</label>
-                                    <input type="text" class="form-control" id="floatingInputValue"
-                                        name="button_text" required placeholder="Add Button Text">
-                                        
-                                    @if ($errors->has('button_text'))
-                                        <div class="error" style="color:red;">
-                                            {{ $errors->first('button_text') }}</div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="col-xl-12">
                         <div class="btn-1">
                             <button type="submit">Create Application Process</button>

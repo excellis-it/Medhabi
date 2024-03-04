@@ -58,9 +58,9 @@ class ApplicationProcessController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'button_text' => 'required',
+            'process_desc' => 'required',
         ], [
-            'button_text.required' => 'Button Text field is required.',
+            'process_desc.required' => 'Process Text field is required.',
         ]);
 
         $applicationProcess = new ApplicationProcess();
@@ -69,7 +69,6 @@ class ApplicationProcessController extends Controller
         // }
         $applicationProcess->process_image = $this->imageUpload($request->process_image, 'application_process');
         $applicationProcess->process_desc = $request->process_desc;
-        $applicationProcess->button_text = $request->button_text;
         $applicationProcess->save();
 
         return redirect()->route('application-process.index')->with('success', 'Application Process added successfully.');
@@ -110,10 +109,8 @@ class ApplicationProcessController extends Controller
         $applicationProcess = ApplicationProcess::find($id);
         $request->validate([
             'process_desc' => 'required',
-            'button_text' => 'required',
         ], [
             'process_desc.required' => 'Process Description field is required.',
-            'button_text.required' => 'Button Text field is required.',
         ]);
 
         $applicationProcess->title = $request->title;
@@ -123,7 +120,6 @@ class ApplicationProcessController extends Controller
         }
         // $applicationProcess->process_image = $request->process_image;
         $applicationProcess->process_desc = $request->process_desc;
-        $applicationProcess->button_text = $request->button_text;
         $applicationProcess->save();
 
         return redirect()->route('admin.application-process.index')->with('success', 'Application Process updated successfully.');
