@@ -20,7 +20,7 @@
                         </div>
 
                         <div class="row justify-content-between">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- name --}}
@@ -30,6 +30,25 @@
                                         @if ($errors->has('name'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('name') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- program_type_id --}}
+                            <div class="col-md-6">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        <label for="floatingInputValue">Program Type*</label>
+                                        <select class="form-select" name="program_type_id" id="floatingSelectGrid"
+                                            aria-label="Floating label select example">
+                                            <option selected>Select Program Type</option>
+                                            @foreach ($programtypes as $program_type)
+                                                <option value="{{ $program_type->id }}">{{ $program_type->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('program_type_id'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('program_type_id') }}</div>
                                         @endif
                                     </div>
                                 </div>
@@ -90,7 +109,7 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                     <div class="sales-report-card-wrap mt-5">
                         <div class="form-head">
                             <h4>Section 1</h4>
@@ -321,7 +340,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="sales-report-card-wrap mt-5">
                         <div class="form-head">
                             <h4>SEO Management</h4>
@@ -388,7 +407,7 @@
 
 @push('scripts')
 <script>
-    $(document).ready(function() { 
+    $(document).ready(function() {
         $('.add-more').click(function() {
             var html = `
             <div class="col-xl-3 col-md-3">
@@ -396,20 +415,20 @@
                     <div class="form-group">
                         <label for="floatingInputValue">Section 3 Slider Title*</label>
                         <input type="text" class="form-control" id="floatingInputValue"
-                            name="section_3_slider_title[]" 
+                            name="section_3_slider_title[]"
                             placeholder="Section 3 Slider Title">
-                        
+
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group-div">
                     <div class="form-group">
-                        
+
                         <label for="floatingInputValue">Section 3 Slider Image*</label>
                         <input type="file" class="form-control" id="floatingInputValue"
                             name="section_3_slider_image[]">
-                        
+
                     </div>
                 </div>
             </div>
@@ -418,7 +437,7 @@
                     <div class="form-group">
                         <label for="floatingInputValue">Section 3 Slider Description*</label>
                         <input type="text" class="form-control" id="floatingInputValue"
-                            name="section_3_slider_description[]" 
+                            name="section_3_slider_description[]"
                             placeholder="Section 3 Slider Description">
                     </div>
                 </div>
@@ -437,10 +456,10 @@
                 $(this).parent().parent().prev().remove();
                 $(this).parent().parent().prev().remove();
                 $(this).parent().parent().remove();
-                
+
             });
     });
-        
-            
+
+
     </script>
 @endpush

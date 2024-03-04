@@ -31,7 +31,7 @@ class ProgramTypesCMSController extends Controller
      */
     public function create()
     {
-        $programtypes = ProgramType::all();
+        $programtypes = ProgramType::orderBy('name', 'desc')->get();
         return view('admin.pages.program_types.create', compact('programtypes'));
     }
 
@@ -45,6 +45,7 @@ class ProgramTypesCMSController extends Controller
     {
         // dd($request->all());
         $request->validate([
+            'program_type_id' => 'required',
             'name' => 'required',
             'banner_title' => 'required',
             'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
@@ -87,6 +88,7 @@ class ProgramTypesCMSController extends Controller
         }
 
         $programtypescms = new ProgramTypesCMS();
+        $programtypescms->program_type_id = $request->program_type_id;
         $programtypescms->name = $request->name;
         $programtypescms->slug = $slug;
         $programtypescms->banner_image = $this->imageUpload($request->banner_image, 'program_types_cms');
@@ -100,9 +102,16 @@ class ProgramTypesCMSController extends Controller
         $programtypescms->section_2_image = $this->imageUpload($request->section_2_image, 'program_types_cms');
         $programtypescms->section_3_title = $request->section_3_title;
         $programtypescms->section_3_description = $request->section_3_description;
-        $programtypescms->section_3_slider_title = json_encode($request->section_3_slider_title);
-        $programtypescms->section_3_slider_description = json_encode($request->section_3_slider_description);
-        $programtypescms->section_3_slider_image = json_encode($this->storeMultipleFiles($request->section_2_image, 'program_types_cms'));
+        if ($request->section_3_slider_title) {
+            $programtypescms->section_3_slider_title = json_encode($request->section_3_slider_title);
+        }
+        if ($request->section_3_slider_description) {
+            $programtypescms->section_3_slider_description = json_encode($request->section_3_slider_description);
+        }
+        if ($request->section_3_slider_image) {
+            $programtypescms->section_3_slider_image = json_encode($this->storeMultipleFiles($request->section_3_slider_image, 'program_types_cms'));
+        }
+
         // foreach($request->section_3_slider_title as $key => $title){
         //     $programtypescms->section_3_slider_title = ($key + 1) . ' '. $title . ',';
         // }
@@ -145,7 +154,7 @@ class ProgramTypesCMSController extends Controller
      */
     public function edit($id)
     {
-        $programtypescms = ProgramTypesCMS::find($id);
+        $programtypes = ProgramType::orderBy('name', 'desc')->get();
         $programtypes = ProgramType::all();
         return view('admin.pages.program_types.edit', compact('programtypescms', 'programtypes'));
     }
@@ -161,6 +170,7 @@ class ProgramTypesCMSController extends Controller
     {
         // dd($request->all());
         $request->validate([
+            'program_type_id' => 'required',
             'name' => 'required',
             'banner_title' => 'required',
             'section_1_title' => 'required',
@@ -183,6 +193,7 @@ class ProgramTypesCMSController extends Controller
             }
             $programtypescms->slug = $slug;
         }
+        $programtypescms->program_type_id = $request->program_type_id;
         $programtypescms->name = $request->name;
         $programtypescms->banner_title = $request->banner_title;
         $programtypescms->banner_description = $request->banner_description;
