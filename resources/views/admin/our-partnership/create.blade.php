@@ -34,6 +34,25 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- type --}}
+                            <div class="col-md-6">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        <label for="floatingInputValue">Type*</label>
+                                        <select class="form-select" name="type" id="floatingSelectGrid"
+                                            aria-label="Floating label select example">
+                                            <option selected>Select Type</option>
+                                            <option value="Digital">Digital</option>
+                                            <option value="Industry">Industry</option>
+                                            <option value="Knowledge">Knowledge</option>
+                                        </select>
+                                        @if ($errors->has('type'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('type') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group-div">
                                     <div class="form-group">
