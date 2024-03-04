@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class BachelorDurationsCMS extends Model
 {
     use HasFactory;
+
+    protected $table = 'bachelor_durations_cms';
 }
