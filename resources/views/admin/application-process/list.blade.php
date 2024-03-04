@@ -51,10 +51,6 @@ Application Process
                         <tr>
                             <th class="sorting" data-tippy-content="Sort by Id" data-sorting_type="asc" data-column_name="id" style="cursor: pointer">Id<span id="id_icon"></span>
                             </th>
-                            <th class="sorting" data-sorting_type="asc" data-column_name="title" style="cursor: pointer" data-tippy-content="Sort by Title">
-                                Title<span id="title_icon"></span></th>
-                            <th class="sorting" data-sorting_type="asc" data-column_name="title" style="cursor: pointer" data-tippy-content="Sort by Description">
-                                    Description<span id="description_icon"></span></th>
                             <th class="sorting" data-sorting_type="asc" data-column_name="title" style="cursor: pointer" data-tippy-content="Sort by Process Image">
                                     Process Image<span id="title_icon"></span></th>
                             <th class="sorting" data-sorting_type="asc" data-column_name="title" style="cursor: pointer" data-tippy-content="Sort by Process Description">

@@ -30,8 +30,6 @@ class ApplicationProcessController extends Controller
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             $applicationProcess = ApplicationProcess::where('id', 'like', '%' . $query . '%')
-                ->orWhere('title', 'like', '%' . $query . '%')
-                ->orWhere('description', 'like', '%' . $query . '%')
                 ->orWhere('process_desc', 'like', '%' . $query . '%')
                 ->orWhere('button_text', 'like', '%' . $query . '%')
                 ->orderBy($sort_by, $sort_type)
@@ -60,29 +58,17 @@ class ApplicationProcessController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
             'button_text' => 'required',
         ], [
-            'title.required' => 'Title field is required.',
-            'description.required' => 'Description field is required.',
             'button_text.required' => 'Button Text field is required.',
         ]);
 
         $applicationProcess = new ApplicationProcess();
-        $applicationProcess->title = $request->title;
-        $applicationProcess->description = $request->description;
-        foreach ($request->process_image as $image) {
-            $applicationProcess->process_image = $this->imageUpload($image, 'application-process');
-        }
         // if($request->hasFile('process_image')){
         //     $applicationProcess->process_image = $this->imageUpload($request->file('process_image'), 'application-process');
         // }
-        // $applicationProcess->process_image = $request->process_image;
-        foreach ($request->process_desc as $desc) {
-            $applicationProcess->process_desc = $desc;
-        }
-        // $applicationProcess->process_desc = $request->process_desc;
+        $applicationProcess->process_image = $this->imageUpload($request->process_image, 'application_process');
+        $applicationProcess->process_desc = $request->process_desc;
         $applicationProcess->button_text = $request->button_text;
         $applicationProcess->save();
 
@@ -123,13 +109,9 @@ class ApplicationProcessController extends Controller
     {
         $applicationProcess = ApplicationProcess::find($id);
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
             'process_desc' => 'required',
             'button_text' => 'required',
         ], [
-            'title.required' => 'Title field is required.',
-            'description.required' => 'Description field is required.',
             'process_desc.required' => 'Process Description field is required.',
             'button_text.required' => 'Button Text field is required.',
         ]);

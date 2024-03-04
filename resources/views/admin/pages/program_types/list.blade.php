@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-    All Schools Details - {{ env('APP_NAME') }}
+    All Program-Types Details - {{ env('APP_NAME') }}
 @endsection
 @push('styles')
     <style>

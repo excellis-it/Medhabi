@@ -2,8 +2,6 @@
 @foreach ($applicationProcess as $key => $application)
     <tr>
         <td>{{ $key + 1 }}</td>
-        <td>{{ $application->name }}</td>
-        <td>{{ $application->description }}</td>
         <td>
             <img src="{{ asset('storage/' . $application->process_image) }}" alt="Process Image" width="100px"
                 height="100px">

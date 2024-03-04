@@ -235,7 +235,7 @@
                         <div class="row" id="add_more">
                             @if($programtypescms->section_3_slider_title)
                                 @php 
-                                    $section_3_slider_title = Str::of($programtypescms->section_3_slider_title)->explode(', '); 
+                                    // $section_3_slider_title = Str::of($programtypescms->section_3_slider_title)->explode(', '); 
                                 @endphp
                             @endif
                             @foreach($programtypescms->section_3_slider_title as $key => $slider_title)

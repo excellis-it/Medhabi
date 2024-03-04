@@ -18,59 +18,27 @@
                     <div class="sales-report-card-wrap">
                         
 
-                        <div class="row justify-content-between" >
-                            <div class="col-md-6">
-                                <div class="form-group-div">
-                                    <div class="form-group">
-                                        {{-- banner_title --}}
-                                        <label for="floatingInputValue">Title*</label>
-                                        <input type="text" class="form-control" id="floatingInputValue"
-                                            name="title" required placeholder="Add Title">
-                                            
-                                        @if ($errors->has('title'))
-                                            <div class="error" style="color:red;">
-                                                {{ $errors->first('title') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="form-group-div">
-                                    <div class="form-group">
-                                        {{-- banner_description --}}
-                                        <label for="floatingInputValue">Description*</label>
-                                        <input type="text" class="form-control" id="floatingInputValue"
-                                            name="description" required placeholder="Add Description">
-                                        @if ($errors->has('description'))
-                                            <div class="error" style="color:red;">
-                                                {{ $errors->first('description') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-between" id="add-more">
-                        <div class="col-xl-5 col-md-5 mt-4">
+                        
+                    <div class="row justify-content-between">
+                        <div class="col-xl-6 col-md-5 mt-4">
                             <div class="form-group-div">
                                 <div class="form-group">
                                     {{-- meta title --}}
                                     <label for="floatingInputValue">Process Image*</label>
-                                    <input type="file" class="form-control" name="process_image[]"
+                                    <input type="file" class="form-control" name="process_image"
                                         value="" placeholder="Process Image">
                                     <span class="text-danger process_image_error"
                                         id="process_image_error"></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-5 mt-4">
+                        <div class="col-md-6 mt-4">
                             <div class="form-group-div">
                                 <div class="form-group">
                                     {{-- banner_title --}}
                                     <label for="floatingInputValue">Process Description*</label>
                                     <input type="text" class="form-control"
-                                        name="process_desc[]" required
+                                        name="process_desc" required
                                         placeholder="Process Description">
                                     <span
                                         class="text-danger process_description_error"
@@ -78,15 +46,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 mt-4 mb-4">
-                            <div class="btn-1">
-                                <button type="button" class="add-more"><i class="ph ph-plus "></i>
-                                </button>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="row justify-content-between" >
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <div class="form-group-div">
                                 <div class="form-group">
                                     {{-- banner_title --}}

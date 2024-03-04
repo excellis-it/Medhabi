@@ -15,8 +15,6 @@ class CreateApplicationProcessTable extends Migration
     {
         Schema::create('application_processes', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->string('description')->nullable();
             $table->string('process_image')->nullable();
             $table->string('process_desc')->nullable();
             $table->string('button_text')->nullable();
