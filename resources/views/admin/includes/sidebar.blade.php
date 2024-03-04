@@ -63,7 +63,16 @@
                     <li class="{{ Request::is('admin/testimonials/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('testimonials.create') }}">Testimonials Create</a></li>
                 </ul>
             </li>
-
+            <li class="dropdown">
+                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/testimonials*') ? 'active' : ' ' }}">
+                    <i class="ph ph-facebook-logo"></i>
+                    <span> Social Media</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/social-media') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('social-media.index') }}"> Social Media List</a></li>
+                    <li class="{{ Request::is('admin/social-media/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('social-media.create') }}">Social Media Create</a></li>
+                </ul>
+            </li>
             <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/our-core-values*') ? 'active' : ' ' }}">
                     <i class="ph ph-books"></i>

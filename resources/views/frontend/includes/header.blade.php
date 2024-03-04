@@ -102,7 +102,7 @@
             <div class="header-navbar">
                 <div class="header-brand">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="{{route('home')}}">
                             <img class="logo-light mobile-logo"
                                 src="{{ asset('frontend_assets/images/logo/medhavi-logo.png') }}" alt="Medhavi Logo" />
                             <img class="logo-dark" src="{{ asset('frontend_assets/images/logo/medhavi-logo.png') }}"

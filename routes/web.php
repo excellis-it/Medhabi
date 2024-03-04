@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Admissions\ProgramTypesController;
 use App\Http\Controllers\Admin\Admissions\CourseTypesController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\SocialMediaController;
 use App\Http\Controllers\Admin\TVCController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use App\Http\Controllers\Frontend\CmsController;
@@ -70,7 +71,13 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         'our-core-values' => OurCoreValuesController::class,
         'our-partnerships' => OurPartnershipController::class,
         'achievement-and-key-milestones' => AchievementAndKeyMilestoneController::class,
+        'social-media' => SocialMediaController::class,
     ]);
+
+    Route::prefix('social-media')->group(function () {
+        Route::get('/social-media-delete/{id}', [SocialMediaController::class, 'delete'])->name('social-media.delete');
+    });
+    Route::get('/social-media-fetch-data', [SocialMediaController::class, 'fetchData'])->name('social-media.fetch-data');
 
     Route::prefix('blogs')->group(function () {
         Route::get('/blog-delete/{id}', [BlogController::class, 'delete'])->name('blogs.delete');
@@ -162,9 +169,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 });
 
 
-Route::get('/ss', [AdminCmsController::class, 'index'])->name('home');
+Route::get('/', [CmsController::class, 'index'])->name('home');
 
-Route::get('/', [FrontendBlogController::class, 'index'])->name('blogs');
+Route::get('/blog', [FrontendBlogController::class, 'index'])->name('blogs');
 Route::get('/blog/{slug}', [FrontendBlogController::class, 'blogDetails'])->name('blog.details');
 Route::get('/load-more-blogs', [FrontendBlogController::class, 'loadMore'])->name('load-more-blogs');
 

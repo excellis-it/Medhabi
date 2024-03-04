@@ -32,6 +32,7 @@ class OurPartnershipController extends Controller
             $query = str_replace(" ", "%", $query);
             $partnerships = OurPartnership::where('id', 'like', '%' . $query . '%')
                 ->orWhere('name', 'like', '%' . $query . '%')
+                ->orWhere('type', 'like', '%' . $query . '%')
                 ->orderBy($sort_by, $sort_type)
                 ->paginate(10);
 

@@ -17,6 +17,7 @@ use App\Models\Media;
 use App\Models\OurCoreValue;
 use App\Models\OurPartnership;
 use App\Models\School;
+use App\Models\SocialMedia;
 use App\Models\Testimonial;
 use App\Models\TVC;
 use Illuminate\Http\Request;
@@ -24,6 +25,22 @@ use Illuminate\Support\Facades\Storage;
 
 class CmsController extends Controller
 {
+    public function index()
+    {
+        $blogs = Blog::orderBy('id', 'desc')->limit(4)->get();
+        $testimonials = Testimonial::where('type', 'Student')->orderBy('id', 'desc')->get();
+        $achievements = Achievement::orderBy('id', 'desc')->get();
+        $key_milestones = KeyMilestone::orderBy('id', 'desc')->get();
+        $partnerships['digital'] = OurPartnership::where('type', 'Digital')->orderBy('id', 'desc')->get();
+        $partnerships['industry'] = OurPartnership::where('type', 'Industry')->orderBy('id', 'desc')->get();
+        $partnerships['knowledge'] = OurPartnership::where('type', 'Knowledge')->orderBy('id', 'desc')->get();
+        $events = Event::orderBy('id', 'desc')->limit(4)->get();
+        $medias = Media::orderBy('id', 'desc')->limit(4)->get();
+        $tvcs = TVC::orderBy('id', 'desc')->limit(4)->get();
+        $schools = School::orderBy('id', 'desc')->get();
+        $social_media = SocialMedia::orderBy('id', 'desc')->get();
+        return view('frontend.home')->with(compact('blogs', 'testimonials', 'achievements', 'key_milestones', 'partnerships', 'events', 'medias', 'tvcs','schools','social_media'));
+    }
     public function career()
     {
         $career = CareerPageCms::orderByDesc('id')->first();
