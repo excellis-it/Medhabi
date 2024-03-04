@@ -428,7 +428,7 @@ background-position: center;">
                                 <img src="{{ Storage::url($process['process_image']) }}" alt="">
                             </div>
                             <div class="enchanting-pr-text">
-                                <h4>{{ $process['title'] }}</h4>
+                                <h4>{{ $process['process_desc'] }}</h4>
                                 </h4>
                             </div>
                             <div class="arw-icon">
