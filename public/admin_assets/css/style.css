@@ -11711,6 +11711,8 @@ a.dt-button {
     transform: translate(0px,-7px);
     font-size: 16px;
     font-weight: 600;
+    z-index: 1;
+    margin-bottom: 0 !important;
 }
 
 .category{
@@ -12172,8 +12174,8 @@ a.dt-button {
     content: "";
     display: inline-block;
     position: relative;
-    height: 20px;
-    width: 20px;
+    height: 26px;
+    width: 26px;
     border: 2px solid #e9e9e9;
     border-radius: 4px;
     background-color: #fff;
@@ -12188,7 +12190,7 @@ a.dt-button {
     background-color: #f77750;
     border: 0;
     display: inline-block;
-    padding-left: 3px;
+    padding-left: 6px;
 }
 
 .select2-container--default .select2-results__option[aria-selected=true] {
@@ -12252,9 +12254,9 @@ a.dt-button {
     border-style: solid;
     border-width: 5px 4px 0 4px;
     height: 0;
-    right: 6px;
+    right: 15px;
     margin-left: -4px;
-    margin-top: -2px;
+    margin-top: -8px;
     top: 50%;
     width: 0;
     cursor: pointer
@@ -12267,14 +12269,23 @@ a.dt-button {
     border-color: transparent transparent #888 transparent;
     border-width: 0 4px 5px 4px;
     height: 0;
-    right: 6px;
+    right: 15px;
     margin-left: -4px;
-    margin-top: -2px;
+    margin-top: -8px;
     top: 50%;
     width: 0;
     cursor: pointer
 }
-
+.select2-selection--multiple{
+    height: 50px !important;
+    border-radius: 10px !important;
+    border: 1px solid rgb(0 0 0 / 30%) !important;
+    padding: 15px 10px !important;
+    background: #fff;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
+  margin-top: 0 !important;
+}
 /* select2 end */
 
 /* screen 771 */

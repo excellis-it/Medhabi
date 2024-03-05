@@ -39,7 +39,7 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         <label for="floatingInputValue">Courses*</label>
-                                        <select class="form-select select2" name="course_id[]" id="course_id" multiple>
+                                        <select class="form-select select2 courses_select" name="course_id[]" id="course_id" multiple>
                                             <option value="">Select Course</option>
                                             @foreach ($courses as $course)
                                                 <option value="{{ $course->id }}" @if (in_array($course->id, old('course_id', []))) selected @endif>
