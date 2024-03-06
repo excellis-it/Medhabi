@@ -22,7 +22,7 @@
                     <li class="{{ Request::is('admin/password*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin.password') }}">Change Password</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/jobs*') ? 'active' : ' ' }}">
                     <i class="ph ph-briefcase"></i>
                     <span> Jobs</span>
@@ -31,8 +31,8 @@
                     <li class="{{ Request::is('admin/jobs') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('jobs.index') }}"> Job List</a></li>
                     <li class="{{ Request::is('admin/jobs/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('jobs.create') }}">Job Create</a></li>
                 </ul>
-            </li>
-            <li class="dropdown">
+            </li> --}}
+            {{-- <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/blogs*') ? 'active' : ' ' }}">
                     <i class="ph ph-instagram-logo"></i>
                     <span> Blogs</span>
@@ -41,8 +41,8 @@
                     <li class="{{ Request::is('admin/blogs') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('blogs.index') }}"> Blog List</a></li>
                     <li class="{{ Request::is('admin/blogs/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('blogs.create') }}">Blog Create</a></li>
                 </ul>
-            </li>
-            <li class="dropdown">
+            </li> --}}
+            {{-- <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/faq*') ? 'active' : ' ' }}">
                     <i class="ph ph-question"></i>
                     <span> FAQS</span>
@@ -51,9 +51,9 @@
                     <li class="{{ Request::is('admin/faq') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('faq.index') }}"> FAQS List</a></li>
                     <li class="{{ Request::is('admin/faq/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('faq.create') }}">FAQS Create</a></li>
                 </ul>
-            </li>
+            </li> --}}
 
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/testimonials*') ? 'active' : ' ' }}">
                     <i class="ph ph-hand-fist"></i>
                     <span> Testimonials</span>
@@ -62,7 +62,7 @@
                     <li class="{{ Request::is('admin/testimonials') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('testimonials.index') }}"> Testimonials List</a></li>
                     <li class="{{ Request::is('admin/testimonials/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('testimonials.create') }}">Testimonials Create</a></li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/testimonials*') ? 'active' : ' ' }}">
                     <i class="ph ph-facebook-logo"></i>
@@ -73,7 +73,7 @@
                     <li class="{{ Request::is('admin/social-media/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('social-media.create') }}">Social Media Create</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/our-core-values*') ? 'active' : ' ' }}">
                     <i class="ph ph-books"></i>
                     <span> Our Core Values</span>
@@ -82,7 +82,7 @@
                     <li class="{{ Request::is('admin/our-core-values') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('our-core-values.index') }}"> Our Core Values List</a></li>
                     <li class="{{ Request::is('admin/our-core-values/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('our-core-values.create') }}">Our Core Values Create</a></li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/our-core-values*') ? 'active' : ' ' }}">
                     <i class="ph ph-users-three"></i>
@@ -123,10 +123,79 @@
             <li class="dropdown">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/pages/*') ? 'active' : ' ' }}">
                     <i class="ph ph-newspaper"></i>
-                    <span>Pages</span>
+                    <span>Dynamic Pages</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/pages/career/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('career.index') }}">Career </a></li>
+                    <li class="{{ Request::is('admin/pages/career/*') ? 'active' : ' ' }}"> <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/pages/*') ? 'active' : ' ' }}">
+                        <span>Career</span>
+                    </a>
+                        <ul class="dropdown-menu sidebar-menu sidebar-menu-2">
+                            <li class="">
+                                <a href="{{ route('career.index') }}" class="{{ Request::is('admin/pages/career/*') ? 'active' : ' ' }}">
+                                    <span>CMS</span>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/pages/*') ? 'active' : ' ' }}">
+                                    <span>Elements</span>
+                                </a>
+                                <ul class="dropdown-menu sidebar-menu sidebar-menu-2">
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/our-core-values*') ? 'active' : ' ' }}">
+                                            {{-- <i class="ph ph-books"></i> --}}
+                                            <span> Our Core Values</span>
+                                        </a>
+                                        <ul class="dropdown-menu sidebar-menu sidebar-menu-2">
+                                            <li class="dropdown {{ Request::is('admin/our-core-values') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('our-core-values.index') }}"> Our Core Values List</a></li>
+                                            <li class="dropdown {{ Request::is('admin/our-core-values/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('our-core-values.create') }}">Our Core Values Create</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/jobs*') ? 'active' : ' ' }}">
+                                            {{-- <i class="ph ph-briefcase"></i> --}}
+                                            <span> Jobs</span>
+                                        </a>
+                                        <ul class="dropdown-menu sidebar-menu sidebar-menu-2">
+                                            <li class="dropdown {{ Request::is('admin/jobs') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('jobs.index') }}"> Job List</a></li>
+                                            <li class="dropdown {{ Request::is('admin/jobs/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('jobs.create') }}">Job Create</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/faq*') ? 'active' : ' ' }}">
+                                            {{-- <i class="ph ph-question"></i> --}}
+                                            <span> FAQS</span>
+                                        </a>
+                                        <ul class="dropdown-menu sidebar-menu sidebar-menu-2">
+                                            <li class="dropdown {{ Request::is('admin/faq') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('faq.index') }}"> FAQS List</a></li>
+                                            <li class="dropdown {{ Request::is('admin/faq/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('faq.create') }}">FAQS Create</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/testimonials*') ? 'active' : ' ' }}">
+                                            {{-- <i class="ph ph-hand-fist"></i> --}}
+                                            <span> Testimonials</span>
+                                        </a>
+                                        <ul class="dropdown-menu sidebar-menu sidebar-menu-2">
+                                            <li class="dropdown {{ Request::is('admin/testimonials') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('testimonials.index') }}"> Testimonials List</a></li>
+                                            <li class="drpodown {{ Request::is('admin/testimonials/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('testimonials.create') }}">Testimonials Create</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="dropdown-menu">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown {{ Request::is('admin/blogs*') ? 'active' : ' ' }}">
+                            {{-- <i class="ph ph-instagram-logo"></i> --}}
+                            <span> Blogs</span>
+                        </a>
+                        <ul class="dropdown-menu sidebar-menu sidebar-menu-2">
+                            <li class="dropdown {{ Request::is('admin/blogs') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('blogs.index') }}"> Blog List</a></li>
+                            <li class="dropdown {{ Request::is('admin/blogs/create') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('blogs.create') }}">Blog Create</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/pages/schools/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('schools.index') }}">Schools </a></li>
