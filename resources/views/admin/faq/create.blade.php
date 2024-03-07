@@ -12,7 +12,7 @@
     <div class="main-content">
         <div class="inner_page">
             <div class="card search_bar sales-report-card">
-                <form action="{{ route('faq.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('career.faq.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="sales-report-card-wrap">
                         <div class="form-head">

@@ -13,7 +13,7 @@
     All Faq Details
 @endsection
 @section('create_button')
-  <a href="{{ route('faq.create') }}" class="btn btn-primary">+ Create New FAQ</a>
+  <a href="{{ route('career.faq.create') }}" class="btn btn-primary">+ Create New FAQ</a>
 @endsection
 @section('content')
     <section id="loading">
@@ -106,7 +106,7 @@
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "{{ route('faq.fetch-data') }}",
+                    url: "{{ route('career.faq.fetch-data') }}",
                     data: {
                         page: page,
                         sortby: sort_by,

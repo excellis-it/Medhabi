@@ -66,15 +66,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     });
 
     Route::resources([
-        'blogs' => BlogController::class,
-        'faq' => FaqController::class,
-        'testimonials' => TestimonialController::class,
-        'jobs' => JobController::class,
-        'our-core-values' => OurCoreValuesController::class,
-        'our-partnerships' => OurPartnershipController::class,
-        'achievement-and-key-milestones' => AchievementAndKeyMilestoneController::class,
+        
         'social-media' => SocialMediaController::class,
-        'application-process' => ApplicationProcessController::class,
     ]);
 
     Route::prefix('social-media')->group(function () {
@@ -82,60 +75,87 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     });
     Route::get('/social-media-fetch-data', [SocialMediaController::class, 'fetchData'])->name('social-media.fetch-data');
 
-    Route::prefix('blogs')->group(function () {
-        Route::get('/blog-delete/{id}', [BlogController::class, 'delete'])->name('blogs.delete');
-    });
-    Route::get('/changeBlogStatus', [BlogController::class, 'changeBlogStatus'])->name('blogs.change-status');
-    Route::get('/blogs-fetch-data', [BlogController::class, 'fetchData'])->name('blogs.fetch-data');
+    
 
-    Route::prefix('faq')->group(function () {
-        Route::get('/faq-delete/{id}', [FaqController::class, 'delete'])->name('faq.delete');
-    });
-    Route::get('/faq-fetch-data', [FaqController::class, 'fetchData'])->name('faq.fetch-data');
 
-    Route::prefix('testimonials')->group(function () {
-        Route::get('/testimonials-delete/{id}', [TestimonialController::class, 'delete'])->name('testimonials.delete');
-    });
-    Route::get('/testimonials-fetch-data', [TestimonialController::class, 'fetchData'])->name('testimonials.fetch-data');
+    
 
-    Route::prefix('our-core-values')->group(function () {
-        Route::get('/our-core-values-delete/{id}', [OurCoreValuesController::class, 'delete'])->name('our-core-values.delete');
-    });
-    Route::get('/our-core-values-fetch-data', [OurCoreValuesController::class, 'fetchData'])->name('our-core-values.fetch-data');
+    
 
-    Route::prefix('our-partnerships')->group(function () {
-        Route::get('/our-partnerships-delete/{id}', [OurPartnershipController::class, 'delete'])->name('our-partnerships.delete');
-    });
-    Route::get('/our-partnerships-fetch-data', [OurPartnershipController::class, 'fetchData'])->name('our-partnerships.fetch-data');
-
-    Route::prefix('application-process')->group(function () {
-        Route::get('/application-process-delete/{id}', [ApplicationProcessController::class, 'delete'])->name('application-process.delete');
-    });
-    Route::get('/application-process-fetch-data', [ApplicationProcessController::class, 'fetchData'])->name('application-process.fetch-data');
-
-    Route::prefix('jobs')->group(function () {
-        Route::get('/jobs-delete/{id}', [JobController::class, 'delete'])->name('jobs.delete');
-    });
-    Route::get('/jobs-fetch-data', [JobController::class, 'fetchData'])->name('jobs.fetch-data');
-    Route::get('/change-jobs-status', [JobController::class, 'changeStatus'])->name('jobs.change-status');
+    
 
     Route::prefix('pages')->group(function () {
         Route::prefix('career')->name('career.')->group(function () {
             Route::get('/', [PageController::class, 'career'])->name('index');
             Route::post('/update', [PageController::class, 'careerUpdadte'])->name('update');
+
+            Route::resources([
+                'our-core-values' => OurCoreValuesController::class,
+                'jobs' => JobController::class,
+                'faq' => FaqController::class,
+                'testimonials' => TestimonialController::class,
+            ]);
+
+            Route::prefix('our-core-values')->group(function () {
+                Route::get('/our-core-values-delete/{id}', [OurCoreValuesController::class, 'delete'])->name('our-core-values.delete');
+            });
+            Route::get('/our-core-values-fetch-data', [OurCoreValuesController::class, 'fetchData'])->name('our-core-values.fetch-data');
+
+            Route::prefix('jobs')->group(function () {
+                Route::get('/jobs-delete/{id}', [JobController::class, 'delete'])->name('jobs.delete');
+            });
+            Route::get('/jobs-fetch-data', [JobController::class, 'fetchData'])->name('jobs.fetch-data');
+            Route::get('/change-jobs-status', [JobController::class, 'changeStatus'])->name('jobs.change-status');
+
+            Route::prefix('faq')->group(function () {
+                Route::get('/faq-delete/{id}', [FaqController::class, 'delete'])->name('faq.delete');
+            });
+            Route::get('/faq-fetch-data', [FaqController::class, 'fetchData'])->name('faq.fetch-data');
+
+            Route::prefix('testimonials')->group(function () {
+                Route::get('/testimonials-delete/{id}', [TestimonialController::class, 'delete'])->name('testimonials.delete');
+            });
+            Route::get('/testimonials-fetch-data', [TestimonialController::class, 'fetchData'])->name('testimonials.fetch-data');
         });
 
         Route::resources([
             'schools' => SchoolController::class,
             'program-types-cms' => ProgramTypesCMSController::class,
-            'courses' => CourseController::class,
             'tvc' => TVCController::class,
             'media' => MediaController::class,
             'events' => EventController::class,
+            'blogs' => BlogController::class,
+            'application-process' => ApplicationProcessController::class,
         ]);
 
-        Route::prefix('schools')->group(function () {
+        Route::prefix('schools')->name('schools.')->group(function () {
             Route::get('/school-delete/{id}', [SchoolController::class, 'delete'])->name('schools.delete');
+
+            Route::resources([
+                'courses' => CourseController::class,
+                'our-partnerships' => OurPartnershipController::class,
+                'achievement-and-key-milestones' => AchievementAndKeyMilestoneController::class,
+            ]);
+
+            Route::prefix('courses')->group(function () {
+                Route::get('/course-delete/{id}', [CourseController::class, 'delete'])->name('courses.delete');
+
+                Route::prefix('admissions')->group(function () {
+                    Route::resources([
+                        'program-types' => ProgramTypesController::class,
+                        'course-types' => CourseTypesController::class,
+                    ]);
+                    Route::get('/programtypes-fetch-data', [ProgramTypesController::class, 'fetchData'])->name('program-types.fetch-data');
+                    Route::prefix('program-types')->name('program-types.')->group(function () {
+                        Route::get('/programtypes-delete/{id}', [ProgramTypesController::class, 'delete'])->name('delete');
+                    });
+                    Route::get('/coursetypes-fetch-data', [CourseTypesController::class, 'fetchData'])->name('course-types.fetch-data');
+                    Route::prefix('course-types')->name('course-types.')->group(function () {
+                        Route::get('/coursetypes-delete/{id}', [CourseTypesController::class, 'delete'])->name('delete');
+                    });
+                });
+            });
+            Route::get('/courses-fetch-data', [CourseController::class, 'fetchData'])->name('courses.fetch-data');
         });
         Route::get('/schools-fetch-data', [SchoolController::class, 'fetchData'])->name('schools.fetch-data');
 
@@ -143,10 +163,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
             Route::get('/program-types-cms-delete/{id}', [ProgramTypesCMSController::class, 'delete'])->name('program-types-cms.delete');
         });
         Route::get('/program-types-cms-fetch-data', [ProgramTypesCMSController::class, 'fetchData'])->name('program-types-cms.fetch-data');
-        Route::prefix('courses')->group(function () {
-            Route::get('/course-delete/{id}', [CourseController::class, 'delete'])->name('courses.delete');
-        });
-        Route::get('/courses-fetch-data', [CourseController::class, 'fetchData'])->name('courses.fetch-data');
+        
         Route::post('/get-course-types', [CourseController::class, 'getCourseTypes'])->name('get.course.types');
 
         Route::prefix('tvc')->group(function () {
@@ -163,22 +180,20 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
             Route::get('/events-delete/{id}', [EventController::class, 'delete'])->name('events.delete');
         });
         Route::get('/events-fetch-data', [EventController::class, 'fetchData'])->name('events.fetch-data');
+
+        Route::prefix('blogs')->group(function () {
+            Route::get('/blog-delete/{id}', [BlogController::class, 'delete'])->name('blogs.delete');
+        });
+        Route::get('/changeBlogStatus', [BlogController::class, 'changeBlogStatus'])->name('blogs.change-status');
+        Route::get('/blogs-fetch-data', [BlogController::class, 'fetchData'])->name('blogs.fetch-data');
+
+        Route::prefix('application-process')->group(function () {
+            Route::get('/application-process-delete/{id}', [ApplicationProcessController::class, 'delete'])->name('application-process.delete');
+        });
+        Route::get('/application-process-fetch-data', [ApplicationProcessController::class, 'fetchData'])->name('application-process.fetch-data');
     });
 
-    Route::prefix('admissions')->group(function () {
-        Route::resources([
-            'program-types' => ProgramTypesController::class,
-            'course-types' => CourseTypesController::class,
-        ]);
-        Route::get('/programtypes-fetch-data', [ProgramTypesController::class, 'fetchData'])->name('program-types.fetch-data');
-        Route::prefix('program-types')->name('program-types.')->group(function () {
-            Route::get('/programtypes-delete/{id}', [ProgramTypesController::class, 'delete'])->name('delete');
-        });
-        Route::get('/coursetypes-fetch-data', [CourseTypesController::class, 'fetchData'])->name('course-types.fetch-data');
-        Route::prefix('course-types')->name('course-types.')->group(function () {
-            Route::get('/coursetypes-delete/{id}', [CourseTypesController::class, 'delete'])->name('delete');
-        });
-    });
+    
 });
 
 

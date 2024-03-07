@@ -15,7 +15,7 @@
                     <div class="form-head">
                         <h4>Faq Details</h4>
                     </div>
-                    <form action="{{ route('faq.update', $faq->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('career.faq.update', $faq->id) }}" method="post" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="row justify-content-between">
