@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\Admissions\CourseTypesController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\SocialMediaController;
+use App\Http\Controllers\Admin\StaticPageController;
 use App\Http\Controllers\Admin\TVCController;
 use App\Http\Controllers\Admin\Admissions\ProgramTypesCMSController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
@@ -66,15 +67,23 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     });
 
     Route::resources([
-
         'social-media' => SocialMediaController::class,
+        'static-pages' => StaticPageController::class,
     ]);
-    
+
+
+    //static page route
+    Route::get('/static-pages-fetch-data', [StaticPageController::class, 'fetchData'])->name('static-pages.fetch-data');
+    Route::get('/static-pages-delete/{id}', [StaticPageController::class, 'delete'])->name('static-pages.delete');
+    Route::post('/static-pages-update', [StaticPageController::class, 'update'])->name('update.static-pages');
 
     Route::prefix('social-media')->group(function () {
         Route::get('/social-media-delete/{id}', [SocialMediaController::class, 'delete'])->name('social-media.delete');
     });
     Route::get('/social-media-fetch-data', [SocialMediaController::class, 'fetchData'])->name('social-media.fetch-data');
+
+
+
 
     Route::prefix('pages')->group(function () {
         Route::prefix('career')->name('career.')->group(function () {
