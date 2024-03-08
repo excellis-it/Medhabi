@@ -155,13 +155,13 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
                 Route::get('/coursetypes-fetch-data', [CourseTypesController::class, 'fetchData'])->name('course-types.fetch-data');
                 Route::prefix('course-types')->name('course-types.')->group(function () {
                     Route::get('/coursetypes-delete/{id}', [CourseTypesController::class, 'delete'])->name('delete');
-                });
+                }); 
             });
         });
         Route::get('/courses-fetch-data', [CourseController::class, 'fetchData'])->name('courses.fetch-data');
 
         Route::prefix('schools')->name('schools.')->group(function () {
-            Route::get('/school-delete/{id}', [SchoolController::class, 'delete'])->name('schools.delete');
+            Route::get('/school-delete/{id}', [SchoolController::class, 'delete'])->name('delete');
         });
         Route::get('/schools-fetch-data', [SchoolController::class, 'fetchData'])->name('schools.fetch-data');
 
