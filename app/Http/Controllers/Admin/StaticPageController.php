@@ -21,7 +21,7 @@ class StaticPageController extends Controller
         return view('admin.static-page.list')->with(compact('static_pages'));
     }
 
-    public function fetchData()
+    public function fetchData(Request $request)
     {
         if ($request->ajax()) {
 
