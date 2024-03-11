@@ -2,7 +2,7 @@
 @section('meta_title')
 @endsection
 @section('title')
-    {{ env('APP_NAME') }} - Blogs
+    {{ env('APP_NAME') }} - Home
 @endsection
 @push('styles')
 @endpush
