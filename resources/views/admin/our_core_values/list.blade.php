@@ -13,7 +13,7 @@
     All Our core value Details
 @endsection
 @section('create_button')
-  <a href="{{ route('career.our-core-values.create') }}" class="btn btn-primary">+ Create New Core Values</a>
+  <a href="{{ route('our-core-values.create') }}" class="btn btn-primary">+ Create New Core Values</a>
 @endsection
 @section('content')
     <section id="loading">
@@ -107,7 +107,7 @@
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "{{ route('career.our-core-values.fetch-data') }}",
+                    url: "{{ route('our-core-values.fetch-data') }}",
                     data: {
                         page: page,
                         sortby: sort_by,

@@ -8,10 +8,10 @@
         <td>{{ $testimonial->type }}</td>
         <td>
             <div class="edit-1 d-flex align-items-center justify-content-center">
-                <a title="Edit Customer" href="{{ route('career.testimonials.edit', $testimonial->id) }}">
+                <a title="Edit Customer" href="{{ route('testimonials.edit', $testimonial->id) }}">
                     <span class="edit-icon"><i class="ph ph-pencil-simple"></i></span>
                 </a>
-                <a title="Delete Customer" data-route="{{ route('career.testimonials.delete', $testimonial->id) }}"
+                <a title="Delete Customer" data-route="{{ route('testimonials.delete', $testimonial->id) }}"
                     href="javascript:void(0);" id="delete">
                     <span class="trash-icon"><i class="ph ph-trash"></i></span>
                 </a>

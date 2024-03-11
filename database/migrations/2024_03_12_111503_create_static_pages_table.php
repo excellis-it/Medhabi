@@ -15,8 +15,8 @@ class CreateStaticPagesTable extends Migration
     {
         Schema::create('static_pages', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('menu_id')->nullable()->constrained('menus')->onDelete('cascade');
             $table->string('title')->nullable();
-            $table->string('slug')->nullable();
             $table->longText('content')->nullable();
             $table->timestamps();
         });

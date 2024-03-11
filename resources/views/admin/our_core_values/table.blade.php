@@ -7,10 +7,10 @@
         </td>
         <td>
             <div class="edit-1 d-flex align-items-center justify-content-center">
-                <a title="Edit Customer" href="{{ route('career.our-core-values.edit', $our_core_value->id) }}">
+                <a title="Edit Customer" href="{{ route('our-core-values.edit', $our_core_value->id) }}">
                     <span class="edit-icon"><i class="ph ph-pencil-simple"></i></span>
                 </a>
-                <a title="Delete Customer" data-route="{{ route('career.our-core-values.delete', $our_core_value->id) }}"
+                <a title="Delete Customer" data-route="{{ route('our-core-values.delete', $our_core_value->id) }}"
                     href="javascript:void(0);" id="delete">
                     <span class="trash-icon"><i class="ph ph-trash"></i></span>
                 </a>

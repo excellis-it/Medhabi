@@ -9,11 +9,14 @@
 @endsection
 
 @section('content')
+@php
+    use App\Helpers\Helper;
+@endphp
     <div class="main-content">
         <div class="inner_page">
             <div class="card search_bar sales-report-card">
                 <form action="{{ route('update.static-pages') }}" method="post" enctype="multipart/form-data">
-                    
+
                     @csrf
                     <div class="sales-report-card-wrap">
                         <div class="form-head">
@@ -23,7 +26,7 @@
                         <input type="hidden" name="id" value="{{ $static_page->id }}" >
 
                         <div class="row justify-content-between">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- name --}}
@@ -37,8 +40,23 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                           
+                            {{-- menu --}}
+                            <div class="col-md-6">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        <label for="floatingInputValue">Menu*</label>
+                                        <select name="menu_id" id="menu_id" class="form-control">
+                                            <option value="">Select</option>
+                                            {!! Helper::generateMenuOptions($parentId = 0, $prefix = '', $static_page->menu_id) !!}
+                                        </select>
+                                        @if ($errors->has('menu_id'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('menu_id') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-md-12">
                                 <div class="form-group-div">
                                     <div class="form-group">
@@ -53,7 +71,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="col-xl-12">
                             <div class="btn-1">
