@@ -19,7 +19,7 @@
             {{ $menu->slug ?? 'N/A' }}
         </td>
         <td>
-            {{ ($menu->type == 0) ? 'Footer' : 'Header' }}
+            {{ ($menu->type == 'footer') ? 'Footer' : 'Header' }}
         </td>
         <td>
             {{ ($menu->status == 0) ? 'Inactive' : 'Active' }}

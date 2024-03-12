@@ -21,16 +21,19 @@
                         </div>
 
                         <div class="row justify-content-between">
+                            {{-- type --}}
                             <div class="col-md-6">
                                 <div class="form-group-div">
                                     <div class="form-group">
-                                        {{-- name --}}
-                                        <label for="floatingInputValue">Name*</label>
-                                        <input type="text" class="form-control" id="floatingInputValue" name="name"
-                                            value="{{ ($menu->name) ? $menu->name : old('name') }}" placeholder="Name*">
-                                        @if ($errors->has('name'))
+                                        <label for="floatingInputValue">Type*</label>
+                                        <select name="type" id="type" class="form-control">
+                                            <option value="">Select</option>
+                                            <option value="header" {{ ($menu->type == 'header') ? 'selected' : '' }}>Header</option>
+                                            <option value="footer" {{ ($menu->type == 'footer') ? 'selected' : '' }}>Footer</option>
+                                        </select>
+                                        @if ($errors->has('type'))
                                             <div class="error" style="color:red;">
-                                                {{ $errors->first('name') }}</div>
+                                                {{ $errors->first('type') }}</div>
                                         @endif
                                     </div>
                                 </div>
@@ -41,8 +44,7 @@
                                     <div class="form-group">
                                         <label for="floatingInputValue">Parent Menu</label>
                                         <select name="parent_id" id="parent_id" class="form-control">
-                                            <option value="">None (Parent Menu)</option>
-                                            {!! App\Helpers\Helper::generateMenuOptions($parentId = 0, $prefix = '', $menu->parent_id) !!}
+
                                         </select>
                                         @if ($errors->has('parent_id'))
                                             <div class="error" style="color:red;">
@@ -51,6 +53,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- name --}}
+                                        <label for="floatingInputValue">Name*</label>
+                                        <input type="text" class="form-control" id="floatingInputValue" name="name" {{ ($menu->is_delete == 1) ? 'readonly' : '' }}
+                                            value="{{ ($menu->name) ? $menu->name : old('name') }}" placeholder="Name*">
+                                        @if ($errors->has('name'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('name') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
                             {{-- is_custom_link --}}
                             <div class="col-md-6">
                                 <div class="form-group-div">
@@ -82,23 +99,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- type --}}
-                            <div class="col-md-6">
-                                <div class="form-group-div">
-                                    <div class="form-group">
-                                        <label for="floatingInputValue">Type*</label>
-                                        <select name="type" id="type" class="form-control">
-                                            <option value="">Select</option>
-                                            <option value="header" {{ ($menu->type == 'header') ? 'selected' : '' }}>Header</option>
-                                            <option value="footer" {{ ($menu->type == 'footer') ? 'selected' : '' }}>Footer</option>
-                                        </select>
-                                        @if ($errors->has('type'))
-                                            <div class="error" style="color:red;">
-                                                {{ $errors->first('type') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
+
                             {{-- status --}}
                             <div class="col-md-6">
                                 <div class="form-group-div">
@@ -131,5 +132,35 @@
 @endsection
 
 @push('scripts')
+<script>
+    $(document).ready(function() {
+            var type = $('#type').val();
+        if (type == 'footer') {
+                var html = '';
+                html += '<option value="">None (Parent Menu)</option>';
+                html += '{!! App\Helpers\Helper::getFooterMenuOptions($menu->parent_id) !!}';
+                $('#parent_id').html(html);
+            } else {
+                var html = '';
+                html += '<option value="">None (Parent Menu)</option>';
+                html += '{!! App\Helpers\Helper::generateHeaderMenuOptions($parentId = 0, $prefix = '', $menu->parent_id) !!}';
 
+                $('#parent_id').html(html);
+            }
+        $('#type').on('change', function() {
+            if (this.value == 'footer') {
+                var html = '';
+                html += '<option value="">None (Parent Menu)</option>';
+                html += '{!! App\Helpers\Helper::getFooterMenuOptions($menu->parent_id) !!}';
+                $('#parent_id').html(html);
+            } else {
+                var html = '';
+                html += '<option value="">None (Parent Menu)</option>';
+                html += '{!! App\Helpers\Helper::generateHeaderMenuOptions($parentId = 0, $prefix = '', $menu->parent_id) !!}';
+
+                $('#parent_id').html(html);
+            }
+        });
+    });
+</script>
 @endpush

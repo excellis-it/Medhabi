@@ -150,7 +150,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
             Route::get('/our-partnerships-delete/{id}', [OurPartnershipController::class, 'delete'])->name('our-partnerships.delete');
         });
         Route::get('/our-partnerships-fetch-data', [OurPartnershipController::class, 'fetchData'])->name('our-partnerships.fetch-data');
-        
+
         Route::prefix('courses')->group(function () {
             Route::get('/course-delete/{id}', [CourseController::class, 'delete'])->name('courses.delete');
 
@@ -236,3 +236,5 @@ Route::prefix('happenings')->group(function () {
     Route::get('/media', [CmsController::class, 'media'])->name('media');
     Route::get('/event', [CmsController::class, 'event'])->name('event');
 });
+
+Route::get('/page/{slug}', [CmsController::class, 'page'])->name('page');

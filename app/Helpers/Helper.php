@@ -89,4 +89,148 @@ class Helper
 
         return $options;
     }
+
+    public static function generateHeaderMenuOptions($parentId = 0, $prefix = '', $menu_id = null)
+    {
+        // Retrieve all menu items with the given parent ID
+        $menus = Menu::where('parent_id', $parentId)->where(['type'=>'header', 'status'=>1])->get();
+
+        $options = '';
+
+        foreach ($menus as $menu) {
+            // Append the option for the current menu item
+            $selected = ($menu_id !== null && $menu_id == $menu->id) ? 'selected' : '';
+            $options .= '<option value="' . $menu->id . '" ' . $selected . '>' . $prefix . $menu->name . '</option>';
+
+            // Recursively generate options for submenu items
+            $options .= self::generateMenuOptions($menu->id, $prefix . '- ', $menu_id);
+        }
+
+        return $options;
+    }
+
+    public static function getFooterMenuOptions($menu_id = null)
+    {
+        // Retrieve all menu items with the given parent ID
+        $menus = Menu::where('parent_id', 0)->where(['type'=>'footer', 'status'=>1])->get();
+
+        $options = '';
+
+        foreach ($menus as $menu) {
+            // Append the option for the current menu item
+            $selected = ($menu_id !== null && $menu_id == $menu->id) ? 'selected' : '';
+            $options .= '<option value="' . $menu->id . '" ' . $selected . '>' . $menu->name . '</option>';
+        }
+
+        return $options;
+    }
+
+
+    public static function generateMenu($menus)
+    {
+        $html = '';
+
+        foreach ($menus as $menu) {
+            $html .= '<li class="has-droupdown">';
+            if ($menu->is_custom_link == 1) {
+                $html .= '<a href="' . (($menu->slug == null) ? "javascript:void(0);" : $menu->slug) . '">' . $menu->name . '</a>';
+            } else {
+                $html .= '<a href="' . (($menu->slug == null) ? "javascript:void(0);" : route('page', $menu->slug)) . '">' . $menu->name . '</a>';
+            }
+            // $html .= '<a href="#">' . $menu->name . '</a>';
+
+            // Check if the current menu item has children
+            if ($menu->children->isNotEmpty()) {
+                $html .= '<ul class="submenu">';
+                // Recursively generate submenu items
+                $html .= self::generateSubMenu($menu->children, $menu->id);
+                $html .= '</ul>';
+            }
+
+            if ($menu->name == 'Admissions' || $menu->name == 'Schools' || $menu->name == 'Happenings') {
+                $html .= '<ul class="submenu">';
+                if ($menu->name == 'Admissions' && count(self::getPrograms()) > 0) {
+                    foreach (self::getPrograms() as $key => $value) {
+                        $html .= '<li>';
+                        $html .= '<a href="' . route('programs', $value->slug) . '">' . $value->name . '</a>';
+                        $html .= '</li>';
+                    }
+                }
+
+                if ($menu->name == 'Schools' && count(self::getAllSchoolPage()) > 0) {
+                    foreach (self::getAllSchoolPage() as $key => $value) {
+                        $html .= '<li>';
+                        $html .= '<a href="' . route('school', $value->slug) . '">' . $value->name . '</a>';
+                        $html .= '</li>';
+                    }
+                }
+
+                if ($menu->name == 'Happenings') {
+                    $html .= '<li>';
+                    $html .= '<a href="' . route('event') . '">Upcoming Events</a>';
+                    $html .= '</li>';
+                    $html .= '<li>';
+                    $html .= '<a href="' . route('media') . '">Media Coverage</a>';
+                    $html .= '</li>';
+                    $html .= '<li>';
+                    $html .= '<a href="' . route('tvc') . '">TVC</a>';
+                    $html .= '</li>';
+                    $html .= '<li>';
+                    $html .= '<a href="' . route('blogs') . '">Blog</a>';
+                    $html .= '</li>';
+                }
+                $html .= '</ul>';
+            }
+
+            $html .= '</li>';
+        }
+
+        $html .= '';
+
+        return $html;
+    }
+
+    // Recursive function to generate submenu items
+    private static function generateSubMenu($menus, $parent_id)
+    {
+        $html = '';
+
+        foreach ($menus as $menu) {
+
+            // Append the submenu item
+            $html .= '<li>';
+            if ($menu->is_custom_link == 1) {
+                $html .= '<a href="' . (($menu->slug == null) ? "javascript:void(0);" : $menu->slug) . '">' . $menu->name . '</a>';
+            } else {
+                $html .= '<a href="' . (($menu->slug == null) ? "javascript:void(0);" : route('page', $menu->slug)) . '">' . $menu->name . '</a>';
+            }
+
+            // Check if the current submenu item has children
+            if ($menu->children->isNotEmpty()) {
+                $html .= '<ul class="submenu">';
+                // Recursively generate submenu items
+                $html .= self::generateSubMenu($menu->children, $menu->id);
+                $html .= '</ul>';
+            }
+
+            $html .= '</li>';
+        }
+
+        return $html;
+    }
+
+
+
+
+    public static function getHeaderMenu()
+    {
+        $menus = Menu::where('parent_id', 0)->where(['type'=>'header', 'status'=>1])->get();
+        return $menus;
+    }
+
+    public static function getFooterMenu()
+    {
+        $menus = Menu::with('children')->where('parent_id', 0)->where(['type'=>'footer', 'status'=>1])->get();
+        return $menus;
+    }
 }

@@ -102,7 +102,7 @@
             <div class="header-navbar">
                 <div class="header-brand">
                     <div class="logo">
-                        <a href="{{route('home')}}">
+                        <a href="{{ route('home') }}">
                             <img class="logo-light mobile-logo"
                                 src="{{ asset('frontend_assets/images/logo/medhavi-logo.png') }}" alt="Medhavi Logo" />
                             <img class="logo-dark" src="{{ asset('frontend_assets/images/logo/medhavi-logo.png') }}"
@@ -113,7 +113,8 @@
                 <div class="header-mainnav">
                     <nav class="mainmenu-nav">
                         <ul class="mainmenu">
-                            <li class="has-droupdown">
+                            {!! Helper::generateMenu(Helper::getHeaderMenu()) !!}
+                            {{-- <li class="has-droupdown">
                                 <a href="#">About</a>
                                 <ul class="submenu">
                                     <li>
@@ -128,9 +129,6 @@
                                     </li>
                                     <li><a href="leadership.html">Leadership</a></li>
                                     <li><a href="#">Genesis</a></li>
-                                    <!-- <li>
-                <a href="advisory-board.html">Advisory Board </a>
-              </li> -->
                                     <li>
                                         <a href="recognition-and-approvals.html">Accreditations & Approvals
                                         </a>
@@ -139,10 +137,6 @@
                                         <a href="awards-and-collaboration.html">Awards & Collaborations
                                         </a>
                                     </li>
-                                    <!--<li>
-                <a href="international-programme.html">We Are International
-                </a>
-              </li>-->
                                     <li class="has-droupdown">
                                         <a href="#">Resources</a>
                                         <ul class="submenu">
@@ -154,8 +148,8 @@
                                         <a href="medhavi-foundation.html">About Medhavi Foundation</a>
                                     </li>
                                 </ul>
-                            </li>
-                            <li class="has-droupdown">
+                            </li> --}}
+                            {{-- <li class="has-droupdown">
                                 <a href="#">Academic </a>
                                 <ul class="submenu">
                                     <li>
@@ -247,7 +241,7 @@
                                     <li><a href="{{ route('blogs') }}">Blog </a></li>
                                     <li><a href="contact-us.html">Contact Us </a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li class="btn-new">
                                 <a class="" href="https://application.msu.edu.in/">Apply Now</a>
                             </li>
@@ -321,7 +315,8 @@
             </div>
 
             <ul class="mainmenu">
-                <li class="has-droupdown">
+                {!! Helper::generateMenu(Helper::getHeaderMenu()) !!}
+                {{-- <li class="has-droupdown">
                     <a href="#">About</a>
                     <ul class="submenu">
                         <li>
@@ -344,10 +339,6 @@
                             <a href="awards-and-collaboration.html">Awards & Collaborations
                             </a>
                         </li>
-                        <!-- <li>
-          <a href="we-are-international.html">We Are International
-          </a>
-        </li> -->
                         <li class="has-droupdown">
                             <a href="#">Resources</a>
                             <ul class="submenu">
@@ -440,7 +431,7 @@
                         <li><a href="{{ route('blogs') }}">Blog </a></li>
                         <li><a href="contact-us.html">Contact Us </a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class=""><a href="https://www.msu.edu.in/collaboration/">Collaborations</a></li>
                 <li class=""><a href="https://www.msu.edu.in/wise/">Wise</a></li>
                 <li class=""><a href="https://msu.digiicampus.com/home">Campus Login</a></li>

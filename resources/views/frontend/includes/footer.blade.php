@@ -1,3 +1,6 @@
+@php
+    use App\Helpers\Helper;
+@endphp
 <footer class="edu-footer footer-lighten bg-image footer-style-1">
     <div class="footer-top">
         <div class="container-fluid">
@@ -6,7 +9,7 @@
                     <div class="edu-footer-widget position-relative">
                         <div class="logo">
                             <a href="index.html">
-                                <img class="logo-light" src="{{asset('frontend_assets/images/logo/medhavi-logo.png')}}"
+                                <img class="logo-light" src="{{ asset('frontend_assets/images/logo/medhavi-logo.png') }}"
                                     alt="Medhavi Logo" />
                                 <div class="logo-bg"></div>
                             </a>
@@ -17,7 +20,38 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-2 col-sm-6 col-6 col-md-4">
+                @foreach (Helper::getFooterMenu() as $menu)
+                    <div class="col-lg-2 col-sm-6 col-6 col-md-4">
+                        <div class="edu-footer-widget explore-widget">
+                            <h4 class="widget-title">{{ $menu->name }}</h4>
+                            <div class="inner">
+                                <ul class="footer-link link-hover">
+                                    @if ($menu->children->isNotEmpty())
+                                        @foreach ($menu->children as $item)
+                                            <li>
+                                                @if ($item->name == 'Careers')
+                                                    <a href="{{ route('careers') }}">{{ $item->name }}</a>
+                                                @else
+                                                    @if ($item->is_custom_link == 1)
+                                                        <a target="_blank"
+                                                            href="{{ $item->slug == null ? 'javascript:void(0);' : $item->slug }}">{{ $item->name }}
+                                                        </a>
+                                                    @else
+                                                        <a target="_blank"
+                                                            href="{{ $item->slug == null ? 'javascript:void(0);' : route('page', $item->slug) }}">{{ $item->name }}
+                                                        </a>
+                                                    @endif
+                                                @endif
+
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                {{-- <div class="col-lg-2 col-sm-6 col-6 col-md-4">
                     <div class="edu-footer-widget explore-widget">
                         <h4 class="widget-title">Quick Links</h4>
                         <div class="inner">
@@ -100,7 +134,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -111,7 +145,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="contact__Bx d-flex align-items-center">
                         <div class="img-icon">
-                            <img src="{{asset('frontend_assets/images/icons/call.svg')}}" alt="" />
+                            <img src="{{ asset('frontend_assets/images/icons/call.svg') }}" alt="" />
                         </div>
                         <div class="contact__details">
                             <p>Phone:</p>
@@ -122,7 +156,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="contact__Bx d-flex align-items-center tab-border-none">
                         <div class="img-icon">
-                            <img src="{{asset('frontend_assets/images/icons/call.svg')}}" alt="" />
+                            <img src="{{ asset('frontend_assets/images/icons/call.svg') }}" alt="" />
                         </div>
                         <div class="contact__details">
                             <p>Email:</p>
@@ -133,7 +167,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="contact__Bx d-flex align-items-center">
                         <div class="img-icon">
-                            <img src="{{asset('frontend_assets/images/icons/call.svg')}}" alt="" />
+                            <img src="{{ asset('frontend_assets/images/icons/call.svg') }}" alt="" />
                         </div>
                         <div class="contact__details">
                             <p>Location</p>
@@ -151,12 +185,11 @@
                                         class="color-fb"><i class="ri-facebook-fill"></i></a>
                                 </li>
                                 <li>
-                                    <a target="_blank" href="https://twitter.com/medhaviskills"
-                                        class="color-twitter"><i class="ri-twitter-x-line"></i></a>
+                                    <a target="_blank" href="https://twitter.com/medhaviskills" class="color-twitter"><i
+                                            class="ri-twitter-x-line"></i></a>
                                 </li>
                                 <li>
-                                    <a target="_blank"
-                                        href="https://www.instagram.com/medhaviskillsuniversity/"
+                                    <a target="_blank" href="https://www.instagram.com/medhaviskillsuniversity/"
                                         class="color-ig"><i class="ri-instagram-line"></i></a>
                                 </li>
                                 <li>
@@ -178,7 +211,7 @@
                 <div class="col-lg-12">
                     <div class="inner text-center">
                         <p>
-                            ©Copyright 2023. All Rights Reserved by Medhavi Skill
+                            ©Copyright {{date('Y')}}. All Rights Reserved by Medhavi Skill
                             University.
                         </p>
                     </div>
