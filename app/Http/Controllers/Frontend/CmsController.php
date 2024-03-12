@@ -20,6 +20,7 @@ use App\Models\OurPartnership;
 use App\Models\ProgramTypesCMS;
 use App\Models\School;
 use App\Models\SocialMedia;
+use App\Models\StaticPage;
 use App\Models\Testimonial;
 use App\Models\TVC;
 use Illuminate\Http\Request;
@@ -160,7 +161,15 @@ class CmsController extends Controller
 
             $courses = $courses->get();
 
-            return response()->json(['status'=> true,'data' => view('frontend.pages.filter.course-list', compact('courses'))->render()]);
+            return response()->json(['status' => true, 'data' => view('frontend.pages.filter.course-list', compact('courses'))->render()]);
         }
+    }
+
+    public function page($slug)
+    {
+        $page = StaticPage::whereHas('menu', function ($query) use ($slug) {
+            $query->where('slug', $slug);
+        })->first();
+        return view('frontend.pages.static-page')->with(compact('page'));
     }
 }

@@ -58,7 +58,7 @@
                                     <div class="form-group">
                                         {{-- link --}}
                                         <label for="floatingInputValue">Content*</label>
-                                        <textarea class="form-control" id="editor1" name="content"
+                                        <textarea class="form-control" id="" name="content" rows="50" cols="50"
                                             placeholder="Details*">{{ old('content') }}</textarea>
                                         @if ($errors->has('content'))
                                             <div class="error" style="color:red;">
