@@ -29,7 +29,7 @@
         <div class="container-fluid custom-width__2">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="blog__title">{{ $blog['name'] }} </h2>
+                    {{-- <h2 class="blog__title">{{ $blog['name'] }} </h2> --}}
                     {!! $blog['description'] !!}
                 </div>
             </div>
