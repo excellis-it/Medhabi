@@ -24,9 +24,8 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- name --}}
-                                        <label for="floatingInputValue">Name*</label>
-                                        <input type="text" class="form-control" id="floatingInputValue" name="name"
-                                            value="{{ old('name') }}" placeholder="Name*">
+                                        <label for="name">Name*</label>
+                                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="Name*">
                                         @if ($errors->has('name'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('name') }}</div>
@@ -39,8 +38,9 @@
                                     <div class="form-group">
                                         {{-- name --}}
                                         <label for="floatingInputValue">Short Description*</label>
-                                        <input type="text" class="form-control" id="floatingInputValue" name="short_description"
-                                            value="{{ old('short_description') }}" placeholder="Short Description*">
+                                        <input type="text" class="form-control" id="floatingInputValue"
+                                            name="short_description" value="{{ old('short_description') }}"
+                                            placeholder="Short Description*">
                                         @if ($errors->has('short_description'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('short_description') }}</div>
@@ -84,7 +84,8 @@
                                     <div class="form-group">
                                         {{-- description --}}
                                         <label for="floatingInputValue">Description*</label>
-                                        <textarea name="description" id="description" placeholder="Description" class="form-control">{{ old('description') }}</textarea>
+                                        <textarea name="description" id="description" placeholder="Description" rows="10" cols="20"
+                                            class="form-control">{{ old('description') }}</textarea>
                                         @if ($errors->has('description'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('description') }}</div>
@@ -100,7 +101,21 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-xl-6 col-md-6">
+                            <div class="col-xl-4 col-md-4">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- meta title --}}
+                                        <label for="slug">Slug*</label>
+                                        <input type="text" class="form-control" id="slug" name="slug"
+                                             value="{{ old('slug') }}" placeholder="Slug">
+                                        @if ($errors->has('slug'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('slug') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-4">
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta title --}}
@@ -114,7 +129,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-md-6">
+                            <div class="col-xl-4 col-md-4">
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta keyword --}}
@@ -134,8 +149,8 @@
                                     <div class="form-group">
                                         {{-- meta description --}}
                                         <label for="floatingInputValue">Meta Description</label>
-                                        <textarea name="meta_description" id="meta_description" cols="30" rows="10" placeholder="Meta Description"
-                                            class="form-control">{{ old('meta_description') }}</textarea>
+                                        <textarea name="meta_description" id="meta_description" cols="30" rows="10"
+                                            placeholder="Meta Description" class="form-control">{{ old('meta_description') }}</textarea>
                                         @if ($errors->has('meta_description'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('meta_description') }}</div>
@@ -161,5 +176,15 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
     <script>
         ClassicEditor.create(document.querySelector("#description"));
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#name').on('keyup', function() {
+                var name = $(this).val();
+                var slug = name.toLowerCase().replace(/\s+/g,
+                '-'); // Convert to lowercase and replace spaces with hyphens
+                $('#slug').val(slug); // Update the value of the slug input field
+            });
+        });
     </script>
 @endpush
