@@ -33,7 +33,7 @@
                 <a href="javascript:void(0);"
                     class="menu-toggle nav-link has-dropdown {{ Request::is('admin/menus*') ? 'active' : ' ' }}">
                     <i class="ph ph-list"></i>
-                    <span> Menue</span>
+                    <span> Menu</span>
                 </a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/menus') ? 'active' : ' ' }}"><a class="nav-link"

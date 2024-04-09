@@ -24,8 +24,8 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- name --}}
-                                        <label for="floatingInputValue">Name*</label>
-                                        <input type="text" class="form-control" id="floatingInputValue" name="name"
+                                        <label for="name">Name*</label>
+                                        <input type="text" class="form-control" id="name" name="name"
                                             value="{{ $blog->name }}" placeholder="Name*">
                                         @if ($errors->has('name'))
                                             <div class="error" style="color:red;">
@@ -104,13 +104,28 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-xl-6 col-md-6">
+                        {{-- slug --}}
+                        <div class="col-xl-4 col-md-4">
+                            <div class="form-group-div">
+                                <div class="form-group">
+                                    {{-- meta title --}}
+                                    <label for="slug">Slug*</label>
+                                    <input type="text" class="form-control" id="slug" name="slug"
+                                    value="{{ $blog['slug'] ? $blog['slug'] : old('slug') }}" placeholder="Slug">
+                                    @if ($errors->has('slug'))
+                                        <div class="error" style="color:red;">
+                                            {{ $errors->first('slug') }}</div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-4">
                             <div class="form-group-div">
                                 <div class="form-group">
                                     {{-- meta title --}}
                                     <label for="floatingInputValue">Meta Title</label>
                                     <input type="text" class="form-control" id="floatingInputValue" name="meta_title"
-                                        value="{{  $blog['meta_title'] }}" placeholder="Meta Title">
+                                    value="{{ $blog['meta_title'] ? $blog['meta_title'] : old('meta_title') }}" placeholder="Meta Title">
                                     @if ($errors->has('meta_title'))
                                         <div class="error" style="color:red;">
                                             {{ $errors->first('meta_title') }}</div>
@@ -118,13 +133,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-md-6">
+                        <div class="col-xl-4 col-md-4">
                             <div class="form-group-div">
                                 <div class="form-group">
                                     {{-- meta keyword --}}
                                     <label for="floatingInputValue">Meta Keyword</label>
                                     <input type="text" class="form-control" id="floatingInputValue" name="meta_keyword"
-                                        value="{{ $blog['meta_keyword'] }}" placeholder="Meta Keyword">
+                                        value="{{ $blog['meta_keyword'] ? $blog['meta_keyword'] : old('meta_keyword') }}" placeholder="Meta Keyword">
                                     @if ($errors->has('meta_keyword'))
                                         <div class="error" style="color:red;">
                                             {{ $errors->first('meta_keyword') }}</div>
@@ -164,7 +179,15 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
     <script>
         ClassicEditor.create(document.querySelector("#description"));
-
-
+    </script>
+     <script>
+        $(document).ready(function() {
+            $('#name').on('keyup', function() {
+                var name = $(this).val();
+                var slug = name.toLowerCase().replace(/\s+/g,
+                '-'); // Convert to lowercase and replace spaces with hyphens
+                $('#slug').val(slug); // Update the value of the slug input field
+            });
+        });
     </script>
 @endpush
