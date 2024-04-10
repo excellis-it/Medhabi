@@ -2,14 +2,14 @@
 @section('meta_title')
 @endsection
 @section('title')
-    {{ env('APP_NAME') }} - {{ $page['title'] }}
+    {{ env('APP_NAME') }} - {{ $page['title'] ?? 'title'}}
 @endsection
 @push('styles')
 @endpush
 
 @section('content')
 @if ($page['content'])
-{!! html_entity_decode($page['content']) !!} 
+{!! html_entity_decode($page['content']) !!}
 @else
     <div class="container">
         <div class="row">
