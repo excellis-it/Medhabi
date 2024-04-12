@@ -198,7 +198,11 @@ class Helper
         foreach ($menus as $menu) {
 
             // Append the submenu item
+            if ($menu->children->isNotEmpty()) {
+            $html .= '<li class="has-droupdown">';
+            } else {
             $html .= '<li>';
+            }
             if ($menu->is_custom_link == 1) {
                 $html .= '<a href="' . (($menu->slug == null) ? "javascript:void(0);" : $menu->slug) . '">' . $menu->name . '</a>';
             } else {
