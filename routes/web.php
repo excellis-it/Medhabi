@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\Admissions\ProgramTypesCMSController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use App\Http\Controllers\Frontend\CmsController;
+use App\Models\ProgramTypesCMS;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -209,8 +210,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         });
         Route::get('/application-process-fetch-data', [ApplicationProcessController::class, 'fetchData'])->name('application-process.fetch-data');
     });
-
-
 });
 
 
@@ -225,7 +224,7 @@ Route::get('/careers-job-search', [CmsController::class, 'jobSearch'])->name('fr
 
 Route::get('school/{slug}', [CmsController::class, 'school'])->name('school');
 Route::get('course/{slug}', [CmsController::class, 'schoolCourses'])->name('course');
-Route::get('admission/{slug}', [CmsController::class, 'admission'])->name('programs');
+
 // download brochure
 Route::get('download-brochure/{slug}', [CmsController::class, 'downloadBrochure'])->name('download.brochure');
 // course.list-filter
@@ -237,4 +236,20 @@ Route::prefix('happenings')->group(function () {
     Route::get('/event', [CmsController::class, 'event'])->name('event');
 });
 
-Route::get('/page/{slug}', [CmsController::class, 'page'])->name('page');
+$admissions = ProgramTypesCMS::orderBy('name', 'asc')->get();
+foreach ($admissions as $admission) {
+    if ($admission->slug) {
+        Route::get('/'.$admission->slug, [CmsController::class, 'admission'])->name($admission->slug . '.admission');
+    }
+}
+
+
+// only menu model route is here for cms page
+$menus = \App\Models\Menu::select('slug')->where('status', 1)->groupBy('slug')->get();
+
+foreach ($menus as $menu) {
+    if ($menu->slug) {
+        Route::get('/{'.$menu->slug.'}', [CmsController::class, 'page'])->name($menu->slug . '.page');
+    }
+}
+

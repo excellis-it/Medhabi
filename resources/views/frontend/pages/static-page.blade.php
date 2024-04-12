@@ -8,7 +8,7 @@
 @endpush
 
 @section('content')
-@if ($page['content'])
+@if (isset($page['content']) && !empty($page['content']))
 {!! html_entity_decode($page['content']) !!}
 @else
     <div class="container">

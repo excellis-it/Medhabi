@@ -38,7 +38,7 @@
                                                         </a>
                                                     @else
                                                         <a target="_blank"
-                                                            href="{{ $item->slug == null ? 'javascript:void(0);' : route('page', $item->slug) }}">{{ $item->name }}
+                                                            href="{{ $item->slug == null ? 'javascript:void(0);' : route($item->slug . '.page', [$item->slug => $item->slug]) }}">{{ $item->name }}
                                                         </a>
                                                     @endif
                                                 @endif

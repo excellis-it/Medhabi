@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use Illuminate\Http\Request;
-
+use Illuminate\Validation\Rule;
 class MenuController extends Controller
 {
     /**
@@ -56,7 +56,12 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:menus',
+            'name' => [
+                'required',
+                Rule::unique('menus')->where(function ($query) use ($request) {
+                    return $query->where('type', $request->type);
+                }),
+            ],
             'type' => 'required',
             'status' => 'required'
         ]);
@@ -108,7 +113,12 @@ class MenuController extends Controller
         // return $request;
         $menu = Menu::findOrFail($id);
         $request->validate([
-            'name' => 'required|unique:menus,name,' . $menu->id,
+            'name' => [
+                'required',
+                Rule::unique('menus')->ignore($menu->id)->where(function ($query) use ($request) {
+                    return $query->where('type', $request->type);
+                }),
+            ],
             'type' => 'required',
             'status' => 'required'
         ]);

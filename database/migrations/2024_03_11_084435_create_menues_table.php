@@ -16,8 +16,8 @@ class CreateMenuesTable extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->string('parent_id')->nullable();
-            $table->string('name')->unique();
-            $table->string('slug')->unique()->nullable();
+            $table->string('name');
+            $table->string('slug')->nullable();
             $table->enum('type', ['header','footer'])->default('footer');
             $table->boolean('status')->default(1);
             $table->boolean('is_custom_link')->default(0);

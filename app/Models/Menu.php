@@ -17,7 +17,6 @@ class Menu extends Model
         'status',
         'is_custom_link',
         'is_delete',
-        'status',
         'created_at',
         'updated_at'
     ];

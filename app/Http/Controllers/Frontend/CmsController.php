@@ -127,8 +127,11 @@ class CmsController extends Controller
         return view('frontend.pages.event')->with(compact('events'));
     }
 
-    public function admission($slug)
+    public function admission()
     {
+        $url = url()->current();
+        $slug = explode('/', $url);
+        $slug = end($slug);
         $program = ProgramTypesCMS::where('slug', $slug)->first();
         $achievements = Achievement::orderBy('id', 'desc')->get();
         $key_milestones = KeyMilestone::orderBy('id', 'desc')->get();
@@ -165,11 +168,15 @@ class CmsController extends Controller
         }
     }
 
-    public function page($slug)
+    public function page(Request $request, $slug = null)
     {
+        // return $slug;
         $page = StaticPage::whereHas('menu', function ($query) use ($slug) {
             $query->where('slug', $slug);
         })->first();
+        if (!$page) {
+            abort(404);
+        }
         return view('frontend.pages.static-page')->with(compact('page'));
     }
 }
