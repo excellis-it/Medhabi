@@ -96,10 +96,9 @@ class CmsController extends Controller
     public function schoolCourses($slug)
     {
         $course = Course::where('slug', $slug)->first();
-        $blogs = Blog::orderBy('id', 'desc')->limit(4)->get();
-        $job_oppotunities = JobOpportunity::get();
-        $schools = School::orderBy('id', 'desc')->get();
-        return view('frontend.pages.course')->with(compact('course', 'blogs', 'job_oppotunities', 'schools'));
+        $our_partnerships = OurPartnership::orderBy('id', 'desc')->get();
+        $other_courses = Course::where('program_type_id', $course->program_type_id)->where('id', '!=', $course->id)->orderBy('name', 'asc')->get();
+        return view('frontend.pages.course')->with(compact('course', 'our_partnerships', 'other_courses'));
     }
 
     public function downloadBrochure($slug)

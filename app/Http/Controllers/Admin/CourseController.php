@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CourseAcademicFramework;
+use App\Models\CourseIndustryLearning;
+use App\Models\CourseLearningDoing;
+use App\Models\CourseProgrammeOutcome;
 use App\Models\JobOpportunity;
 use App\Models\ProgramType;
 use App\Traits\CreateSlug;
@@ -67,49 +71,45 @@ class CourseController extends Controller
             'course_type_id' => 'required',
             'name' => 'required',
             'banner_title' => 'required',
-            'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'section_1_title' => 'required',
             'section_1_description' => 'required',
-            'section_2_title' => 'required',
-            'section_2_left_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'section_2_right_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'section_3_title' => 'required',
-            'section_4_title' => 'required',
-            'section_4_step_1_title' => 'required',
-            'section_4_step_1_description' => 'nullable',
-            'section_4_step_2_title' => 'required',
-            'section_4_step_2_description' => 'nullable',
-            'section_4_step_3_title' => 'required',
-            'section_4_step_3_description' => 'nullable',
-            'brochure' => 'required|file|mimes:pdf',
+            'duration_title' => 'required',
+            'duration_description' => 'required',
+            'eligibility_title' => 'required',
+            'industry_led_learning_title' => 'required',
+            'industry_led_learning_description' => 'required',
+            'academic_framework_title' => 'required',
+            'academic_framework_description' => 'required',
+            'programme_outcomes_title' => 'required',
+            'learning_by_doing_title' => 'required',
+            'industry_partners_title' => 'required',
+            'programs_to_explore_title' => 'required',
             'seo_title' => 'nullable',
             'seo_description' => 'nullable',
             'seo_keywords' => 'nullable',
-            'job_opportunity_title.*' => 'required',
-            'job_opportunity_description.*' => 'required',
-        ], [
+            'industry_led_learning_category_title.*' => 'required',
+            'industry_led_learning_category_description.*' => 'required',
+            'academic_framework_category_title.*' => 'required',
+            'academic_framework_category_description.*' => 'required',
+            'programme_category_title.*' => 'required',
+            'programme_category_description.*' => 'required',
+            'learning_by_doing_image' => 'required',
+        ],[
+            'industry_led_learning_category_title.*.required' => 'The industry led learning category title field is required.',
+            'industry_led_learning_category_description.*.required' => 'The industry led learning category description field is required.',
+            'academic_framework_category_title.*.required' => 'The academic framework category title field is required.',
+            'academic_framework_category_description.*.required' => 'The academic framework category description field is required.',
+            'programme_category_title.*.required' => 'The programme category title field is required.',
+            'programme_category_description.*.required' => 'The programme category description field is required.',
+            'learning_by_doing_image.required' => 'The learning by doing image field is required.',
+            'learning_by_doing_image.image' => 'The learning by doing image must be an image.',
+            'learning_by_doing_image.mimes' => 'The learning by doing image must be a file of type: jpeg, png, jpg, gif, svg.',
+            'banner_image.required' => 'The banner image field is required.',
+            'banner_image.image' => 'The banner image must be an image.',
+            'banner_image.mimes' => 'The banner image must be a file of type: jpeg, png, jpg, gif, svg.',
             'program_type_id.required' => 'The program type field is required.',
             'course_type_id.required' => 'The course type field is required.',
             'name.required' => 'The name field is required.',
             'banner_title.required' => 'The banner title field is required.',
-            'banner_image.required' => 'The banner image field is required.',
-            'section_1_title.required' => 'The section 1 title field is required.',
-            'section_1_description.required' => 'The section 1 description field is required.',
-            'section_2_title.required' => 'The section 2 title field is required.',
-            'section_2_left_image.required' => 'The section 2 left image field is required.',
-            'section_2_right_image.required' => 'The section 2 right image field is required.',
-            'section_3_title.required' => 'The section 3 title field is required.',
-            'section_4_title.required' => 'The section 4 title field is required.',
-            'section_4_step_1_title.required' => 'The section 4 step 1 title field is required.',
-            'section_4_step_2_title.required' => 'The section 4 step 2 title field is required.',
-            'section_4_step_3_title.required' => 'The section 4 step 3 title field is required.',
-            'section_5_title.required' => 'The section 5 title field is required.',
-            'section_5_description.required' => 'The section 5 description field is required.',
-            'brochure.required' => 'The brochure field is required.',
-            'brochure.file' => 'The brochure must be a file.',
-            'brochure.mimes' => 'The brochure must be a file of type: pdf.',
-            'job_opportunity_title.*.required' => 'The job opportunity title field is required.',
-            'job_opportunity_description.*.required' => 'The job opportunity description field is required.',
         ]);
 
         $slug = $this->createSlug($request->name);
@@ -126,34 +126,66 @@ class CourseController extends Controller
         $course->slug = $slug;
         $course->banner_title = $request->banner_title;
         $course->banner_image = $this->imageUpload($request->file('banner_image'), 'courses');
-        $course->section_1_title = $request->section_1_title;
         $course->section_1_description = $request->section_1_description;
-        $course->section_2_title = $request->section_2_title;
-        $course->section_2_left_image = $this->imageUpload($request->file('section_2_left_image'), 'courses');
-        $course->section_2_right_image = $this->imageUpload($request->file('section_2_right_image'), 'courses');
-        $course->section_3_title = $request->section_3_title;
-        $course->section_4_title = $request->section_4_title;
-        $course->section_4_step_1_title = $request->section_4_step_1_title;
-        $course->section_4_step_1_description = $request->section_4_step_1_description;
-        $course->section_4_step_2_title = $request->section_4_step_2_title;
-        $course->section_4_step_2_description = $request->section_4_step_2_description;
-        $course->section_4_step_3_title = $request->section_4_step_3_title;
-        $course->section_4_step_3_description = $request->section_4_step_3_description;
-        $course->section_5_title = $request->section_5_title;
-        $course->section_5_description = $request->section_5_description;
-        $course->brochure = $this->imageUpload($request->file('brochure'), 'courses');
+        $course->duration_title = $request->duration_title;
+        $course->duration_description = $request->duration_description;
+        $course->eligibility_title = $request->eligibility_title;
+        $course->industry_led_learning_title = $request->industry_led_learning_title;
+        $course->industry_led_learning_description = $request->industry_led_learning_description;
+        $course->academic_framework_title = $request->academic_framework_title;
+        $course->academic_framework_description = $request->academic_framework_description;
+        $course->programme_outcomes_title = $request->programme_outcomes_title;
+        $course->learning_by_doing_title = $request->learning_by_doing_title;
+        $course->industry_partners_title = $request->industry_partners_title;
+        $course->programs_to_explore_title = $request->programs_to_explore_title;
         $course->seo_title = $request->seo_title;
         $course->seo_description = $request->seo_description;
         $course->seo_keywords = $request->seo_keywords;
         $course->save();
 
-        if ($request->job_opportunity_title) {
-            foreach ($request->job_opportunity_title as $key => $value) {
-                $job_opportunity = new JobOpportunity();
-                $job_opportunity->course_id = $course->id;
-                $job_opportunity->name = $value;
-                $job_opportunity->description = $request->job_opportunity_description[$key];
-                $job_opportunity->save();
+        if ($request->industry_led_learning_category_title) {
+            foreach ($request->industry_led_learning_category_title as $key => $value) {
+                $industry_led_learning_category = new CourseIndustryLearning();
+                $industry_led_learning_category->course_id = $course->id;
+                $industry_led_learning_category->title = $value;
+                $industry_led_learning_category->description = $request->industry_led_learning_category_description[$key];
+                if ($request->file('industry_led_learning_category_image') && $request->file('industry_led_learning_category_image')[$key]) {
+                    $industry_led_learning_category->image = $this->imageUpload($request->file('industry_led_learning_category_image')[$key], 'courses');
+                }
+                $industry_led_learning_category->save();
+            }
+        }
+
+        if ($request->academic_framework_category_title) {
+            foreach ($request->academic_framework_category_title as $key => $value) {
+                $academic_framework_category = new CourseAcademicFramework();
+                $academic_framework_category->course_id = $course->id;
+                $academic_framework_category->title = $value;
+                $academic_framework_category->description = $request->academic_framework_category_description[$key];
+                if ($request->file('academic_framework_category_image') && $request->file('academic_framework_category_image')[$key]) {
+                    $academic_framework_category->image = $this->imageUpload($request->file('academic_framework_category_image')[$key], 'courses');
+                }
+                $academic_framework_category->save();
+            }
+        }
+
+        if ($request->programme_category_title) {
+            foreach ($request->programme_category_title as $key => $value) {
+                $programme_category = new CourseProgrammeOutcome();
+                $programme_category->course_id = $course->id;
+                $programme_category->title = $value;
+                $programme_category->description = $request->programme_category_description[$key];
+                $programme_category->type = $request->programme_category_type[$key];
+                $programme_category->save();
+            }
+        }
+
+        if ($request->file('learning_by_doing_image')) {
+            foreach ($request->file('learning_by_doing_image') as $key => $value) {
+                $learning_by_doing_image = new CourseLearningDoing();
+                $learning_by_doing_image->course_id = $course->id;
+                $learning_by_doing_image->image = $this->imageUpload($request->file('learning_by_doing_image')[$key], 'courses');
+                $learning_by_doing_image->save();
             }
         }
 
@@ -184,7 +216,7 @@ class CourseController extends Controller
         $course = Course::find($id);
         $program_types = ProgramType::orderBy('name', 'desc')->get();
         $jobOpportunities = JobOpportunity::where('course_id', $id)->get();
-        return view('admin.pages.courses.edit')->with(compact('course', 'program_types','jobOpportunities'));
+        return view('admin.pages.courses.edit')->with(compact('course', 'program_types', 'jobOpportunities'));
     }
 
     /**
@@ -196,46 +228,41 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // return $request->all();
         $request->validate([
             'program_type_id' => 'required',
             'course_type_id' => 'required',
             'name' => 'required',
             'banner_title' => 'required',
-            'section_1_title' => 'required',
             'section_1_description' => 'required',
-            'section_2_title' => 'required',
-            'section_3_title' => 'required',
-            'section_4_title' => 'required',
-            'section_4_step_1_title' => 'required',
-            'section_4_step_1_description' => 'nullable',
-            'section_4_step_2_title' => 'required',
-            'section_4_step_2_description' => 'nullable',
-            'section_4_step_3_title' => 'required',
-            'section_4_step_3_description' => 'nullable',
-            'section_5_title' => 'required',
-            'section_5_description' => 'required',
+            'duration_title' => 'required',
+            'duration_description' => 'required',
+            'eligibility_title' => 'required',
+            'industry_led_learning_title' => 'required',
+            'industry_led_learning_description' => 'required',
+            'academic_framework_title' => 'required',
+            'academic_framework_description' => 'required',
+            'programme_outcomes_title' => 'required',
+            'learning_by_doing_title' => 'required',
+            'industry_partners_title' => 'required',
+            'programs_to_explore_title' => 'required',
             'seo_title' => 'nullable',
             'seo_description' => 'nullable',
             'seo_keywords' => 'nullable',
-            'job_opportunity_title.*' => 'required',
-            'job_opportunity_description.*' => 'required',
-        ], [
-            'program_type_id.required' => 'The program type field is required.',
-            'course_type_id.required' => 'The course type field is required.',
-            'name.required' => 'The name field is required.',
-            'banner_title.required' => 'The banner title field is required.',
-            'section_1_title.required' => 'The section 1 title field is required.',
-            'section_1_description.required' => 'The section 1 description field is required.',
-            'section_2_title.required' => 'The section 2 title field is required.',
-            'section_3_title.required' => 'The section 3 title field is required.',
-            'section_4_title.required' => 'The section 4 title field is required.',
-            'section_4_step_1_title.required' => 'The section 4 step 1 title field is required.',
-            'section_4_step_2_title.required' => 'The section 4 step 2 title field is required.',
-            'section_4_step_3_title.required' => 'The section 4 step 3 title field is required.',
-            'job_opportunity_title.*.required' => 'The job opportunity title field is required.',
-            'job_opportunity_description.*.required' => 'The job opportunity description field is required.',
+            'industry_led_learning_category_title.*' => 'required',
+            'industry_led_learning_category_description.*' => 'required',
+            'academic_framework_category_title.*' => 'required',
+            'academic_framework_category_description.*' => 'required',
+            'programme_category_title.*' => 'required',
+            'programme_category_description.*' => 'required',
+        ],[
+            'industry_led_learning_category_title.*.required' => 'The industry led learning category title field is required.',
+            'industry_led_learning_category_description.*.required' => 'The industry led learning category description field is required.',
+            'academic_framework_category_title.*.required' => 'The academic framework category title field is required.',
+            'academic_framework_category_description.*.required' => 'The academic framework category description field is required.',
+            'programme_category_title.*.required' => 'The programme category title field is required.',
+            'programme_category_description.*.required' => 'The programme category description field is required.',
         ]);
+
 
         $course = Course::find($id);
         if ($course->name != $request->name) {
@@ -256,59 +283,81 @@ class CourseController extends Controller
             ]);
             $course->banner_image = $this->imageUpload($request->file('banner_image'), 'courses');
         }
-        $course->section_1_title = $request->section_1_title;
         $course->section_1_description = $request->section_1_description;
-        $course->section_2_title = $request->section_2_title;
-        if ($request->file('section_2_left_image')) {
-            $request->validate([
-                'section_2_left_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            ]);
-            $course->section_2_left_image = $this->imageUpload($request->file('section_2_left_image'), 'courses');
-        }
-
-        if ($request->file('section_2_right_image')) {
-            $request->validate([
-                'section_2_right_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            ]);
-            $course->section_2_right_image = $this->imageUpload($request->file('section_2_right_image'), 'courses');
-        }
-
-        $course->section_3_title = $request->section_3_title;
-        $course->section_4_title = $request->section_4_title;
-        $course->section_4_step_1_title = $request->section_4_step_1_title;
-        $course->section_4_step_1_description = $request->section_4_step_1_description;
-        $course->section_4_step_2_title = $request->section_4_step_2_title;
-        $course->section_4_step_2_description = $request->section_4_step_2_description;
-        $course->section_4_step_3_title = $request->section_4_step_3_title;
-        $course->section_4_step_3_description = $request->section_4_step_3_description;
-        $course->section_5_title = $request->section_5_title;
-        $course->section_5_description = $request->section_5_description;
-        if ($request->file('brochure')) {
-            $request->validate([
-                'brochure' => 'required|file|mimes:pdf',
-            ]);
-            $course->brochure = $this->imageUpload($request->file('brochure'), 'courses');
-        }
-
+        $course->duration_title = $request->duration_title;
+        $course->duration_description = $request->duration_description;
+        $course->eligibility_title = $request->eligibility_title;
+        $course->industry_led_learning_title = $request->industry_led_learning_title;
+        $course->industry_led_learning_description = $request->industry_led_learning_description;
+        $course->academic_framework_title = $request->academic_framework_title;
+        $course->academic_framework_description = $request->academic_framework_description;
+        $course->programme_outcomes_title = $request->programme_outcomes_title;
+        $course->learning_by_doing_title = $request->learning_by_doing_title;
+        $course->industry_partners_title = $request->industry_partners_title;
+        $course->programs_to_explore_title = $request->programs_to_explore_title;
         $course->seo_title = $request->seo_title;
         $course->seo_description = $request->seo_description;
         $course->seo_keywords = $request->seo_keywords;
         $course->save();
 
-        if ($request->job_opportunity_title) {
-            JobOpportunity::where('course_id', $id)->delete();
-            foreach ($request->job_opportunity_title as $key => $value) {
-                $job_opportunity = new JobOpportunity();
-                $job_opportunity->course_id = $course->id;
-                $job_opportunity->name = $value;
-                $job_opportunity->description = $request->job_opportunity_description[$key];
-                $job_opportunity->save();
+        if ($request->industry_led_learning_category_title) {
+            foreach ($request->industry_led_learning_category_title as $key => $value) {
+                if ($request->industry_led_learning_category_id[$key] && $request->industry_led_learning_category_id[$key]) {
+                    $industry_led_learning_category = CourseIndustryLearning::find($request->industry_led_learning_category_id[$key]);
+                } else {
+                    $industry_led_learning_category = new CourseIndustryLearning();
+                }
+                $industry_led_learning_category->course_id = $course->id;
+                $industry_led_learning_category->title = $value;
+                $industry_led_learning_category->description = $request->industry_led_learning_category_description[$key];
+                if ($request->file('industry_led_learning_category_image') && $request->file('industry_led_learning_category_image')[$key]) {
+                    $industry_led_learning_category->image = $this->imageUpload($request->file('industry_led_learning_category_image')[$key], 'courses');
+                }
+                $industry_led_learning_category->save();
+            }
+        }
+
+        if ($request->academic_framework_category_title) {
+            foreach ($request->academic_framework_category_title as $key => $value) {
+                if (isset($request->academic_framework_category_id[$key]) && $request->academic_framework_category_id[$key]) {
+                    $academic_framework_category = CourseAcademicFramework::find($request->academic_framework_category_id[$key]);
+                } else {
+                    $academic_framework_category = new CourseAcademicFramework();
+                }
+
+                $academic_framework_category->course_id = $course->id;
+                $academic_framework_category->title = $value;
+                $academic_framework_category->description = $request->academic_framework_category_description[$key];
+                if ($request->file('academic_framework_category_image') && $request->file('academic_framework_category_image')[$key]) {
+                    $academic_framework_category->image = $this->imageUpload($request->file('academic_framework_category_image')[$key], 'courses');
+                }
+                $academic_framework_category->save();
+            }
+        }
+
+        if ($request->programme_category_title) {
+            CourseProgrammeOutcome::where('course_id', $course->id)->delete();
+            foreach ($request->programme_category_title as $key => $value) {
+                $programme_category = new CourseProgrammeOutcome();
+                $programme_category->course_id = $course->id;
+                $programme_category->title = $value;
+                $programme_category->description = $request->programme_category_description[$key];
+                $programme_category->type = $request->programme_category_type[$key];
+                $programme_category->save();
+            }
+        }
+
+        if ($request->file('learning_by_doing_image')) {
+            foreach ($request->file('learning_by_doing_image') as $key => $value) {
+                $learning_by_doing_image = new CourseLearningDoing();
+                $learning_by_doing_image->course_id = $course->id;
+                $learning_by_doing_image->image = $this->imageUpload($request->file('learning_by_doing_image')[$key], 'courses');
+                $learning_by_doing_image->save();
             }
         }
 
         session()->flash('message', 'Course updated successfully.');
         return response()->json(['status' => 'success', 'message' => 'Course updated successfully.']);
-
     }
 
     /**
@@ -334,5 +383,12 @@ class CourseController extends Controller
         $program_type_id = $request->program_type_id;
         $course_types = ProgramType::find($program_type_id)->courseTypes;
         return response()->json(['course_types' => $course_types]);
+    }
+
+    public function deleteLearningByDoingImage(Request $request)
+    {
+        $course_learning_doing = CourseLearningDoing::find($request->id);
+        $course_learning_doing->delete();
+        return response()->json(['status' => 'success', 'message' => 'Image deleted successfully.']);
     }
 }

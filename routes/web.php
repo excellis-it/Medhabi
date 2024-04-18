@@ -146,6 +146,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
             'our-partnerships' => OurPartnershipController::class,
             'achievement-and-key-milestones' => AchievementAndKeyMilestoneController::class,
         ]);
+        // course.learning-by-doing.image.delete
+        Route::get('/course-learning-by-doing-image-delete', [CourseController::class, 'deleteLearningByDoingImage'])->name('courses.learning-by-doing.image.delete');
+
         // our-partnerships
         Route::prefix('our-partnerships')->group(function () {
             Route::get('/our-partnerships-delete/{id}', [OurPartnershipController::class, 'delete'])->name('our-partnerships.delete');
@@ -154,6 +157,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 
         Route::prefix('courses')->group(function () {
             Route::get('/course-delete/{id}', [CourseController::class, 'delete'])->name('courses.delete');
+
 
             Route::prefix('admissions')->group(function () {
                 Route::resources([

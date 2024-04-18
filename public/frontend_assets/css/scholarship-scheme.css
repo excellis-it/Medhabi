@@ -1,17 +1,11 @@
-section.msu_scholar_schemes .rbt-card-scheme {
-    max-width: 100%;
-}
 
-section.msu_scholar_schemes .container-fluid.custom-width__2 .row:nth-child(2) {
-    row-gap: 30px;
-}
 
-section.msu_scholar_schemes,
+/* section.msu_scholar_schemes,
 section.know__abt__msu_scholarship,
 section.cultural_scholarship,
 section.cultural_scholarship_duplicate {
-    padding: 100px 25px;
-}
+    padding: 100px 0px;
+} */
 
 @media screen and (max-width: 1440px) {
 

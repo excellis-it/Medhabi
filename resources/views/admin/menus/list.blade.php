@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-    All Menues Details - {{ env('APP_NAME') }}
+    All Menus Details - {{ env('APP_NAME') }}
 @endsection
 @push('styles')
     <style>
@@ -10,7 +10,7 @@
     </style>
 @endpush
 @section('head')
-    All Menues Details
+    All Menus Details
 @endsection
 @section('create_button')
     <a href="{{ route('menus.create') }}" class="btn btn-primary">+ Create New Menu</a>
@@ -84,7 +84,7 @@
         $(document).on('click', '#delete', function(e) {
             swal({
                     title: "Are you sure?",
-                    text: "To delete this Menues.",
+                    text: "To delete this Menus.",
                     type: "warning",
                     confirmButtonText: "Yes",
                     showCancelButton: true

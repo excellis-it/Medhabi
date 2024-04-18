@@ -134,9 +134,9 @@
         keyboard: {
             enabled: true
         },
-         autoplay: {
-             delay: 2000,
-         },
+        autoplay: {
+            delay: 2000,
+        },
         spaceBetween: 60,
         loop: true,
         // pagination: {
@@ -232,10 +232,10 @@
         loop: true,
         margin: 5,
         items: 1,
-        autoplay: false,
+        autoplay: true,
         autoplayTimeout: 3000,
-        dots: false,
-        autoplayHoverPause: false,
+        dots: true,
+        autoplayHoverPause: true,
         // nav: true,
         // navText: [
         //     "<span class='ri-arrow-left-s-line prev_btn'></span>",
@@ -277,7 +277,7 @@
     });
     $('.university__name').owlCarousel({
         loop: true,
-        margin: 5,
+        margin: 10,
         items: 3,
         autoplay: true,
         autoplayTimeout: 2000,
@@ -328,6 +328,39 @@
             1000: {
                 items: 3,
                 nav: false,
+                loop: true
+            }
+        }
+    });
+    $('.student-slider').owlCarousel({
+        loop: true,
+        margin: 20,
+        items: 5,
+        autoplay: true,
+        autoplayTimeout: 3500,
+        autoplayHoverPause: false,
+        nav: true,
+        navText: [
+            "<span class='ri-arrow-left-s-line prev_btn'></span>",
+            "<span class='ri-arrow-right-s-line next_btn'></span>",
+        ],
+        center: false,
+        dots: false,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1,
+                nav: false,
+                dots: true,
+            },
+            600: {
+                items: 2,
+                nav: false,
+                dots: true,
+            },
+            1000: {
+                items: 5,
+                // nav: false,
                 loop: true
             }
         }
@@ -404,9 +437,9 @@
                 nav: false
             },
             1000: {
-                items: 1,
+                items: 4,
                 nav: false,
-                loop: false
+                loop: true
             }
         }
     });
@@ -467,8 +500,9 @@
         animateOut: 'fadeOut',
         margin: 10,
         items: 1,
-        autoplay: false,
+        autoplay: true,
         autoplayTimeout: 2000,
+        autoplayHoverPause: true,
         nav: false,
         dots: false,
         responsiveClass: true,
@@ -487,7 +521,6 @@
                 items: 1,
                 nav: false,
                 loop: true,
-                autoplay: true,
             }
         }
     });
@@ -496,7 +529,7 @@
         infinite: true,
         margin: 40,
         items: 3,
-        autoplay: false,
+        autoplay: true,
         autoplayTimeout: 2000,
         autoplayHoverPause: true,
         nav: true,
@@ -529,8 +562,9 @@
         animateOut: 'fadeOut',
         margin: 10,
         items: 1,
-        autoplay: false,
+        autoplay: true,
         autoplayTimeout: 2000,
+        autoplayHoverPause: true,
         nav: false,
         dots: false,
         responsiveClass: true,
@@ -557,7 +591,8 @@
         animateOut: 'fadeOut',
         margin: 10,
         items: 1,
-        autoplay: false,
+        autoplayHoverPause: true,
+        autoplay: true,
         autoplayTimeout: 2000,
         nav: false,
         dots: false,
@@ -582,13 +617,13 @@
     });
 
     $('.student-says').owlCarousel({
-        loop: false,
+        loop: true,
         margin: 30,
         dots: false,
         rtl: false,
         center: false,
         autoplayHoverPause: false,
-        autoplay: false,
+        autoplay: true,
         singleItem: true,
         smartSpeed: 1200,
         nav: true,
@@ -768,15 +803,433 @@
             $(this).text("Read more")
         }
     });
+    $('.moreless-button-4').click(function () {
+        $('.moretext-4').slideToggle();
+        if ($('.moreless-button-4').text() == "Read more") {
+            $(this).text("Read less")
+        } else {
+            $(this).text("Read more")
+        }
+    });
 
 
-   //   var win = window,
-   //      doc = document,
-   //      docElem = doc.documentElement,
-   //      body = doc.getElementsByTagName('body')[0],
-   //      x = win.innerWidth || docElem.clientWidth || body.clientWidth,
-   //       y = win.innerHeight || docElem.clientHeight || body.clientHeight;
-   // alert(x + ' × ' + y);
+
+
+
+    $('.learning-by-doing-slider').owlCarousel({
+        loop: true,
+        margin: 40,
+        items: 3,
+        autoplay: true,
+        autoplayTimeout: 3500,
+        autoplayHoverPause: false,
+        nav: true,
+        navText: [
+            "<span class='ri-arrow-left-s-line prev_btn'></span>",
+            "<span class='ri-arrow-right-s-line next_btn'></span>",
+        ],
+        center: false,
+        dots: false,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1,
+                nav: false,
+                dots: true,
+            },
+            600: {
+                items: 2,
+                nav: true
+            },
+            1000: {
+                items: 3,
+                // nav: false,
+                loop: true
+            }
+        }
+    });
+    $('.industry-partners-slider').owlCarousel({
+        loop: true,
+        margin: 40,
+        items: 3,
+        autoplay: true,
+        autoplayTimeout: 3500,
+        autoplayHoverPause: false,
+        nav: true,
+        navText: [
+            "<span class='ri-arrow-left-s-line prev_btn'></span>",
+            "<span class='ri-arrow-right-s-line next_btn'></span>",
+        ],
+        center: false,
+        dots: false,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1,
+                nav: false,
+                dots: true,
+            },
+            600: {
+                items: 2,
+                nav: true
+            },
+            1000: {
+                items: 3,
+                // nav: false,
+                loop: true
+            }
+        }
+    });
+    $('.program-explore-slider').owlCarousel({
+        loop: true,
+        margin: 40,
+        items: 3,
+        autoplay: false,
+        autoplayTimeout: 3500,
+        autoplayHoverPause: false,
+        nav: true,
+        navText: [
+            "<span class='ri-arrow-left-s-line prev_btn'></span>",
+            "<span class='ri-arrow-right-s-line next_btn'></span>",
+        ],
+        center: false,
+        dots: false,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1,
+                nav: false,
+                dots: true,
+            },
+            600: {
+                items: 2,
+                nav: true,
+                margin: 20,
+            },
+            1000: {
+                items: 3,
+                // nav: false,
+                loop: true
+            }
+        }
+    });
+
+
+    // Logo Changing Effect
+
+    (function () {
+        var quotes = $(".quotes");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(2500).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes2");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(4000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes3");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(6000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes4");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(4000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes5");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(5500).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+    (function () {
+        var quotes = $(".quotes6");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(8000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+    (function () {
+        var quotes = $(".quotes7");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(6000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+    (function () {
+        var quotes = $(".quotes8");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(10000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes9");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(8000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes10");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(4000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+
+    (function () {
+        var quotes = $(".quotes11");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(6000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes12");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(8000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes13");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(6500).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes14");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(9000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+    (function () {
+        var quotes = $(".quotes15");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(8000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+    (function () {
+        var quotes = $(".quotes16");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(4000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+    (function () {
+        var quotes = $(".quotes17");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(9000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+
+    (function () {
+        var quotes = $(".quotes18");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(7000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes19");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(6000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes20");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(8000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes21");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(4000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes22");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(7000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+    (function () {
+        var quotes = $(".quotes23");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(5000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+    (function () {
+        var quotes = $(".quotes24");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(4000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+    (function () {
+        var quotes = $(".quotes25");
+        var quoteIndex = -1;
+
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(8000).fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
+    })();
+
+
+    $('.ecosystemSlider').owlCarousel({
+        loop: true,
+        stagePadding: 80,
+        margin: 58,
+        items: 5,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        autoplayHoverPause: true,
+        nav: false,
+        navText: [
+            "<span class='ri-arrow-left-s-line prev_btn'></span>",
+            "<span class='ri-arrow-right-s-line next_btn'></span>",
+        ],
+        dots: false,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1,
+                stagePadding: 0,
+            },
+            600: {
+                items: 2,
+                nav: false,
+                stagePadding: 0,
+            },
+            1000: {
+                items: 3,
+                nav: false,
+                loop: true
+            }
+        }
+    });
+
+
+    //   var win = window,
+    //      doc = document,
+    //      docElem = doc.documentElement,
+    //      body = doc.getElementsByTagName('body')[0],
+    //      x = win.innerWidth || docElem.clientWidth || body.clientWidth,
+    //       y = win.innerHeight || docElem.clientHeight || body.clientHeight;
+    // alert(x + ' × ' + y);
+
+
 
 
     eduJs.i();

@@ -3,6 +3,39 @@
     <meta name="description" content="{{ $course['seo_description'] ?? '' }}">
     <meta name="title" content="{{ $course['seo_title'] ?? '' }}">
     <meta name="keywords" content="{{ $course['seo_keyword'] ?? '' }}">
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5HHK5ZC');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <meta name="p:domain_verify" content="c711886600acc8f58440b8a66c9756ce" />
+
+    <!-- Global site tag (gtag.js) - Google Ads: 10779528309 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10779528309"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-10779528309');
+    </script>
 @endsection
 @section('title')
     {{ env('APP_NAME') }} - {{ $course['seo_title'] != null ? $course['seo_title'] : $course['name'] }}
@@ -17,10 +50,6 @@
             line-height: 27px;
         }
 
-        .program-icon-list ul {
-            grid-template-columns: 1fr 1fr 1fr 1fr !important;
-        }
-
         @media screen and (min-width: 800px) {
             .program-icon-sec .program-icon-list {
                 justify-content: center !important;
@@ -30,15 +59,12 @@
 @endpush
 
 @section('content')
-    <!--=====================================-->
-    <!--=       Hero Inner Page Banner Area Start =-->
-    <!--=====================================-->
     <section class="hero--Inner-page-banner"
         style="
-                  background-image: url('{{ $course['banner_image'] != null ? Storage::url($course['banner_image']) : 'assets/images/m-u/bachelors-programs-details/bsc-1.jpg' }}');
-                  background-size: cover;
-                  background-position: center;
-                ">
+background-image: url({{ $course['banner_image'] != null ? Storage::url($course['banner_image']) : 'assets/images/m-u/bachelors-programs-details/bsc-1.jpg' }});
+background-size: cover;
+background-position: center;
+">
         <div class="container-fluid custom-width__2">
             <div class="row">
                 <div class="col-md-7">
@@ -51,6 +77,23 @@
     </section>
 
     <!--=====================================-->
+    <!--=      Shot Desc Sec        =-->
+    <!--=====================================-->
+
+    <section class="short-desc">
+        <div class="container-fluid custom-width__2">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        {{ $course['section_1_description'] ? nl2br($course['section_1_description']) : 'The scope of agriculture has existed from time immemorial, beyond the scope of civilization as a whole thus placing agriculture on a position of great social and economic significance.' }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--=====================================-->
     <!--=      About-b.sc Image Sec        =-->
     <!--=====================================-->
     <section class="program-icon-sec">
@@ -59,52 +102,91 @@
                 <div class="program-icon-list">
                     <ul>
                         <li>
-                            <a href="#About-Course">
+                            <a href="#duration">
                                 <div class="program-icon-box">
                                     <div class="program-icon">
-                                        <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/prg-1.png') }}"
+                                        <img src="{{ asset('frontend_assets/images/icons/duration-tab-icon.png') }}"
                                             alt="" />
                                     </div>
                                     <div class="program-icon-text">
-                                        <h4>Program Details</h4>
+                                        <h4>Duration & Eligibility</h4>
                                     </div>
                                 </div>
                             </a>
                         </li>
                         <li>
-                            <a href="#program-outcome">
+                            <a href="#industry-led">
                                 <div class="program-icon-box">
                                     <div class="program-icon">
-                                        <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/prg-2.png') }}"
+                                        <img src="{{ asset('frontend_assets/images/icons/tab-icon-2.png') }}"
                                             alt="" />
                                         <div class="program-icon-text">
-                                            <h4>Program Outcome</h4>
+                                            <h4>Industry Led Learning</h4>
                                         </div>
                                     </div>
                                 </div>
                             </a>
                         </li>
                         <li>
-                            <a href="#eligibility">
+                            <a href="#academic-framework">
                                 <div class="program-icon-box">
                                     <div class="program-icon">
-                                        <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/prg-3.png') }}"
+                                        <img src="{{ asset('frontend_assets/images/icons/tab-icon-3.png') }}"
                                             alt="" />
                                         <div class="program-icon-text">
-                                            <h4>Eligibility</h4>
+                                            <h4>Academic Framework</h4>
                                         </div>
                                     </div>
                                 </div>
                             </a>
                         </li>
                         <li>
-                            <a href="#e-brochure">
+                            <a href="#programme-outcome">
                                 <div class="program-icon-box">
                                     <div class="program-icon">
-                                        <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/prg-8.png') }}"
+                                        <img src="{{ asset('frontend_assets/images/icons/tab-icon-4.png') }}"
                                             alt="" />
                                         <div class="program-icon-text">
-                                            <h4>E-Brochure</h4>
+                                            <h4>Program Outcomes </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#learning-by-doing">
+                                <div class="program-icon-box">
+                                    <div class="program-icon">
+                                        <img src="{{ asset('frontend_assets/images/icons/tab-icon-5.png') }}"
+                                            alt="" />
+                                        <div class="program-icon-text">
+                                            <h4>Learning by Doing</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#industry-partners">
+                                <div class="program-icon-box">
+                                    <div class="program-icon">
+                                        <img src="{{ asset('frontend_assets/images/icons/tab-icon-6.png') }}"
+                                            alt="" />
+                                        <div class="program-icon-text">
+                                            <h4>Industry Partner</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#program-explore">
+                                <div class="program-icon-box">
+                                    <div class="program-icon">
+                                        <img src="{{ asset('frontend_assets/images/icons/tab-icon-7.png') }}"
+                                            alt="" />
+                                        <div class="program-icon-text">
+                                            <h4>Programs to Explore</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -115,63 +197,132 @@
             </div>
         </div>
     </section>
-    <!--=====================================-->
-    <!--=      About-b.sc         	=-->
-    <!--=====================================-->
-    <section class="about-bsc" id="About-Course">
-        <div class="about-bsc-bg">
-            <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/abt-bsc-bg.jpg') }}"
-                alt="" />
-        </div>
+
+
+    <!-- +++++++++++ Duration Tab +++++++++++++++++ -->
+    <section class="duration-section" id="duration">
         <div class="container-fluid custom-width__2">
-            <div class="about-bsc-wrap">
-                <div class="heading-white">
-                    <h2>{{ $course['section_1_title'] ? $course['section_1_title'] : 'About Course' }}</h2>
-                    <p>
-                        {{ $course['section_1_description'] ? $course['section_1_description'] : 'The scope of agriculture has existed from time immemorial, beyond the scope of civilization as a whole thus placing agriculture on a position of great social and economic significance.' }}
+            <div class="row gx-5 gy-5">
+                <div class="col-lg-6 col-md-6">
+                    <div class="duration-detail-bx">
+                        <div class="header-bar">
+                            <h3>Duration</h3>
+                        </div>
+                        <div class="duration-content">
+                            <h4 class="title-duration">
+                                {{ $course['duration_title'] ? $course['duration_title'] : '3 Years' }}</h4>
+                            <p class="small-text-4">
+                                {{ $course['duration_description'] ? nl2br($course['duration_description']) : 'The scope of agriculture has existed from time immemorial, beyond the scope of civilization as a whole thus placing agriculture on a position of great social and economic significance.' }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="eligibility-bx">
+                        <div class="header-bar">
+                            <h3>Eligibility</h3>
+                        </div>
+                        <div class="elegibility-content">
+                            <h4 class="title-elegibility">
+                                {{ $course['eligibility_title'] ? $course['eligibility_title'] : 'Eligibility' }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- +++++++++++ Industry Led Tab +++++++++++++++++ -->
+
+    <section class="industry-led" id="industry-led">
+        <div class="container-fluid custom-width__2">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h2 class="title industry-led-title">
+                        {{ $course['industry_led_learning_title'] ? $course['industry_led_learning_title'] : 'Industry Learning' }}
+                    </h2>
+                    <p class="industry-led-para-section">
+                        {{ $course['industry_led_learning_description'] ? nl2br($course['industry_led_learning_description']) : 'The scope of agriculture has existed from time immemorial, beyond the scope of civilization as a whole thus placing agriculture on a position of great social and economic significance.' }}
                     </p>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--=====================================-->
-    <!--=      About-b.sc Image Sec        =-->
-    <!--=====================================-->
-    <section class="abt-bsc-img-div-main">
-        <div class="container-fluid">
-            <div class="abt-bsc-img-wrap">
-                <div class="row">
-                    <div class="col-lg-6 padding-set-right">
-                        <div class="abt-bsc-img-div">
-                            <div class="abt-bsc-img">
-                                <img src="{{ $course['section_2_left_image'] != null ? Storage::url($course['section_2_left_image']) : asset('frontend_assets/images/m-u/bachelors-programs-details/bsc-1.jpg') }}"
-                                    alt="" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 padding-set-left">
-                        <div class="bsc-text-bg">
-                            <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/bsc-text-bg.png') }}"
-                                alt="" />
-                            <div class="bsc-text">
-                                <h3>
-                                    {{ $course['section_2_title'] != null ? $course['section_2_title'] : 'Choose To Take The Right Step Towards A Career That Gives You More!' }}
-                                </h3>
-                                {{-- <ul>
-                                    <li><a href="">Choose To Take</a></li>
-                                    <li><a href="">The Right</a></li>
-                                    <li><a href="">Step Towards</a></li>
-                                    <li><a href="">A Career</a></li>
-                                    <li><a href="">That Gives You</a></li>
-                                    <li><a href="">More!</a></li>
-                                </ul> --}}
-                                <div class="apply-btn">
-                                    <a class="" href="https://application.msu.edu.in/">Apply Now!</a>
+
+            <div class="row custom-margin-top">
+                @if (isset($course->courseIndustryLearnings) && $course->courseIndustryLearnings()->count() > 0)
+                    @foreach ($course->courseIndustryLearnings as $courseIndustryLearning)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="indst-learning-outer-bx br-blue bb-blue pt-0">
+                                <div class="indst-learning-inner-bx height-auto">
+                                    <div class="icon">
+                                        <img class="non-hover-visible"
+                                            src="{{ Storage::url($courseIndustryLearning->image) }}" alt="">
+                                        <img class="on-hover-visible"
+                                            src="{{ Storage::url($courseIndustryLearning->image) }}" alt="">
+                                    </div>
+                                    <div class="led-learning-content">
+                                        <h3 class="inner-led-title">
+                                            {{ $courseIndustryLearning->title }}
+                                        </h3>
+                                        <p class="inner-led-para">
+                                            {{ $courseIndustryLearning->description }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="choose-img">
-                                <img src="{{ $course['section_2_right_image'] != null ? Storage::url($course['section_2_right_image']) : asset('frontend_assets/images/m-u/bachelors-programs-details/choose-img.png') }}"
-                                    alt="" />
+
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- +++++++++++ Academic Framework Tab +++++++++++++++++ -->
+
+    <section class="academic-framework" id="academic-framework">
+        <div class="container-fluid custom-width__2">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="academic-bx">
+                        <div class="header-bar">
+                            <h3>{{ $course['academic_framework_title'] ? $course['academic_framework_title'] : 'Academic Framework' }}
+                            </h3>
+                        </div>
+
+                        <div class="academic-content">
+                            <p class="academic-text">
+                                {{ $course['academic_framework_description'] ? nl2br($course['academic_framework_description']) : 'The scope of agriculture has existed from time immemorial, beyond the scope of civilization as a whole thus placing agriculture on a position of great social and economic significance.' }}
+                            </p>
+
+
+                            <div class="academic-pointers">
+                                <div class="row">
+                                    @if (isset($course->courseAcademicFrameworks) && $course->courseAcademicFrameworks()->count() > 0)
+                                        @foreach ($course->courseAcademicFrameworks as $courseAcademicFramework)
+                                            <div class="col-lg-6">
+                                                <div class="main-academic-bx">
+                                                    <div class="academic-icon">
+                                                        <img src="{{ Storage::url($courseAcademicFramework->image) }}"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="academic-content-inner">
+                                                        <h4 class="academic-title">
+                                                            {{ $courseAcademicFramework->title }}
+                                                        </h4>
+                                                        <p class="academic-para">
+                                                            {{ $courseAcademicFramework->description }}
+                                                        </p>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -179,140 +330,149 @@
             </div>
         </div>
     </section>
-    <!--=====================================-->
-    <!--=       Why Study Sec        =-->
-    <!--=====================================-->
-    <section class="why-study-sec" id="program-outcome">
+
+    <!-- +++++++++++ PROGRAMme OUTCOMES Tab +++++++++++++++++ -->
+
+    <section class="programme-outcome" id="programme-outcome">
         <div class="container-fluid custom-width__2">
-            <div class="why-study-sec-wrap">
-                <div class="row align-items-end justify-content-between">
-                    <div class="col-lg-12">
-                        <div class="heading-1">
-                            <h2>{{ $course['section_3_title'] ? $course['section_3_title'] : 'Job Opportunities' }}</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-12 text-center">
+                    <h2 class="title programme-title">
+                        {{ $course['programme_outcomes_title'] ? $course['programme_outcomes_title'] : 'Program Outcomes' }}
+                    </h2>
+                </div>
+            </div>
+
+            <div class="tab-outcomme">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="tab-bx-programme">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                        data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                        aria-selected="true">Programme Specific
+                                        Outcomes</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                        data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                        aria-selected="false">Generic Programme Outcomes
+                                    </button>
+                                </li>
+                            </ul>
+                            {{-- @dd($course->courseProgramOutcomesSpecifics()) --}}
+
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                    aria-labelledby="home-tab">
+                                    <div class="content-programme">
+                                        @if (isset($course->courseProgramOutcomesSpecifics) && $course->courseProgramOutcomesSpecifics()->count() > 0)
+                                            @foreach ($course->courseProgramOutcomesSpecifics as $courseProgramOutcomesSpecific)
+                                                <div class="programme-pointer">
+                                                    <div class="left-content">
+                                                        <p class="left-title">
+                                                            {{ $courseProgramOutcomesSpecific->title ?? 'sfd' }}</p>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <p class="right-para">
+                                                            {{ $courseProgramOutcomesSpecific->description ?? 'sdf' }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="content-programme">
+                                        @if (isset($course->courseProgramOutcomesGenerics) && $course->courseProgramOutcomesGenerics()->count() > 0)
+                                            @foreach ($course->courseProgramOutcomesGenerics as $courseProgramOutcomesGeneric)
+                                                <div class="programme-pointer">
+                                                    <div class="left-content">
+                                                        <p class="left-title">
+                                                            {{ $courseProgramOutcomesGeneric->title ?? '' }}</p>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <p class="right-para">
+                                                            {{ $courseProgramOutcomesGeneric->description ?? '' }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+
                     </div>
                 </div>
-                <div class="row align-items-start justify-content-between">
-                    <div class="col-lg-6">
-                        <div class="why-study-left">
-                            <div class="heading-1">
-                                <!-- <p>
-                                                                        The scope of agriculture has existed from time immemorial,
-                                                                        beyond the scope of civilization as a whole thus placing
-                                                                        agriculture on a position of great social and economic
-                                                                        significance.
-                                                                      </p> -->
-                            </div>
-                            <div class="why-study-list">
-                                <div class="accordion" id="accordionExample">
+            </div>
 
-                                    {{-- <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#collapseOne" aria-expanded="true"
-                                                aria-controls="collapseOne">
-                                                Full-Stack Developer
-                                            </button>
-                                        </h2>
-                                        <div id="collapseOne" class="accordion-collapse collapse show"
-                                            data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <p>
-                                                    To maintain web applications by working both on front-end and back-end
-                                                    technologies.
-                                                </p>
+        </div>
+
+
+    </section>
+
+    <!-- +++++++++++  Learning by Doing Tab +++++++++++++++++ -->
+
+
+    <section class="learning-by-doing" id="learning-by-doing">
+        <div class="container-fluid custom-width__2">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="learning-by-doing-bx">
+                        <div class="header-bar">
+                            <h3>{{ $course['learning_by_doing_title'] ? $course['learning_by_doing_title'] : 'Learning by Doing' }}
+                            </h3>
+                        </div>
+                        <div class="learning-by-doing-content">
+
+                            <div class="learning-by-doing-slider owl-carousel">
+                                @if (isset($course->courseLearningDoings) && $course->courseLearningDoings()->count() > 0)
+                                    @foreach ($course->courseLearningDoings as $courseLearningDoing)
+                                        <div class="item">
+                                            <div class="doing-img-bx">
+                                                <img src="{{ Storage::url($courseLearningDoing->image) }}"
+                                                    alt="">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="collapsed accordion-button" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                aria-expanded="false" aria-controls="collapseTwo">
-                                                Web Developer
-                                            </button>
-                                        </h2>
-                                        <div id="collapseTwo" class="accordion-collapse collapse "
-                                            data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <p>
-                                                    To build and maintain websites both on the client side and the user
-                                                    side.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="collapsed accordion-button" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                aria-expanded="false" aria-controls="collapseThree">
-                                                Front-End Developer
-                                            </button>
-                                        </h2>
-                                        <div id="collapseThree" class="accordion-collapse collapse "
-                                            data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <p>
-                                                    To specialize in development of user interfaces and experiences using
-                                                    technologies like HTML, CSS and JavaScript.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="collapsed accordion-button" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                                aria-expanded="false" aria-controls="collapseFour">
-                                                Back-End Developer
-                                            </button>
-                                        </h2>
-                                        <div id="collapseFour" class="accordion-collapse collapse "
-                                            data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <p>
-                                                    To specialize in server-side development and deal with databases, server
-                                                    logic and APIs.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="collapsed accordion-button" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseFive"
-                                                aria-expanded="false" aria-controls="collapseFive">
-                                                Software Developer
-                                            </button>
-                                        </h2>
-                                        <div id="collapseFive" class="accordion-collapse collapse "
-                                            data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <p>
-                                                    To design, code, test and maintain software applications.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    @foreach ($job_oppotunities as $job_oppotunitie)
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header">
-                                                <button class="collapsed accordion-button" type="button"
-                                                    data-bs-toggle="collapse"
-                                                    data-bs-target="#collapse{{ $job_oppotunitie->id }}"
-                                                    aria-expanded="false"
-                                                    aria-controls="collapse{{ $job_oppotunitie->id }}">
-                                                    {{ $job_oppotunitie->name }}
-                                                </button>
-                                            </h2>
-                                            <div id="collapse{{ $job_oppotunitie->id }}"
-                                                class="accordion-collapse collapse " data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    <p>
-                                                        {{ $job_oppotunitie->description }}
-                                                    </p>
-                                                </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- +++++++++++  Industry partner Sldier Tab +++++++++++++++++ -->
+    @if (count($our_partnerships) > 0)
+        <section class="industry-partners" id="industry-partners">
+            <div class="container-fluid custom-width__2">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="title text-white">
+                            {{ $course['industry_partners_title'] ? $course['industry_partners_title'] : 'Industry Partners' }}
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="learning-by-doing-bx">
+                            <div class="industry-partners-content">
+
+                                <div class="industry-partners-slider owl-carousel">
+                                    @foreach ($our_partnerships as $our_partnership)
+                                        <div class="item">
+                                            <div class="industry-img-bx">
+                                                <img src="{{ Storage::url($our_partnership->logo) }}" alt="">
                                             </div>
                                         </div>
                                     @endforeach
@@ -320,299 +480,52 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-5">
-                        <div class="why-study-right">
-                            <div class="why-study-right-text">
-                                <div class="heading-1">
-                                    <!-- <p>
-                                                                          The scope of commercial agriculture has grown to
-                                                                          establish its roots within the various avenues of the
-                                                                          industry thus creating a wide pool of career
-                                                                          opportunities for the students who pursue this program.
-                                                                        </p> -->
-                                </div>
-                            </div>
-                            <div class="why-study-right-img">
-                                <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/agriculture.png') }}"
-                                    alt="" />
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!--=====================================-->
-    <!--=       Duration Sec        =-->
-    <!--=====================================-->
-    <section class="duration-sec">
-        <div class="duration-bg">
-            <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/event-banner.jpg') }}"
-                alt="" />
-        </div>
-        <div class="container-fluid custom-width__2">
-            <div class="duration-sec-wrap">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-lg-12">
-                        <div class="heading-1 text-center">
-                            <h2>{{ $course['section_4_title'] != null ? $course['section_4_title'] : 'Duration' }}</h2>
-                            <!-- <p>
-                                                                      The scope of agriculture has existed from time immemorial,
-                                                                      beyond the scope of civilization as a whole thus placing
-                                                                      agriculture on a position of great social and economic
-                                                                      significance.
-                                                                    </p> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="duration-list-div">
-                    <!-- <div class="duration-list-div-wrap d-flex align-items-center">
-                                                                  <div class="duration-list-icon">
-                                                                    <img src="assets/images/m-u/bachelors-programs-details/prg-3.png" alt="" />
-                                                                  </div>
-                                                                  <div class="duration-list-text">
-                                                                    <h4>AFFILIATION</h4>
-                                                                    <p>Constituent College of Parul University</p>
-                                                                  </div>
-                                                                </div> -->
-                    <div id="eligibility" class="duration-list-div-wrap bg-blue d-flex align-items-start">
-                        <div class="duration-list-icon">
-                            <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/prg-3.1.png') }}"
-                                alt="" />
-                        </div>
-                        <div class="duration-list-text duration-list-text-white">
-                            <h4>{{ $course['section_4_step_1_title'] != null ? $course['section_4_step_1_title'] : 'ELIGIBILITY CRITERIA' }}
-                            </h4>
-                            <p>
-                                {{ $course['section_4_step_1_description'] != null ? $course['section_4_step_1_description'] : '' }}
-                            </p>
-                            <!-- <div class="knw-btn knw-btn-white">
-                                                                      <a href="" class="knw-btn">Know More</a>
-                                                                    </div> -->
-                        </div>
-                    </div>
-                    <div class="duration-list-div-wrap d-flex align-items-center">
-                        <div class="duration-list-icon">
-                            <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/prg-3.png') }}"
-                                alt="" />
-                        </div>
-                        <div class="duration-list-text">
-                            <h4>{{ $course['section_4_step_2_title'] != null ? $course['section_4_step_2_title'] : 'ADMISSION PROCESS' }}
-                            </h4>
-                            <p>
-                                {{ $course['section_4_step_2_description'] != null ? $course['section_4_step_2_description'] : '' }}
-                            </p>
-                            <div class="knw-btn">
-                                <a href="https://application.msu.edu.in" class="knw-btn">Apply Now!</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="e-brochure" class="duration-list-div-wrap d-flex align-items-center">
-                        <div class="duration-list-icon">
-                            <img src="{{ asset('frontend_assets/images/m-u/bachelors-programs-details/prg-3.png') }}"
-                                alt="" />
-                        </div>
-                        <div class="duration-list-text">
-                            <h4>{{ $course['section_4_step_3_title'] != null ? $course['section_4_step_3_title'] : 'E-BROCHURE' }}
-                            </h4>
-                            <p>
-                                {{ $course['section_4_step_3_description'] != null ? $course['section_4_step_3_description'] : '' }}
-                            </p>
-                            <div class="knw-btn">
-                                <a class="knw-btn" href="{{ route('download.brochure', $course['slug']) }}">Download Our
-                                    E-Brochure!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @if (count($schools) > 0)
-        <section class="who-we-are">
-            <div class="middle-part position-relative">
-                <div class="university__name owl-carousel">
-
-                    @foreach ($schools as $school)
-                        @php
-                            //   get the short name of the school
-                            $name = explode(' ', $school->name);
-                            // get last two words
-                            $parts = array_slice($name, -2);
-                            // and get other words
-                            $name2 = array_diff($name, $parts);
-                            //  dd($name2);
-                            $new = '';
-                            foreach ($name as $n) {
-                                if (preg_match('/[A-Z]/', $n[0])) {
-                                    $new .= $n[0];
-                                }
-                            }
-                        @endphp
-                        <div class="item">
-                            <div class="rbt-card left-card">
-                                <div class="rbt-card-img">
-                                    <a href="{{ route('school', $school->slug) }}">
-                                        <img src="{{ $school->banner_image ? Storage::url($school->banner_image) : 'assets/images/banner/SHST.webp' }}"
-                                            alt="Card image" />
-                                    </a>
-                                </div>
-                                <div class="rbt-card-body">
-                                    <h3 class="rbt-card-title">
-                                        <a href="{{ route('school', $school->slug) }}">{{ $new }}</a>
-                                    </h3>
-                                    <p class="rbt-card-text">
-                                        <span>{{ implode(' ', $name2) }}</span>
-                                    </p>
-                                    <p class="rbt-card-text-1"><span> {{ implode(' ', $parts) }}</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
         </section>
     @endif
 
-    <!--=====================================-->
-    <!--=       Lastest News Area Start      =-->
-    <!--=====================================-->
-    @if (count($blogs) > 0)
-        <section class="lastest_news">
-            <div class="container-fluid custom-width__2">
-                <div class="row">
-                    <h2 class="title">
-                        {{ $course['section_5_title'] != null ? $course['section_5_title'] : 'Latest News' }}</h2>
-                    <p class="section_text">
-                        {{ $course['section_5_description'] != null ? $course['section_5_description'] : 'Latest News' }}
-                    </p>
-                </div>
 
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-12 mt--30 pr--30 tab-spacing">
-                        <div class="rbt-card variation-02 height-330 rbt-hover">
-                            <div class="rbt-card-img">
-                                <a href="{{ route('blog.details', $blogs[0]->slug) }}">
-                                    <img src="{{ Storage::url($blogs[0]->image) }}" alt="Card image" />
-                                </a>
-                            </div>
-                            <div class="rbt-card-body">
-                                <h3 class="rbt-card-title">
-                                    <a href="{{ route('blog.details', $blogs[0]->slug) }}">{{ $blogs[0]->name }}</a>
-                                </h3>
-                                <p class="rbt-card-text">
-                                    {{ $blogs[0]->short_description }}
-                                </p>
-                                <div class="rbt-card-bottom-left">
-                                    <a class="transparent-button"
-                                        href="{{ route('blog.details', $blogs[0]->slug) }}">VIEW MORE <i
-                                            class="ri-arrow-right-s-line"></i></a>
-                                </div>
-                            </div>
-                        </div>
+
+
+    <!-- +++++++++++  Programs to Explore Slider Tab +++++++++++++++++ -->
+    @if (count($other_courses) > 0)
+        <section class="program-explore" id="program-explore">
+            <div class="container-fluid custom-width__2">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="title">
+                            {{ $course['programs_to_explore_title'] ? $course['programs_to_explore_title'] : 'Programs to Explore' }}
+                        </h2>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-12 mt--30 mt--md-20 ">
-                        @foreach ($blogs as $key => $blog)
-                            @if ($key > 0)
-                                <div
-                                    class="rbt-card card-list variation-02 rbt-hover {{ $key != 1 ? 'mt--30 mt--md-20' : '' }} ">
-                                    <div class="rbt-card-img">
-                                        <a href="{{ route('blog.details', $blog->slug) }}">
-                                            <img src="{{ Storage::url($blog->image) }}" alt="Card image" />
-                                        </a>
-                                    </div>
-                                    <div class="rbt-card-body">
-                                        <h5 class="rbt-card-title">
-                                            <a href="{{ route('blog.details', $blog->slug) }}">{{ $blog->name }}</a>
-                                        </h5>
-                                        <div class="rbt-card-bottom">
-                                            <a class="transparent-button"
-                                                href="{{ route('blog.details', $blog->slug) }}">VIEW MORE <i
-                                                    class="ri-arrow-right-s-line"></i></a>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="program-explore-slider owl-carousel">
+                            @foreach ($other_courses as $other_course)
+                                <div class="item">
+                                    <div class="program-explore-img-bx">
+                                        <img src="{{ Storage::url($other_course->banner_image) }}" alt="">
+                                        <div class="explore-content">
+                                            <h3 class="explore-title">
+                                                {{ $other_course->name }}
+                                            </h3>
+                                            <a class="explore-new-btnn"
+                                                href="{{ route('course', $other_course->slug) }}">Learn More</a>
                                         </div>
                                     </div>
                                 </div>
-                            @endif
-                        @endforeach
-                        <!-- Start Single Card  -->
-                        {{-- <div class="rbt-card card-list variation-02 rbt-hover">
-                            <div class="rbt-card-img">
-                                <a
-                                    href="https://www.msu.edu.in/impact-of-industry-integrated-education-on-students-career-success/">
-                                    <img src="assets/images/banner/lastest-news-3.jpg" alt="Card image" />
-                                </a>
-                            </div>
-                            <div class="rbt-card-body">
-                                <h5 class="rbt-card-title">
-                                    <a
-                                        href="https://www.msu.edu.in/impact-of-industry-integrated-education-on-students-career-success/">Impact
-                                        Of Industry-Integrated Education On Students’
-                                        Career Success</a>
-                                </h5>
-                                <div class="rbt-card-bottom">
-                                    <a class="transparent-button"
-                                        href="https://www.msu.edu.in/impact-of-industry-integrated-education-on-students-career-success/">VIEW
-                                        MORE <i class="ri-arrow-right-s-line"></i></a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-                        <!-- End Single Card  -->
-
-                        <!-- Start Single Card  -->
-                        <div class="rbt-card card-list variation-02 rbt-hover mt--30 mt--md-20">
-                            <div class="rbt-card-img">
-                                <a
-                                    href="https://www.msu.edu.in/the-role-of-medhavi-skills-university-in-imparting-job-oriented-skills/">
-                                    <img src="assets/images/banner/he-role.jpg" alt="Card image" />
-                                </a>
-                            </div>
-                            <div class="rbt-card-body">
-                                <h5 class="rbt-card-title">
-                                    <a
-                                        href="https://www.msu.edu.in/the-role-of-medhavi-skills-university-in-imparting-job-oriented-skills/">The
-                                        Role of Medhavi Skills University in Imparting
-                                        Job-oriented Skills
-                                    </a>
-                                </h5>
-                                <div class="rbt-card-bottom">
-                                    <a class="transparent-button"
-                                        href="https://www.msu.edu.in/the-role-of-medhavi-skills-university-in-imparting-job-oriented-skills/">VIEW
-                                        MORE <i class="ri-arrow-right-s-line"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Card  -->
-
-                        <!-- Start Single Card  -->
-                        <div class="rbt-card card-list variation-02 rbt-hover mt--30 mt--md-20">
-                            <div class="rbt-card-img">
-                                <a
-                                    href="https://www.msu.edu.in/the-impact-of-medhavi-skills-university-on-skill-development-in-india/">
-                                    <img src="assets/images/banner/the-impact.jpg" alt="Card image" />
-                                </a>
-                            </div>
-                            <div class="rbt-card-body">
-                                <h5 class="rbt-card-title">
-                                    <a
-                                        href="https://www.msu.edu.in/the-impact-of-medhavi-skills-university-on-skill-development-in-india/">The
-                                        Impact of Medhavi Skills University on Skill
-                                        Development in India
-                                    </a>
-                                </h5>
-                                <div class="rbt-card-bottom">
-                                    <a class="transparent-button"
-                                        href="https://www.msu.edu.in/the-impact-of-medhavi-skills-university-on-skill-development-in-india/">VIEW
-                                        MORE <i class="ri-arrow-right-s-line"></i></a>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <!-- End Single Card  -->
                     </div>
                 </div>
             </div>
+
         </section>
     @endif
+    <!-- Program Explore Section End -->
 
 @endsection
 
