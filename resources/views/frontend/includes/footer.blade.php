@@ -30,8 +30,12 @@
                                         @if (Helper::getAllSchoolPage()->isNotEmpty())
                                             @foreach (Helper::getAllSchoolPage() as $school)
                                                 <li>
+                                                    @php
+                                                        $scho = explode('School of', $school->name);
+                                                        $school_name = $scho[1] ?? $school->name;
+                                                    @endphp
                                                     <a
-                                                        href="{{ route('school', $school->slug) }}">{{ $school->name }}</a>
+                                                        href="{{ route('school', $school->slug) }}">{{ $school_name }}</a>
                                                 </li>
                                             @endforeach
                                         @endif

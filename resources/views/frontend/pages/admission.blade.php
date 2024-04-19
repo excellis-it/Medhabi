@@ -108,7 +108,7 @@ background-position: center;
                         <h1 class="title">
                             {{ isset($program['banner_title']) ? $program['banner_title'] : 'PROGRAMS' }}
                         </h1>
-                        <p>{{ isset($program['banner_description']) ? $program['banner_description'] : 'PROGRAMS DESCRIPTION' }}
+                        <p>
                         </p>
                     </div>
                 </div>
@@ -121,7 +121,7 @@ background-position: center;
         <div class="container-fluid  custom-width__2">
             <div class="row">
                 <div class="text-11">
-                    {{ isset($program['section_1_description']) ? $program['section_1_description'] : 'Overview Description' }}
+                    {!! isset($program['section_1_description']) ? nl2br($program['section_1_description']) : 'Overview Description' !!}
                 </div>
             </div>
         </div>
@@ -371,7 +371,7 @@ background-position: center;
                                 @foreach ($key_milestones as $milestone)
                                     <div class="col-lg-2 col-md-4 col-6">
                                         <div class="number-stat-bx">
-                                            <h4 class="heading">{{ $milestone['title'] }}+</h4>
+                                            <h4 class="heading">{{ $milestone['title'] }}</h4>
                                             <p class="stats-text">{{ $milestone['description'] }}</p>
                                         </div>
                                     </div>

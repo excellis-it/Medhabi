@@ -37,7 +37,7 @@ background-position: center;">
                     {{ isset($career['section_1_title']) ? $career['section_1_title'] : 'Working With MSU' }}</h2>
                 <p class="text-center subpara">
                     {{ isset($career['section_1_description'])
-                        ? $career['section_1_description']
+                        ? nl2br($career['section_1_description'])
                         : 'Our working community creates the ideal atmosphere for career growth
                                                                                                                                                                                                 and personal expression. From our professional ethics to our flexible dynamic working cultures,
                                                                                                                                                                                                 we believe Our Growth Is Found In Your Growth. Be a part of the PU

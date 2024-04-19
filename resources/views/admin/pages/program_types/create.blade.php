@@ -66,8 +66,9 @@
                                     <div class="form-group">
                                         {{-- banner_title --}}
                                         <label for="floatingInputValue">Banner Title*</label>
-                                        <input type="text" class="form-control" id="floatingInputValue" name="banner_title"
-                                            value="{{ old('banner_title') }}" placeholder="Banner Title*">
+                                        <input type="text" class="form-control" id="floatingInputValue"
+                                            name="banner_title" value="{{ old('banner_title') }}"
+                                            placeholder="Banner Title*">
                                         @if ($errors->has('banner_title'))
                                             <div class="error" style="color:red;">
                                                 {{ $errors->first('banner_title') }}</div>
@@ -81,8 +82,7 @@
                                         {{-- banner_title --}}
                                         <label for="floatingInputValue">Banner Image*</label>
                                         <input type="file" class="form-control" id="floatingInputValue"
-                                            name="banner_image"
-                                            value="{{ old('banner_image') }}"
+                                            name="banner_image" value="{{ old('banner_image') }}"
                                             placeholder="Banner Image">
                                         @if ($errors->has('banner_image'))
                                             <div class="error" style="color:red;">
@@ -92,23 +92,8 @@
                                 </div>
                             </div>
                         </div>
-                            <div class="row justify-content-between">
-                                <div class="col-md-12">
-                                    <div class="form-group-div">
-                                        <div class="form-group">
-                                            {{-- banner_title --}}
-                                            <label for="floatingInputValue">Banner Description*</label>
-                                            <input type="text" class="form-control" id="floatingInputValue" name="banner_description"
-                                                value="{{ old('banner_description') }}" placeholder="Banner Description*">
-                                            @if ($errors->has('banner_description'))
-                                                <div class="error" style="color:red;">
-                                                    {{ $errors->first('banner_description') }}</div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                    </div>
 
                     <div class="sales-report-card-wrap mt-5">
                         <div class="form-head">
@@ -143,11 +128,11 @@
                                         {{-- meta title --}}
                                         <label for="floatingInputValue">Section 2 Title*</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="Section_2_title" value="{{ old('Section_2_title') }}"
+                                            name="section_2_title" value="{{ old('section_2_title') }}"
                                             placeholder="Section 2 Title">
-                                        @if ($errors->has('Section_2_title'))
+                                        @if ($errors->has('section_2_title'))
                                             <div class="error" style="color:red;">
-                                                {{ $errors->first('Section_2_title') }}</div>
+                                                {{ $errors->first('section_2_title') }}</div>
                                         @endif
                                     </div>
                                 </div>
@@ -157,11 +142,12 @@
                                     <div class="form-group">
                                         {{-- banner_title --}}
                                         <label for="floatingInputValue">Section 2 Description*</label>
-                                        <input type="text" class="form-control" id="floatingInputValue" name="Section_2_description"
-                                            value="{{ old('Section_2_description') }}" placeholder="Section 2 Description*">
-                                        @if ($errors->has('Section_2_description'))
+                                        <input type="text" class="form-control" id="floatingInputValue"
+                                            name="section_2_description" value="{{ old('section_2_description') }}"
+                                            placeholder="Section 2 Description*">
+                                        @if ($errors->has('section_2_description'))
                                             <div class="error" style="color:red;">
-                                                {{ $errors->first('Section_2_description') }}</div>
+                                                {{ $errors->first('section_2_description') }}</div>
                                         @endif
                                     </div>
                                 </div>
@@ -218,8 +204,8 @@
                                     </div>
                                 </div>
                             </div>
-                             {{-- button --}}
-                             <div class="col-xl-12">
+                            {{-- button --}}
+                            <div class="col-xl-12">
                                 <div class="btn-1">
                                     <button type="submit">Create</button>
                                 </div>
@@ -234,10 +220,10 @@
 @endsection
 
 @push('scripts')
-<script>
-    $(document).ready(function() {
-        $('.add-more').click(function() {
-            var html = `
+    <script>
+        $(document).ready(function() {
+            $('.add-more').click(function() {
+                var html = `
             <div class="col-xl-3 col-md-3">
                 <div class="form-group-div">
                     <div class="form-group">
@@ -275,19 +261,17 @@
                     <button type="button" class="remove"><i class="ph ph-minus"></i> </button>
                 </div>
             </div>`;
-            $("#add_more").append(html);
+                $("#add_more").append(html);
             });
 
             // Remove functionality
             $(document).on("click", ".remove", function() {
-               $(this).parent().parent().prev().remove();
+                $(this).parent().parent().prev().remove();
                 $(this).parent().parent().prev().remove();
                 $(this).parent().parent().prev().remove();
                 $(this).parent().parent().remove();
 
             });
-    });
-
-
+        });
     </script>
 @endpush

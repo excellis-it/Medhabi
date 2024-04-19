@@ -85,7 +85,7 @@ background-position: center;
             <div class="row">
                 <div class="col-lg-12">
                     <p>
-                        {{ $course['section_1_description'] ? nl2br($course['section_1_description']) : 'The scope of agriculture has existed from time immemorial, beyond the scope of civilization as a whole thus placing agriculture on a position of great social and economic significance.' }}
+                        {!! $course['section_1_description'] ? nl2br($course['section_1_description']) : 'The scope of agriculture has existed from time immemorial, beyond the scope of civilization as a whole thus placing agriculture on a position of great social and economic significance.'  !!}
                     </p>
                 </div>
             </div>

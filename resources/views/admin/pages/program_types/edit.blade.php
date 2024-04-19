@@ -98,24 +98,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-between">
-                            <div class="col-md-12">
-                                <div class="form-group-div">
-                                    <div class="form-group">
-                                        {{-- banner_title --}}
-                                        <label for="floatingInputValue">Banner Description*</label>
-                                        <input type="text" class="form-control" id="floatingInputValue"
-                                            name="banner_description"
-                                            value="{{ isset($programtypescms['banner_description']) ? $programtypescms['banner_description'] : old('banner_description') }}"
-                                            placeholder="Banner Description*">
-                                        @if ($errors->has('banner_description'))
-                                            <div class="error" style="color:red;">
-                                                {{ $errors->first('banner_description') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="sales-report-card-wrap mt-5">

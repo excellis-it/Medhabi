@@ -58,7 +58,7 @@ class ProgramTypesCMSController extends Controller
             'seo_description' => 'nullable',
             'seo_keywords' => 'nullable',
         ]);
-        dd($request->all());
+        // dd($request->all());
         $slug = $this->createSlug($request->name);
         $is_slug_exists = ProgramTypesCMS::where('slug', $slug)->first();
         if ($is_slug_exists) {
@@ -71,7 +71,6 @@ class ProgramTypesCMSController extends Controller
         $programtypescms->slug = $slug;
         $programtypescms->banner_image = $this->imageUpload($request->banner_image, 'program_types_cms');
         $programtypescms->banner_title = $request->banner_title;
-        $programtypescms->banner_description = $request->banner_description;
         $programtypescms->section_1_description = $request->section_1_description;
         $programtypescms->section_2_title = $request->section_2_title;
         $programtypescms->section_2_description = $request->section_2_description;
@@ -141,7 +140,6 @@ class ProgramTypesCMSController extends Controller
         $programtypescms->program_type_id = $request->program_type_id;
         $programtypescms->name = $request->name;
         $programtypescms->banner_title = $request->banner_title;
-        $programtypescms->banner_description = $request->banner_description;
         $programtypescms->section_1_description = $request->section_1_description;
         $programtypescms->section_2_title = $request->section_2_title;
         $programtypescms->section_2_description = $request->section_2_description;
