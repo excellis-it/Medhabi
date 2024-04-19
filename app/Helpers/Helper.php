@@ -173,12 +173,12 @@ class Helper
                     $html .= '<li>';
                     $html .= '<a href="' . route('event') . '">Upcoming Events</a>';
                     $html .= '</li>';
-                    $html .= '<li>';
-                    $html .= '<a href="' . route('media') . '">Media Coverage</a>';
-                    $html .= '</li>';
-                    $html .= '<li>';
-                    $html .= '<a href="' . route('tvc') . '">TVC</a>';
-                    $html .= '</li>';
+                    // $html .= '<li>';
+                    // $html .= '<a href="' . route('media') . '">Media Coverage</a>';
+                    // $html .= '</li>';
+                    // $html .= '<li>';
+                    // $html .= '<a href="' . route('tvc') . '">TVC</a>';
+                    // $html .= '</li>';
                     $html .= '<li>';
                     $html .= '<a href="' . route('blogs') . '">Blog</a>';
                     $html .= '</li>';
