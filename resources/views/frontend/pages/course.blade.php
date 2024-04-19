@@ -376,7 +376,7 @@ background-position: center;
                                                     </div>
                                                     <div class="right-content">
                                                         <p class="right-para">
-                                                            {{ $courseProgramOutcomesSpecific->description ?? 'sdf' }}
+                                                            {!! ($courseProgramOutcomesSpecific->description != null) ? nl2br($courseProgramOutcomesSpecific->description) : '' !!}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -396,7 +396,7 @@ background-position: center;
                                                     </div>
                                                     <div class="right-content">
                                                         <p class="right-para">
-                                                            {{ $courseProgramOutcomesGeneric->description ?? '' }}
+                                                            {!!($courseProgramOutcomesGeneric->description != null) ? nl2br($courseProgramOutcomesGeneric->description) : '' !!}
                                                         </p>
                                                     </div>
                                                 </div>

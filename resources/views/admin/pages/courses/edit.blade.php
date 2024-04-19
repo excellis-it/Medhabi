@@ -575,10 +575,9 @@
                                                 {{-- banner_title --}}
                                                 <label for="floatingInputValue">Programme Outcome Category
                                                     Description*</label>
-                                                <input type="text" class="form-control"
+                                                <textarea type="text" class="form-control"
                                                     name="programme_category_description[]"
-                                                    value="{{ $programmeOutcomeCategory->description }}"
-                                                    placeholder="Programme Outcome Category Description">
+                                                    placeholder="Programme Outcome Category Description">{{ $programmeOutcomeCategory->description }}</textarea>
                                                 <span class="text-danger"
                                                     id="programme_category_description_{{ $key }}"></span>
                                             </div>
@@ -636,10 +635,10 @@
                                         <div class="form-group">
                                             {{-- banner_title --}}
                                             <label for="floatingInputValue">Programme Outcome Category Description*</label>
-                                            <input type="text" class="form-control"
+                                            <textarea type="text" class="form-control"
                                                 name="programme_category_description[]"
                                                 value="{{ old('programme_category_description') }}"
-                                                placeholder="Programme Outcome Category Description">
+                                                placeholder="Programme Outcome Category Description"> </textarea>
                                             <span class="text-danger" id="programme_category_description_0"></span>
                                         </div>
                                     </div>
@@ -952,10 +951,10 @@
                                 <div class="form-group">
                                     {{-- banner_title --}}
                                     <label for="floatingInputValue">Programme Outcome Category Description*</label>
-                                    <input type="text" class="form-control"
+                                    <textarea type="text" class="form-control"
                                         name="programme_category_description[]"
                                         value="{{ old('programme_category_description') }}"
-                                        placeholder="Programme Outcome Category Description">
+                                        placeholder="Programme Outcome Category Description"></textarea>
                                     <span class="text-danger" id="programme_category_description_${count}"></span>
                                 </div>
                             </div>

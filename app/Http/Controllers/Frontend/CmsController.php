@@ -97,7 +97,7 @@ class CmsController extends Controller
     {
         $course = Course::where('slug', $slug)->first();
         $our_partnerships = OurPartnership::orderBy('id', 'desc')->get();
-        $other_courses = Course::where('program_type_id', $course->program_type_id)->where('id', '!=', $course->id)->orderBy('name', 'asc')->get();
+        $other_courses = Course::where('id', '!=', $course->id)->orderBy('name', 'asc')->get();
         return view('frontend.pages.course')->with(compact('course', 'our_partnerships', 'other_courses'));
     }
 
