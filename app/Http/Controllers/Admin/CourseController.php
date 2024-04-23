@@ -149,7 +149,7 @@ class CourseController extends Controller
                 $industry_led_learning_category->course_id = $course->id;
                 $industry_led_learning_category->title = $value;
                 $industry_led_learning_category->description = $request->industry_led_learning_category_description[$key];
-                if ($request->file('industry_led_learning_category_image') && $request->file('industry_led_learning_category_image')[$key]) {
+                if ($request->file('industry_led_learning_category_image') && isset($request->file('industry_led_learning_category_image')[$key]) && $request->file('industry_led_learning_category_image')[$key]) {
                     $industry_led_learning_category->image = $this->imageUpload($request->file('industry_led_learning_category_image')[$key], 'courses');
                 }
                 $industry_led_learning_category->save();
@@ -162,7 +162,7 @@ class CourseController extends Controller
                 $academic_framework_category->course_id = $course->id;
                 $academic_framework_category->title = $value;
                 $academic_framework_category->description = $request->academic_framework_category_description[$key];
-                if ($request->file('academic_framework_category_image') && $request->file('academic_framework_category_image')[$key]) {
+                if ($request->file('academic_framework_category_image') && isset($request->file('academic_framework_category_image')[$key]) && $request->file('academic_framework_category_image')[$key]) {
                     $academic_framework_category->image = $this->imageUpload($request->file('academic_framework_category_image')[$key], 'courses');
                 }
                 $academic_framework_category->save();
@@ -310,7 +310,7 @@ class CourseController extends Controller
                 $industry_led_learning_category->course_id = $course->id;
                 $industry_led_learning_category->title = $value;
                 $industry_led_learning_category->description = $request->industry_led_learning_category_description[$key];
-                if ($request->file('industry_led_learning_category_image') && $request->file('industry_led_learning_category_image')[$key]) {
+                if ($request->file('industry_led_learning_category_image') && isset($request->file('industry_led_learning_category_image')[$key]) && $request->file('industry_led_learning_category_image')[$key]) {
                     $industry_led_learning_category->image = $this->imageUpload($request->file('industry_led_learning_category_image')[$key], 'courses');
                 }
                 $industry_led_learning_category->save();
@@ -328,7 +328,7 @@ class CourseController extends Controller
                 $academic_framework_category->course_id = $course->id;
                 $academic_framework_category->title = $value;
                 $academic_framework_category->description = $request->academic_framework_category_description[$key];
-                if ($request->file('academic_framework_category_image') && $request->file('academic_framework_category_image')[$key]) {
+                if ($request->file('academic_framework_category_image') && isset($request->file('academic_framework_category_image')[$key]) && $request->file('academic_framework_category_image')[$key]) {
                     $academic_framework_category->image = $this->imageUpload($request->file('academic_framework_category_image')[$key], 'courses');
                 }
                 $academic_framework_category->save();
