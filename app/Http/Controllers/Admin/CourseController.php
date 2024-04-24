@@ -70,60 +70,61 @@ class CourseController extends Controller
             'program_type_id' => 'required',
             'course_type_id' => 'required',
             'name' => 'required',
-            'banner_title' => 'required',
-            'section_1_description' => 'required',
-            'duration_title' => 'required',
-            'duration_description' => 'required',
-            'eligibility_title' => 'required',
-            'industry_led_learning_title' => 'required',
-            'industry_led_learning_description' => 'required',
-            'academic_framework_title' => 'required',
-            'academic_framework_description' => 'required',
-            'programme_outcomes_title' => 'required',
-            'learning_by_doing_title' => 'required',
-            'industry_partners_title' => 'required',
-            'programs_to_explore_title' => 'required',
-            'seo_title' => 'nullable',
-            'seo_description' => 'nullable',
-            'seo_keywords' => 'nullable',
-            'industry_led_learning_category_title.*' => 'required',
-            'industry_led_learning_category_description.*' => 'required',
-            'academic_framework_category_title.*' => 'required',
-            'academic_framework_category_description.*' => 'required',
-            'programme_category_title.*' => 'required',
-            'programme_category_description.*' => 'required',
-            'learning_by_doing_image' => 'required',
+            'slug' => 'nullable|unique:courses,slug',
+            // 'banner_title' => 'required',
+            // 'section_1_description' => 'required',
+            // 'duration_title' => 'required',
+            // 'duration_description' => 'required',
+            // 'eligibility_title' => 'required',
+            // 'industry_led_learning_title' => 'required',
+            // 'industry_led_learning_description' => 'required',
+            // 'academic_framework_title' => 'required',
+            // 'academic_framework_description' => 'required',
+            // 'programme_outcomes_title' => 'required',
+            // 'learning_by_doing_title' => 'required',
+            // 'industry_partners_title' => 'required',
+            // 'programs_to_explore_title' => 'required',
+            // 'seo_title' => 'nullable',
+            // 'seo_description' => 'nullable',
+            // 'seo_keywords' => 'nullable',
+            // 'industry_led_learning_category_title.*' => 'required',
+            // 'industry_led_learning_category_description.*' => 'required',
+            // 'academic_framework_category_title.*' => 'required',
+            // 'academic_framework_category_description.*' => 'required',
+            // 'programme_category_title.*' => 'required',
+            // 'programme_category_description.*' => 'required',
+            // 'learning_by_doing_image' => 'required',
         ],[
-            'industry_led_learning_category_title.*.required' => 'The industry led learning category title field is required.',
-            'industry_led_learning_category_description.*.required' => 'The industry led learning category description field is required.',
-            'academic_framework_category_title.*.required' => 'The academic framework category title field is required.',
-            'academic_framework_category_description.*.required' => 'The academic framework category description field is required.',
-            'programme_category_title.*.required' => 'The programme category title field is required.',
-            'programme_category_description.*.required' => 'The programme category description field is required.',
-            'learning_by_doing_image.required' => 'The learning by doing image field is required.',
-            'learning_by_doing_image.image' => 'The learning by doing image must be an image.',
-            'learning_by_doing_image.mimes' => 'The learning by doing image must be a file of type: jpeg, png, jpg, gif, svg.',
-            'banner_image.required' => 'The banner image field is required.',
-            'banner_image.image' => 'The banner image must be an image.',
-            'banner_image.mimes' => 'The banner image must be a file of type: jpeg, png, jpg, gif, svg.',
-            'program_type_id.required' => 'The program type field is required.',
-            'course_type_id.required' => 'The course type field is required.',
-            'name.required' => 'The name field is required.',
-            'banner_title.required' => 'The banner title field is required.',
+            // 'industry_led_learning_category_title.*.required' => 'The industry led learning category title field is required.',
+            // 'industry_led_learning_category_description.*.required' => 'The industry led learning category description field is required.',
+            // 'academic_framework_category_title.*.required' => 'The academic framework category title field is required.',
+            // 'academic_framework_category_description.*.required' => 'The academic framework category description field is required.',
+            // 'programme_category_title.*.required' => 'The programme category title field is required.',
+            // 'programme_category_description.*.required' => 'The programme category description field is required.',
+            // 'learning_by_doing_image.required' => 'The learning by doing image field is required.',
+            // 'learning_by_doing_image.image' => 'The learning by doing image must be an image.',
+            // 'learning_by_doing_image.mimes' => 'The learning by doing image must be a file of type: jpeg, png, jpg, gif, svg.',
+            // 'banner_image.required' => 'The banner image field is required.',
+            // 'banner_image.image' => 'The banner image must be an image.',
+            // 'banner_image.mimes' => 'The banner image must be a file of type: jpeg, png, jpg, gif, svg.',
+            // 'program_type_id.required' => 'The program type field is required.',
+            // 'course_type_id.required' => 'The course type field is required.',
+            // 'name.required' => 'The name field is required.',
+            // 'banner_title.required' => 'The banner title field is required.',
         ]);
 
-        $slug = $this->createSlug($request->name);
-        // check slug is already exist or not
-        $is_slug_exist = Course::where('slug', $slug)->first();
-        if ($is_slug_exist) {
-            $slug = $slug . '-' . time();
-        }
+        // $slug = $this->createSlug($request->name);
+        // // check slug is already exist or not
+        // $is_slug_exist = Course::where('slug', $slug)->first();
+        // if ($is_slug_exist) {
+        //     $slug = $slug . '-' . time();
+        // }
 
         $course = new Course();
         $course->program_type_id = $request->program_type_id;
         $course->course_type_id = $request->course_type_id;
         $course->name = $request->name;
-        $course->slug = $slug;
+        $course->slug = $request->slug ?? null;
         $course->banner_title = $request->banner_title;
         $course->banner_image = $this->imageUpload($request->file('banner_image'), 'courses');
         $course->section_1_description = $request->section_1_description;
@@ -232,47 +233,49 @@ class CourseController extends Controller
             'program_type_id' => 'required',
             'course_type_id' => 'required',
             'name' => 'required',
-            'banner_title' => 'required',
-            'section_1_description' => 'required',
-            'duration_title' => 'required',
-            'duration_description' => 'required',
-            'eligibility_title' => 'required',
-            'industry_led_learning_title' => 'required',
-            'industry_led_learning_description' => 'required',
-            'academic_framework_title' => 'required',
-            'academic_framework_description' => 'required',
-            'programme_outcomes_title' => 'required',
-            'learning_by_doing_title' => 'required',
-            'industry_partners_title' => 'required',
-            'programs_to_explore_title' => 'required',
-            'seo_title' => 'nullable',
-            'seo_description' => 'nullable',
-            'seo_keywords' => 'nullable',
-            'industry_led_learning_category_title.*' => 'required',
-            'industry_led_learning_category_description.*' => 'required',
-            'academic_framework_category_title.*' => 'required',
-            'academic_framework_category_description.*' => 'required',
-            'programme_category_title.*' => 'required',
-            'programme_category_description.*' => 'required',
+            'slug' => 'nullable|unique:courses,slug,' . $id . ',id',
+            // 'banner_title' => 'required',
+            // 'section_1_description' => 'required',
+            // 'duration_title' => 'required',
+            // 'duration_description' => 'required',
+            // 'eligibility_title' => 'required',
+            // 'industry_led_learning_title' => 'required',
+            // 'industry_led_learning_description' => 'required',
+            // 'academic_framework_title' => 'required',
+            // 'academic_framework_description' => 'required',
+            // 'programme_outcomes_title' => 'required',
+            // 'learning_by_doing_title' => 'required',
+            // 'industry_partners_title' => 'required',
+            // 'programs_to_explore_title' => 'required',
+            // 'seo_title' => 'nullable',
+            // 'seo_description' => 'nullable',
+            // 'seo_keywords' => 'nullable',
+            // 'industry_led_learning_category_title.*' => 'required',
+            // 'industry_led_learning_category_description.*' => 'required',
+            // 'academic_framework_category_title.*' => 'required',
+            // 'academic_framework_category_description.*' => 'required',
+            // 'programme_category_title.*' => 'required',
+            // 'programme_category_description.*' => 'required',
         ],[
-            'industry_led_learning_category_title.*.required' => 'The industry led learning category title field is required.',
-            'industry_led_learning_category_description.*.required' => 'The industry led learning category description field is required.',
-            'academic_framework_category_title.*.required' => 'The academic framework category title field is required.',
-            'academic_framework_category_description.*.required' => 'The academic framework category description field is required.',
-            'programme_category_title.*.required' => 'The programme category title field is required.',
-            'programme_category_description.*.required' => 'The programme category description field is required.',
+            // 'industry_led_learning_category_title.*.required' => 'The industry led learning category title field is required.',
+            // 'industry_led_learning_category_description.*.required' => 'The industry led learning category description field is required.',
+            // 'academic_framework_category_title.*.required' => 'The academic framework category title field is required.',
+            // 'academic_framework_category_description.*.required' => 'The academic framework category description field is required.',
+            // 'programme_category_title.*.required' => 'The programme category title field is required.',
+            // 'programme_category_description.*.required' => 'The programme category description field is required.',
         ]);
 
 
         $course = Course::find($id);
-        if ($course->name != $request->name) {
-            $slug = $this->createSlug($request->name);
-            $is_slug_exist = Course::where('slug', $slug)->first();
-            if ($is_slug_exist) {
-                $slug = $slug . '-' . time();
-            }
-            $course->slug = $slug;
-        }
+        // if ($course->name != $request->name) {
+        //     $slug = $this->createSlug($request->name);
+        //     $is_slug_exist = Course::where('slug', $slug)->first();
+        //     if ($is_slug_exist) {
+        //         $slug = $slug . '-' . time();
+        //     }
+        //     $course->slug = $slug;
+        // }
+        $course->slug = $request->slug ?? null;
         $course->program_type_id = $request->program_type_id;
         $course->course_type_id = $request->course_type_id;
         $course->name = $request->name;

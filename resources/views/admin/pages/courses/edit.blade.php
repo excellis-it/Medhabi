@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- name --}}
@@ -105,6 +105,18 @@
                                         <input type="text" class="form-control" id="floatingInputValue" name="name"
                                             value="{{ $course->name }}" placeholder="Page Name">
                                         <span class="text-danger" id="name_msg"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- slug --}}
+                            <div class="col-md-6">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- slug --}}
+                                        <label for="floatingInputValue">Slug</label>
+                                        <input type="text" class="form-control" id="floatingInputValue" name="slug"
+                                            value="{{ $course->slug }}" placeholder="Slug">
+                                        <span class="text-danger" id="slug_msg"></span>
                                     </div>
                                 </div>
                             </div>

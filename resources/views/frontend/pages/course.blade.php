@@ -85,7 +85,9 @@ background-position: center;
             <div class="row">
                 <div class="col-lg-12">
                     <p>
-                        {!! $course['section_1_description'] ? nl2br($course['section_1_description']) : 'The scope of agriculture has existed from time immemorial, beyond the scope of civilization as a whole thus placing agriculture on a position of great social and economic significance.'  !!}
+                        {!! $course['section_1_description']
+                            ? nl2br($course['section_1_description'])
+                            : 'The scope of agriculture has existed from time immemorial, beyond the scope of civilization as a whole thus placing agriculture on a position of great social and economic significance.' !!}
                     </p>
                 </div>
             </div>
@@ -376,7 +378,9 @@ background-position: center;
                                                     </div>
                                                     <div class="right-content">
                                                         <p class="right-para">
-                                                            {!! ($courseProgramOutcomesSpecific->description != null) ? nl2br($courseProgramOutcomesSpecific->description) : '' !!}
+                                                            {!! $courseProgramOutcomesSpecific->description != null
+                                                                ? nl2br($courseProgramOutcomesSpecific->description)
+                                                                : '' !!}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -396,7 +400,7 @@ background-position: center;
                                                     </div>
                                                     <div class="right-content">
                                                         <p class="right-para">
-                                                            {!!($courseProgramOutcomesGeneric->description != null) ? nl2br($courseProgramOutcomesGeneric->description) : '' !!}
+                                                            {!! $courseProgramOutcomesGeneric->description != null ? nl2br($courseProgramOutcomesGeneric->description) : '' !!}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -505,18 +509,20 @@ background-position: center;
 
                         <div class="program-explore-slider owl-carousel">
                             @foreach ($other_courses as $other_course)
-                                <div class="item">
-                                    <div class="program-explore-img-bx">
-                                        <img src="{{ Storage::url($other_course->banner_image) }}" alt="">
-                                        <div class="explore-content">
-                                            <h3 class="explore-title">
-                                                {{ $other_course->name }}
-                                            </h3>
-                                            <a class="explore-new-btnn"
-                                                href="{{ route('course', $other_course->slug) }}">Learn More</a>
+                                @if ($other_course->slug != null)
+                                    <div class="item">
+                                        <div class="program-explore-img-bx">
+                                            <img src="{{ Storage::url($other_course->banner_image) }}" alt="">
+                                            <div class="explore-content">
+                                                <h3 class="explore-title">
+                                                    {{ $other_course->name }}
+                                                </h3>
+                                                <a class="explore-new-btnn"
+                                                    href="{{ route('course', $other_course->slug) }}">Learn More</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
                             @endforeach
                         </div>
                     </div>

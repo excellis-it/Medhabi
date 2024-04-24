@@ -5,7 +5,11 @@
                 <ul id="dept-main-ui">
                     @foreach ($courses as $course)
                         <li class="allcls" data-category="master" data-program="ma">
+                            @if ($course['slug'] != null)
                             <a href="{{ route('course', $course['slug']) }}">{{ $course['name'] }}</a>
+                            @else
+                            <a href="javascript:void(0);">{{ $course['name'] }}</a>
+                            @endif
                         </li>
                     @endforeach
                 </ul>
