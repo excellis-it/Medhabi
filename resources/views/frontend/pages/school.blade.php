@@ -8,11 +8,48 @@
     {{ env('APP_NAME') }} - {{ $school['seo_title'] != null ? $school['seo_title'] : $school['name'] }}
 @endsection
 @push('styles')
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5HHK5ZC');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <meta name="p:domain_verify" content="c711886600acc8f58440b8a66c9756ce" />
+
+    <!-- Global site tag (gtag.js) - Google Ads: 10779528309 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10779528309"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-10779528309');
+    </script>
 @endpush
 
 @section('content')
     <section class="hero--Inner-page-banner"
-        style=" background-image: url({{ $school['banner_image'] ? Storage::url($school['banner_image']) : asset('frontend_assets/images/banner/MEDIA.jpg') }}); background-size: cover; background-position: center; ">
+        style="
+background-image: url({{ $school['banner_image'] ? Storage::url($school['banner_image']) : asset('frontend_assets/images/banner/MEDIA.jpg') }});
+background-size: cover;
+background-position: center;
+">
         <div class="container-fluid custom-width__2">
             <div class="row">
                 <div class="col-md-7">
@@ -26,6 +63,88 @@
         </div>
     </section>
 
+    <section class="text-section position-relative">
+        <div class="container-fluid custom-width__2 p-0">
+            <div class="row">
+                <div class="text-10">
+                    <h2 class="title">
+                        <p>
+                            {!! $school['section_1_description']
+                                ? nl2br($school['section_1_description'])
+                                : 'The School of Modern Media and Entertainment welcomes the students to come together to learn, create, and innovate. We offer a range of courses that are designed to provide students with the skills and knowledge they need to succeed in the media and entertainment industry. Our courses are taught by industry professionals who are experts in their field, ensuring that students receive the best possible education. We are committed to providing our students with a supportive and inclusive learning environment, where they can develop their talents and achieve their full potential.' !!}
+                        </p>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=====================================-->
+    <!--=        Border Text      =-->
+    <!--=====================================-->
+    <section class="border-text">
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-lg-12 p-0">
+                    <span class="line-text">WATCH VIDEO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=====================================-->
+    <!--=        Overlap Video      =-->
+    <!--=====================================-->
+    <section class="overlap-video-2">
+        <div class="container-fluid custom-width__2">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+
+                    <div class="video-bx-1">
+                        <img src="{{ $school['section_2_image'] ? Storage::url($school['section_2_image']) : asset('frontend_assets/images/video/overlap-video-2.jpg') }}"
+                            alt="">
+                        <a href="{{ $school['section_2_url'] ? $school['section_2_url'] : 'https://www.youtube.com/watch?v=7e90gBu4pas' }}"
+                            class="video-play-btn video-popup-activation popup-youtube">
+                            <i class="icon-18"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="medhavi-edge">
+        <div class="container-fluid custom-width__2">
+            <div class="row justify-content-center">
+                <h2 class="edge-title yellow-text text-center">
+                    {{ $school['medhavi_edge_title'] ? $school['medhavi_edge_title'] : 'Medhavi Edge' }}</h2>
+            </div>
+
+            <div class="row g-5">
+                @if ($school->medhaviEdges->count() > 0)
+                    @foreach ($school->medhaviEdges as $medhaviEdge)
+                        <div class="col-lg-6 col-md-6">
+                            <div class="edge-bx">
+                                <div class="inner-bx">
+                                    <div class="edge-img">
+                                        <img src="{{ $medhaviEdge->image ? Storage::url($medhaviEdge->image) : asset('frontend_assets/images/icons/edge-icon/design.png') }}"
+                                            alt="">
+                                    </div>
+                                    <div class="edge-content">
+                                        <h3 class="edge-sub-title">{{ $medhaviEdge->title }}</h3>
+                                        <p class="edge-sub-para">
+                                            {{ $medhaviEdge->description }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </section>
+
+    {{-- @dd($school_courses) --}}
     <!--=====================================-->
     <!--=        Program Levels       =-->
     <!--=====================================-->
@@ -35,12 +154,12 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="heading-1">
-                            <h2>{{ $school['section_1_title'] ? $school['section_1_title'] : 'Program Levels' }}</h2>
-                            <p>{{ $school['section_1_description']
-                                ? $school['section_1_description']
-                                : 'Our working community creates the ideal atmosphere for
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                career growth and personal expression.' }}
-
+                            <h2> {{ $school['program_levels_title'] ? $school['program_levels_title'] : 'Program Levels' }}
+                            </h2>
+                            <p>
+                                {!! $school['program_levels_description']
+                                    ? nl2br($school['program_levels_description'])
+                                    : 'The School of Modern Media and Entertainment offers a range of programs at different levels to cater to the diverse needs of students. Our programs are designed to provide students with the skills and knowledge they need to succeed in the media and entertainment industry. Whether you are looking to start your career or advance your skills, we have a program that is right for you.' !!}
                             </p>
                         </div>
                     </div>
@@ -55,14 +174,16 @@
                                         @foreach ($school_courses as $key => $item)
                                             @php
                                                 $id = str_replace(' ', '-', strtolower($key));
-                                                $count ++;
+                                                $count++;
                                             @endphp
-                                            <button class="nav-link {{ ($count == 1) ? 'active' : '' }}" id="{{ $id }}-tab" data-bs-toggle="tab"
+                                            <button class="nav-link {{ $count == 1 ? 'active' : '' }}"
+                                                id="{{ $id }}-tab" data-bs-toggle="tab"
                                                 data-bs-target="#nav-{{ $id }}" type="button" role="tab"
                                                 aria-controls="nav-{{ $id }}" aria-selected="false">
                                                 {{ $key }}
                                             </button>
                                         @endforeach
+
                                     </div>
                                 </nav>
                             </div>
@@ -80,24 +201,30 @@
                                     $id = str_replace(' ', '-', strtolower($key));
                                     $count_i++;
                                 @endphp
-                                <div class="tab-pane fade show {{ $count_i == 1 ? 'active' : '' }}" id="nav-{{ $id }}"
-                                    aria-labelledby="{{ $id }}-tab">
+                                <div class="tab-pane fade show {{ $count_i == 1 ? 'active' : '' }}"
+                                    id="nav-{{ $id }}" aria-labelledby="{{ $id }}-tab">
                                     <div class="lab-sec-img-div">
                                         <div class="row g-5">
                                             @foreach ($value as $course)
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="lab-sec-img-wrap">
-                                                    <div class="lab-sec-img">
-                                                        <img src="{{ $course['course']['banner_image'] ? Storage::url($course['course']['banner_image']) : asset('frontend_assets/images/banner/ABOUT MEDIA.jpg') }}"
-                                                            alt="" />
-                                                        <div class="lab-sec-text">
-                                                            <a href="{{ route('course', $course['course']['slug']) }}">
-                                                                <h4> {{ $course['course']['name'] }} </h4>
-                                                            </a>
+                                                <div class="col-lg-4 col-md-6">
+                                                    <div class="lab-sec-img-wrap">
+                                                        <div class="lab-sec-img">
+                                                            <img src="{{ $course['course']['banner_image'] ? Storage::url($course['course']['banner_image']) : asset('frontend_assets/images/banner/ABOUT MEDIA.jpg') }}"
+                                                                alt="" />
+                                                            <div class="lab-sec-text">
+                                                                @if ($course['course']['slug'])
+                                                                    <a
+                                                                        href="{{ route('course', ['slug' => $course['course']['slug']]) }}">
+                                                                        <h4> {{ $course['course']['name'] }} </h4>
+                                                                    </a>
+                                                                    @else
+                                                                    <h4> {{ $course['course']['name'] }} </h4>
+                                                                @endif
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             @endforeach
 
                                         </div>
@@ -110,208 +237,258 @@
             </div>
         </div>
     </section>
-    <!--=====================================-->
-    <section class="about-faculty-sec">
-        <div class="about-faculty-bg">
-            <img src="{{ $school['section_2_image'] ? Storage::url($school['section_2_image']) : asset('frontend_assets/images/banner/ABOUT MEDIA.jpg') }}"
-                alt="" />
-        </div>
-        <div class="container-fluid custom-width__2">
-            <div class="about-faculty-sec-wrap">
-                <div class="row">
-                    <div class="col-xl-7">
-                        <div class="about-faculty-text">
-                            <div class="heading-white">
-                                <h2>{{ $school['section_2_title'] ? $school['section_2_title'] : 'School of Modern Media and Entertainment' }}
-                                </h2>
-                                <p>{{ $school['section_2_description']
-                                    ? nl2br($school['section_2_description'])
-                                    : 'The School of Modern Media and Entertainment welcomes the students to come together to
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ignite their passion and dreams. It is a discipline that is aimed to transform the
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    career and the future of the students. Our students are taught to critically analyze
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    information,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    question
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    sources and uphold the principles of objectivity and fairness of journalism. As this era
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    is
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    dominated by the digital media, Medhavi Skills University ensures that digital
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    storytelling,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    social media management, multimedia production and other new-age learning modules are
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    incorporated into the practical curriculum in order to make the students at par with the
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    current
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    rapidly evolving industry. Guidance from industry experienced faculties,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    hands-on-experience
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    and practical new-age learning gives the students a rounded learning experience. The
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    programs
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    are carefully designed to align the outcomes with the extensive practicum. In this
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ever-evolving
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    landscape of information, the School of Modern Media and Entertainment is the maker of
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    future media personalities.' }}
 
-                                </p>
+
+
+    <!--=====================================-->
+    <!--=     What Our Students Are Saying =-->
+    <!--=====================================-->
+
+    <section class="what__our__students__says position-relative">
+        <div class="container-fluid custom-width__2">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="title">{{ $school['expert_speak_title'] ? $school['expert_speak_title'] : 'What Our Students Are Saying' }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="student-says owl-carousel">
+                        <div class="item">
+                            <div class="faculty-img">
+                                <img src="../assets/images/Fuculty-images/anumika.jpeg" alt="">
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <div class="faculty-img">
+                                <img src="../assets/images/Fuculty-images/dipankar.jpeg" alt="">
                             </div>
                         </div>
+
+                        <div class="item">
+                            <div class="faculty-img">
+                                <img src="../assets/images/Fuculty-images/aninidya.jpeg" alt="">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="faculty-img">
+                                <img src="../assets/images/Fuculty-images/ujjal.jpeg" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!--=====================================-->
+    <!--=       Medhavi Event Area Start      =-->
+    <!--=====================================-->
+
+
+    <!--=====================================-->
+    <!--=       We Are New Age & Trusted Area Start      =-->
+    <!--=====================================-->
+
+    <section class="academic bg-pattern">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="title text-center text-white">{{ $school['gallery_title'] ? $school['gallery_title'] : 'We Are New Age & Trusted' }}</h2>
+                    <p class="text-center container-fluid custom-width__2 text-white">
+                        {!! $school['gallery_description']
+                            ? nl2br($school['gallery_description'])
+                            : 'description.' !!}
+                    </p>
+                </div>
+                <!-- <h2 class="title text-center">Job-Ready Academic Curriculum</h2>
+                <p class="text-center">
+                  Future-Forward Learning: Elevate Your Future with Our Academic
+                  Edge
+                </p> -->
+
+            </div>
+        </div>
+
+        <div class="academic-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide swiper-slide--one">
+                    <div class="img-gradient">
+                        <img src="../assets/images/ADP_7385.JPG" alt="" />
+                    </div>
+                    <div>
+                        <h3>Systematic Learning</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide--two">
+                    <div class="img-gradient">
+                        <img src="../assets/images/banner/job-ready-2.webp" alt="" />
+                    </div>
+                    <div>
+                        <h3>Professional Orientation</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide--three">
+                    <div class="img-gradient">
+                        <img src="../assets/images/banner/job-ready-3.webp" alt="" />
+                    </div>
+                    <div>
+                        <h3>Industry Anchored Programmes</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide--four">
+                    <div class="img-gradient">
+                        <img src="../assets/images/banner/job-ready-4.webp" alt="" />
+                    </div>
+                    <div>
+                        <h3>Real world Skills & intelligence</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide--five">
+                    <div class="img-gradient">
+                        <img src="../assets/images/banner/job-ready-5.webp" alt="" />
+                    </div>
+                    <div>
+                        <h3>Skill Certifications</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide--six">
+                    <div class="img-gradient">
+                        <img src="../assets/images/banner/job-ready-6.webp" alt="" />
+                    </div>
+                    <div>
+                        <h3>Feedback Driven Growth</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide--seven">
+                    <div class="img-gradient">
+                        <img src="../assets/images/banner/job-ready-7.webp" alt="" />
+                    </div>
+                    <div>
+                        <h3>Employment Readiness</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide--eight">
+                    <div class="img-gradient">
+                        <img src="../assets/images/banner/job-ready-8.webp" alt="" />
+                    </div>
+                    <div>
+                        <h3>Skill-driven Entrepreneurship</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide--nine">
+                    <div class="img-gradient">
+                        <img src="../assets/images/banner/job-ready-9.webp" alt="" />
+                    </div>
+                    <div>
+                        <h3>Assured employability</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide--ten">
+                    <div class="img-gradient">
+                        <img src="../assets/images/banner/job-ready-10.webp" alt="" />
+                    </div>
+                    <div>
+                        <h3>Practice driven pedagogy</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+
+
+
+
+    <!--=====================================-->
+    <!--=       Our Partnerships Area Start      =-->
+    <!--=====================================-->
+
+    <section class="our-partnership">
+        <div class="container-fluid custom-width__2">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <h2 class="title">{{ $school['our_partners_title'] ? $school['our_partners_title'] : 'Our Partnerships' }}</h2>
+                    <p class="partnership_para">
+                        {!! $school['our_partners_description']
+                            ? nl2br($school['our_partners_description'])
+                            : 'description.' !!}
+                    </p>
+                </div>
+                <div class="col-lg-7">
+                    <div class="partner_box_bg">
+                        @foreach ($partnerships as $partnership)
+                            <div class="partner__bx">
+                                <div class="partner__img">
+                                    <img src="{{ Storage::url($partnership['logo']) }}" alt="">
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="view_all_button_bg text-center mt-5">
+                        <a href="javascript:void(0);" id="view-all-partnership"> <!-- added ID to the anchor tag -->
+                            <div class="view_all_button">View All</div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!--=====================================-->
-    <!--=     What Our Students Are Saying =-->
-    <!--=====================================-->
-    @if (count($testimonials) > 0)
-        <section class="what__our__students__says position-relative">
-            <div class="container-fluid custom-width__2">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h2 class="title">
-                            {{ $school['section_3_title'] ? $school['section_3_title'] : 'What Our Students Are Saying' }}
-                        </h2>
-                        <p class="section_para">
-                            {{ $school['section_3_description']
-                                ? $school['section_3_description']
-                                : 'Our vibrant campus provides an enriching society, in a diversified
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                community of endless creativity and vibrant festivities.' }}
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="student-says owl-carousel">
-                            @foreach ($testimonials as $testimonial)
-                                <div class="item">
-                                    <div class="student__talk_bx">
-                                        <div class="student_profile d-flex align-items-center">
-                                            <div class="profile__photo">
-                                                <img src="{{ $testimonial->image ? Storage::url($testimonial->image) : asset('frontend_assets/images/banner/core-4.jpg') }}"
-                                                    alt="">
-                                            </div>
-                                            <div class="profile__name">
-                                                <h4>{{ $testimonial->name }}</h4>
-                                                <p>{{ $testimonial->type }}</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="content__student">
-                                            <p class="para">{{ $testimonial->description }}</p>
-                                        </div>
-                                        <div class="quote_icon">
-                                            <img src="{{ asset('frontend_assets/images/icons/fade-quote.png') }}"
-                                                alt="">
-                                        </div>
-
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-    @endif
 
 
     @if (count($achievements) > 0 && count($key_milestones) > 0)
-        <section class="trusted__section position-relative">
-            <div class="container-fluid custom-width__2">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2 class="title text-center">
-                            {{ $school['section_4_title'] ? $school['section_4_title'] : 'We Are New Age & Trusted' }}</h2>
-                    </div>
-                </div>
-                <div class="row g-md-5 g-4">
+    <section class="stats-section">
+        <div class="container-fluid custom-width__2">
+            <div class="stats-bx">
+                <div class="row gx-5 gy-5">
                     @if (count($achievements) > 0)
-                        @foreach ($achievements as $achievement)
+                        @foreach ($achievements as $key => $achievement)
                             @php
                                 $text = $achievement['title'];
                                 $parts = explode(' ', $text);
 
                                 $number = substr($parts[0], 0, -2) ?? '';
-                                $ordinal = substr($parts[0], -2) == 'th' ? 'th' : 'st';
+                                $ordinal = in_array(substr($parts[0], -2), ['th', 'st', 'nd', 'rd']) ? substr($parts[0], -2) : '';
                                 $preposition = $parts[1] ?? '';
                                 // after the first two words show the rest of the words
                                 unset($parts[0], $parts[1]);
                                 $country = implode(' ', $parts);
                             @endphp
-                            <div class="col-lg-3 col-md-6 col-6">
-                                <div class="trusted__bx">
-                                    <h3>
-                                        <span class="large_text">{{ $number ?? '' }}<sup>{{ $ordinal ?? '' }}</sup>
-                                        </span>{{ $preposition ?? '' }}
-                                        <span class="blue-color">{{ $country ?? '' }}</span>
-                                    </h3>
-                                    <p>{{ $achievement['description'] }}</p>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="{{ $key % 2 == 0 ? 'stats-bx-alternate' : 'stats-bx-alternate-blue' }}">
+                                    <h3 class="{{ $key % 2 == 0 ? 'alternate-black' : 'alternate-white' }}">{{ $number ?? '' }}{{ $ordinal ?? '' }} <span
+                                            class="small-text"> {{ $country ?? '' }}</span> </h3>
+                                    <p class="{{ $key % 2 == 0 ? 'stats-para-text' : 'stats-para-text-white' }}">{{ $achievement['description'] }}</p>
                                 </div>
                             </div>
                         @endforeach
                     @endif
                 </div>
 
-                <div class="row top__spacing g-5">
-                    @if (count($key_milestones) > 0)
-                        @foreach ($key_milestones as $milestone)
-                            <div class="col-lg-2 col-md-4 col-6">
-                                <div class="static____counterbx">
-                                    <div class="icon">
-                                        <div class="icon_counter">
-                                            <img src="{{ Storage::url($milestone['logo']) }}" alt="" />
-                                        </div>
-                                        <h3 class="heading-counter">{{ $milestone['title'] }}</h3>
-                                    </div>
-
-                                    <p class="counter__para">{{ $milestone['description'] }}</p>
-                                </div>
-                            </div>
-                        @endforeach
-                    @endif
-                </div>
-            </div>
-        </section>
-    @endif
-
-    <!--=====================================-->
-    @if (count($partnerships) > 0)
-        <section class="our-partnership pt-0">
-            <div class="container-fluid custom-width__2">
-                <div class="row align-items-center">
-                    <div class="col-lg-5">
-                        <h2 class="title">
-                            {{ $school['section_5_title'] ? $school['section_5_title'] : 'Our Partnership' }}
-                        </h2>
-                        <p class="partnership_para">
-                            {{ $school['section_5_description']
-                                ? nl2br($school['section_5_description'])
-                                : "The partnership between Medhavi Skills university and its partners is instrumental in addressing the
-                                                                                                                                                                                                            evolving needs of the industry by providing access to a pool of well-trained and adept
-                                                                                                                                                                                                            professionals. The
-                                                                                                                                                                                                            symbiotic relationship between MSU and industry partners becomes a catalyst for economic
-                                                                                                                                                                                                            development,
-                                                                                                                                                                                                            driving innovation, productivity, and overall progress in the nation's workforce." }}
-
-                        </p>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="partner_box_bg">
-                            @foreach ($partnerships as $partnership)
-                                <div class="partner__bx">
-                                    <div class="partner__img">
-                                        <img src="{{ Storage::url($partnership['logo']) }}" alt="">
+                <div class="number-stats">
+                    <div class="row gy-lg-0 gy-md-5 gy-5">
+                        @if (count($key_milestones) > 0)
+                            @foreach ($key_milestones as $milestone)
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <div class="number-stat-bx">
+                                        <h4 class="heading">{{ $milestone['title'] }}</h4>
+                                        <p class="stats-text">{{ $milestone['description'] }}</p>
                                     </div>
                                 </div>
                             @endforeach
-                        </div>
-                        <div class="view_all_button_bg text-center mt-5">
-                            <a href="javascript:void(0);" id="view-all-partnership"> <!-- added ID to the anchor tag -->
-                                <div class="view_all_button">View All</div>
-                            </a>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
-        </section>
-    @endif
+        </div>
+    </section>
+@endif
+
 @endsection
 
 @push('scripts')

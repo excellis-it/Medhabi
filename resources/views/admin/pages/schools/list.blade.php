@@ -8,6 +8,7 @@
             margin-bottom: 10px !important;
         }
     </style>
+    
 @endpush
 @section('head')
     All Schools Details

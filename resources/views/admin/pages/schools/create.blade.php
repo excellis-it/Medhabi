@@ -102,21 +102,6 @@
                             <div class="col-xl-12 col-md-12">
                                 <div class="form-group-div">
                                     <div class="form-group">
-                                        {{-- meta title --}}
-                                        <label for="floatingInputValue">Section 1 Title*</label>
-                                        <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_1_title" value="{{ old('section_1_title') }}"
-                                            placeholder="Section 1 Title">
-                                        @if ($errors->has('section_1_title'))
-                                            <div class="error" style="color:red;">
-                                                {{ $errors->first('section_1_title') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-12 col-md-12">
-                                <div class="form-group-div">
-                                    <div class="form-group">
                                         {{-- meta description --}}
                                         <label for="floatingInputValue">Section 1 Description*</label>
                                         <textarea name="section_1_description" id="section_1_description" cols="30" rows="10"
@@ -140,13 +125,13 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta title --}}
-                                        <label for="floatingInputValue">Section 2 Title*</label>
+                                        <label for="floatingInputValue">Section 2 URL*</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_2_title" value="{{ old('section_2_title') }}"
-                                            placeholder="Section 2 Title">
-                                        @if ($errors->has('section_2_title'))
+                                            name="section_2_url" value="{{ old('section_2_url') }}"
+                                            placeholder="Section 2 URL">
+                                        @if ($errors->has('section_2_url'))
                                             <div class="error" style="color:red;">
-                                                {{ $errors->first('section_2_title') }}</div>
+                                                {{ $errors->first('section_2_url') }}</div>
                                         @endif
                                     </div>
                                 </div>
@@ -165,26 +150,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-12 col-md-12">
-                                <div class="form-group-div">
-                                    <div class="form-group">
-                                        {{-- meta description --}}
-                                        <label for="floatingInputValue">Section 2 Description*</label>
-                                        <textarea name="section_2_description" id="section_2_description" cols="30" rows="10"
-                                            placeholder="Section 2 Description" class="form-control">{{ old('section_2_description') }}</textarea>
-                                        @if ($errors->has('section_2_description'))
-                                            <div class="error" style="color:red;">
-                                                {{ $errors->first('section_2_description') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                     <div class="sales-report-card-wrap mt-5">
                         <div class="form-head">
-                            <h4>Section 3</h4>
+                            <h4>Medhavi Edge</h4>
                         </div>
 
                         <div class="row">
@@ -192,49 +162,98 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta title --}}
-                                        <label for="floatingInputValue">Section 3 Title*</label>
+                                        <label for="floatingInputValue">Title*</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_3_title" value="{{ old('section_3_title') }}"
-                                            placeholder="Section 3 Title">
-                                        @if ($errors->has('section_3_title'))
+                                            name="medhavi_edge_title" value="{{ old('medhavi_edge_title') }}"
+                                            placeholder="Title">
+                                        @if ($errors->has('medhavi_edge_title'))
                                             <div class="error" style="color:red;">
-                                                {{ $errors->first('section_3_title') }}</div>
+                                                {{ $errors->first('medhavi_edge_title') }}</div>
                                         @endif
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-12 col-md-12">
+                        </div>
+                        <div class="row count-class-medhavi-edge" id="add-more-medhavi-edge">
+                            {{-- school_medhavi_edges_image --}}
+                            <div class="col-xl-3 col-md-3 mt-4">
                                 <div class="form-group-div">
                                     <div class="form-group">
-                                        {{-- meta description --}}
-                                        <label for="floatingInputValue">Section 3 Description*</label>
-                                        <textarea name="section_3_description" id="section_3_description" cols="30" rows="10"
-                                            placeholder="Section 3 Description" class="form-control">{{ old('section_3_description') }}</textarea>
-                                        @if ($errors->has('section_3_description'))
-                                            <div class="error" style="color:red;">
-                                                {{ $errors->first('section_3_description') }}</div>
-                                        @endif
+                                        {{-- meta title --}}
+                                        <label for="floatingInputValue">School Medhavi Edge Image</label>
+                                        <input type="file" class="form-control" id="floatingInputValue"
+                                            name="school_medhavi_edges_image[]"
+
+                                            placeholder="School Medhavi Edge Image">
+                                        <span class="text-danger" id="school_medhavi_edges_image_0"></span>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mt-4">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- meta title --}}
+                                        <label for="floatingInputValue">School Medhavi Edge Title*</label>
+                                        <input type="text" class="form-control" id="floatingInputValue"
+                                            name="school_medhavi_edges_title[]" required
+
+                                            placeholder="School Medhavi Edge Title">
+                                        <span class="text-danger" id="school_medhavi_edges_title_0"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-4">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- banner_title --}}
+                                        <label for="floatingInputValue">School Medhavi Edge Description*</label>
+                                        <input type="text" class="form-control"
+                                            name="school_medhavi_edges_description[]" required
+
+                                            placeholder="School Medhavi Edge Description">
+                                        <span class="text-danger" id="school_medhavi_edges_description_0"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 mt-4">
+                                <div class="btn-1">
+                                    <button type="button" class="add-more-medhavi-edge"><i class="ph ph-plus"></i> Add
+                                        More</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="sales-report-card-wrap mt-5">
                         <div class="form-head">
-                            <h4>Section 4</h4>
+                            <h4>Program Levels</h4>
                         </div>
                         <div class="row">
                             <div class="col-xl-12 col-md-12">
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta title --}}
-                                        <label for="floatingInputValue">Section 4 Title*</label>
+                                        <label for="floatingInputValue"> Title*</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_4_title" value="{{ old('section_4_title') }}"
-                                            placeholder="Section 4 Title">
-                                        @if ($errors->has('section_4_title'))
+                                            name="program_levels_title" value="{{ old('program_levels_title') }}"
+                                            placeholder="Title">
+                                        @if ($errors->has('program_levels_title'))
                                             <div class="error" style="color:red;">
-                                                {{ $errors->first('section_4_title') }}</div>
+                                                {{ $errors->first('program_levels_title') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- program_levels_description --}}
+                            <div class="col-xl-12 col-md-12">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- meta description --}}
+                                        <label for="floatingInputValue">Description*</label>
+                                        <textarea name="program_levels_description" id="program_levels_description" cols="30" rows="10"
+                                            placeholder="Description" class="form-control">{{ old('program_levels_description') }}</textarea>
+                                        @if ($errors->has('program_levels_description'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('program_levels_description') }}</div>
                                         @endif
                                     </div>
                                 </div>
@@ -243,7 +262,7 @@
                     </div>
                     <div class="sales-report-card-wrap mt-5">
                         <div class="form-head">
-                            <h4>Section 5</h4>
+                            <h4>Expert Speak</h4>
                         </div>
 
                         <div class="row">
@@ -251,27 +270,87 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta title --}}
-                                        <label for="floatingInputValue">Section 5 Title*</label>
+                                        <label for="floatingInputValue">Title*</label>
                                         <input type="text" class="form-control" id="floatingInputValue"
-                                            name="section_5_title" value="{{ old('section_5_title') }}"
-                                            placeholder="Section 5 Title">
-                                        @if ($errors->has('section_5_title'))
+                                            name="expert_speak_title" value="{{ old('expert_speak_title') }}"
+                                            placeholder="Title">
+                                        @if ($errors->has('expert_speak_title'))
                                             <div class="error" style="color:red;">
-                                                {{ $errors->first('section_5_title') }}</div>
+                                                {{ $errors->first('expert_speak_title') }}</div>
                                         @endif
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="sales-report-card-wrap mt-5">
+                        <div class="form-head">
+                            <h4>Gallery</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 col-md-12">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- meta title --}}
+                                        <label for="floatingInputValue"> Title*</label>
+                                        <input type="text" class="form-control" id="floatingInputValue"
+                                            name="gallery_title" value="{{ old('gallery_title') }}"
+                                            placeholder="Title">
+                                        @if ($errors->has('gallery_title'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('gallery_title') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- program_levels_description --}}
                             <div class="col-xl-12 col-md-12">
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta description --}}
-                                        <label for="floatingInputValue">Section 5 Description*</label>
-                                        <textarea name="section_5_description" id="section_5_description" cols="30" rows="10"
-                                            placeholder="Section 5 Description" class="form-control">{{ old('section_5_description') }}</textarea>
-                                        @if ($errors->has('section_5_description'))
+                                        <label for="floatingInputValue">Description*</label>
+                                        <textarea name="gallery_description" id="gallery_description" cols="30" rows="10"
+                                            placeholder="Description" class="form-control">{{ old('gallery_description') }}</textarea>
+                                        @if ($errors->has('gallery_description'))
                                             <div class="error" style="color:red;">
-                                                {{ $errors->first('section_5_description') }}</div>
+                                                {{ $errors->first('gallery_description') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sales-report-card-wrap mt-5">
+                        <div class="form-head">
+                            <h4>Our Partnership</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 col-md-12">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- meta title --}}
+                                        <label for="floatingInputValue"> Title*</label>
+                                        <input type="text" class="form-control" id="floatingInputValue"
+                                            name="our_partners_title" value="{{ old('our_partners_title') }}"
+                                            placeholder="Title">
+                                        @if ($errors->has('our_partners_title'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('our_partners_title') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- program_levels_description --}}
+                            <div class="col-xl-12 col-md-12">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- meta description --}}
+                                        <label for="floatingInputValue">Description*</label>
+                                        <textarea name="our_partners_description" id="our_partners_description" cols="30" rows="10"
+                                            placeholder="Description" class="form-control">{{ old('our_partners_description') }}</textarea>
+                                        @if ($errors->has('our_partners_description'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('our_partners_description') }}</div>
                                         @endif
                                     </div>
                                 </div>
@@ -347,6 +426,64 @@
          $(".select2").select2({
             placeholder: "Select a Course",
             allowClear: true,
+        });
+    </script>
+      <script>
+        $(document).ready(function() {
+            // Add More functionality
+            $(document).on("click", ".add-more-medhavi-edge", function() {
+                var count = $("#add-more-medhavi-edge .col-xl-3").length;
+                var html = `  <div class="col-xl-3 col-md-3 mt-4">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- meta title --}}
+                                        <label for="floatingInputValue">School Medhavi Edges Image</label>
+                                        <input type="file" class="form-control" id="floatingInputValue"
+                                            name="school_medhavi_edges_image[]"
+                                            placeholder="School Medhavi Edges Image">
+                                        <span class="text-danger" id="school_medhavi_edges_image_${count}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mt-4">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- meta title --}}
+                                        <label for="floatingInputValue">School Medhavi Edges Title*</label>
+                                        <input type="text" class="form-control" id="floatingInputValue" required
+                                            name="school_medhavi_edges_title[]"
+                                            placeholder="School Medhavi Edges Title">
+                                        <span class="text-danger" id="school_medhavi_edges_title_${count}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-4">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- banner_title --}}
+                                        <label for="floatingInputValue">School Medhavi Edges Description*</label>
+                                        <input type="text" class="form-control" name="school_medhavi_edges_description[]" required
+
+                                            placeholder="School Medhavi Edges Description">
+                                        <span class="text-danger" id="school_medhavi_edges_description_${count}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-xl-2 mt-4">
+                            <div class="btn-1">
+                                <button type="button" class="remove-academic"><i class="ph ph-minus"></i> Remove</button>
+                            </div>
+                        </div>`;
+
+                $("#add-more-medhavi-edge").append(html);
+            });
+            $(document).on("click", ".remove-academic", function() {
+                $(this).parent().parent().prev().remove();
+                $(this).parent().parent().prev().remove();
+                $(this).parent().parent().prev().remove();
+                $(this).parent().parent().remove();
+
+            });
         });
     </script>
 @endpush

@@ -19,16 +19,19 @@ class CreateSchoolsTable extends Migration
             $table->string('slug')->unique()->nullable();
             $table->string('banner_title')->nullable();
             $table->string('banner_image')->nullable();
-            $table->string('section_1_title')->nullable();
+            
             $table->string('section_1_description')->nullable();
-            $table->string('section_2_title')->nullable();
-            $table->longText('section_2_description')->nullable();
             $table->string('section_2_image')->nullable();
-            $table->string('section_3_title')->nullable();
-            $table->longText('section_3_description')->nullable();
-            $table->string('section_4_title')->nullable();
-            $table->string('section_5_title')->nullable();
-            $table->longText('section_5_description')->nullable();
+            $table->longText('section_2_url')->nullable();
+            $table->string('medhavi_edge_title')->nullable();
+            $table->string('program_levels_title')->nullable();
+            $table->longText('program_levels_description')->nullable();
+            $table->string('expert_speak_title')->nullable();
+            $table->string('gallery_title')->nullable();
+            $table->string('gallery_description')->nullable();
+            $table->string('our_partners_title')->nullable();
+            $table->longText('our_partners_description')->nullable();
+
             $table->string('seo_title')->nullable();
             $table->longText('seo_description')->nullable();
             $table->string('seo_keywords')->nullable();

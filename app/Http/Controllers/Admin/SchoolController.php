@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\School;
 use App\Models\SchoolCourse;
+use App\Models\SchoolMedhaviEdge;
 use App\Traits\CreateSlug;
 use App\Traits\ImageTrait;
 use Illuminate\Http\Request;
@@ -61,44 +62,26 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        // return $request->all();
         $request->validate([
             'course_id.*' => 'required',
             'name' => 'required',
             'banner_title' => 'required',
             'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'section_1_title' => 'required',
             'section_1_description' => 'required',
-            'section_2_title' => 'required',
-            'section_2_description' => 'required',
             'section_2_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'section_3_title' => 'required',
-            'section_3_description' => 'required',
-            'section_4_title' => 'required',
-            'section_5_title' => 'required',
-            'section_5_description' => 'required',
+            'section_2_url' => 'required',
+            'medhavi_edge_title' => 'required',
+            'program_levels_title' => 'required',
+            'program_levels_description' => 'required',
+            'expert_speak_title' => 'required',
+            'gallery_title' => 'required',
+            'gallery_description' => 'required',
+            'our_partners_title' => 'required',
+            'our_partners_description' => 'required',
             'seo_title' => 'nullable',
             'seo_description' => 'nullable',
             'seo_keywords' => 'nullable',
-        ], [
-            'course_id.*.required' => 'The course field is required.',
-            'banner_image.required' => 'The banner image field is required.',
-            'banner_image.image' => 'The banner image must be an image.',
-            'banner_image.mimes' => 'The banner image must be a file of type: jpeg, png, jpg, gif, svg.',
-            'section_2_image.required' => 'The section 2 image field is required.',
-            'section_2_image.image' => 'The section 2 image must be an image.',
-            'section_2_image.mimes' => 'The section 2 image must be a file of type: jpeg, png, jpg, gif, svg.',
-            'name.required' => 'The name field is required.',
-            'banner_title.required' => 'The banner title field is required.',
-            'section_1_title.required' => 'The section 1 title field is required.',
-            'section_1_description.required' => 'The section 1 description field is required.',
-            'section_2_title.required' => 'The section 2 title field is required.',
-            'section_2_description.required' => 'The section 2 description field is required.',
-            'section_3_title.required' => 'The section 3 title field is required.',
-            'section_3_description.required' => 'The section 3 description field is required.',
-            'section_4_title.required' => 'The section 4 title field is required.',
-            'section_5_title.required' => 'The section 5 title field is required.',
-            'section_5_description.required' => 'The section 5 description field is required.',
         ]);
 
         $slug = $this->createSlug($request->name);
@@ -113,16 +96,17 @@ class SchoolController extends Controller
         $school->banner_title = $request->banner_title;
         $school->slug = $slug;
         $school->banner_image = $this->imageUpload($request->file('banner_image'), 'schools');
-        $school->section_1_title = $request->section_1_title;
         $school->section_1_description = $request->section_1_description;
-        $school->section_2_title = $request->section_2_title;
-        $school->section_2_description = $request->section_2_description;
         $school->section_2_image = $this->imageUpload($request->file('section_2_image'), 'schools');
-        $school->section_3_title = $request->section_3_title;
-        $school->section_3_description = $request->section_3_description;
-        $school->section_4_title = $request->section_4_title;
-        $school->section_5_title = $request->section_5_title;
-        $school->section_5_description = $request->section_5_description;
+        $school->section_2_url = $request->section_2_url;
+        $school->medhavi_edge_title = $request->medhavi_edge_title;
+        $school->program_levels_title = $request->program_levels_title;
+        $school->program_levels_description = $request->program_levels_description;
+        $school->expert_speak_title = $request->expert_speak_title;
+        $school->gallery_title = $request->gallery_title;
+        $school->gallery_description = $request->gallery_description;
+        $school->our_partners_title = $request->our_partners_title;
+        $school->our_partners_description = $request->our_partners_description;
         $school->seo_title = $request->seo_title;
         $school->seo_description = $request->seo_description;
         $school->seo_keywords = $request->seo_keywords;
@@ -134,6 +118,19 @@ class SchoolController extends Controller
                 $schoolCourse->school_id = $school->id;
                 $schoolCourse->course_id = $course_id;
                 $schoolCourse->save();
+            }
+        }
+
+        if ($request->school_medhavi_edges_title) {
+            foreach ($request->school_medhavi_edges_title as $key => $title) {
+                $schoolMedhaviEdge = new SchoolMedhaviEdge();
+                $schoolMedhaviEdge->school_id = $school->id;
+                $schoolMedhaviEdge->title = $title;
+                $schoolMedhaviEdge->description = $request->school_medhavi_edges_description[$key];
+                if (isset($request->school_medhavi_edges_image[$key]) && $request->school_medhavi_edges_image[$key] != null) {
+                    $schoolMedhaviEdge->image = $this->imageUpload($request->school_medhavi_edges_image[$key], 'schools');
+                }
+                $schoolMedhaviEdge->save();
             }
         }
 
@@ -178,15 +175,16 @@ class SchoolController extends Controller
             'course_id.*' => 'required',
             'name' => 'required',
             'banner_title' => 'required',
-            'section_1_title' => 'required',
             'section_1_description' => 'required',
-            'section_2_title' => 'required',
-            'section_2_description' => 'required',
-            'section_3_title' => 'required',
-            'section_3_description' => 'required',
-            'section_4_title' => 'required',
-            'section_5_title' => 'required',
-            'section_5_description' => 'required',
+            'section_2_url' => 'required',
+            'medhavi_edge_title' => 'required',
+            'program_levels_title' => 'required',
+            'program_levels_description' => 'required',
+            'expert_speak_title' => 'required',
+            'gallery_title' => 'required',
+            'gallery_description' => 'required',
+            'our_partners_title' => 'required',
+            'our_partners_description' => 'required',
             'seo_title' => 'nullable',
             'seo_description' => 'nullable',
             'seo_keywords' => 'nullable',
@@ -203,15 +201,16 @@ class SchoolController extends Controller
         }
         $school->name = $request->name;
         $school->banner_title = $request->banner_title;
-        $school->section_1_title = $request->section_1_title;
         $school->section_1_description = $request->section_1_description;
-        $school->section_2_title = $request->section_2_title;
-        $school->section_2_description = $request->section_2_description;
-        $school->section_3_title = $request->section_3_title;
-        $school->section_3_description = $request->section_3_description;
-        $school->section_4_title = $request->section_4_title;
-        $school->section_5_title = $request->section_5_title;
-        $school->section_5_description = $request->section_5_description;
+        $school->section_2_url = $request->section_2_url;
+        $school->medhavi_edge_title = $request->medhavi_edge_title;
+        $school->program_levels_title = $request->program_levels_title;
+        $school->program_levels_description = $request->program_levels_description;
+        $school->expert_speak_title = $request->expert_speak_title;
+        $school->gallery_title = $request->gallery_title;
+        $school->gallery_description = $request->gallery_description;
+        $school->our_partners_title = $request->our_partners_title;
+        $school->our_partners_description = $request->our_partners_description;
         $school->seo_title = $request->seo_title;
         $school->seo_description = $request->seo_description;
         $school->seo_keywords = $request->seo_keywords;
@@ -230,6 +229,30 @@ class SchoolController extends Controller
                 $schoolCourse->school_id = $school->id;
                 $schoolCourse->course_id = $course_id;
                 $schoolCourse->save();
+            }
+        }
+
+        if ($request->school_medhavi_edges_title) {
+            foreach ($request->school_medhavi_edges_title as $key => $title) {
+               if (isset($request->school_medhavi_edges_id[$key]) && $request->school_medhavi_edges_id[$key] != null) {
+                    $schoolMedhaviEdge = SchoolMedhaviEdge::find($request->school_medhavi_edges_id[$key]);
+                    $schoolMedhaviEdge->school_id = $school->id;
+                    $schoolMedhaviEdge->title = $title;
+                    $schoolMedhaviEdge->description = $request->school_medhavi_edges_description[$key];
+                    if (isset($request->school_medhavi_edges_image[$key]) && $request->school_medhavi_edges_image[$key] != null) {
+                        $schoolMedhaviEdge->image = $this->imageUpload($request->school_medhavi_edges_image[$key], 'schools');
+                    }
+                    $schoolMedhaviEdge->save();
+                } else {
+                    $schoolMedhaviEdge = new SchoolMedhaviEdge();
+                    $schoolMedhaviEdge->school_id = $school->id;
+                    $schoolMedhaviEdge->title = $title;
+                    $schoolMedhaviEdge->description = $request->school_medhavi_edges_description[$key];
+                    if (isset($request->school_medhavi_edges_image[$key]) && $request->school_medhavi_edges_image[$key] != null) {
+                        $schoolMedhaviEdge->image = $this->imageUpload($request->school_medhavi_edges_image[$key], 'schools');
+                    }
+                    $schoolMedhaviEdge->save();
+               }
             }
         }
 

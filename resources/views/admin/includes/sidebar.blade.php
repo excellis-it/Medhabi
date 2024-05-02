@@ -217,23 +217,6 @@
                                             <span>Achievement and Key Milestone</span>
                                         </a>
                                     </li>
-                                    <li class="dropdown {{ Request::is('admin/pages/career/testimonials*') ? 'active' : ' ' }}">
-                                        <a href="javascript:void(0);"
-                                            class="menu-toggle nav-link has-dropdown ">
-
-                                            <span> Testimonials</span>
-                                        </a>
-                                        <ul class="dropdown-menu keep-open">
-                                            <li class="{{ Request::is('admin/pages/career/testimonials') ? 'active' : ' ' }}"><a
-                                                    class="nav-link" href="{{ route('testimonials.index') }}">
-                                                    Testimonials List</a></li>
-                                            <li
-                                                class="{{ Request::is('admin/pages/career/testimonials/create') ? 'active' : ' ' }}">
-                                                <a class="nav-link"
-                                                    href="{{ route('testimonials.create') }}">Testimonials Create</a>
-                                            </li>
-                                        </ul>
-                                    </li>
                                 </ul>
                             </li>
                         </ul>

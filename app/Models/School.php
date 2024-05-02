@@ -18,4 +18,9 @@ class School extends Model
     {
         return $this->hasMany(SchoolCourse::class);
     }
+
+    public function medhaviEdges()
+    {
+        return $this->hasMany(SchoolMedhaviEdge::class);
+    }
 }
