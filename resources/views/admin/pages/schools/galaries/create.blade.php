@@ -1,11 +1,11 @@
 @extends('admin.layouts.master')
 @section('title')
-    {{ env('APP_NAME') }} | Create School Galary Page
+    {{ env('APP_NAME') }} | Create School Galary 
 @endsection
 @push('styles')
 @endpush
 @section('head')
-    Create School Galary Page
+    Create School Galary
 @endsection
 
 @section('content')

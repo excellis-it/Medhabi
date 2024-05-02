@@ -98,8 +98,8 @@
 
             function clear_icon() {
                 $('#id_icon').html('');
-                $('#name_icon').html('');
-                $('#slug_icon').html('');
+                $('#title_icon').html('');
+                
             }
 
             function fetch_data(page, sort_type, sort_by, query) {

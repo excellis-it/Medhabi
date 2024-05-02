@@ -18,7 +18,7 @@
     </tr>
 @endforeach
 <tr style="box-shadow: none;">
-    <td colspan="4">
+    <td colspan="3">
         <div class="d-flex justify-content-center">
             {!! $galaries->links() !!}
         </div>
@@ -26,6 +26,6 @@
 </tr>
 @else
 <tr>
-    <td colspan="4" class="text-center">No Galary Found</td>
+    <td colspan="3" class="text-center">No Galary Found</td>
 </tr>
 @endif

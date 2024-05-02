@@ -1,11 +1,11 @@
 @extends('admin.layouts.master')
 @section('title')
-    {{ env('APP_NAME') }} | Edit School Galary Page
+    {{ env('APP_NAME') }} | Edit School Galary 
 @endsection
 @push('styles')
 @endpush
 @section('head')
-    Edit School Galary Page
+    Edit School Galary 
 @endsection
 
 @section('content')
