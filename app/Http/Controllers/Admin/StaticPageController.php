@@ -31,7 +31,9 @@ class StaticPageController extends Controller
             $query = str_replace(" ", "%", $query);
             $static_pages = StaticPage::where('id', 'like', '%' . $query . '%')
                 ->orWhere('title', 'like', '%' . $query . '%')
-                ->orWhere('slug', 'like', '%' . $query . '%')
+                ->orWhereHas('menu', function ($q) use ($query) {
+                    $q->where('name', 'like', '%' . $query . '%');
+                })
                 ->orderBy($sort_by, $sort_type)
                 ->paginate(10);
 
@@ -57,23 +59,16 @@ class StaticPageController extends Controller
      */
     public function store(Request $request)
     {
-        // validation 
+        // validation
         $request->validate([
             'title' => 'required',
             'content' => 'required',
+            'menu_id' => 'required|unique:static_pages,menu_id'
         ]);
-
-        $slug = $this->createSlug($request->title);
-        // check slug is already exist or not
-        $is_slug_exist = StaticPage::where('slug', $slug)->first();
-        if ($is_slug_exist) {
-            $slug = $slug . '-' . time();
-        }
-
 
         $static_page = new StaticPage();
         $static_page->title = $request->title;
-        $static_page->slug = $slug;
+        $static_page->menu_id = $request->menu_id;
         $static_page->content = $request->content;
         $static_page->save();
 
@@ -117,11 +112,13 @@ class StaticPageController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required',
+            'menu_id' => 'required|unique:static_pages,menu_id,' . $request->id . ',id'
         ]);
 
         $static_page = StaticPage::findOrFail($request->id);
         $static_page->title = $request->title;
         $static_page->content = $request->content;
+        $static_page->menu_id = $request->menu_id;
         $static_page->update();
 
         return redirect()->route('static-pages.index')->with('message', 'Static Page updated successfully');

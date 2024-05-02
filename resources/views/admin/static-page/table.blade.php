@@ -3,8 +3,8 @@
     <tr>
         <td>{{ ($static_pages->currentPage()-1) * $static_pages->perPage() + $loop->index + 1 }}</td>
         <td>{{ $static_page->title ?? 'N/A' }}</td>
-        <td>{{ $static_page->slug ?? 'N/A' }}
-        </td>
+        <td>{{ $static_page->menu->name ?? 'N/A' }}</td>
+        <td>{{ $static_page->menu->slug ?? 'N/A' }}</td>
         <td>
             <div class="edit-1 d-flex align-items-center justify-content-center">
                 <a title="Edit Customer" href="{{ route('static-pages.edit', $static_page->id) }}">
@@ -19,7 +19,7 @@
     </tr>
 @endforeach
 <tr style="box-shadow: none;">
-    <td colspan="4">
+    <td colspan="3">
         <div class="d-flex justify-content-center">
             {!! $static_pages->links() !!}
         </div>
@@ -27,6 +27,6 @@
 </tr>
 @else
 <tr>
-    <td colspan="4" class="text-center">No Page Found</td>
+    <td colspan="3" class="text-center">No Page Found</td>
 </tr>
 @endif

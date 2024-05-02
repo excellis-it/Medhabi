@@ -13,7 +13,7 @@
     All Testimonial Details
 @endsection
 @section('create_button')
-  <a href="{{ route('career.testimonials.create') }}" class="btn btn-primary">+ Create New Testmonial</a>
+  <a href="{{ route('testimonials.create') }}" class="btn btn-primary">+ Create New Testmonial</a>
 @endsection
 @section('content')
     <section id="loading">
@@ -111,7 +111,7 @@
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "{{ route('career.testimonials.fetch-data') }}",
+                    url: "{{ route('testimonials.fetch-data') }}",
                     data: {
                         page: page,
                         sortby: sort_by,

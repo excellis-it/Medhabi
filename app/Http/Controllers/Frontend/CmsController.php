@@ -20,6 +20,7 @@ use App\Models\OurPartnership;
 use App\Models\ProgramTypesCMS;
 use App\Models\School;
 use App\Models\SocialMedia;
+use App\Models\StaticPage;
 use App\Models\Testimonial;
 use App\Models\TVC;
 use Illuminate\Http\Request;
@@ -95,10 +96,9 @@ class CmsController extends Controller
     public function schoolCourses($slug)
     {
         $course = Course::where('slug', $slug)->first();
-        $blogs = Blog::orderBy('id', 'desc')->limit(4)->get();
-        $job_oppotunities = JobOpportunity::get();
-        $schools = School::orderBy('id', 'desc')->get();
-        return view('frontend.pages.course')->with(compact('course', 'blogs', 'job_oppotunities', 'schools'));
+        $our_partnerships = OurPartnership::orderBy('id', 'desc')->get();
+        $other_courses = Course::where('id', '!=', $course->id)->orderBy('name', 'asc')->get();
+        return view('frontend.pages.course')->with(compact('course', 'our_partnerships', 'other_courses'));
     }
 
     public function downloadBrochure($slug)
@@ -126,8 +126,11 @@ class CmsController extends Controller
         return view('frontend.pages.event')->with(compact('events'));
     }
 
-    public function admission($slug)
+    public function admission()
     {
+        $url = url()->current();
+        $slug = explode('/', $url);
+        $slug = end($slug);
         $program = ProgramTypesCMS::where('slug', $slug)->first();
         $achievements = Achievement::orderBy('id', 'desc')->get();
         $key_milestones = KeyMilestone::orderBy('id', 'desc')->get();
@@ -160,7 +163,19 @@ class CmsController extends Controller
 
             $courses = $courses->get();
 
-            return response()->json(['status'=> true,'data' => view('frontend.pages.filter.course-list', compact('courses'))->render()]);
+            return response()->json(['status' => true, 'data' => view('frontend.pages.filter.course-list', compact('courses'))->render()]);
         }
+    }
+
+    public function page(Request $request, $slug = null)
+    {
+        // return $slug;
+        $page = StaticPage::whereHas('menu', function ($query) use ($slug) {
+            $query->where('slug', $slug);
+        })->first();
+        if (!$page) {
+            abort(404);
+        }
+        return view('frontend.pages.static-page')->with(compact('page'));
     }
 }

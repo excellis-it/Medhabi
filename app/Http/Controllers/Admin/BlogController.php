@@ -27,7 +27,7 @@ class BlogController extends Controller
     public function fetchData(Request $request)
     {
         if ($request->ajax()) {
-            
+
             $sort_by = $request->get('sortby');
             $sort_type = $request->get('sorttype');
             $query = $request->get('query');
@@ -69,14 +69,8 @@ class BlogController extends Controller
             'image' => "required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048",
             'description' => 'required',
             'short_description' => 'required',
+            'slug' => 'required|unique:blogs,slug'
         ]);
-
-        $slug = $this->createSlug($request->name);
-        // check slug is already exist or not
-        $is_slug_exist = Blog::where('slug', $slug)->first();
-        if ($is_slug_exist) {
-            $slug = $slug . '-' . time();
-        }
 
         $blog = new Blog();
         $blog->name = $request->name;
@@ -86,7 +80,7 @@ class BlogController extends Controller
         $blog->meta_title = $request->meta_title;
         $blog->meta_keyword = $request->meta_keyword;
         $blog->meta_description = $request->meta_description;
-        $blog->slug = $slug;
+        $blog->slug = $request->slug;
         $blog->image = $this->imageUpload($request->file('image'), 'blog');
         $blog->save();
 
@@ -130,6 +124,7 @@ class BlogController extends Controller
             'status' => "required",
             'description' => 'required',
             'short_description' => 'required',
+            'slug' => 'required|unique:blogs,slug,' . $id
         ]);
 
         $blog = Blog::findOrFail($id);
@@ -140,15 +135,7 @@ class BlogController extends Controller
         $blog->meta_title = $request->meta_title;
         $blog->meta_keyword = $request->meta_keyword;
         $blog->meta_description = $request->meta_description;
-        if ($blog->name != $request->name) {
-            $slug = $this->createSlug($request->name);
-            $is_slug_exist = Blog::where('slug', $slug)->first();
-            if ($is_slug_exist) {
-                $slug = $slug . '-' . time();
-            }
-            $blog->slug = $slug;
-        }
-
+        $blog->slug = $request->slug;
         if ($request->hasFile('image')) {
             $request->validate([
                 'image' => "image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048",

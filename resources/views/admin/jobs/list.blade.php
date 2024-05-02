@@ -13,7 +13,7 @@
     All Job Details
 @endsection
 @section('create_button')
-  <a href="{{ route('career.jobs.create') }}" class="btn btn-primary">+ Create New Job</a>
+  <a href="{{ route('jobs.create') }}" class="btn btn-primary">+ Create New Job</a>
 @endsection
 @section('content')
     <section id="loading">
@@ -120,7 +120,7 @@
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "{{ route('career.jobs.fetch-data') }}",
+                    url: "{{ route('jobs.fetch-data') }}",
                     data: {
                         page: page,
                         sortby: sort_by,
@@ -190,7 +190,7 @@
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: '{{ route('career.jobs.change-status') }}',
+                url: '{{ route('jobs.change-status') }}',
                 data: {
                     'status': status,
                     'job_id': job_id

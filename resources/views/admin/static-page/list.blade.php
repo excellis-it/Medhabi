@@ -57,11 +57,10 @@
                                 <th class="sorting" data-sorting_type="asc" data-column_name="program_type_id"
                                     style="cursor: pointer" data-tippy-content="Sort by Program Type">
                                     Page Name<span id="program_type_id_icon"></span></th>
-                                <th class="sorting" data-sorting_type="asc" data-column_name="name" style="cursor: pointer"
-                                    data-tippy-content="Sort by Course Type">
-                                    Slug<span id="name_icon"></span></th>
+                                <th >
+                                    Menu Name</th>
 
-
+                                   <th>Page Slug</th>
                             </tr>
                         </thead>
                         <tbody>

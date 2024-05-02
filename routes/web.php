@@ -26,8 +26,10 @@ use App\Http\Controllers\Admin\SocialMediaController;
 use App\Http\Controllers\Admin\StaticPageController;
 use App\Http\Controllers\Admin\TVCController;
 use App\Http\Controllers\Admin\Admissions\ProgramTypesCMSController;
+use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use App\Http\Controllers\Frontend\CmsController;
+use App\Models\ProgramTypesCMS;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -70,7 +72,13 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     Route::resources([
         'social-media' => SocialMediaController::class,
         'static-pages' => StaticPageController::class,
+        'menus' => MenuController::class,
     ]);
+
+    Route::prefix('menus')->group(function () {
+        Route::get('/menus-delete/{id}', [MenuController::class, 'delete'])->name('menus.delete');
+    });
+    Route::get('/menus-fetch-data', [MenuController::class, 'fetchData'])->name('menus.fetch-data');
 
     //static page route
     Route::get('/static-pages-fetch-data', [StaticPageController::class, 'fetchData'])->name('static-pages.fetch-data');
@@ -85,6 +93,11 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 
     Route::prefix('pages')->group(function () {
         Route::prefix('career')->name('career.')->group(function () {
+            Route::get('/career', [PageController::class, 'career'])->name('index');
+            Route::post('/career/update', [PageController::class, 'careerUpdadte'])->name('update');
+        });
+
+        Route::prefix('career')->group(function () {
             Route::get('/', [PageController::class, 'career'])->name('index');
             Route::post('/update', [PageController::class, 'careerUpdadte'])->name('update');
 
@@ -128,41 +141,48 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
             'galaries' => GalaryController::class,
         ]);
 
-        Route::get('/galaries-fetch-data', [GalaryController::class, 'fetchData'])->name('galaries.fetch-data');
         Route::prefix('galaries')->group(function () {
             Route::get('/delete/{id}', [GalaryController::class, 'delete'])->name('galaries.delete');
         });
+        Route::get('/galaries-fetch-data', [GalaryController::class, 'fetchData'])->name('galaries.fetch-data');
+
+        Route::resources([
+            'courses' => CourseController::class,
+            'our-partnerships' => OurPartnershipController::class,
+            'achievement-and-key-milestones' => AchievementAndKeyMilestoneController::class,
+        ]);
+        // course.learning-by-doing.image.delete
+        Route::get('/course-learning-by-doing-image-delete', [CourseController::class, 'deleteLearningByDoingImage'])->name('courses.learning-by-doing.image.delete');
+
+        // our-partnerships
+        Route::prefix('our-partnerships')->group(function () {
+            Route::get('/our-partnerships-delete/{id}', [OurPartnershipController::class, 'delete'])->name('our-partnerships.delete');
+        });
+        Route::get('/our-partnerships-fetch-data', [OurPartnershipController::class, 'fetchData'])->name('our-partnerships.fetch-data');
+
+        Route::prefix('courses')->group(function () {
+            Route::get('/course-delete/{id}', [CourseController::class, 'delete'])->name('courses.delete');
 
 
-        Route::prefix('schools')->name('schools.')->group(function () {
-            Route::get('/school-delete/{id}', [SchoolController::class, 'delete'])->name('schools.delete');
-
-            Route::resources([
-                'courses' => CourseController::class,
-               
-                'our-partnerships' => OurPartnershipController::class,
-                'achievement-and-key-milestones' => AchievementAndKeyMilestoneController::class,
-            ]);
-
-            Route::prefix('courses')->group(function () {
-                Route::get('/course-delete/{id}', [CourseController::class, 'delete'])->name('courses.delete');
-
-                Route::prefix('admissions')->group(function () {
-                    Route::resources([
-                        'program-types' => ProgramTypesController::class,
-                        'course-types' => CourseTypesController::class,
-                    ]);
-                    Route::get('/programtypes-fetch-data', [ProgramTypesController::class, 'fetchData'])->name('program-types.fetch-data');
-                    Route::prefix('program-types')->name('program-types.')->group(function () {
-                        Route::get('/programtypes-delete/{id}', [ProgramTypesController::class, 'delete'])->name('delete');
-                    });
-                    Route::get('/coursetypes-fetch-data', [CourseTypesController::class, 'fetchData'])->name('course-types.fetch-data');
-                    Route::prefix('course-types')->name('course-types.')->group(function () {
-                        Route::get('/coursetypes-delete/{id}', [CourseTypesController::class, 'delete'])->name('delete');
-                    });
+            Route::prefix('admissions')->group(function () {
+                Route::resources([
+                    'program-types' => ProgramTypesController::class,
+                    'course-types' => CourseTypesController::class,
+                ]);
+                Route::get('/programtypes-fetch-data', [ProgramTypesController::class, 'fetchData'])->name('program-types.fetch-data');
+                Route::prefix('program-types')->name('program-types.')->group(function () {
+                    Route::get('/programtypes-delete/{id}', [ProgramTypesController::class, 'delete'])->name('delete');
+                });
+                Route::get('/coursetypes-fetch-data', [CourseTypesController::class, 'fetchData'])->name('course-types.fetch-data');
+                Route::prefix('course-types')->name('course-types.')->group(function () {
+                    Route::get('/coursetypes-delete/{id}', [CourseTypesController::class, 'delete'])->name('delete');
                 });
             });
-            Route::get('/courses-fetch-data', [CourseController::class, 'fetchData'])->name('courses.fetch-data');
+        });
+        Route::get('/courses-fetch-data', [CourseController::class, 'fetchData'])->name('courses.fetch-data');
+
+        Route::prefix('schools')->name('schools.')->group(function () {
+            Route::get('/school-delete/{id}', [SchoolController::class, 'delete'])->name('delete');
         });
         Route::get('/schools-fetch-data', [SchoolController::class, 'fetchData'])->name('schools.fetch-data');
 
@@ -170,7 +190,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
             Route::get('/program-types-cms-delete/{id}', [ProgramTypesCMSController::class, 'delete'])->name('program-types-cms.delete');
         });
         Route::get('/program-types-cms-fetch-data', [ProgramTypesCMSController::class, 'fetchData'])->name('program-types-cms.fetch-data');
-        
+
         Route::post('/get-course-types', [CourseController::class, 'getCourseTypes'])->name('get.course.types');
 
         Route::prefix('tvc')->group(function () {
@@ -199,8 +219,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         });
         Route::get('/application-process-fetch-data', [ApplicationProcessController::class, 'fetchData'])->name('application-process.fetch-data');
     });
-
-    
 });
 
 
@@ -215,7 +233,7 @@ Route::get('/careers-job-search', [CmsController::class, 'jobSearch'])->name('fr
 
 Route::get('school/{slug}', [CmsController::class, 'school'])->name('school');
 Route::get('course/{slug}', [CmsController::class, 'schoolCourses'])->name('course');
-Route::get('admission/{slug}', [CmsController::class, 'admission'])->name('programs');
+
 // download brochure
 Route::get('download-brochure/{slug}', [CmsController::class, 'downloadBrochure'])->name('download.brochure');
 // course.list-filter
@@ -226,3 +244,21 @@ Route::prefix('happenings')->group(function () {
     Route::get('/media', [CmsController::class, 'media'])->name('media');
     Route::get('/event', [CmsController::class, 'event'])->name('event');
 });
+
+$admissions = ProgramTypesCMS::orderBy('name', 'asc')->get();
+foreach ($admissions as $admission) {
+    if ($admission->slug) {
+        Route::get('/'.$admission->slug, [CmsController::class, 'admission'])->name($admission->slug . '.admission');
+    }
+}
+
+
+// only menu model route is here for cms page
+$menus = \App\Models\Menu::select('slug')->where('status', 1)->groupBy('slug')->get();
+
+foreach ($menus as $menu) {
+    if ($menu->slug) {
+        Route::get('/{'.$menu->slug.'}', [CmsController::class, 'page'])->name($menu->slug . '.page');
+    }
+}
+

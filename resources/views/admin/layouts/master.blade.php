@@ -13,11 +13,11 @@
         rel="stylesheet">
     <script src="https://unpkg.com/phosphor-icons"></script>
     <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
-    <link rel="stylesheet" href="{{asset('admin_assets/css/app.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('admin_assets/css/custom.css')}}" />
-    <link rel="stylesheet" href="{{asset('admin_assets/css/style.css')}}" />
+    <link rel="stylesheet" href="{{ asset('admin_assets/css/app.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin_assets/css/custom.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin_assets/css/style.css') }}" />
 
-    <link rel="stylesheet" href="{{asset('admin_assets/css/morris.css')}}">
+    <link rel="stylesheet" href="{{ asset('admin_assets/css/morris.css') }}">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
@@ -65,18 +65,18 @@
             <!-- end footer -->
         </div>
     </div>
-    <script src="{{asset('admin_assets/js/jquery-3.4.1.min.js')}}"></script>
+    <script src="{{ asset('admin_assets/js/jquery-3.4.1.min.js') }}"></script>
     <!-- <script src="js/jquery.min.js"></script> -->
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
     <!-- <script src="js/bootstrap.min.js" async=""></script> -->
-    <script src="{{asset('admin_assets/bootstrap-5.3/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('admin_assets/js/raphael-min.js')}}"></script>
-    <script src="{{asset('admin_assets/js/morris.min.js')}}"></script>
-    <script src="{{asset('admin_assets/js/Chart.min.js')}}"></script>
-    <script src="{{asset('admin_assets/js/custom.js')}}" async=""></script>
-    <script src="{{asset('admin_assets/js/app.min.js')}}"></script>
-    <script src="{{asset('admin_assets/js/scripts.js')}}" async=""></script>
-    <script src="{{asset('admin_assets/js/jquery-ui.min.js')}}"></script>
+    <script src="{{ asset('admin_assets/bootstrap-5.3/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/js/raphael-min.js') }}"></script>
+    <script src="{{ asset('admin_assets/js/morris.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/js/Chart.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/js/custom.js') }}" async=""></script>
+    <script src="{{ asset('admin_assets/js/app.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/js/scripts.js') }}" async=""></script>
+    <script src="{{ asset('admin_assets/js/jquery-ui.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
