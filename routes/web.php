@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\OurPartnershipController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SchoolController;
+use App\Http\Controllers\Admin\GalaryController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\Admissions\ProgramTypesController;
 use App\Http\Controllers\Admin\Admissions\CourseTypesController;
@@ -81,8 +82,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     });
     Route::get('/social-media-fetch-data', [SocialMediaController::class, 'fetchData'])->name('social-media.fetch-data');
 
-    
-    
 
     Route::prefix('pages')->group(function () {
         Route::prefix('career')->name('career.')->group(function () {
@@ -126,13 +125,21 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
             'events' => EventController::class,
             'blogs' => BlogController::class,
             'application-process' => ApplicationProcessController::class,
+            'galaries' => GalaryController::class,
         ]);
+
+        Route::get('/galaries-fetch-data', [GalaryController::class, 'fetchData'])->name('galaries.fetch-data');
+        Route::prefix('galaries')->group(function () {
+            Route::get('/delete/{id}', [GalaryController::class, 'delete'])->name('galaries.delete');
+        });
+
 
         Route::prefix('schools')->name('schools.')->group(function () {
             Route::get('/school-delete/{id}', [SchoolController::class, 'delete'])->name('schools.delete');
 
             Route::resources([
                 'courses' => CourseController::class,
+               
                 'our-partnerships' => OurPartnershipController::class,
                 'achievement-and-key-milestones' => AchievementAndKeyMilestoneController::class,
             ]);

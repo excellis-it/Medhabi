@@ -178,6 +178,21 @@
                                 <ul class="dropdown-menu sidebar-menu sidebar-menu-2">
                                     <li class="{{ Request::is('admin/pages/schools/courses/*') ? 'active' : ' ' }}"><a
                                             class="nav-link" href="{{ route('schools.courses.index') }}">Courses </a></li>
+
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);"
+                                            class="menu-toggle nav-link has-dropdown {{ Request::is('admin/pages/galaries*') ? 'active' : ' ' }}">
+                                            <span> Galary</span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li class="{{ Request::is('admin/pages/galaries*') ? 'active' : ' ' }}">
+                                                <a class="nav-link" href="{{ route('galaries.index') }}"> Our
+                                                    Galary List</a>
+                                            </li>
+                                            
+                                        </ul>
+                                    </li>
+
                                     <li class="dropdown">
                                         <a href="javascript:void(0);"
                                             class="menu-toggle nav-link has-dropdown {{ Request::is('admin/our-core-values*') ? 'active' : ' ' }}">
