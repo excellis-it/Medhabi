@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\OurPartnershipController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SchoolController;
+use App\Http\Controllers\Admin\GalaryController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\Admissions\ProgramTypesController;
 use App\Http\Controllers\Admin\Admissions\CourseTypesController;
@@ -90,8 +91,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     Route::get('/social-media-fetch-data', [SocialMediaController::class, 'fetchData'])->name('social-media.fetch-data');
 
 
-
-
     Route::prefix('pages')->group(function () {
         Route::prefix('career')->name('career.')->group(function () {
             Route::get('/career', [PageController::class, 'career'])->name('index');
@@ -139,7 +138,13 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
             'events' => EventController::class,
             'blogs' => BlogController::class,
             'application-process' => ApplicationProcessController::class,
+            'galaries' => GalaryController::class,
         ]);
+
+        Route::prefix('galaries')->group(function () {
+            Route::get('/delete/{id}', [GalaryController::class, 'delete'])->name('galaries.delete');
+        });
+        Route::get('/galaries-fetch-data', [GalaryController::class, 'fetchData'])->name('galaries.fetch-data');
 
         Route::resources([
             'courses' => CourseController::class,
