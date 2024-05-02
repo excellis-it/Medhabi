@@ -69,7 +69,7 @@ class GalaryController extends Controller
         $galary->image = $this->imageUpload($request->file('image'), 'galary');
         $galary->save();
 
-        return redirect()->route('galaries.index')->with('success', 'Galary Image Added Successfully');
+        return redirect()->route('galaries.index')->with('message', 'Galary Image Added Successfully');
 
 
     }
