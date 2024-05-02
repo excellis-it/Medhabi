@@ -195,36 +195,10 @@
                                         class="nav-link" href="{{ route('courses.index') }}">Courses </a></li>
 
                                     <li class="dropdown">
-                                        <a href="javascript:void(0);"
-                                            class="menu-toggle nav-link has-dropdown {{ Request::is('admin/pages/galaries*') ? 'active' : ' ' }}">
-                                            <span> Galary</span>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li class="{{ Request::is('admin/pages/galaries*') ? 'active' : ' ' }}">
-                                                <a class="nav-link" href="{{ route('galaries.index') }}"> Our
-                                                    Galary List</a>
-                                            </li>
-                                            
-                                        </ul>
-                                    </li>
-
-                                         
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);"
-                                            class="menu-toggle nav-link has-dropdown {{ Request::is('admin/our-core-values*') ? 'active' : ' ' }}">
+                                        <a href="{{ route('our-partnerships.index') }}"
+                                            class="menu-toggle {{ Request::is('admin/our-core-values*') ? 'active' : ' ' }}">
                                             <span> Our Partnership</span>
                                         </a>
-                                        <ul class="dropdown-menu">
-                                            <li class="{{ Request::is('admin/our-partnerships') ? 'active' : ' ' }}">
-                                                <a class="nav-link" href="{{ route('our-partnerships.index') }}"> Our
-                                                    Partnership List</a>
-                                            </li>
-                                            <li
-                                                class="{{ Request::is('admin/our-partnerships/create') ? 'active' : ' ' }}">
-                                                <a class="nav-link" href="{{ route('our-partnerships.create') }}">Our
-                                                    Partnership Create</a>
-                                            </li>
-                                        </ul>
                                     </li>
                                     <li
                                         class="dropdown {{ Request::is('admin/achievement-and-key-milestones*') ? 'active' : ' ' }}">

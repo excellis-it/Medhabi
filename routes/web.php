@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\SocialMediaController;
 use App\Http\Controllers\Admin\StaticPageController;
 use App\Http\Controllers\Admin\TVCController;
 use App\Http\Controllers\Admin\Admissions\ProgramTypesCMSController;
+use App\Http\Controllers\Admin\ExperSpeakController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use App\Http\Controllers\Frontend\CmsController;
@@ -138,13 +139,17 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
             'events' => EventController::class,
             'blogs' => BlogController::class,
             'application-process' => ApplicationProcessController::class,
-            'galaries' => GalaryController::class,
         ]);
 
         Route::prefix('galaries')->group(function () {
             Route::get('/delete/{id}', [GalaryController::class, 'delete'])->name('galaries.delete');
         });
         Route::get('/galaries-fetch-data', [GalaryController::class, 'fetchData'])->name('galaries.fetch-data');
+        Route::resources([
+            'galaries' => GalaryController::class,
+            'expert-speaks' => ExperSpeakController::class,
+        ]);
+        Route::get('/expert-speaks-image-delete', [ExperSpeakController::class, 'delete'])->name('expert-speaks.image.delete');
 
         Route::resources([
             'courses' => CourseController::class,
@@ -223,6 +228,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 
 
 Route::get('/', [CmsController::class, 'index'])->name('home');
+// international-programme
+Route::get('/international-programme', [CmsController::class, 'internationalProgramme'])->name('international-programme');
 
 Route::get('/blog', [FrontendBlogController::class, 'index'])->name('blogs');
 Route::get('/blog/{slug}', [FrontendBlogController::class, 'blogDetails'])->name('blog.details');
@@ -248,7 +255,7 @@ Route::prefix('happenings')->group(function () {
 $admissions = ProgramTypesCMS::orderBy('name', 'asc')->get();
 foreach ($admissions as $admission) {
     if ($admission->slug) {
-        Route::get('/'.$admission->slug, [CmsController::class, 'admission'])->name($admission->slug . '.admission');
+        Route::get('/' . $admission->slug, [CmsController::class, 'admission'])->name($admission->slug . '.admission');
     }
 }
 
@@ -258,7 +265,6 @@ $menus = \App\Models\Menu::select('slug')->where('status', 1)->groupBy('slug')->
 
 foreach ($menus as $menu) {
     if ($menu->slug) {
-        Route::get('/{'.$menu->slug.'}', [CmsController::class, 'page'])->name($menu->slug . '.page');
+        Route::get('/{' . $menu->slug . '}', [CmsController::class, 'page'])->name($menu->slug . '.page');
     }
 }
-

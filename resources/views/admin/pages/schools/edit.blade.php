@@ -36,6 +36,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- @dd($school->schoolCourses->pluck('id')->toArray()) --}}
                             <div class="col-md-6">
                                 <div class="form-group-div">
                                     <div class="form-group">
@@ -44,7 +45,7 @@
                                             <option value="">Select Course</option>
                                             @foreach ($courses as $course)
                                                 <option value="{{ $course->id }}"
-                                                    @if (in_array($course->id, $school->schoolCourses->pluck('id')->toArray())) selected @endif>{{ $course->name }}
+                                                    @if (in_array($course->id, $school->schoolCourses->pluck('course_id')->toArray())) selected @endif>{{ $course->name }}
                                                 </option>
                                             @endforeach
                                         </select>

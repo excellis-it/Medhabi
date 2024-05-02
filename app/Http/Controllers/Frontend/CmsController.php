@@ -178,4 +178,9 @@ class CmsController extends Controller
         }
         return view('frontend.pages.static-page')->with(compact('page'));
     }
+
+    public function internationalProgramme()
+    {
+        return view('frontend.pages.international-programme');
+    }
 }

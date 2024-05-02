@@ -254,29 +254,16 @@ background-position: center;
             <div class="row">
                 <div class="col-lg-12">
                     <div class="student-says owl-carousel">
-                        <div class="item">
-                            <div class="faculty-img">
-                                <img src="../assets/images/Fuculty-images/anumika.jpeg" alt="">
+                        @if ($school->experSpeaks->count() > 0)
+                            @foreach ($school->experSpeaks as $expertSpeak)
+                            <div class="item">
+                                <div class="faculty-img">
+                                    <img src="{{ Storage::url($expertSpeak->image) }}" alt="">
+                                </div>
                             </div>
+                            @endforeach
 
-                        </div>
-                        <div class="item">
-                            <div class="faculty-img">
-                                <img src="../assets/images/Fuculty-images/dipankar.jpeg" alt="">
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="faculty-img">
-                                <img src="../assets/images/Fuculty-images/aninidya.jpeg" alt="">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="faculty-img">
-                                <img src="../assets/images/Fuculty-images/ujjal.jpeg" alt="">
-                            </div>
-                        </div>
-
+                        @endif
                     </div>
                 </div>
             </div>
@@ -311,93 +298,25 @@ background-position: center;
 
             </div>
         </div>
-
+        @if ($school->gallery->count() > 0)
         <div class="academic-swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide swiper-slide--one">
+                @foreach ($school->gallery as $galleryImage)
+                <div class="swiper-slide swiper-slide--{{ $loop->iteration }}">
                     <div class="img-gradient">
-                        <img src="../assets/images/ADP_7385.JPG" alt="" />
+                        <img src="{{ Storage::url($galleryImage->image) }}" alt="" />
                     </div>
                     <div>
-                        <h3>Systematic Learning</h3>
+                        <h3>{{ $galleryImage->title }}</h3>
                     </div>
                 </div>
-                <div class="swiper-slide swiper-slide--two">
-                    <div class="img-gradient">
-                        <img src="../assets/images/banner/job-ready-2.webp" alt="" />
-                    </div>
-                    <div>
-                        <h3>Professional Orientation</h3>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide--three">
-                    <div class="img-gradient">
-                        <img src="../assets/images/banner/job-ready-3.webp" alt="" />
-                    </div>
-                    <div>
-                        <h3>Industry Anchored Programmes</h3>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide--four">
-                    <div class="img-gradient">
-                        <img src="../assets/images/banner/job-ready-4.webp" alt="" />
-                    </div>
-                    <div>
-                        <h3>Real world Skills & intelligence</h3>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide--five">
-                    <div class="img-gradient">
-                        <img src="../assets/images/banner/job-ready-5.webp" alt="" />
-                    </div>
-                    <div>
-                        <h3>Skill Certifications</h3>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide--six">
-                    <div class="img-gradient">
-                        <img src="../assets/images/banner/job-ready-6.webp" alt="" />
-                    </div>
-                    <div>
-                        <h3>Feedback Driven Growth</h3>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide--seven">
-                    <div class="img-gradient">
-                        <img src="../assets/images/banner/job-ready-7.webp" alt="" />
-                    </div>
-                    <div>
-                        <h3>Employment Readiness</h3>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide--eight">
-                    <div class="img-gradient">
-                        <img src="../assets/images/banner/job-ready-8.webp" alt="" />
-                    </div>
-                    <div>
-                        <h3>Skill-driven Entrepreneurship</h3>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide--nine">
-                    <div class="img-gradient">
-                        <img src="../assets/images/banner/job-ready-9.webp" alt="" />
-                    </div>
-                    <div>
-                        <h3>Assured employability</h3>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide--ten">
-                    <div class="img-gradient">
-                        <img src="../assets/images/banner/job-ready-10.webp" alt="" />
-                    </div>
-                    <div>
-                        <h3>Practice driven pedagogy</h3>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
         </div>
+    @endif
+
     </section>
 
 

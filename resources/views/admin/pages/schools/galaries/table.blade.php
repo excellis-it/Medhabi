@@ -3,10 +3,10 @@
     <tr>
         <td>{{ ($galaries->currentPage()-1) * $galaries->perPage() + $loop->index + 1 }}</td>
         <td>{{ $galary->title ?? 'N/A' }}</td>
-       
+
         <td>
             <div class="edit-1 d-flex align-items-center justify-content-center">
-                <a title="Edit Galary" href="{{ route('galaries.edit', $galary->id) }}">
+                <a title="Edit Galary" href="{{ route('galaries.edit', $galary->id) . '?school_id=' . $galary->school_id }}">
                     <span class="edit-icon"><i class="ph ph-pencil-simple"></i></span>
                 </a>
                 <a title="Delete Galary" data-route="{{ route('galaries.delete', $galary->id) }}"

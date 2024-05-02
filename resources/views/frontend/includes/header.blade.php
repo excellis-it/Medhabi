@@ -75,7 +75,7 @@
                                     class="ri-arrow-right-s-line"></i></a>
                         </li>
                         <li>
-                            <a href="international-programme.html" target="_blank">International Programme<i
+                            <a href="{{route('international-programme')}}" target="_blank">International Programme<i
                                     class="ri-arrow-right-s-line"></i></a>
                         </li>
                         <li>

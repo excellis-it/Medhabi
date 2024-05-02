@@ -13,7 +13,7 @@
     All Schools Galary List
 @endsection
 @section('create_button')
-  <a href="{{ route('galaries.create') }}" class="btn btn-primary">+ Create New Image</a>
+  <a href="{{ route('galaries.create',['school_id' => $school_id]) }}" class="btn btn-primary">+ Create New Image</a>
 @endsection
 @section('content')
     <section id="loading">
@@ -99,7 +99,7 @@
             function clear_icon() {
                 $('#id_icon').html('');
                 $('#title_icon').html('');
-                
+
             }
 
             function fetch_data(page, sort_type, sort_by, query) {
@@ -109,7 +109,8 @@
                         page: page,
                         sortby: sort_by,
                         sorttype: sort_type,
-                        query: query
+                        query: query,
+                        school_id: {{ $school_id }}
                     },
                     success: function(data) {
                         $('tbody').html(data.data);

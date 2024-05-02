@@ -19,8 +19,8 @@ class CreateSchoolsTable extends Migration
             $table->string('slug')->unique()->nullable();
             $table->string('banner_title')->nullable();
             $table->string('banner_image')->nullable();
-            
-            $table->string('section_1_description')->nullable();
+
+            $table->longText('section_1_description')->nullable();
             $table->string('section_2_image')->nullable();
             $table->longText('section_2_url')->nullable();
             $table->string('medhavi_edge_title')->nullable();

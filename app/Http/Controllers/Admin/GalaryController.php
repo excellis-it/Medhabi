@@ -16,10 +16,11 @@ class GalaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $galaries = Galary::orderBy('id', 'desc')->paginate(10);
-        return view('admin.pages.schools.galaries.list')->with(compact('galaries'));
+        $galaries = Galary::orderBy('id', 'desc')->where('school_id', $request->school_id)->paginate(10);
+        $school_id = $request->school_id;
+        return view('admin.pages.schools.galaries.list')->with(compact('galaries','school_id'));
     }
 
     public function fetchData(Request $request)
@@ -33,6 +34,7 @@ class GalaryController extends Controller
             $galaries = Galary::where('id', 'like', '%' . $query . '%')
                 ->orWhere('title', 'like', '%' . $query . '%')
                 ->orderBy($sort_by, $sort_type)
+                ->where('school_id', $request->school_id)
                 ->paginate(10);
 
             return response()->json(['data' => view('admin.pages.schools.galaries.table', compact('galaries'))->render()]);
@@ -44,9 +46,10 @@ class GalaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.pages.schools.galaries.create');
+        $school_id = $request->school_id;
+        return view('admin.pages.schools.galaries.create')->with(compact('school_id'));
     }
 
     /**
@@ -59,17 +62,18 @@ class GalaryController extends Controller
     {
         // validation
         $request->validate([
-            'title' => 'required|unique:galaries,title',
+            'title' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:50000',
         ]);
 
         // store image
         $galary = new Galary();
+        $galary->school_id = $request->school_id;
         $galary->title = $request->title;
         $galary->image = $this->imageUpload($request->file('image'), 'galary');
         $galary->save();
 
-        return redirect()->route('galaries.index')->with('success', 'Galary Image Added Successfully');
+        return redirect()->route('galaries.index', ['school_id' => $request->school_id])->with('message', 'Galary Image Added Successfully');
 
 
     }
@@ -91,10 +95,11 @@ class GalaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $school_id = $request->school_id;
         $galary = Galary::findOrFail($id);
-        return view('admin.pages.schools.galaries.edit', compact('galary'));
+        return view('admin.pages.schools.galaries.edit', compact('galary', 'school_id'));
     }
 
     /**
@@ -124,7 +129,7 @@ class GalaryController extends Controller
 
         $galary->update();
 
-        return redirect()->route('galaries.index')->with('message', 'Galary Image Updated Successfully');
+        return redirect()->route('galaries.index', ['school_id' => $request->school_id])->with('message', 'Galary Image Updated Successfully');
 
     }
 

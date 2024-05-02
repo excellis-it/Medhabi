@@ -1,11 +1,11 @@
 @extends('admin.layouts.master')
 @section('title')
-    {{ env('APP_NAME') }} | Edit School Galary 
+    {{ env('APP_NAME') }} | Edit School Galary
 @endsection
 @push('styles')
 @endpush
 @section('head')
-    Edit School Galary 
+    Edit School Galary
 @endsection
 
 @section('content')
@@ -15,8 +15,9 @@
                 <form action="{{ route('galaries.update',$galary->id) }}" method="post" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
+                    <input type="hidden" name="school_id" value="{{$school_id}}">
                     <div class="sales-report-card-wrap">
-            
+
                         <div class="row justify-content-between">
                             <div class="col-md-6">
                                 <div class="form-group-div">
@@ -32,11 +33,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                        </div>
-                    </div>
-                    <div class="sales-report-card-wrap">
-                        <div class="row justify-content-between">
                             <div class="col-md-6">
                                 <div class="form-group-div">
                                     <div class="form-group">
@@ -46,9 +42,15 @@
                                             name="image"
                                             value="{{ old('image') }}"
                                             placeholder="Image" >
-                                        
+
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sales-report-card-wrap">
+                        <div class="row justify-content-between">
+                            <div class="col-md-6">
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group-div">
@@ -59,12 +61,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="sales-report-card-wrap mt-5">
                         <div class="row">
                              <div class="col-xl-12">
                                 <div class="btn-1">
                                     <button type="submit">Update</button>
+                                    <a href="{{ route('galaries.index',['school_id' => $galary->school_id]) }}" ><span>Cancel</span></a>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +82,7 @@
 @push('scripts')
     <script>
         window.onload = function() {
-           
+
             // galary-image preview
             document.getElementById("galary-image").addEventListener("change", function(){
                 document.getElementById("galary-image-preview").style.display = "block";

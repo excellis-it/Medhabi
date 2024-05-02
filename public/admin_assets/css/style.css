@@ -11684,6 +11684,18 @@ a.dt-button {
     text-transform: uppercase;
 }
 
+.btn-1 a span {
+    padding: 10px 30px;
+    border-radius: 60px;
+    background-color: #000000!important;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: ease-in all 0.3s;
+    text-transform: uppercase;
+}
+
 .form-group-div .form-group {
 
     /* border-radius: 16px;
@@ -11768,6 +11780,32 @@ a.dt-button {
     color: #2C8CFD;
     font-size: 20px;
     background: #D5E8FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.edit-1 a .gallery-icon {
+    color: #e0126f;
+    font-size: 20px;
+    background: #e012aa45;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.edit-1 a .speak-icon {
+    color: #387525;
+    font-size: 20px;
+    background: #12e0645c;
     display: flex;
     justify-content: center;
     align-items: center;

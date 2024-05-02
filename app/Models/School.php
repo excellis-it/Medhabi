@@ -23,4 +23,14 @@ class School extends Model
     {
         return $this->hasMany(SchoolMedhaviEdge::class);
     }
+
+    public function gallery()
+    {
+        return $this->hasMany(Galary::class);
+    }
+
+    public function experSpeaks()
+    {
+        return $this->hasMany(SchoolExperSpeak::class);
+    }
 }
