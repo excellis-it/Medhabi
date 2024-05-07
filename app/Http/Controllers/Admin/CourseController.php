@@ -305,7 +305,7 @@ class CourseController extends Controller
 
         if ($request->industry_led_learning_category_title) {
             foreach ($request->industry_led_learning_category_title as $key => $value) {
-                if ($request->industry_led_learning_category_id[$key] && $request->industry_led_learning_category_id[$key]) {
+                if (isset($request->industry_led_learning_category_id[$key]) && $request->industry_led_learning_category_id[$key]) {
                     $industry_led_learning_category = CourseIndustryLearning::find($request->industry_led_learning_category_id[$key]);
                 } else {
                     $industry_led_learning_category = new CourseIndustryLearning();
