@@ -109,7 +109,7 @@ p {
 
 
 /*===========================
-    Background Image 
+    Background Image
 =============================*/
 
 .shape-group,
@@ -795,7 +795,7 @@ var {
 
 
 /*---------------------------
-    List Style 
+    List Style
 ---------------------------*/
 
 ul,
@@ -1144,7 +1144,7 @@ input[type="radio"]:checked~label::before {
 
 
 /*--------------------
-    Contact Form 
+    Contact Form
 ----------------------*/
 
 .form-group {
@@ -1181,7 +1181,7 @@ input[type="radio"]:checked~label::before {
 
 
 /*----------------------
-    Animation  
+    Animation
 -----------------------*/
 
 @-webkit-keyframes headerSticky {
@@ -1268,7 +1268,7 @@ input[type="radio"]:checked~label::before {
 
 
 /* ------------------------
-    Custom Animation 01 
+    Custom Animation 01
 ----------------------------*/
 
 @-webkit-keyframes headerSlideDown {
@@ -1352,7 +1352,7 @@ input[type="radio"]:checked~label::before {
 
 
 /*--------------------------------
-Scroll Down Button Animation  
+Scroll Down Button Animation
 ----------------------------------*/
 
 @-webkit-keyframes scrollDown {
@@ -1412,7 +1412,7 @@ Scroll Down Button Animation
 
 
 /*-------------------------
-    Back To Top  
+    Back To Top
 ---------------------------*/
 
 @-webkit-keyframes border-transform {
@@ -2221,7 +2221,7 @@ Scroll Down Button Animation
 
 
 /*--------------------------
-    Header Styles  
+    Header Styles
 --------------------------*/
 
 .edu-header {
@@ -2477,7 +2477,7 @@ Scroll Down Button Animation
 
 
 /*------------------------
-    Header Style One  
+    Header Style One
 --------------------------*/
 
 .header-style-1 {
@@ -2576,7 +2576,7 @@ Scroll Down Button Animation
 
 
 /*--------------------------
-    Navigation Styles 
+    Navigation Styles
 ----------------------------*/
 
 .mainmenu-nav .mainmenu {
@@ -2852,7 +2852,7 @@ Scroll Down Button Animation
 .edu-header .header-mainmenu.edu-sticky .mainmenu-nav .mainmenu>li>a {
     color: #000;
     font-size: 18px;
-    padding: 0px 46px 0 46px;
+    padding: 0px 41px 0 41px;
 }
 
 .edu-header .header-mainmenu.edu-sticky .mainmenu-nav .mainmenu li.btn-new a {
@@ -2868,7 +2868,7 @@ Scroll Down Button Animation
 
 
 /*--------------------------
-    Header Top Styles  
+    Header Top Styles
 --------------------------*/
 
 .header-top-bar {
@@ -3079,7 +3079,7 @@ Scroll Down Button Animation
 
 
 /*------------------------
-    Header Actions  
+    Header Actions
 -------------------------*/
 
 .header-action {
@@ -3257,7 +3257,7 @@ Scroll Down Button Animation
 
 
 /*------------------------------
-    Popup Menu Styles  
+    Popup Menu Styles
 --------------------------------*/
 
 .popup-mobile-menu {
@@ -3334,9 +3334,9 @@ Scroll Down Button Animation
     background: var(--color-white);
     border: 0 none;
     color: var(--color-heading);
-    width: 40px;
-    height: 40px;
-    font-size: 25px;
+    width: 31px;
+    height: 31px;
+    font-size: 15px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -3387,7 +3387,7 @@ Scroll Down Button Animation
     font-size: 16px;
     font-weight: 300;
     color: #fff;
-    padding: 12px 16px 12px 0px;
+    padding: 8px 16px 8px 0px;
     line-height: 35px;
 }
 
@@ -4224,7 +4224,7 @@ only screen and (min-width: 1401px) and (max-width: 1750px) {
 
 
 /*-------------------------
-    Copyright Styles  
+    Copyright Styles
 --------------------------*/
 
 .copyright-area {
@@ -4396,6 +4396,21 @@ section.who-we-are a.arrow-btn {
     transition: 0.3s all ease;
 }
 
+a.arrow-btn-pdf {
+    color: var(--color-primary);
+    text-transform: uppercase;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s all ease;
+    display: inline-block;
+    justify-content: center;
+    padding: 15px 20px;
+    background-color: #002b47;
+}
+
 /* section.who-we-are a.arrow-btn:hover i {
     transform: translateX(5px);
 } */
@@ -4446,7 +4461,7 @@ section.who-we-are .shape-2 img {
 
 section.who-we-are .university__name .prev_btn,
 section.who-we-are .university__name .next_btn {
-    background: #ffffff21;
+    background: #00304b;
     width: 55px;
     height: 55px;
     text-align: center;
@@ -7511,7 +7526,7 @@ section.overview_sec .shape-2 img {
 
 
 /*=======================================================================
-   From the Chancellor’s Desk Styles Start
+   From the Chancellorâ€™s Desk Styles Start
 =========================================================================*/
 
 
@@ -7847,7 +7862,7 @@ section.featured__section img.media__icon {
 
 
 /*=======================================================================
-   From the Chancellor’s Desk Styles End
+   From the Chancellorâ€™s Desk Styles End
 =========================================================================*/
 
 
@@ -8255,7 +8270,7 @@ section.opportunities-bg {
 
 
 /*-------------------------
-    Germany – The Land Of Opportunities Styles Start
+    Germany â€“ The Land Of Opportunities Styles Start
 -------------------------*/
 
 section.germany__opportunites {
@@ -8313,7 +8328,7 @@ section.germany__opportunites .categorie-grid p {
 
 
 /*-------------------------
-    Germany – The Land Of Opportunities End
+    Germany â€“ The Land Of Opportunities End
 -------------------------*/
 
 
@@ -9486,7 +9501,7 @@ section.msu_scholar_schemes .rbt-card-scheme p.rbt-card-para {
 
 
 /*-------------------------
-    Know About MSU Scholarships Area Start 
+    Know About MSU Scholarships Area Start
 -------------------------*/
 
 section.know__abt__msu_scholarship {
@@ -9520,12 +9535,12 @@ section.know__abt__msu_scholarship h2 {
 }
 
 /*-------------------------
-    Know About MSU Scholarships Area End 
+    Know About MSU Scholarships Area End
 -------------------------*/
 
 
 /*-------------------------
-    Cultural Scholarship Area Start 
+    Cultural Scholarship Area Start
 -------------------------*/
 
 section.cultural_scholarship {
@@ -9582,12 +9597,12 @@ section.cultural_scholarship .unique_img {
 
 
 /*-------------------------
-    Cultural Scholarship Area End 
+    Cultural Scholarship Area End
 -------------------------*/
 
 
 /*-------------------------
-    Cultural Scholarship Duplicate Area Start 
+    Cultural Scholarship Duplicate Area Start
 -------------------------*/
 .bg-grey-new {
     background-color: #f9f9f9;
@@ -9718,7 +9733,7 @@ section.cultural_scholarship_duplicate ul.sub_list_1 {
 }
 
 /*-------------------------
-    Cultural Scholarship Duplicate Area End 
+    Cultural Scholarship Duplicate Area End
 -------------------------*/
 
 
@@ -9996,7 +10011,7 @@ section.our-pillar .rbt-card-pillar p.rbt-card-para {
 
 
 /*-------------------------
-   Grievance Redressal form Area Start 
+   Grievance Redressal form Area Start
 -------------------------*/
 section.grievance__redressal {
     padding: 100px 0;
@@ -10090,11 +10105,11 @@ section.grievance__redressal .contact-form.form-style-2 .submit-btn:hover {
 }
 
 /*-------------------------
-    Grievance Redressal Form Area End 
+    Grievance Redressal Form Area End
 -------------------------*/
 
 /*-------------------------
-   Grievance Redressal form PDF Area Start 
+   Grievance Redressal form PDF Area Start
 -------------------------*/
 
 section.grievance__redressal__pdf {
@@ -10180,7 +10195,7 @@ section.grievance__redressal__pdf a.arrow-btn i {
 }
 
 /*-------------------------
-   Grievance Redressal form PDF Area End 
+   Grievance Redressal form PDF Area End
 -------------------------*/
 
 
@@ -10301,7 +10316,7 @@ section.our-inspiration1 p {
 
 
 /*-------------------------
-   Enriching Knowledge Centres Area Start 
+   Enriching Knowledge Centres Area Start
 -------------------------*/
 
 section.enriching-knowledge {
@@ -10336,12 +10351,12 @@ section.enriching-knowledge .enriching-elemt img {
 
 
 /*-------------------------
-    Enriching Knowledge Centres Area End 
+    Enriching Knowledge Centres Area End
 -------------------------*/
 
 
 /*-------------------------
-   Fountains of Knowledge Area Start 
+   Fountains of Knowledge Area Start
 -------------------------*/
 
 section.medhavi_fountain {
@@ -10420,12 +10435,12 @@ section.medhavi_fountain .categorie-grid .content .title {
 
 
 /*-------------------------
-    Fountains of Knowledge Area End 
+    Fountains of Knowledge Area End
 -------------------------*/
 
 
 /*-------------------------
-   Director of International Relations Area Start 
+   Director of International Relations Area Start
 -------------------------*/
 
 section.director__relation {
@@ -10483,12 +10498,12 @@ section.director__relation .second__element img {
 
 
 /*-------------------------
-    Director of International Relations Area End 
+    Director of International Relations Area End
 -------------------------*/
 
 
 /*-------------------------
-   Learning Beyond the Library - E-Library Area Start 
+   Learning Beyond the Library - E-Library Area Start
 -------------------------*/
 
 section.e__learning {
@@ -10505,12 +10520,12 @@ section.e__learning p.e-learning__para {
 
 
 /*-------------------------
-    Learning Beyond the Library - E-Library Area End 
+    Learning Beyond the Library - E-Library Area End
 -------------------------*/
 
 
 /*-------------------------
-   Activities Area Start 
+   Activities Area Start
 -------------------------*/
 
 section.activities {
@@ -10554,12 +10569,12 @@ section.activities .activities-elemt img {
 
 
 /*-------------------------
-    Activities Area End 
+    Activities Area End
 -------------------------*/
 
 
 /*-------------------------
-   Library Online Resources Area Start 
+   Library Online Resources Area Start
 -------------------------*/
 
 section.library__online__resources {
@@ -10609,12 +10624,12 @@ section.library__online__resources .resourcess_bx a.resource__link:hover {
 
 
 /*-------------------------
-    Library Online Resources Area End 
+    Library Online Resources Area End
 -------------------------*/
 
 
 /*-------------------------
-   Knowledge Portal Area Start 
+   Knowledge Portal Area Start
 -------------------------*/
 
 section.knowledge__portal {
@@ -10738,12 +10753,12 @@ section.knowledge__portal .database__bx .call-flex-box .call__bx-right span {
 
 
 /*-------------------------
-    Knowledge Portal Area End 
+    Knowledge Portal Area End
 -------------------------*/
 
 
 /*-------------------------
-   Frequently Asked Question Area Start 
+   Frequently Asked Question Area Start
 -------------------------*/
 
 section.first-faq-block {
@@ -10852,7 +10867,7 @@ section.first-faq-block .accordion-button:not(.collapsed)::after {
 
 
 /*-------------------------
-    Frequently Asked Question Area End 
+    Frequently Asked Question Area End
 -------------------------*/
 
 
@@ -10867,7 +10882,7 @@ section.first-faq-block .accordion-button:not(.collapsed)::after {
 
 
 /*-------------------------
-   Working With MSU Area Start 
+   Working With MSU Area Start
 -------------------------*/
 
 section.worling__with__msu.bg__dark__blue {
@@ -11019,12 +11034,12 @@ section.worling__with__msu p.subpara {
 
 
 /*-------------------------
-    Working With MSU Area End 
+    Working With MSU Area End
 -------------------------*/
 
 
 /*-------------------------
-   Our Current Openings Area Start 
+   Our Current Openings Area Start
 -------------------------*/
 
 section.our__current__opening {
@@ -11226,12 +11241,12 @@ section.our__current__opening a.cta_btn {
 
 
 /*-------------------------
-    Our Current Openings Area End 
+    Our Current Openings Area End
 -------------------------*/
 
 
 /*-------------------------
-   Our Philosphy, Our Philosphy,  Our Mission Area Start 
+   Our Philosphy, Our Philosphy,  Our Mission Area Start
 -------------------------*/
 
 section.our_vision {
@@ -11442,12 +11457,12 @@ section.our_vision .rbt-card-body p.rbt-card-text {
 
 
 /*-------------------------
-    Our Philosphy, Our Philosphy,  Our Mission Area End 
+    Our Philosphy, Our Philosphy,  Our Mission Area End
 -------------------------*/
 
 
 /*-------------------------
-Why MSU Area Start 
+Why MSU Area Start
 -------------------------*/
 
 section.why__msu {
@@ -11508,12 +11523,12 @@ section.why__msu .msu_behind-element img {
 
 
 /*-------------------------
-Why MSU  Area End 
+Why MSU  Area End
 -------------------------*/
 
 
 /*-------------------------
-Our Core Values Area Start 
+Our Core Values Area Start
 -------------------------*/
 
 section.our__core_values {
@@ -11613,12 +11628,12 @@ section.our__core_values p.section_para {
 }
 
 /*-------------------------
-Our Core Values  Area End 
+Our Core Values  Area End
 -------------------------*/
 
 
 /*-------------------------
-What Our Students Are Saying Area Start 
+What Our Students Are Saying Area Start
 -------------------------*/
 
 section.what__our__students__says {
@@ -11917,7 +11932,7 @@ p.stat-para {
 }
 
 /*-------------------------
-What Our Students Are Saying  Area End 
+What Our Students Are Saying  Area End
 -------------------------*/
 
 
@@ -11933,7 +11948,7 @@ What Our Students Are Saying  Area End
 =========================================================================*/
 
 /*-------------------------
-MSU Campuses Area Start 
+MSU Campuses Area Start
 -------------------------*/
 
 section.msu__contact__page {
@@ -12114,11 +12129,11 @@ section.msu__contact__page .contact-form.form-style-2 h4.choose__courses {
 }
 
 /*-------------------------
-MSU Campuses  Area End 
+MSU Campuses  Area End
 -------------------------*/
 
 /*-------------------------
-MSU Map Area Start 
+MSU Map Area Start
 -------------------------*/
 
 section.msu__map {
@@ -12126,12 +12141,12 @@ section.msu__map {
 }
 
 /*-------------------------
-MSU Map Area End 
+MSU Map Area End
 -------------------------*/
 
 
 /*-------------------------
-Our Admission Offices Area Start 
+Our Admission Offices Area Start
 -------------------------*/
 
 
@@ -12216,7 +12231,7 @@ section.our_admission_offices nav.state__campus .nav-tabs .nav-link.active {
 
 
 /*-------------------------
-Our Admission Offices Area End 
+Our Admission Offices Area End
 -------------------------*/
 
 /*=======================================================================
@@ -12291,7 +12306,7 @@ section.accredation-approvals .rbt-card-pillar p.approval-content {
 =========================================================================*/
 
 /*-------------------------
-In 3 Simple Steps Area Start 
+In 3 Simple Steps Area Start
 -------------------------*/
 
 section.admission__steps {
@@ -12312,11 +12327,11 @@ section.admission__steps p.oppor-para {
 }
 
 /*-------------------------
-In 3 Simple Steps Area End 
+In 3 Simple Steps Area End
 -------------------------*/
 
 /*-------------------------
-Admission process form Area Start 
+Admission process form Area Start
 -------------------------*/
 
 section.admission__process__form {
@@ -12470,7 +12485,7 @@ section.admission__process__form .contact-form.form-style-2 h4.choose__courses {
 
 
 /*-------------------------
-Admission process form Area End 
+Admission process form Area End
 -------------------------*/
 /*=======================================================================
        ADMISSIOBN PROCESS PAGE Styless End
@@ -12484,7 +12499,7 @@ Admission process form Area End
 
 
 /*-------------------------
-Upcoming Event Area Start 
+Upcoming Event Area Start
 -------------------------*/
 
 section.upoming-event {
@@ -12646,7 +12661,7 @@ section.upoming-event .date_bx .text {
 
 
 /*-------------------------
-Upcoming Event Area End 
+Upcoming Event Area End
 -------------------------*/
 
 
@@ -12810,7 +12825,7 @@ section.placement__university .btns .site-btn:hover {
 }
 
 /*-------------------------
-Why Choose Us Area Start 
+Why Choose Us Area Start
 -------------------------*/
 .why-medhavi {
     padding: 100px 0;
@@ -12895,13 +12910,13 @@ section.placement__university p:not(:last-child) {
 }
 
 /*-------------------------
-                    Why Choose Us Area End 
+                    Why Choose Us Area End
                     -------------------------*/
 
 
 
 /*-------------------------
-                    A diverse community in your home state Area Start 
+                    A diverse community in your home state Area Start
                     -------------------------*/
 
 section.diverse__comunity {
@@ -12970,13 +12985,13 @@ section.placement__university p:not(:last-child) {
 }
 
 /*-------------------------
-Why Choose Us Area End 
+Why Choose Us Area End
 -------------------------*/
 
 
 
 /*-------------------------
-A diverse community in your home state Area Start 
+A diverse community in your home state Area Start
 -------------------------*/
 
 section.diverse__comunity {
@@ -13044,7 +13059,7 @@ section.diverse__comunity p.subpara {
 }
 
 /*-------------------------
-A diverse community in your home state Area End 
+A diverse community in your home state Area End
 -------------------------*/
 
 
@@ -13060,7 +13075,7 @@ A diverse community in your home state Area End
 
 
 /*-------------------------
-A diverse community in your home state Area Start 
+A diverse community in your home state Area Start
 -------------------------*/
 
 section.your__entry {
@@ -13102,11 +13117,11 @@ section.your__entry .content_detail .btns .site-btn:hover {
 
 
 /*-------------------------
-A diverse community in your home state Area End 
+A diverse community in your home state Area End
 -------------------------*/
 
 /*-------------------------
-Philosophy of Learning Cycle Area Start 
+Philosophy of Learning Cycle Area Start
 -------------------------*/
 
 section.philosophy__learning {
@@ -13165,13 +13180,13 @@ section.philosophy__learning .philosophy__list li::before {
 
 
 /*-------------------------
-Philosophy of Learning Cycle Area End 
+Philosophy of Learning Cycle Area End
 -------------------------*/
 
 
 
 /*-------------------------
-The Learning Stage Area Start 
+The Learning Stage Area Start
 -------------------------*/
 
 section.learning__stage {
@@ -13366,7 +13381,7 @@ section.learning__stage .learning__box .icon-top {
 
 
 /*-------------------------
-The Learning Stage Area End 
+The Learning Stage Area End
 -------------------------*/
 
 
@@ -15197,12 +15212,11 @@ section.prog-specs h2.title {
     margin-top: 20px;
 }
 
-.infrastructure-content
-{
+.infrastructure-content {
     padding: 100px 0;
 }
-.infrastructure-content p
-{
+
+.infrastructure-content p {
     margin-bottom: 0;
     text-align: justify;
 }
@@ -17537,10 +17551,10 @@ section.logo-section {
 
 @media only screen and (min-width: 1367px) and (max-width: 1440px) {
 
-    .infrastructure-content
-    {
+    .infrastructure-content {
         padding: 80px 0;
     }
+
     .abt-wise {
         padding: 80px 0;
         background-color: #fbfbfb;
@@ -19858,10 +19872,10 @@ section.logo-section {
 }
 
 @media only screen and (max-width: 1366px) {
-    .infrastructure-content
-    {
+    .infrastructure-content {
         padding: 80px 0;
     }
+
     .abt-wise {
         padding: 80px 0;
         background-color: #fbfbfb;
@@ -21928,6 +21942,7 @@ section.logo-section {
         width: 100%;
         height: 520px;
     }
+
     section.blog_listing .rbt-card-blog h4.rbt-card-title {
         font-size: 20px;
     }
@@ -22233,13 +22248,14 @@ section.logo-section {
 }
 
 @media only screen and (max-width: 1280px) {
-    .infrastructure-content
-    {
+    .infrastructure-content {
         padding: 80px 0;
     }
+
     .error-page {
         padding: 60px 0;
     }
+
     .abt-wise {
         padding: 80px 0;
         background-color: #fbfbfb;
@@ -24733,10 +24749,10 @@ section.logo-section {
 }
 
 @media only screen and (max-width: 1200px) {
-    .infrastructure-content
-    {
+    .infrastructure-content {
         padding: 80px 0;
     }
+
     .stats-section.mt-custom {
         padding-top: 80px;
     }
@@ -29106,10 +29122,10 @@ section.logo-section {
 }
 
 @media only screen and (max-width: 768px) {
-    .infrastructure-content
-    {
+    .infrastructure-content {
         padding: 60px 0;
     }
+
     .content-bx-9 {
         padding-left: 0px;
         padding-right: 0;
@@ -32291,7 +32307,14 @@ section.logo-section {
     }
 
     section.who-we-are .university__name .next_btn {
-        right: 40px;
+        right: 30px;
+    }
+
+    section.who-we-are .university__name .prev_btn, section.who-we-are .university__name .next_btn {
+        background: #00304b;
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
     }
 
     section.who-we-are .bottom-part {
@@ -32309,7 +32332,7 @@ section.logo-section {
     }
 
     section.who-we-are .university__name .prev_btn {
-        left: 40px;
+        left: 30px;
     }
 
     section.who-we-are .rbt-card {
@@ -32991,10 +33014,10 @@ section.logo-section {
     /* Guideline 767px  End*/
 
 
-    .infrastructure-content
-    {
+    .infrastructure-content {
         padding: 60px 0;
     }
+
     /* MSU Libraies 767px  Start*/
 
     section.enriching-knowledge p.para {
@@ -33533,9 +33556,11 @@ section.logo-section {
     section.medhavi-edge .wcu-bx {
         height: auto;
     }
+
     section.medhavi-edge .wcu-bx.height-change {
         height: auto;
     }
+
     /* FROM THE CHANCELLOR DESK Start 767px */
 
     section.chancellor_desk {
@@ -33825,10 +33850,12 @@ section.logo-section {
     .footer-lighten .copyright-area p {
         text-align: center;
     }
+
     section.blog_listing .rbt-card-blog {
         width: 100%;
         height: auto;
     }
+
     /* learning-ecosystem 767px start */
 
     section.your__entry {

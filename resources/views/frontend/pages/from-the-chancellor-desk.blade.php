@@ -263,4 +263,54 @@ background-position: center;
 @endsection
 
 @push('scripts')
+<script>
+    // Video Slider Js
+    $(".owl-carousel").owlCarousel({
+      stagePadding: 200,
+      autoplay: true,
+      autoplayTimeout: 2000,
+      autoplayHoverPause: true,
+      loop: true,
+      margin: 10,
+      navText: [
+        "<span class='ri-arrow-left-s-line prev_btn'></span>",
+        "<span class='ri-arrow-right-s-line next_btn'></span>",
+      ],
+      items: 1,
+      nav: true,
+      responsive: {
+        0: {
+          items: 1,
+          stagePadding: 10,
+          nav: false,
+          autoplay: false,
+          autoplayTimeout: 2000
+        },
+        600: {
+          items: 1,
+          stagePadding: 100,
+        },
+        1000: {
+          items: 1,
+          stagePadding: 200,
+        },
+        1200: {
+          items: 1,
+          stagePadding: 250,
+        },
+        1400: {
+          items: 1,
+          stagePadding: 300,
+        },
+        1600: {
+          items: 1,
+          stagePadding: 350,
+        },
+        1800: {
+          items: 1,
+          stagePadding: 400,
+        },
+      },
+    });
+  </script>
 @endpush
