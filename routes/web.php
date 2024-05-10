@@ -230,6 +230,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 Route::get('/', [CmsController::class, 'index'])->name('home');
 // international-programme
 Route::get('/international-programme', [CmsController::class, 'internationalProgramme'])->name('international-programme');
+// from-the-chancellor-desk
+Route::get('/from-the-chancellor-desk', [CmsController::class, 'fromTheChancellorDesk'])->name('from-the-chancellor-desk');
 
 Route::get('/blog', [FrontendBlogController::class, 'index'])->name('blogs');
 Route::get('/blog/{slug}', [FrontendBlogController::class, 'blogDetails'])->name('blog.details');

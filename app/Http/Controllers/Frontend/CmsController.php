@@ -183,4 +183,9 @@ class CmsController extends Controller
     {
         return view('frontend.pages.international-programme');
     }
+
+    public function fromTheChancellorDesk()
+    {
+        return view('frontend.pages.from-the-chancellor-desk');
+    }
 }
