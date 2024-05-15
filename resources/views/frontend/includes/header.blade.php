@@ -243,7 +243,7 @@
                                 </ul>
                             </li> --}}
                             <li class="btn-new">
-                                <a class="" href="https://application.msu.edu.in/">Apply Now</a>
+                                <a class="" href="https://www.msu.edu.in/application">Apply Now</a>
                             </li>
                         </ul>
                     </nav>

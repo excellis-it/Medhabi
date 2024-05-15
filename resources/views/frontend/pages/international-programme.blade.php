@@ -9,7 +9,7 @@
 
 @section('content')
 <section class="hero--Inner-page-banner" style="
-background-image: url(./{{asset('frontend_assets/images/banner/INTERNATIONAL-PATHWAY.jpg')}});
+background-image: url({{asset('frontend_assets/images/banner/INTERNATIONAL-PATHWAY.jpg')}});
 background-size: cover;
 background-position: center;">
 <div class="container-fluid custom-width__2">
