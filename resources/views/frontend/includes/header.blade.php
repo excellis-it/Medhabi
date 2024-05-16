@@ -436,7 +436,7 @@
                 <li class=""><a href="https://www.msu.edu.in/wise/">Wise</a></li>
                 <li class=""><a href="https://msu.digiicampus.com/home">Campus Login</a></li>
                 <li class="">
-                    <a href="international-programme.html">International Programme</a>
+                    <a href="{{route('international-programme')}}">International Programme</a>
                 </li>
                 <li class=""><a href="https://application.msu.edu.in/">Apply Now</a></li>
                 <li class=""><a
