@@ -254,7 +254,7 @@ background-position: center;
                 @if (isset($course->courseIndustryLearnings) && $course->courseIndustryLearnings()->count() > 0)
                     @foreach ($course->courseIndustryLearnings as $courseIndustryLearning)
                         <div class="col-lg-4 col-md-6">
-                            <div class="indst-learning-outer-bx br-blue bb-blue pt-0">
+                            <div class="indst-learning-outer-bx br-blue bb-blue">
                                 <div class="indst-learning-inner-bx height-auto">
                                     <div class="icon">
                                         <img class="non-hover-visible"

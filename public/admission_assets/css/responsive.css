@@ -1,0 +1,105 @@
+@media (max-width:768px) {
+    .header {
+        position: relative;
+    }
+
+    .logo img {
+        max-width: 120px !important;
+    }
+
+    .header-wrapper {
+        padding: .5rem 1rem;
+    }
+
+    .section3 .content-wrapper p, .about-img-wrapper p {
+        width: 100%;
+        text-align: center;
+    }
+
+    .header-content nav {
+        display: none;
+    }
+
+    .mobile-menu-wrapper {
+        display: block;
+        height: 100%;
+        width: fit-content;
+    }
+
+
+    .hero-section {
+        height: fit-content;
+        padding-top: 0rem;
+        background-position: right;
+    }
+
+    .form-wrapper {
+        margin-top: 2rem;
+    }
+
+    /* .hero {
+        background: url(/assets/imgs/MSU\ -\ 1.jpeg) no-repeat;
+        background-size: cover;
+        background-position: right;
+    } */
+
+    .headline {
+        margin-bottom: 2rem;
+    }
+
+    .banner-numbers-wrapper {
+        /* width: 100%; */
+    }
+
+    .banner-no-box-wrapper {
+        margin-top: 0;
+        align-items: stretch;
+        flex-wrap: wrap !important;
+    }
+
+    .banner-no-box {
+        width: calc(50% - 10px);
+        margin-bottom: 10px;
+    }
+
+    .fix-numbers-wrapper {
+        flex-wrap: wrap;
+    }
+
+    .fix-no-box {
+        width: 50%;
+        margin-bottom: .8rem;
+    }
+
+    .award-box {
+        width: calc(50% - 10px);
+    }
+
+    .awards-wrapper {
+        padding-top: 1rem;
+    }
+
+    h2.section-heading {
+        font-size: 24px;
+    }
+
+    .hiw-box-wrapper {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+    }
+
+    .hiw-box {
+        width: calc(50% - 10px);
+        gap: 5px;
+    }
+
+    .m1 {
+        margin-bottom: 2rem !important;
+    }
+
+    .whyus-card {
+        width: calc(50% - 10px);
+        margin-right: 10px;
+    }
+}

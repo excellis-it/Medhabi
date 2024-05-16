@@ -10,12 +10,12 @@ class Helper
 {
     public static function getAllSchoolPage()
     {
-        return School::orderBy('name', 'asc')->get();
+        return School::orderBy('created_at', 'asc')->get();
     }
 
     public static function getPrograms()
     {
-        return ProgramTypesCMS::orderBy('name', 'asc')->get();
+        return ProgramTypesCMS::orderBy('created_at', 'asc')->get();
     }
 
     // get a recursive function for set parent child relationship
@@ -233,7 +233,7 @@ class Helper
 
     public static function getHeaderMenu()
     {
-        $menus = Menu::where('parent_id', 0)->where(['type' => 'header', 'status' => 1])->get();
+        $menus = Menu::where('parent_id', 0)->where(['type' => 'header', 'status' => 1])->orderBy('created_at', 'asc')->get();
         return $menus;
     }
 

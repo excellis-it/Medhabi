@@ -232,6 +232,18 @@ Route::get('/', [CmsController::class, 'index'])->name('home');
 Route::get('/international-programme', [CmsController::class, 'internationalProgramme'])->name('international-programme');
 // from-the-chancellor-desk
 Route::get('/from-the-chancellor-desk', [CmsController::class, 'fromTheChancellorDesk'])->name('from-the-chancellor-desk');
+// health-science
+Route::get('/health-science', [CmsController::class, 'healthScience'])->name('health-science');
+// b-tech
+Route::get('/b-tech', [CmsController::class, 'bTech'])->name('b-tech');
+// mba
+Route::get('/mba', [CmsController::class, 'mba'])->name('mba');
+// courses
+Route::get('/courses', [CmsController::class, 'courses'])->name('courses');
+// mca
+Route::get('/admissions2024/mca', [CmsController::class, 'mca'])->name('mca');
+// application
+Route::get('/application', [CmsController::class, 'application'])->name('application');
 
 Route::get('/blog', [FrontendBlogController::class, 'index'])->name('blogs');
 Route::get('/blog/{slug}', [FrontendBlogController::class, 'blogDetails'])->name('blog.details');

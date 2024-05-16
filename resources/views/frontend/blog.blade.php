@@ -22,7 +22,7 @@
 
     <section class="blog_listing position-relative">
         <div class="container-fluid custom-width__2">
-            <div class="row" id="blog-container">
+            <div class="row custom-padding" id="blog-container">
                 @foreach ($blogs as $blog)
                     <div class="col-lg-4 col-md-6">
                         <div class="medhavi_blog_wrap">

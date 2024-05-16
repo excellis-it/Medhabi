@@ -1,0 +1,721 @@
+section.nurse-in-germany h5 {
+    margin-left: 0;
+}
+
+.right__img img {
+    z-index: -1;
+    margin-right: -100px;
+}
+
+section.nurse-in-germany,
+section.germany_stable,
+section.work__options,
+section.choosing__shine,
+section.oia_section {
+    padding: 100px 15px;
+}
+
+.rbt-card-lang {
+    max-width: 100%;
+}
+
+section.germany_stable .demand__list {
+    z-index: 2;
+}
+
+section.germany__opportunites .categorie-grid {
+    height: 300px;
+}
+
+section.international__lang {
+    padding: 100px 10px;
+}
+
+@media screen and (max-width: 1440px) {
+    :root {
+        --h2: 30px;
+    }
+
+    section.nurse-in-germany h4.black-bg,
+    h4.black-bg span,
+    h4.blue-bg span {
+        font-size: 30px;
+    }
+
+    section.nurse-in-germany p.section-para, section.nurse-in-germany p.link {
+        font-size: 16px;
+    }
+
+    h5.yellow-bg span,
+    section.nurse-in-germany span.subtitle {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .page-title {
+        padding: 0 0px;
+    }
+
+    p {
+        line-height: 27px;
+    }
+
+    section .flag__bx, section .verified__bx {
+        height: 282px;
+        padding: 60px 50px;
+    }
+
+    section.abt_medhavi {
+        padding: 100px 10px 150px;
+    }
+
+    section.nurse-in-germany,
+    section.germany_stable,
+    section.work__options,
+    section.choosing__shine,
+    section.oia_section {
+        padding: 80px 10px;
+    }
+
+    section .flag__bx p {
+        line-height: 30px;
+        font-size: 16px;
+    }
+
+    .right__img img {
+        margin-right: -180px;
+    }
+
+    section.nurse-in-germany p.section-para,
+    section.nurse-in-germany p.link {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 27px;
+    }
+
+    section.nurse-in-germany a.cta_btn {
+        font-size: 16px;
+    }
+
+    section.germany__opportunites p.oppor-para,
+    section.germany_stable .demand__list li p,
+    section.work__options .content_2 h5.title,
+    section.work__options a.cta_btn,
+    section.eligibility__selection .categorie-grid .content__3 .title {
+        font-size: 16px;
+    }
+
+    section.work__options .content_2 h5.title,
+    section.eligibility__selection .categorie-grid .content__3 .title,
+    section.germany_stable .demand__list li p {
+        font-weight: 500;
+        line-height: 27px;
+    }
+
+    section.germany__opportunites .categorie-grid h5.title {
+        font-size: 20px;
+    }
+
+    section.germany__opportunites .categorie-grid p {
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    section.germany__opportunites h2.title,
+    section .flag__bx h4.heading-4 {
+        font-size: 40px;
+        margin-bottom: 0;
+    }
+
+    section.germany__opportunites .categorie-grid {
+        height: 280px;
+    }
+
+    section.germany__opportunites {
+        padding: 80px 0;
+        background-color: #e6be20;
+        position: relative;
+    }
+
+    section.germany_stable h2.title {
+        margin-bottom: 0;
+        font-size: 34px;
+    }
+
+    section.work__options h2.title {
+        margin-bottom: 10px;
+        font-size: 40px;
+    }
+
+    .rbt-card-lang p.rbt-card-para {
+        font-size: 16px;
+        font-weight: 400;
+        opacity: 0.8;
+    }
+
+    section.choosing__shine ul.ps-timeline li p {
+        font-size: 14px;
+        line-height: 25px;
+        font-weight: 400;
+    }
+
+    section.choosing__shine ul.ps-timeline li .ps-top,
+    section.choosing__shine ul.ps-timeline li .ps-bot {
+        padding: 10px;
+    }
+
+    section .verified__bx h4.verified__title,
+    section .flag__bx h4.flag__title {
+        font-size: 30px;
+    }
+
+    section.oia_section .oia__list li p {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 27px;
+    }
+
+    section.choosing__shine h2.title {
+        margin-bottom: 6px;
+        font-size: 40px;
+    }
+
+    h4.heading-4 {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    section.choosing__shine ul.ps-timeline {
+        margin: 180px 0 160px 0;
+    }
+
+    .g-5, .gy-5 {
+        --bs-gutter-y: 1rem;
+    }
+
+    .g-5, .gx-5 {
+        --bs-gutter-x: 1rem;
+    }
+
+    section.eligibility__selection h2.title {
+        margin-bottom: 6px;
+        font-size: 40px;
+    }
+
+    section.international__lang h2.title {
+        margin-bottom: 6px;
+        font-size: 40px;
+    }
+
+    section.oia_section h2.title {
+        margin-bottom: 6px;
+        font-size: 40px;
+    }
+
+    section.abt_medhavi h2.title {
+        margin-bottom: 10px;
+        font-size: 40px;
+    }
+
+    section.international__lang {
+        padding: 80px 10px;
+    }
+
+    section.eligibility__selection {
+        padding: 80px 0;
+    }
+
+    section.work__options .grid-view {
+        --bs-gutter-x: 3rem;
+        --bs-gutter-y: 3rem;
+        margin-top: 0px;
+    }
+
+    section.germany_stable .char_img img {
+        top: unset;
+        bottom: 0;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    section.work__options .categorie-grid.categorie-style-3 {
+        height: 220px;
+        padding: 20px;
+    }
+
+    .nurse-in-germany .row .col-lg-6:first-child {
+        width: 100%;
+    }
+
+    .nurse-in-germany .row .col-lg-6:last-child {
+        position: absolute;
+        right: 30px;
+        width: 75%;
+        top: 0;
+    }
+
+    section.choosing__shine ul:before {
+        left: -107px;
+    }
+
+    section.nurse-in-germany {
+        padding: 100px 10px 0;
+    }
+
+    section.abt_medhavi {
+        padding: 69px 10px 100px;
+    }
+
+    section.eligibility__selection .categorie-grid .content__3 .title {
+        padding-right: 0;
+    }
+
+    section.abt_medhavi .video-play-btn {
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    :root {
+        --h2: 26px;
+    }
+
+    h2, .h2 {
+        font-size: 26px;
+    }
+
+    section.nurse-in-germany {
+        padding: 40px 15px 0;
+    }
+
+    section.germany__opportunites h2.title {
+        margin-bottom: 10px;
+    }
+
+    .nurse-in-germany .row {
+        flex-flow: column;
+        text-align: center;
+    }
+
+    .nurse-in-germany .row .col-lg-6:last-child {
+        position: relative;
+        width: 100%;
+        right: 0;
+        margin-top: 38px;
+    }
+
+    section.nurse-in-germany .right__img img {
+        margin-right: 0;
+        position: relative;
+        margin-top: -140px;
+    }
+
+    section.nurse-in-germany h5 {
+        margin-top: 12px;
+    }
+
+    section.nurse-in-germany a.cta_btn {
+        margin-top: 12px;
+        font-size: 18px;
+    }
+
+    section.nurse-in-germany p.link {
+        margin-top: 5px;
+    }
+
+    section.nurse-in-germany {
+        padding: 40px 10px 0;
+    }
+
+    section.germany_stable,
+    section.work__options,
+    section.choosing__shine,
+    section.oia_section {
+        padding: 60px 10px;
+    }
+
+    section.germany__opportunites,
+    section.international__lang {
+        padding: 60px 0;
+    }
+
+    section.germany_stable .demand__list li::before {
+        top: 0px;
+    }
+
+    section.germany_stable h2.title {
+        margin-bottom: 0;
+        font-size: 30px;
+    }
+
+    section.abt_medhavi h2.title {
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    section.eligibility__selection {
+        padding: 40px 10px;
+    }
+
+    section.nurse-in-germany h4.black-bg,
+    h4.black-bg span,
+    h4.blue-bg span {
+        font-size: 26px;
+    }
+
+    section.nurse-in-germany p.section-para {
+        margin-top: 15px;
+        line-height: 27px;
+    }
+
+    section.germany__opportunites p.oppor-para {
+        font-size: 14px;
+        width: 100%;
+        line-height: 27px;
+    }
+
+    .section-para {
+        margin-top: 0;
+    }
+
+    section.oia_section h2.title {
+        margin-bottom: 6px;
+        font-size: 30px;
+    }
+
+    section.nurse-in-germany p.section-para, section.nurse-in-germany p.link {
+        font-size: 14px;
+    }
+
+    section.germany__opportunites h2.title, section .flag__bx h4.heading-4 {
+        font-size: 26px;
+    }
+
+    section.germany_stable .char_img img {
+        display: none;
+    }
+
+    section.germany_stable .demand__list li p,
+    section.choosing__shine ul.ps-timeline li p,
+    section.oia_section .oia__list li p,
+    section.germany__opportunites .categorie-grid p {
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: 500;
+    }
+
+    section.opportunities-bg {
+        display: none;
+    }
+
+    section.eligibility__selection .categorie-grid .content__3 .title {
+        font-size: 14px;
+    }
+
+    h4.heading-4 {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .oia-single {
+        width: 352px;
+        padding: 15px;
+    }
+
+    .oia-single img {
+        width: 60px;
+    }
+
+    .international__lang>.container-fluid>.row:last-child {
+        row-gap: 15px;
+    }
+
+    .rbt-card-lang h4.rbt-card-title {
+        font-size: 20px;
+    }
+
+    .rbt-card-lang p.rbt-card-subtext {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    .rbt-card-lang p.rbt-card-para {
+        font-size: 14px;
+    }
+
+    .categorie-grid img {
+        width: 50px !important;
+    }
+
+    section.germany__opportunites .categorie-grid h5.title {
+        font-size: 18px;
+        margin: 10px 0 5px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    section.oia_section .grid-2 {
+        grid-template-columns: 1fr;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .oia-single {
+        margin-bottom: 0;
+    }
+
+    .oia-wrap {
+        display: grid;
+        flex-flow: column;
+        align-items: center;
+        gap: 15px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    section.oia_section .element-center {
+        justify-content: center;
+    }
+
+    h4.heading-4 {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    section.abt_medhavi {
+        padding: 60px 5px 90px;
+    }
+
+    section.germany__opportunites .categorie-grid {
+        padding: 20px;
+        height: 211px;
+    }
+
+    .choosing__shine img {
+        width: 50px;
+    }
+
+    section.nurse-in-germany h4.black-bg {
+        margin-top: 5px;
+        margin-bottom: 0px;
+    }
+
+    section.choosing__shine ul.ps-timeline li {
+        height: 100px;
+    }
+
+    section.choosing__shine ul.ps-timeline li:last-child {
+        height: 0px;
+    }
+
+    #main-wrapper section.choosing__shine ul.ps-timeline {
+        margin-left: 25px !important;
+        margin-top: 30px !important;
+        padding-top: 0 !important;
+        width: calc(100% - 25px) !important;
+    }
+
+    section.choosing__shine ul.ps-timeline li .ps-bot {
+        margin-top: 0 !important;
+    }
+
+    section.choosing__shine ul.ps-timeline li .ps-top,
+    section.choosing__shine ul.ps-timeline li .ps-bot {
+        width: 100% !important;
+    }
+
+    section.nurse-in-germany h5 {
+        margin-top: 8px;
+    }
+
+    section.nurse-in-germany a.cta_btn {
+        padding: 10px 40px;
+    }
+
+    .rbt-card-lang,
+    section.eligibility__selection .categorie-grid {
+        padding: 15px;
+    }
+
+    section.eligibility__selection .categorie-grid .icon img {
+        width: 50px;
+        height: 50px;
+    }
+
+    section.germany__opportunites h2.title,
+    section .flag__bx h4.heading-4,
+    h4.black-bg span,
+    h4.blue-bg span {
+        font-size: 26px;
+    }
+
+    section.choosing__shine ul.ps-timeline li {
+        width: 85% !important;
+    }
+
+    section.choosing__shine ul:before {
+        display: none;
+    }
+
+    section.choosing__shine ul.ps-timeline li .ps-bot {
+        width: 100%;
+    }
+
+    section.choosing__shine ul.ps-timeline {
+        margin: 0px !important;
+    }
+
+    section.choosing__shine ul.ps-timeline li .ps-bot,
+    section.choosing__shine ul.ps-timeline li .ps-top {
+        left: 50px;
+        top: -27px;
+        bottom: unset;
+    }
+
+    section.choosing__shine p.eligiibility-para,
+    section.oia_section p.oia_para,
+    section.abt_medhavi p,
+    section.eligibility__selection p.eligiibility-para {
+        width: 100%;
+    }
+
+    section.oia_section .oia__list li p,
+    section.abt_medhavi p {
+        padding-right: 0;
+    }
+
+    h5.yellow-bg span, section.nurse-in-germany span.subtitle, section.nurse-in-germany a.cta_btn {
+        font-size: 14px;
+    }
+
+    section .flag__bx {
+        padding: 30px 15px;
+    }
+
+    section .verified__bx {
+        padding: 30px 15px;
+    }
+
+    section.germany__opportunites p.oppor-para,
+    section.germany_stable .demand__list li p,
+    section.work__options .content_2 h5.title,
+    section.eligibility__selection .categorie-grid .content__3 .title {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+    }
+
+    section .flag__bx, section .verified__bx {
+        height: 235px;
+    }
+
+    section.work__options .content_2 h5.title {
+        text-align: left;
+    }
+
+    section.work__options .categorie-grid.categorie-style-3 {
+        height: 180px;
+    }
+
+    section.choosing__shine h2.title {
+        margin-bottom: 6px;
+        font-size: 30px;
+    }
+
+    section.work__options h2.title {
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    section.choosing__shine ul.ps-timeline li span {
+        top: -29px;
+        left: 0;
+    }
+
+    section.eligibility__selection h2.title {
+        margin-bottom: 6px;
+        font-size: 30px;
+    }
+
+    section.international__lang h2.title {
+        margin-bottom: 6px;
+        font-size: 30px;
+    }
+
+    section.choosing__shine ul.ps-timeline li .ps-top, section.choosing__shine ul.ps-timeline li .ps-bot {
+        padding: 10px 26px;
+    }
+
+    section.germany_stable .demand__list li p {
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    section .flag__bx {
+        height: 260px;
+    }
+
+    section.nurse-in-germany {
+        padding: 40px 5px;
+    }
+
+    :root {
+        --h2: 22px;
+    }
+
+    h2, .h2 {
+        font-size: 22px;
+    }
+
+    section.germany__opportunites h2.title, section .flag__bx h4.heading-4, h4.black-bg span, h4.blue-bg span, section .verified__bx h4.verified__title, section .flag__bx h4.flag__title {
+        font-size: 22px;
+    }
+
+    section .verified__bx .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    section .verified__bx {
+        height: 322px;
+    }
+
+    section.nurse-in-germany .right__img img {
+        top: 40px;
+        margin-top: -50px;
+    }
+
+    section.germany__opportunites .categorie-grid {
+        height: auto;
+        text-align: center;
+    }
+
+    section.abt_medhavi h2.title {
+        margin-bottom: 10px;
+        font-size: 25px;
+    }
+
+    section.choosing__shine ul.ps-timeline li p,
+    section.oia_section .oia__list li p {
+        line-height: 22px;
+        font-weight: 400;
+    }
+
+    .oia-wrap {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        gap: 15px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    section.oia_section h2.title {
+        margin-bottom: 6px;
+        font-size: 25px;
+    }
+
+    section.work__options a.cta_btn {
+        font-size: 14px;
+        font-weight: 500;
+    }
+}

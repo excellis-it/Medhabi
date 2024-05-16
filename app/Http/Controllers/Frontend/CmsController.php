@@ -188,4 +188,34 @@ class CmsController extends Controller
     {
         return view('frontend.pages.from-the-chancellor-desk');
     }
+
+    public function healthScience()
+    {
+        return view('frontend.pages.health-science');
+    }
+
+    public function bTech()
+    {
+        return view('frontend.pages.b-tech');
+    }
+
+    public function mba()
+    {
+        return view('frontend.pages.mba');
+    }
+
+    public function mca()
+    {
+        return view('frontend.pages.mca');
+    }
+
+    public function courses()
+    {
+        return view('frontend.pages.courses');
+    }
+
+    public function application()
+    {
+        return view('frontend.pages.application');
+    }
 }
