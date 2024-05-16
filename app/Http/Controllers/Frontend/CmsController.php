@@ -218,4 +218,9 @@ class CmsController extends Controller
     {
         return view('frontend.pages.application');
     }
+
+    public function contactUs()
+    {
+        return view('frontend.pages.contact-us');
+    }
 }

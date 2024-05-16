@@ -244,6 +244,8 @@ Route::get('/courses', [CmsController::class, 'courses'])->name('courses');
 Route::get('/admissions2024/mca', [CmsController::class, 'mca'])->name('mca');
 // application
 Route::get('/application', [CmsController::class, 'application'])->name('application');
+// contact-us
+Route::get('/contact-us', [CmsController::class, 'contactUs'])->name('contact-us');
 
 Route::get('/blog', [FrontendBlogController::class, 'index'])->name('blogs');
 Route::get('/blog/{slug}', [FrontendBlogController::class, 'blogDetails'])->name('blog.details');

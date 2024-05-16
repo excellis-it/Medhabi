@@ -87,7 +87,7 @@
                                 target="_blank">pay fee<i class="ri-arrow-right-s-line"></i></a>
                         </li>
                         <li>
-                            <a href="contact-us.html" target="_blank">Contact Us<i
+                            <a href="{{route('contact-us')}}" target="_blank">Contact Us<i
                                     class="ri-arrow-right-s-line"></i></a>
                         </li>
 
