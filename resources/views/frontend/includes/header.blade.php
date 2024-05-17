@@ -243,7 +243,7 @@
                                 </ul>
                             </li> --}}
                             <li class="btn-new">
-                                <a class="" href="https://www.msu.edu.in/application">Apply Now</a>
+                                <a class="" href="{{route('application')}}">Apply Now</a>
                             </li>
                         </ul>
                     </nav>
