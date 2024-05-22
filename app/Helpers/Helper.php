@@ -143,7 +143,9 @@ class Helper
             if ($menu->children->isNotEmpty()) {
                 $html .= '<ul class="submenu">';
                 // Recursively generate submenu items
-                if ($menu->name != 'Admissions' || $menu->name != 'Schools' || $menu->name != 'Happenings') {
+                if ($menu->name == 'Admissions' || $menu->name == 'Schools' || $menu->name == 'Happenings') {
+                    $html .= '';
+                } else {
                     $html .= self::generateSubMenu($menu->children, $menu->id);
                 }
                 $html .= '</ul>';
@@ -214,7 +216,16 @@ class Helper
                 $html .= '<a href="' . (($menu->slug == null) ? "javascript:void(0);" : route($menu->slug . '.page', [$menu->slug => $menu->slug])) . '">' . $menu->name . '</a>';
             }
 
-            // Check if the current submenu item has children
+            // $get_parent = Menu::find($parent_id); // get parent of submenu
+            // // Check if the current submenu item has children
+            // if ($menu->children->isNotEmpty() && $get_parent->name == 'Admissions' && $get_parent->name == 'Schools' && $get_parent->name == 'Happenings'){
+            //     $html .= '<ul class="submenu">';
+            //     // Recursively generate submenu items
+            //     $html .= self::generateSubMenu($menu->children, $menu->id);
+            //     $html .= '</ul>';
+            // } else {
+            //     $html .= '';
+            // }
             if ($menu->children->isNotEmpty()) {
                 $html .= '<ul class="submenu">';
                 // Recursively generate submenu items

@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
             <h3>Phone: " . $phone . "</h3>";
 
         if ($mail->Send()) {
-            header('Location: https://www.msu.edu.in/thank-you.html');
+            header('Location: https://www.msu.edu.in/thank-you');
         }
     } catch (Exception $e) {
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;

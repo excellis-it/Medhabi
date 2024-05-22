@@ -183,6 +183,10 @@ class CmsController extends Controller
     {
         return view('frontend.pages.international-programme');
     }
+    public function thankyou()
+    {
+        return view('frontend.pages.thank-you');
+    }
 
     public function fromTheChancellorDesk()
     {
@@ -207,6 +211,18 @@ class CmsController extends Controller
     public function mca()
     {
         return view('frontend.pages.mca');
+    }
+    public function bdes()
+    {
+        return view('frontend.pages.b-des');
+    }
+    public function appliedscience()
+    {
+        return view('frontend.pages.applied-science-technology');
+    }
+    public function hospitality()
+    {
+        return view('frontend.pages.hospitality-tourism');
     }
 
     public function courses()

@@ -1724,7 +1724,12 @@
                 </div>
                 <div class="item">
                   <div class="brand-grid">
-                    <img src="{{asset('frontend_assets/images/industry-partners/inifd-logo-2.png')}}" alt="Brand Logo" />
+                    <img src="{{asset('frontend_assets/images/industry-partners/skilling-9.png')}}" alt="Brand Logo" />
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="brand-grid">
+                    <img src="{{asset('frontend_assets/images/industry-partners/skilling-10.png')}}" alt="Brand Logo" />
                   </div>
                 </div>
                 <div class="item">
@@ -1963,6 +1968,11 @@
                     <img src="{{asset('frontend_assets/images/Skilling-partners/skilling-9.png')}}" alt="Brand Logo" />
                   </div>
                 </div>
+                <div class="item">
+                  <div class="brand-grid">
+                    <img src="{{asset('frontend_assets/images/Skilling-partners/skilling-10.png')}}" alt="Brand Logo" />
+                  </div>
+                </div>
               </div>
             </div>
             <div class="tab-pane fade" id="nav-government" role="tabpanel" aria-labelledby="nav-government-tab">
@@ -2113,6 +2123,119 @@
       </div>
     </div>
   </section>
+
+    <!--=====================================-->
+    <!--=        Sticky Floating Menu Start       	=-->
+    <!--=====================================-->
+
+    <!-- FAB Vertical -->
+    <div class="fab fabVertical active">
+      <div class="fabNav fabNav--left">
+        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModaltds" class="fabItem ic-facebook">
+          <span class="fabTooltip">Enquiry</span>
+          <i class="flaticon-paper-plane"></i>
+        </a>
+        <a href="https://wa.me/+919874875876" class="fabItem ic-facebook">
+          <span class="fabTooltip">Whatsapp</span>
+          <i class="flaticon-whatsapp"></i>
+        </a>
+        <a href="tel:+919874875876" class="fabItem ic-tw">
+          <span class="fabTooltip">Call</span>
+          <i class="flaticon-callback"></i>
+        </a>
+      </div>
+      <div class="fabTrigger">
+        <a href="">
+          <span class="icon"></span>
+        </a>
+      </div>
+    </div>
+
+  <div class="modal popup-form fade" id="exampleModaltds" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <a href="javscript:void(0);" class="modal-close" data-bs-toggle="modal" data-bs-target="#exampleModaltds"><img
+            src="{{asset('frontend_assets/images/close.svg')}}" alt="Modal Close" width="16" /></a>
+        <div class="modal-body">
+          <h3>Enquiry Form</h3>
+          <div class="reservation__wrapper reservation__wrapper--3">
+            <div class="reservation__form_3 reservation__form--3 mt-none-30 text-center">
+              <form action="{{asset('frontend_assets/email-php/enquiry-popup.php')}}" method="post" id="leadForm">
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12">
+                    <div class="form-row">
+                      <input type="text" name="name" required placeholder="Name">
+                    </div>
+                    <div class="form-row mt-10">
+                      <input type="text" name="phone" required placeholder="Phone">
+                    </div>
+                    <div class="form-row mt-10">
+                      <input type="email" name="email" required placeholder="Email">
+                    </div>
+                    <div class="form-row mt-10">
+                      <select class="input" name="state" onchange="stateChanged(this)">
+                        <option value="-1" selected disabled>Your State</option>
+                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands
+                        </option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar
+                          Haveli and Daman and Diu
+                        </option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Ladakh">Ladakh</option>
+                        <option value="Lakshadweep">Lakshadweep</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Puducherry">Puducherry</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="West Bengal">West Bengal</option>
+                      </select>
+                    </div>
+                    <div class="form-row mt-10">
+                      <select class="input" name="city" onchange="cityChanged(this)">
+                        <option value="-1" selected disabled>Your City</option>
+                      </select>
+                    </div>
+                    <div class="form-row mt-10">
+                      <button type="submit" name="submit" class="site-btn-db-form mt-10">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 @endsection
 
 @push('scripts')

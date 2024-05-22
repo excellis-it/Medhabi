@@ -231,6 +231,9 @@ Route::get('/', [CmsController::class, 'index'])->name('home');
 // international-programme
 Route::get('/international-programme', [CmsController::class, 'internationalProgramme'])->name('international-programme');
 // from-the-chancellor-desk
+// thank you
+Route::get('/thank-you', [CmsController::class, 'thankyou'])->name('thank-you');
+// from-the-chancellor-desk
 Route::get('/from-the-chancellor-desk', [CmsController::class, 'fromTheChancellorDesk'])->name('from-the-chancellor-desk');
 // health-science
 Route::get('/health-science', [CmsController::class, 'healthScience'])->name('health-science');
@@ -242,6 +245,12 @@ Route::get('/mba', [CmsController::class, 'mba'])->name('mba');
 Route::get('/courses', [CmsController::class, 'courses'])->name('courses');
 // mca
 Route::get('/admissions2024/mca', [CmsController::class, 'mca'])->name('mca');
+// b-des
+Route::get('/admissions2024/b-des', [CmsController::class, 'bdes'])->name('b-des');
+// applied-science-technology
+Route::get('/admissions2024/applied-science-technology', [CmsController::class, 'appliedscience'])->name('applied-science-technology');
+// applied-science-technology
+Route::get('/admissions2024/hospitality-tourism', [CmsController::class, 'hospitality'])->name('hospitality-tourism');
 // application
 Route::get('/application', [CmsController::class, 'application'])->name('application');
 // contact-us

@@ -133,10 +133,6 @@
                                         <a href="recognition-and-approvals.html">Accreditations & Approvals
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="awards-and-collaboration.html">Awards & Collaborations
-                                        </a>
-                                    </li>
                                     <li class="has-droupdown">
                                         <a href="#">Resources</a>
                                         <ul class="submenu">
@@ -335,10 +331,7 @@
                             <a href="recognition-and-approvals.html">Accreditations & Approvals
                             </a>
                         </li>
-                        <li>
-                            <a href="awards-and-collaboration.html">Awards & Collaborations
-                            </a>
-                        </li>
+
                         <li class="has-droupdown">
                             <a href="#">Resources</a>
                             <ul class="submenu">
@@ -432,7 +425,6 @@
                         <li><a href="contact-us.html">Contact Us </a></li>
                     </ul>
                 </li> --}}
-                <li class=""><a href="https://www.msu.edu.in/collaboration/">Collaborations</a></li>
                 <li class=""><a href="https://www.msu.edu.in/wise/">Wise</a></li>
                 <li class=""><a href="https://msu.digiicampus.com/home">Campus Login</a></li>
                 <li class="">

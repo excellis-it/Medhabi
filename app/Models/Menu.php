@@ -31,5 +31,4 @@ class Menu extends Model
         return $this->belongsTo(Menu::class, 'parent_id', 'id');
     }
 
-
 }
