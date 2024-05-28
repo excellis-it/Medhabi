@@ -173,11 +173,14 @@ class Helper
 
                 if ($menu->name == 'Happenings') {
                     $html .= '<li>';
+                    $html .= '<a href="' . route('news') . '">News</a>';
+                    $html .= '</li>';
+                    $html .= '<li>';
                     $html .= '<a href="' . route('event') . '">Upcoming Events</a>';
                     $html .= '</li>';
-                    // $html .= '<li>';
-                    // $html .= '<a href="' . route('media') . '">Media Coverage</a>';
-                    // $html .= '</li>';
+                    $html .= '<li>';
+                    $html .= '<a href="' . route('in-the-media') . '">In The Media</a>';
+                    $html .= '</li>';
                     // $html .= '<li>';
                     // $html .= '<a href="' . route('tvc') . '">TVC</a>';
                     // $html .= '</li>';

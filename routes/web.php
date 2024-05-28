@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\TVCController;
 use App\Http\Controllers\Admin\Admissions\ProgramTypesCMSController;
 use App\Http\Controllers\Admin\ExperSpeakController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use App\Http\Controllers\Frontend\CmsController;
 use App\Models\ProgramTypesCMS;
@@ -74,6 +75,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         'social-media' => SocialMediaController::class,
         'static-pages' => StaticPageController::class,
         'menus' => MenuController::class,
+
     ]);
 
     Route::prefix('menus')->group(function () {
@@ -139,7 +141,12 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
             'events' => EventController::class,
             'blogs' => BlogController::class,
             'application-process' => ApplicationProcessController::class,
+            'newses' => NewsController::class,
         ]);
+
+        // newses.fetch-data
+        Route::get('/newses-fetch-data', [NewsController::class, 'fetchData'])->name('newses.fetch-data');
+        Route::get('/newses-delete/{id}', [NewsController::class, 'delete'])->name('newses.delete');
 
         Route::prefix('galaries')->group(function () {
             Route::get('/delete/{id}', [GalaryController::class, 'delete'])->name('galaries.delete');
@@ -260,6 +267,10 @@ Route::get('/blog', [FrontendBlogController::class, 'index'])->name('blogs');
 Route::get('/blog/{slug}', [FrontendBlogController::class, 'blogDetails'])->name('blog.details');
 Route::get('/load-more-blogs', [FrontendBlogController::class, 'loadMore'])->name('load-more-blogs');
 
+// news
+Route::get('/news', [CmsController::class, 'news'])->name('news');
+Route::get('/news/{slug}', [CmsController::class, 'newsDetails'])->name('news.details');
+
 Route::get('/careers', [CmsController::class, 'career'])->name('careers');
 Route::get('/careers-job-search', [CmsController::class, 'jobSearch'])->name('frontend.career.job.search');
 
@@ -273,9 +284,9 @@ Route::get('course-list-filter', [CmsController::class, 'courseListFilter'])->na
 
 Route::prefix('happenings')->group(function () {
     Route::get('/tvc', [CmsController::class, 'tvc'])->name('tvc');
-    Route::get('/media', [CmsController::class, 'media'])->name('media');
     Route::get('/event', [CmsController::class, 'event'])->name('event');
 });
+Route::get('/in-the-media', [CmsController::class, 'media'])->name('in-the-media');
 
 $admissions = ProgramTypesCMS::orderBy('name', 'asc')->get();
 foreach ($admissions as $admission) {

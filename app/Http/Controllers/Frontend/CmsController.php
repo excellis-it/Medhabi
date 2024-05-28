@@ -15,6 +15,7 @@ use App\Models\Job;
 use App\Models\JobOpportunity;
 use App\Models\KeyMilestone;
 use App\Models\Media;
+use App\Models\News;
 use App\Models\OurCoreValue;
 use App\Models\OurPartnership;
 use App\Models\ProgramTypesCMS;
@@ -238,5 +239,20 @@ class CmsController extends Controller
     public function contactUs()
     {
         return view('frontend.pages.contact-us');
+    }
+
+    public function news()
+    {
+        $newses = News::orderBy('id', 'desc')->get();
+        return view('frontend.pages.news')->with(compact('newses'));
+    }
+
+    public function newsDetails($slug)
+    {
+        $news = News::where('slug', $slug)->first();
+        if (!$news) {
+            return redirect()->route('news');
+        }
+        return view('frontend.pages.news-detail')->with(compact('news'));
     }
 }

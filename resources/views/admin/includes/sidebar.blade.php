@@ -216,10 +216,10 @@
                     <li class="{{ Request::is('admin/pages/courses/*') ? 'active' : ' ' }}"><a class="nav-link"
                             href="{{ route('courses.index') }}">Courses </a></li>
                 </ul> --}}
-                <ul class="dropdown-menu">
+                {{-- <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/pages/tvc/*') ? 'active' : ' ' }}"><a class="nav-link"
                             href="{{ route('tvc.index') }}">TVC </a></li>
-                </ul>
+                </ul> --}}
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/pages/media/*') ? 'active' : ' ' }}"><a class="nav-link"
                             href="{{ route('media.index') }}">Media Coverage</a></li>
@@ -229,6 +229,12 @@
                     <li class="{{ Request::is('admin/pages/events/*') ? 'active' : ' ' }}"><a class="nav-link"
                             href="{{ route('events.index') }}">Upcoming Events </a></li>
                 </ul>
+
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/pages/newses/*') ? 'active' : ' ' }}"><a class="nav-link"
+                            href="{{ route('newses.index') }}">News</a></li>
+                </ul>
+
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/pages/schools/*') ? 'active' : ' ' }}"> <a
                             href="javascript:void(0);"
@@ -303,7 +309,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a href="javascript:void(0);"
                     class="menu-toggle nav-link has-dropdown {{ Request::is('admin/testimonials*') ? 'active' : ' ' }}">
                     <i class="ph ph-facebook-logo"></i>
@@ -315,7 +321,7 @@
                     <li class="{{ Request::is('admin/social-media/create') ? 'active' : ' ' }}"><a class="nav-link"
                             href="{{ route('social-media.create') }}">Social Media Create</a></li>
                 </ul>
-            </li>
+            </li> --}}
 
         </ul>
     </aside>
