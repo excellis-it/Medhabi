@@ -79,8 +79,8 @@
                 <div class="page-title">
                     <h1 class="title">News</h1>
                     <!-- <p>
-            Find our blogs
-          </p> -->
+                Find our blogs
+              </p> -->
                 </div>
             </div>
         </div>
@@ -96,7 +96,8 @@
                             <div class="medhavi_blog_wrap">
                                 <div class="rbt-card-blog rbt-hover">
                                     <div class="rbt-card-img">
-                                        <a href="{{ route('news.details', ['slug' => $news->slug]) }}">
+                                        <a
+                                            href="{{ $news->slug ? route('news.details', ['slug' => $news->slug]) : 'javascript:void(0);' }}">
                                             @if ($news->image)
                                                 <img src="{{ Storage::url($news->image) }}" alt="Card image">
                                             @else
@@ -106,7 +107,8 @@
                                     </div>
                                     <div class="rbt-card-body">
                                         <h4 class="rbt-card-title">
-                                            <a href="{{ route('news.details', ['slug' => $news->slug]) }}">
+                                            <a
+                                                href="{{ $news->slug ? route('news.details', ['slug' => $news->slug]) : 'javascript:void(0);' }}">
                                                 {{ $news->name }}
                                             </a>
                                         </h4>

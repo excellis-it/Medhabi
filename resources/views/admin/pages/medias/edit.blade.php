@@ -50,6 +50,21 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- news_date --}}
+                            <div class="col-md-6">
+                                <div class="form-group-div">
+                                    <div class="form-group">
+                                        {{-- news_date --}}
+                                        <label for="floatingInputValue">News Date*</label>
+                                        <input type="date" class="form-control" id="floatingInputValue" name="news_date"
+                                            value="{{ $media->news_date ? $media->news_date : old('news_date') }}" placeholder="News Date*">
+                                        @if ($errors->has('news_date'))
+                                            <div class="error" style="color:red;">
+                                                {{ $errors->first('news_date') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                             {{-- media_channel_url --}}
                             <div class="col-md-6">
                                 <div class="form-group-div">

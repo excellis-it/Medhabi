@@ -17,7 +17,7 @@ class CreateNewsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('image')->nullable();
-            $table->string('slug')->unique();
+            $table->string('slug')->nullable()->unique();
             $table->longText('short_description')->nullable();
             $table->longText('description')->nullable();
             $table->text('meta_title')->nullable();

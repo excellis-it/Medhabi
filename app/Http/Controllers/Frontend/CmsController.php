@@ -117,7 +117,7 @@ class CmsController extends Controller
 
     public function media()
     {
-        $medias = Media::orderBy('id', 'desc')->get();
+        $medias = Media::orderBy('news_date', 'desc')->get();
         return view('frontend.pages.media')->with(compact('medias'));
     }
 

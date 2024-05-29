@@ -67,10 +67,10 @@ class NewsController extends Controller
             'name' => "required|string|max:255",
             'status' => "required",
             'image' => "required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048",
-            'description' => 'required',
+            'description' => 'nullable',
             'short_description' => 'required',
             'google_analytics' => 'nullable',
-            'slug' => 'required|unique:newses,slug'
+            'slug' => 'nullable|unique:newses,slug'
         ]);
 
         $news = new News();
@@ -124,9 +124,9 @@ class NewsController extends Controller
         $request->validate([
             'name' => "required|string|max:255",
             'status' => "required",
-            'description' => 'required',
+            'description' => 'nullable',
             'short_description' => 'required',
-            'slug' => 'required|unique:newses,slug,' . $id
+            'slug' => 'nullable|unique:newses,slug,' . $id
         ]);
 
         $news = News::findOrFail($id);

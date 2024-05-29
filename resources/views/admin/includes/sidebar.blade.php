@@ -222,7 +222,7 @@
                 </ul> --}}
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/pages/media/*') ? 'active' : ' ' }}"><a class="nav-link"
-                            href="{{ route('media.index') }}">Media Coverage</a></li>
+                            href="{{ route('media.index') }}">In The Media</a></li>
                 </ul>
 
                 <ul class="dropdown-menu">

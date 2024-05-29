@@ -83,7 +83,7 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- description --}}
-                                        <label for="floatingInputValue">Description*</label>
+                                        <label for="floatingInputValue">Description</label>
                                         <textarea name="description" id="description" placeholder="Description" rows="10" cols="20"
                                             class="form-control">{{ old('description') }}</textarea>
                                         @if ($errors->has('description'))
@@ -105,7 +105,7 @@
                                 <div class="form-group-div">
                                     <div class="form-group">
                                         {{-- meta title --}}
-                                        <label for="slug">Slug*</label>
+                                        <label for="slug">Slug</label>
                                         <input type="text" class="form-control" id="slug" name="slug"
                                              value="{{ old('slug') }}" placeholder="Slug">
                                         @if ($errors->has('slug'))

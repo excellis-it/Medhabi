@@ -65,6 +65,7 @@ class MediaController extends Controller
             'media_channel_url' => 'required|url',
             'news_title' => 'required',
             'media_channel_thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'news_date' => 'required|date',
         ]);
 
         $media = new Media();
@@ -72,6 +73,7 @@ class MediaController extends Controller
         $media->media_channel_url = $request->media_channel_url;
         $media->news_title = $request->news_title;
         $media->media_channel_thumbnail = $this->imageUpload($request->file('media_channel_thumbnail'), 'media');
+        $media->news_date = $request->news_date;
         $media->save();
         return redirect()->route('media.index')->with('message', 'Media added successfully');
     }
@@ -114,6 +116,7 @@ class MediaController extends Controller
             'media_channel_name' => 'required',
             'media_channel_url' => 'required|url',
             'news_title' => 'required',
+            'news_date' => 'required|date',
         ]);
 
         $media = Media::findOrFail($id);
@@ -123,6 +126,7 @@ class MediaController extends Controller
         if ($request->hasFile('media_channel_thumbnail')) {
             $media->media_channel_thumbnail = $this->imageUpload($request->file('media_channel_thumbnail'), 'media');
         }
+        $media->news_date = $request->news_date;
         $media->save();
         return redirect()->route('media.index')->with('message', 'Media updated successfully');
     }

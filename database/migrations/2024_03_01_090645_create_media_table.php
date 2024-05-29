@@ -19,6 +19,7 @@ class CreateMediaTable extends Migration
             $table->string('media_channel_url')->nullable();
             $table->string('media_channel_thumbnail')->nullable();
             $table->string('news_title')->nullable();
+            $table->string('news_date')->nullable();
             $table->timestamps();
         });
     }

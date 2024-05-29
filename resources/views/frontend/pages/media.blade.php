@@ -1,12 +1,12 @@
 @extends('frontend.layouts.master')
 @section('meta_title')
     <meta name="description" content="Fountains of Knowledge, Shaping Minds Towards Enlightment.">
-    <meta name="title" content="Medhavi University MEDIA COVERAGE - Explore Our Latest MEDIA COVERAGE">
+    <meta name="title" content="Medhavi University In The Media - Explore Our Latest In The Media">
     <meta name="keywords"
-        content="Medhavi University, MEDIA COVERAGE, Television Commercial, University Ad, Education, Higher Education, University">
+        content="Medhavi University, In The Media, Television Commercial, University Ad, Education, Higher Education, University">
 @endsection
 @section('title')
-    {{ env('APP_NAME') }} MEDIA COVERAGE - Explore Our Latest MEDIA COVERAGE
+    {{ env('APP_NAME') }} In The Media - Explore Our Latest In The Media
 @endsection
 @push('styles')
     <style>
@@ -71,9 +71,9 @@ background-position: center;
             <div class="row">
                 <div class="col-md-5">
                     <div class="page-title">
-                        <h1 class="title">Media Coverage</h1>
+                        <h1 class="title">In The Media</h1>
                         <p>
-                            Fountains of Knowledge, Shaping Minds Towards Enlightment.
+                            {{-- Fountains of Knowledge, Shaping Minds Towards Enlightment. --}}
                         </p>
                     </div>
                 </div>
@@ -104,7 +104,7 @@ background-position: center;
                                     <div class="media-icon-text-div">
                                         <div class="media-icon">
                                             <span><i class="ri-calendar-2-line"></i></span>
-                                            <h4>{{ $item->created_at->format('M d, Y') }}</h4>
+                                            <h4>{{$item->news_date ? date('M d,Y', strtotime($item->news_date)) : '' }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@ background-position: center;
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="alert alert-danger" role="alert">
-                            No Media Coverage Found
+                            No In The Media Found
                         </div>
                     </div>
                 </div>
