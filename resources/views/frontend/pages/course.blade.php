@@ -1,7 +1,6 @@
 @extends('frontend.layouts.master')
 @section('meta_title')
     <meta name="description" content="{{ $course['seo_description'] ?? '' }}">
-    <meta name="title" content="{{ $course['seo_title'] ?? '' }}">
     <meta name="keywords" content="{{ $course['seo_keyword'] ?? '' }}">
     <!-- Google Tag Manager -->
     <script>
