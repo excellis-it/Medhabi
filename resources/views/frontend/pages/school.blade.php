@@ -1,7 +1,6 @@
 @extends('frontend.layouts.master')
 @section('meta_title')
     <meta name="description" content="{{ $school['seo_description'] ?? '' }}">
-    <meta name="title" content="{{ $school['seo_title'] ?? '' }}">
     <meta name="keywords" content="{{ $school['seo_keyword'] ?? '' }}">
 @endsection
 @section('title')
@@ -172,6 +171,7 @@ background-position: center;
                                             $count = 0;
                                         @endphp
                                         @foreach ($school_courses as $key => $item)
+                                        @if ($key != null && $key != "")
                                             @php
                                                 $id = str_replace(' ', '-', strtolower($key));
                                                 $count++;
@@ -182,6 +182,7 @@ background-position: center;
                                                 aria-controls="nav-{{ $id }}" aria-selected="false">
                                                 {{ $key }}
                                             </button>
+                                            @endif
                                         @endforeach
 
                                     </div>
@@ -197,6 +198,7 @@ background-position: center;
                                 $count_i = 0;
                             @endphp
                             @foreach ($school_courses as $key => $value)
+                            @if ($key != null && $key != "")
                                 @php
                                     $id = str_replace(' ', '-', strtolower($key));
                                     $count_i++;
@@ -230,6 +232,7 @@ background-position: center;
                                         </div>
                                     </div>
                                 </div>
+                            @endif
                             @endforeach
                         </div>
                     </div>
@@ -349,7 +352,7 @@ background-position: center;
                         @endforeach
                     </div>
                     <div class="view_all_button_bg text-center mt-5">
-                        <a href="javascript:void(0);" id="view-all-partnership"> <!-- added ID to the anchor tag -->
+                        <a href="https://www.msu.edu.in/industry"> <!-- added ID to the anchor tag -->
                             <div class="view_all_button">View All</div>
                         </a>
                     </div>
@@ -469,7 +472,7 @@ background-position: center;
     </div>
   </div>
 
-    
+
 
     @if (count($achievements) > 0 && count($key_milestones) > 0)
     <section class="stats-section">

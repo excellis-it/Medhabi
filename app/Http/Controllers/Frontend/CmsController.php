@@ -78,18 +78,23 @@ class CmsController extends Controller
         $key_milestones = KeyMilestone::orderBy('id', 'desc')->get();
         // group by program name school courses
         $school_courses = $school->schoolCourses()
-            ->with(['course' => function ($query) {
-                $query->with(['programType' => function ($query) {
-                    $query->select('id', 'name');
-                }]);
-            }])
-            ->get()
-            ->map(function ($item, $key) {
+        ->with(['course' => function ($query) {
+            $query->with(['programType' => function ($query) {
+                $query->select('id', 'name');
+            }]);
+        }])
+        ->get()
+        ->map(function ($item) {
+            if (isset($item['course']['programType'])) {
                 $item['program_type_name'] = $item['course']['programType']['name'];
-                return $item;
-            })
-            ->groupBy('program_type_name')
-            ->toArray();
+            } else {
+                $item['program_type_name'] = null;
+            }
+            return $item;
+        })
+        ->groupBy('program_type_name')
+        ->toArray();
+
         // dd($school_courses);
         return view('frontend.pages.school')->with(compact('school', 'partnerships', 'testimonials', 'achievements', 'key_milestones', 'school_courses'));
     }
@@ -117,7 +122,7 @@ class CmsController extends Controller
 
     public function media()
     {
-        $medias = Media::orderBy('news_date', 'desc')->get();
+        $medias = Media::orderBy('id', 'desc')->get();
         return view('frontend.pages.media')->with(compact('medias'));
     }
 
@@ -254,5 +259,18 @@ class CmsController extends Controller
             return redirect()->route('news');
         }
         return view('frontend.pages.news-detail')->with(compact('news'));
+    }
+
+    public function wise()
+    {
+        return view('frontend.pages.wise');
+    }
+    public function partnarPage()
+    {
+        return view('frontend.pages.partnar');
+    }
+    public function thankYouNew()
+    {
+        return view('frontend.pages.thank_you_by_taslim');
     }
 }
